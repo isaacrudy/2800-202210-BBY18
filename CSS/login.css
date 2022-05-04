@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+
+html, body {
+    font-family: 'Cabin', sans-serif;
+    margin: 0%;
+    border: 0ch;
+}
+
+img {
+    height: 50px;
+}
+
+.loginGrid {
+    display: grid;
+    grid-template-areas: 
+    'title'
+    'email'
+    'password'
+    'loginButton'
+    'links';
+}
+
+.gridItem1 {
+    grid-area: title;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+.gridItem2 {
+    grid-area: email;
+    align-items: center;
+    justify-content: center;
+}
+
+.gridItem3 {
+    grid-area: password;
+    align-items: center;
+    justify-content: center;
+}
+
+.gridItem4 {
+    grid-area: loginButton;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.gridItem5 {
+    grid-area: links;
+    align-items: center;
+}
+
+.button {
+    background-color: white;
+    border-color: black;
+    transition-duration: 0.5s;
+    font-size: 16px;
+}
+
+.signInButton {
+    background-color: lightskyblue;
+}
+
+.signInButton:hover {
+    background-color:navy;
+    color: white;
+}
+
