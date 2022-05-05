@@ -22,7 +22,7 @@ const connection = mysql.createConnection({
 
 app.get('/', function(req, res) {
 	// Render login template
-	res.sendFile(path.join(__dirname + '/../html/login.html'));
+	res.sendFile(path.join(__dirname + '/html/login.html'));
 });
 
 app.post('/auth', function(req, res) {
@@ -50,22 +50,26 @@ app.post('/auth', function(req, res) {
 		});
 	}
      else {
-		response.send('Please enter Email and Password!');
+		res.send('Please enter Email and Password!');
 		res.end();
 	}
 });
 
-app.get('/main', function(request, response) {
+app.get('/main', function(req, res) {
 	// If the user is loggedin
-	if (request.session.loggedin) {
+	if (req.session.loggedin) {
 		// Output username
-		response.send('Welcome back, ' + request.session.firstName + '!');
+		res.redirect(__dirname + '/html/login');
 	} else {
 		// Not logged in
-		response.send('Please login to view this page!');
+		res.send('Please login to view this page!');
 	}
-	response.end();
+	res.end();
 });
+app.post('/logout', function(req, res){
+	console.log("hit");
+	});
+	
 app.listen(5500, function(){
     console.log('Listening on port 5500')
    })
