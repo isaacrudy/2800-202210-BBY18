@@ -58,17 +58,18 @@ app.post('/auth', function(req, res) {
 app.get('/main', function(req, res) {
 	// If the user is loggedin
 	if (req.session.loggedin) {
-		// Output username
-		res.redirect(__dirname + '/html/login');
+		return res.sendFile(path.join(__dirname, '/html/index.html')); 
 	} else {
-		// Not logged in
+		//create error side
 		res.send('Please login to view this page!');
 	}
 	res.end();
 });
-app.post('/logout', function(req, res){
-	console.log("hit");
-	});
+app.get('/logout', function(req, res){
+	req.logout();
+	req.session = null;
+	res.redirect('/');
+});
 	
 app.listen(5500, function(){
     console.log('Listening on port 5500')
