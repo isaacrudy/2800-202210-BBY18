@@ -20,7 +20,7 @@ form.addEventListener("submit", (event) => {
         confirmPassword:password_confirm.value,
     }
     // console.log(data);
-    fetch("http://localhost:5001/signup", {
+    fetch("http://localhost:5500/signup", {
         method:"POST",
         headers: {
             "Content-Type": "application/json"
