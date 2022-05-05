@@ -1,0 +1,20 @@
+@import url('normalize.css');
+@import url('login.css');
+@import url('header_footer/footer.css');
+@import url('header_footer/header.css');
+
+html
+{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after
+{
+	box-sizing: inherit;
+}
+
+:root
+{
+    --fc_teal: #3ab3b0;
+}
+
