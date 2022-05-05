@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
 
 app.post('/auth', function(req, res) {
 	// Capture the input fields
-	let email = req.body.username;
+	let email = req.body.email;
 	let password = req.body.password;
 	// Ensure the input fields exists and are not empty
 
@@ -40,7 +40,7 @@ app.post('/auth', function(req, res) {
 			if (results.length > 0) {
 				// Authenticate the user
 				req.session.loggedin = true;
-				req.session.username = email;
+				req.session.email = email;
 				// Redirect to home page
 				res.redirect('/main');
 			} else {
