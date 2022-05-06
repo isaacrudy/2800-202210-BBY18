@@ -29,13 +29,21 @@ ready(function () {
         e.preventDefault();
         let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
+        let check_password = document.getElementById("password_confirm").value;
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
         let queryString = "email=" + email + "password=" + password + "firstName=" + firstName + "lastName=" + lastName;
-        const vars = { "email": email, "password": password, "firstName": firstName, "lastName": lastName };
-
+        const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName };
         ajaxPOST("/add", function (data) {
-            window.location.replace("/");
+            if (data) {
+                let dataParsed = JSON.parse(data);
+                console.log(dataParsed);
+                if (dataParsed.status == "fail") {
+                    document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
+                } else {
+                    window.location.replace("/");
+                }
+            }
         }, vars)
     });
 });
