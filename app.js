@@ -73,7 +73,7 @@ app.get('/home', async function (req, res) {
 		connection.connect();
 
 		const [rows, fields] = await connection.execute("SELECT * FROM users");
-		let table = "<table style='width:100%'><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th></tr>";
+		let table = "<table style='width:100%' border=1 frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th></tr>";
 		for (let i = 0; i < rows.length; i++) {
 			table += "<tr><td style='text-align:center'>" + rows[i].id + "</td><td style='text-align:center'>"
 				+ rows[i].firstName + "</td><td style='text-align:center'>" + rows[i].lastName + "</td><td style='text-align:center'>"

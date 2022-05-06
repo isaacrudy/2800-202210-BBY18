@@ -10,7 +10,6 @@
     box-sizing: inherit;
 }
 
-
 html {
     box-sizing: border-box;
     height: 100%;
@@ -36,14 +35,32 @@ body {
     --menu-speed: 0.75s;
 }
 
-.user_list_container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    left: 10%;
-    right: 10%;
+#user_list_container {
+    margin: 50px;
+    border: 75px;
 }
 
 #admin_name {
     text-align: center;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search {
+    width: 75%;
+    align-content: stretch;
+}
+
+form {
+    width: 30%;
+    align-items: center;
+}
+
+.admin_title {
+    display: flex;
+    margin-left: 20%;
 }
