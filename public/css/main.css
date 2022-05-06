@@ -8,34 +8,29 @@
 
 
 
-*, *:before, *:after
-{
-	box-sizing: inherit;
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 
-html
-{
+html {
     box-sizing: border-box;
     height: 100%;
     font-family: 'Cabin', sans-serif;
 }
 
-body
-{
+body {
     min-height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-#wrapper
-{
+#wrapper {
     height: 100%;
     flex-grow: 1;
 }
 
-:root
-{
+:root {
     --fc_teal: #3ab3b0;
     --fc_purple: #55367d;
     --overlay-color: #e1e1e1e0;

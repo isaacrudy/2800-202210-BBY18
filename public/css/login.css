@@ -1,19 +1,29 @@
-input[type=text], input[type=password]
-{
+input[type=text], input[type=password] {
     text-indent: 30px;
 }
 
-input[type=submit]
-{
+input[type=button] {
     background-color: var(--fc_teal);
     color: white;
     border: none;
 }
 
-input[type=submit]:hover
-{
+input[type=button]:hover {
     filter: brightness(80%);
     transition: 0.4s ease;
+}
+
+input[type=submit] {
+    border: none;
+    color: rgb(162, 162, 162);
+    text-decoration: none;
+    /* padding: 20px 0px 20px 0px; */
+    background: none;
+}
+
+input[type=submit]:hover {
+    color: var(--fc_teal);
+    border-bottom: 2px solid var(--fc_teal);
 }
 
 
@@ -23,8 +33,7 @@ input[type=submit]:hover
 ---------------------------------------------
 */
 
-.login
-{
+.login {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -39,21 +48,18 @@ input[type=submit]:hover
 ---------------------------------------------
 */
 
-#login_logo
-{
+#login_logo {
     height: 100px;
     margin-bottom: 50px;
 }
 
-#signup_form_inner
-{
+#signup_form_inner {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-#signIn_container, #signIn_form, #signup_form
-{
+#signIn_container, #signIn_form, #signup_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,46 +69,39 @@ input[type=submit]:hover
     margin-bottom: 50px;
 }
 
-#signIn_container h1
-{
+#signIn_container h1 {
     font-weight: normal;
     font-size: 3em;
 }
 
-#signIn_container div
-{
+#signIn_container div {
     display: flex;
     justify-content: space-between;
     width: 80%;
     font-size: 2em;
 }
 
-#signIn_container a
-{
+#signIn_container a {
     text-decoration: none;
 }
 
-#signIn_container span
-{
-    color: rgb(162, 162, 162) ;
+#signIn_container span {
+    color: rgb(162, 162, 162);
     text-decoration: none;
     padding: 20px 0px 20px 0px;
 }
 
-#signIn_container a:hover
-{
+#signIn_container a:hover {
     border-bottom: 2px solid var(--fc_teal);
     transition: 0.4s ease;
 }
 
-#signIn_container span:hover
-{
+#signIn_container span:hover {
     color: var(--fc_teal);
 }
 
 
-#signIn_form input , #signup_form input
-{
+#signIn_form input, #signup_form input {
     font-size: 2em;
     width: 80%;
     margin-bottom: 30px;
@@ -111,8 +110,7 @@ input[type=submit]:hover
     border: 1px solid rgba(162, 162, 162, 0.881);
 }
 
-#signup_form_inner input
-{
+#signup_form_inner input {
     width: 100%;
     font-size: 1em;
 }
@@ -123,54 +121,44 @@ input[type=submit]:hover
     justify-content: end;
 } */
 
-@media screen and (min-width: 1150px)
-{
-    input[type=submit]
-    {
+@media screen and (min-width: 1150px) {
+    input[type=button] {
         max-width: 300px;
     }
 
-    #login_logo
-    {
+    #login_logo {
         height: 80px;
         margin-bottom: 50px;
     }
 
-    #signIn_container
-    {
+    #signIn_container {
         border: 2px solid var(--overlay-color);
         border-radius: 10px;
         padding: 20px 0px 20px 0px;
     }
 
-    #signIn_container, #signIn_form, #signup_form
-    {
+    #signIn_container, #signIn_form, #signup_form {
         max-width: 600px;
     }
 
-    #signIn_container h1
-    {
+    #signIn_container h1 {
         font-size: 2em;
     }
 
-    #signIn_container div
-    {
+    #signIn_container div {
         font-size: 1.2em;
     }
 
-    #signIn_form input, #signup_form input
-    {
+    #signIn_form input, #signup_form input {
         font-size: 1em;
         height: 50px;
     }
 
-    #signup_form_inner input[type=text]
-    {
+    #signup_form_inner input[type=text] {
         font-size: .8em;
     }
 
-    #signup_form_inner
-    {
+    #signup_form_inner {
         flex-direction: row;
         gap: 20px;
     }
