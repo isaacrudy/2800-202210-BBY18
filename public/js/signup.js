@@ -1,23 +1,18 @@
+"use strict";
 ready(function () {
-
-    console.log("Client script loaded.");
 
     function ajaxPOST(url, callback, data) {
 
         let params = typeof data == 'string' ? data : Object.keys(data).map(
             function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
         ).join('&');
-        console.log("params in ajaxPOST", params);
 
         const xhr = new XMLHttpRequest();
+
         xhr.onload = function () {
             if (this.readyState == XMLHttpRequest.DONE) {
-                //console.log('responseText:' + xhr.responseText);
                 callback(this.responseText, this.status);
 
-            } else {
-                
-                console.log(this.status);
             }
         }
         xhr.open("POST", url);
@@ -35,24 +30,22 @@ ready(function () {
         let lastName = document.getElementById("lastName").value;
         let queryString = "email=" + email + "password=" + password + "firstName=" + firstName + "lastName=" + lastName;
         const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName };
-        
+
         ajaxPOST("/add", function (data, status) {
-            if(status == 200){
+            if (status == 200) {
                 window.location.replace("/");
-            }else{
+            } else {
                 let dataParsed = JSON.parse(data);
                 document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
             }
-        }, vars) 
+        }, vars)
     });
 });
 
 function ready(callback) {
     if (document.readyState != "loading") {
         callback();
-        console.log("ready state is 'complete'");
     } else {
         document.addEventListener("DOMContentLoaded", callback);
-        console.log("Listener was invoked");
     }
 }

@@ -2,13 +2,13 @@
 ************************************************************************
 	Source Code
 	Title: Code Examples from COMP 1537 Web Development1
-  	Author: Arron Ferguon
-    Availability: BCIT Learning Hub
+		Author: Arron Ferguon
+	Availability: BCIT Learning Hub
 	
-  	Edited and adapted by Amadeus Min on May 5, 2022
+		Edited and adapted by Amadeus Min on May 5, 2022
 ************************************************************************
 */
-
+"use strict";
 const express = require('express');
 const session = require('express-session');
 const { JSDOM } = require('jsdom');
@@ -120,7 +120,6 @@ app.post("/login", async function (req, res) {
 
 	res.setHeader("Content-Type", "application/json");
 	const [rows, fields] = await connection.execute("SELECT * from users");
-	console.log("What was sent", req.body.email, req.body.password);
 
 	// check to see if the user name matches
 	for (let i = 0; i < rows.length; i++) {
@@ -157,7 +156,7 @@ app.post("/login", async function (req, res) {
 
 app.post("/add", async function (req, res) {
 	const mysql = require('mysql2/promise');
-	
+
 	const connection = await mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -168,17 +167,17 @@ app.post("/add", async function (req, res) {
 
 	connection.connect();
 	res.setHeader("Content-Type", "application/json");
-	if(req.body.password == req.body.password_confirm){
+	if (req.body.password == req.body.password_confirm) {
 		let userRecords = "INSERT INTO users (firstName, lastName, email, password) values ?";
 		let userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password]];
 		try {
 			await connection.query(userRecords, [userInputs]);
 			res.status(200).send();
 		} catch (error) {
-			res.status(302).send({status: "fail", msg: "Email already exists."});
+			res.status(302).send({ status: "fail", msg: "Email already exists." });
 		}
-	}else{
-		res.status(400).send({status: "fail", msg: "The passwords must match."});
+	} else {
+		res.status(400).send({ status: "fail", msg: "The passwords must match." });
 	}
 	connection.end();
 });
@@ -222,9 +221,8 @@ async function init() {
 	if (user_rows.length == 0) {
 		await connection.query(insertsql);
 	}
-
-	connection.end();
 	console.log("Listening on port " + port + "!");
+	connection.end();
 }
 
 let port = 8000;
