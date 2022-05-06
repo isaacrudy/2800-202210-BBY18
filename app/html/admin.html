@@ -10,13 +10,49 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        <div>
-            <img id="login_logo" src="img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
+    <div class="menu_wrapper">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger">
+            <div></div>
         </div>
+
+        <div class="menu">
+            <div>
+                <div>
+                    <nav>
+                        <ul id="nav_ul">
+                            <li><a class="current_page">Home</a></li>
+                            <li><a href="#"><span>Charities</span></a></li>
+                            <li><a href="#"><span>About Us</span></a></li>
+                            <li><a href="#"><span>FAQ</span></a></li>
+                            <li><a href="#"><span>Shop</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <h1 id="admin_name"></h1>
+    <header class="header_bar">
+        <div id="filler">
+        </div>
+
+        <div>
+            <img id="fundcart_logo" src="img/logos/cart_logo_vertical.png" alt="FundCart Logo">
+            <img id="fundcart_logo_alt" src="img/logos/fundcart_full_logo.png" alt="FundCart Logo">
+        </div>
+
+        <div>
+            <a href="#" id="sign_out">
+                Sign Out
+            </a>
+        </div>
+    </header>
+    <div id="wrapper">
+    </div>
+
+    <h1 id="admin_name" style="text-align: center;"></h1>
 
     <form action="/logout" method="get">
         <button id="admin_logout_btn">Logout</button>

@@ -73,10 +73,12 @@ app.get('/home', async function (req, res) {
 		connection.connect();
 
 		const [rows, fields] = await connection.execute("SELECT * FROM users");
-		let table = "<table><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th></tr>";
+		let table = "<table style='width:100%'><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th></tr>";
 		for (let i = 0; i < rows.length; i++) {
-			table += "<tr><td>" + rows[i].id + "</td><td>" + rows[i].firstName + "</td><td>" + rows[i].lastName + "</td><td>"
-				+ rows[i].email + "</td><td>" + rows[i].profilePhoto + "</td><td>" + rows[i].role + "</td></tr>";
+			table += "<tr><td style='text-align:center'>" + rows[i].id + "</td><td style='text-align:center'>"
+				+ rows[i].firstName + "</td><td style='text-align:center'>" + rows[i].lastName + "</td><td style='text-align:center'>"
+				+ rows[i].email + "</td><td style='text-align:center'>" + rows[i].profilePhoto + "</td><td style='text-align:center'>"
+				+ rows[i].role + "</td></tr>";
 		}
 		table += "</table>";
 

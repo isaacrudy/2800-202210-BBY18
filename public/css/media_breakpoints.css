@@ -94,6 +94,7 @@
 
     #fundcart_logo_alt
     {
+        height: 200px;
         display: block;
         cursor: pointer;
         margin: 15px 0 15px 0px;
