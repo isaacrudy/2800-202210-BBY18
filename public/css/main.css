@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
 @import url('normalize.css');
-@import url('login.css');
 @import url('header_footer/footer.css');
 @import url('header_footer/header.css');
 @import url('media_breakpoints.css');
+
+@import url('login.css');
+
 
 
 *, *:before, *:after
@@ -15,6 +18,7 @@ html
 {
     box-sizing: border-box;
     height: 100%;
+    font-family: 'Cabin', sans-serif;
 }
 
 body

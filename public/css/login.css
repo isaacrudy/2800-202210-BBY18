@@ -1,72 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
-
-html, body {
-    font-family: 'Cabin', sans-serif;
-    margin: 0%;
-    border: 0ch;
+input[type=text], input[type=password]
+{
+    text-indent: 30px;
 }
 
-img {
-    height: 50px;
-}
-
-.loginGrid {
-    display: grid;
-    grid-template-areas: 
-    'title'
-    'email'
-    'password'
-    'loginButton'
-    'links';
-}
-
-.gridItem1 {
-    grid-area: title;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-
-
-.gridItem2 {
-    grid-area: email;
-    align-items: center;
-    justify-content: center;
-}
-
-.gridItem3 {
-    grid-area: password;
-    align-items: center;
-    justify-content: center;
-}
-
-.gridItem4 {
-    grid-area: loginButton;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-}
-
-.gridItem5 {
-    grid-area: links;
-    align-items: center;
-}
-
-.button {
-    background-color: white;
-    border-color: black;
-    transition-duration: 0.5s;
-    font-size: 16px;
-}
-
-.signInButton {
-    background-color: lightskyblue;
-    width: 150px;
-}
-
-.signInButton:hover {
-    background-color:navy;
+input[type=submit]
+{
+    background-color: var(--fc_teal);
     color: white;
+    border: none;
 }
 
+input[type=submit]:hover
+{
+    filter: brightness(80%);
+    transition: 0.4s ease;
+}
+
+
+/*
+---------------------------------------------
+.class 
+---------------------------------------------
+*/
+
+.login
+{
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*
+---------------------------------------------
+#id 
+---------------------------------------------
+*/
+
+#login_logo
+{
+    height: 100px;
+    margin-bottom: 50px;
+}
+
+#signIn_container, #signIn_form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    margin-top: 40px;
+}
+
+#signIn_container h1
+{
+    font-weight: normal;
+    font-size: 3em;
+}
+
+#signIn_container div
+{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    font-size: 2em;
+}
+
+#signIn_container a
+{
+    text-decoration: none;
+}
+
+#signIn_container span
+{
+    color: rgb(162, 162, 162) ;
+    text-decoration: none;
+    padding: 20px 0px 20px 0px;
+}
+
+#signIn_container a:hover
+{
+    border-bottom: 2px solid var(--fc_teal);
+    transition: 0.4s ease;
+}
+
+#signIn_container span:hover
+{
+    color: var(--fc_teal);
+}
+
+
+#signIn_form input 
+{
+    font-size: 2em;
+    width: 80%;
+    margin-bottom: 30px;
+    height: 80px;
+    border-radius: 8px;
+    border: 1px solid rgba(162, 162, 162, 0.881);
+}
+
+
+@media screen and (min-width: 1150px)
+{
+    input[type=submit]
+    {
+        max-width: 200px;
+    }
+
+    #login_logo
+    {
+        height: 80px;
+        margin-bottom: 50px;
+    }
+
+    #signIn_container
+    {
+        border: 2px solid var(--overlay-color);
+        border-radius: 10px;
+        padding: 20px 0px 20px 0px;
+    }
+
+    #signIn_container, #signIn_form
+    {
+        max-width: 600px;
+    }
+
+    #signIn_container h1
+    {
+        font-size: 2em;
+    }
+
+    #signIn_container div
+    {
+        font-size: 1.2em;
+    }
+
+    #signIn_form input 
+    {
+        font-size: 1em;
+        height: 50px;
+    }
+
+}
