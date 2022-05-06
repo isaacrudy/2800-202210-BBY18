@@ -1,0 +1,274 @@
+/* 
+************************************************************************
+  Source Code
+  Title: Pure CSS Hamburger Menu & Overlay
+  Author: Brad Traversy
+  Date: April 4, 2019
+  Availability: https://codepen.io/bradtraversy/pen/vMGBjQ?editors=1100
+
+  Edited and adapted by Dennis Relos on May 5, 2022
+************************************************************************
+*/
+
+header {
+  border-bottom: 3px solid var(--fc_purple);
+  margin-bottom: 50px;
+  box-shadow: -5px 5px 10px -2px rgba(162, 162, 162, 0.881);
+}
+
+nav {
+  width: 100%;
+}
+
+span {
+  margin-bottom: 5px;
+
+}
+
+i {
+  margin-right: 10px;
+}
+
+
+/*
+---------------------------------------------
+.class 
+---------------------------------------------
+*/
+
+.header_bar {
+  background: white;
+  color: white;
+  height: 150px;
+  position: relative;
+}
+
+.header_bar {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+}
+
+/* MENU STYLES */
+.menu_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.menu_wrapper .toggler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
+.toggler {
+  margin: 45px;
+}
+
+.menu_wrapper .hamburger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger {
+  margin: 40px;
+  align-items: center;
+}
+
+/* Hamburger Line */
+.menu_wrapper .hamburger>div {
+  position: relative;
+  flex: none;
+  width: 150%;
+  height: 3px;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+/* Hamburger Lines - Top & Bottom */
+.menu_wrapper .hamburger>div::before,
+.menu_wrapper .hamburger>div::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 3px;
+  background: inherit;
+}
+
+/* Moves Line Down */
+.menu_wrapper .hamburger>div::after {
+  top: 10px;
+}
+
+/* Toggler Animation */
+.menu_wrapper .toggler:checked+.hamburger>div {
+  transform: rotate(135deg);
+}
+
+/* Turns Lines Into X */
+.menu_wrapper .toggler:checked+.hamburger>div:before,
+.menu_wrapper .toggler:checked+.hamburger>div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* Show Menu */
+.menu_wrapper .toggler:checked~.menu {
+  visibility: visible;
+}
+
+.menu_wrapper .toggler:checked~.menu>div {
+  transform: scale(1);
+  transition-duration: var(--menu-speed);
+}
+
+.menu_wrapper .toggler:checked~.menu>div>div {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.4s;
+}
+
+.menu_wrapper .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu_wrapper .menu>div {
+  background: var(--overlay-color);
+  border-radius: 50%;
+  width: 400%;
+  height: 200%;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.menu_wrapper .menu>div>div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.menu_wrapper .menu>div>div>ul>li {
+  list-style: none;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.menu_wrapper .menu>div>div>ul>li>a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+
+
+/*
+---------------------------------------------
+#id 
+---------------------------------------------
+*/
+
+#globalHeader {
+  margin-bottom: 50px;
+}
+
+#fundcart_logo {
+  height: 65px;
+  cursor: pointer;
+  margin: 20px 0 20px 0px;
+}
+
+#fundcart_logo_alt {
+  display: none;
+}
+
+#nav_ul {
+  list-style: none;
+  padding: 0 0 12px 0;
+  margin: 0;
+}
+
+#nav_ul li {
+  display: block;
+  text-align: center;
+}
+
+#nav_ul a {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5em;
+  color: black;
+  text-decoration: none;
+  padding: 20px;
+  filter: none;
+  margin-bottom: 20px;
+}
+
+#nav_ul .current_page {
+  color: var(--fc_teal);
+}
+
+#nav_ul span:hover {
+  color: var(--fc_teal);
+  transition: .4s ease;
+}
+
+
+#sign_out, #create_user_button {
+  background-color: var(--fc_purple);
+  padding: 20px 20px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+  margin-right: 20px;
+  font-size: 1.5em;
+}
+
+#sign_out:hover {
+  filter: brightness(80%);
+  transition: 0.4s ease;
+}
+
+#filler {
+  min-width: 149.23px;
+}

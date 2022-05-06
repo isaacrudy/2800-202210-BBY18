@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+@import url('normalize.css');
+@import url('header_footer/footer.css');
+@import url('header_footer/header.css');
+@import url('media_breakpoints.css');
+@import url('user_account.css');
+@import url('login.css');
+
+
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+    font-family: 'Cabin', sans-serif;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#wrapper {
+    height: 100%;
+    flex-grow: 1;
+}
+
+:root {
+    --fc_teal: #3ab3b0;
+    --fc_purple: #55367d;
+    --overlay-color: #e1e1e1e0;
+    --menu-speed: 0.75s;
+}

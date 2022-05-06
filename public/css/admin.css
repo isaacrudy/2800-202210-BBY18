@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+@import url('normalize.css');
+@import url('header_footer/footer.css');
+@import url('header_footer/header.css');
+@import url('media_breakpoints.css');
+
+@import url('login.css');
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+    font-family: 'Cabin', sans-serif;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#wrapper {
+    height: 100%;
+    flex-grow: 1;
+}
+
+:root {
+    --fc_teal: #3ab3b0;
+    --fc_purple: #55367d;
+    --overlay-color: #e1e1e1e0;
+    --menu-speed: 0.75s;
+}
+
+#user_list_container {
+    margin: 50px;
+    border: 75px;
+}
+
+#admin_name {
+    text-align: center;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search {
+    width: 75%;
+    align-content: stretch;
+}
+
+form {
+    width: 30%;
+    align-items: center;
+}
+
+.admin_title {
+    display: flex;
+    margin-left: 20%;
+}
+
+.create {
+    background-color: purple;
+    padding: 20px 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    margin-right: 20px;
+    font-size: 1.5em;
+}

@@ -1,0 +1,96 @@
+/* author: Dennis Relos */
+
+i {
+    margin-right: 10px;
+}
+
+footer {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+    align-items: center;
+}
+
+footer div {
+    width: 250px;
+    border-bottom: 1px solid grey;
+    text-align: center;
+}
+
+
+/*
+---------------------------------------------
+#id
+---------------------------------------------
+*/
+
+#globalFooter h3 {
+    font-size: 2em;
+}
+
+#globalFooter p {
+    font-size: 1.2em;
+}
+
+#sitemap, #footer_socials {
+    list-style: none;
+    padding: 0 0 12px 0;
+    margin: 0;
+    font-size: 2em;
+}
+
+#footer_socials {
+    font-size: 1.4em;
+}
+
+#sitemap a, #footer_socials a {
+    display: block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    filter: none;
+}
+
+#sitemap a, #footer_socials a {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    filter: none;
+}
+
+#sitemap .current_page {
+    color: var(--fc_teal);
+}
+
+#sitemap a {
+    padding: 0;
+    margin: 10px;
+    font-size: 1em;
+}
+
+#sitemap a:hover span, #footer_socials a:hover {
+    color: var(--fc_teal);
+    text-decoration: underline;
+    transition: ease-in .3s;
+}
+
+#footer_socials {
+    display: flex;
+    justify-content: center;
+}
+
+#footer_socials a {
+
+    padding: 0;
+    margin: 10px;
+    font-size: 2em;
+}
