@@ -4,11 +4,7 @@ Team Members:
 [Dennis Relos], [A00928787], [Set C], [May 6]
 [Isaac Rudy],   [A01261260], [Set B], [May 6]
 
-This assignment is [enter percent]% complete.
-
-[explanation if not complete, what is working/not working]
-
-
+This assignment is 100% complete.
 
 Citations:
 
