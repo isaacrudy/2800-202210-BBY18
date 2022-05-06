@@ -150,7 +150,7 @@ app.post("/login", async function (req, res) {
 	} else if (req.body.email == "" || req.body.password == "") {
 		res.send({ status: "fail", msg: "The fields are required." });
 	} else {
-		res.send({ status: "fail", msg: "User account not found." });
+		res.send({ status: "fail", msg: "Entered invalid input" });
 	}
 });
 
@@ -221,7 +221,6 @@ async function init() {
 	if (user_rows.length == 0) {
 		await connection.query(insertsql);
 	}
-	console.log("Listening on port " + port + "!");
 	connection.end();
 }
 
