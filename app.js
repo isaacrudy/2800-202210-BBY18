@@ -18,7 +18,7 @@ const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
 
-app.use("/public", express.static('./public'))
+app.use("/public", express.static('./public'));
 
 // static path mappings
 app.use("/js", express.static("./public/js"));
