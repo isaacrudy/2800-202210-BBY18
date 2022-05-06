@@ -9,14 +9,13 @@ async function getUsersTable(res) {
     connection.connect();
     const [rows, fields] =
           await connection.execute("SELECT * FROM user");
-    let table = "<table><tr><th>ID</th><th>First_Name</th><th>Last_Name</th><th>Email</th></tr>";
+    let table = "<table><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th></tr>";
     for (let i = 0; i < rows.length; i++) {
         table += "<tr><td>" + rows[i].ID + "</td><td>" + rows[i].fistName + "</td><td>"
             + rows[i].lastName + "</td><td>" + rows[i].email + "</td></tr>";
     }
 
     console.log("rows", rows);
-    // don't forget the '+'
     table += "</table>";
     await connection.end();
     res.send(table);
