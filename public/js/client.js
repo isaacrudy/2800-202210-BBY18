@@ -74,7 +74,7 @@ ready(function () {
                     window.location.replace("/home");
                 }
             }
-            //document.getElementById("errorMsg").innerHTML = dataParsed.msg;
+            //document.getElementById("errorMsg").innerHTML = dataParsed.msg
 
         }, queryString);
     });

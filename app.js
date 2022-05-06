@@ -2,12 +2,10 @@ const express = require('express');
 const session = require('express-session');
 const { JSDOM } = require('jsdom');
 const fs = require("fs");
-// const { redirect } = require('express/lib/response');
-//const mysql = require('mysql2/promise');
+const { query } = require('express');
 const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
-//const path = require('path');
 
 app.use("/public", express.static('./public'))
 
@@ -28,17 +26,7 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-//app.use(express.static(path.join(__dirname, '/public')));
-
-//console.log(path.join(__dirname, '/public'))
-
 app.get('/', function (req, res) {
-	// Render login template
-	//res.sendFile(path.join(__dirname + '/html/login.html'));
-
-	// if (req.session.loggedIn) {
-	// 	res.redirect("/admin");
-	// }
 
 	let doc = fs.readFileSync("./app/html/login.html", "utf8");
 	res.set("Server", "Wazubi Engine");
@@ -103,54 +91,6 @@ app.get('/home', async function (req, res) {
 
 });
 
-// app.get("/profile", async function (req, res) {
-
-// 	// check for a session first!
-// 	if (req.session.loggedIn) {
-// 		const mysql = require('mysql2/promise');
-// 		const connection = await mysql.createConnection({
-// 			host: "localhost",
-// 			user: "root",
-// 			password: "",
-// 			database: "mydb",
-// 			multipleStatements: true
-// 		});
-
-// 		connection.connect();
-// 		const [rows, fields] = await connection.execute("SELECT * FROM users");
-// 		let table = "<table><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th></tr>";
-// 		for (let i = 0; i < rows.length; i++) {
-// 			table += "<tr><td>" + rows[i].id + "</td><td>" + rows[i].firstName + "</td><td>" + rows[i].lastName + "</td><td>"
-// 				+ rows[i].email + "</td><td>" + rows[i].profilePhoto + "</td><td>" + rows[i].role + "</td></tr>";
-// 		}
-
-// 		console.log("rows", rows);
-// 		// don't forget the '+'
-// 		table += "</table>";
-// 		await connection.end();
-
-// 		let profile = fs.readFileSync("./app/html/admin.html", "utf8");
-// 		let profileDOM = new JSDOM(profile);
-
-// 		// great time to get the user's data and put it into the page!
-// 		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML
-// 			= req.session.name + "'s Profile";
-// 		profileDOM.window.document.getElementById("profile_name").innerHTML
-// 			= req.session.name;
-
-// 		profileDOM.window.document.getElementById("user_list_container").innerHTML = table;
-
-// 		res.set("Server", "Wazubi Engine");
-// 		res.set("X-Powered-By", "Wazubi");
-// 		res.send(profileDOM.serialize());
-
-// 	} else {
-// 		// not logged in - no session and no access, redirect to home!
-// 		res.redirect("/");
-// 	}
-
-// });
-
 app.post("/login", async function (req, res) {
 
 	const mysql = require('mysql2/promise');
@@ -196,15 +136,15 @@ app.post("/login", async function (req, res) {
 		});
 		res.send({ status: "success", msg: "Logged in." });
 	} else if (req.body.email == "" || req.body.password == "") {
-		res.send({ status: "fail", msg: "The fileds are required." });
+		res.send({ status: "fail", msg: "The fields are required." });
 	} else {
-
 		res.send({ status: "fail", msg: "User account not found." });
 	}
 });
 
 app.post("/add", async function (req, res) {
 	const mysql = require('mysql2/promise');
+	
 	const connection = await mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -214,59 +154,20 @@ app.post("/add", async function (req, res) {
 	});
 
 	connection.connect();
-
-	let userRecords = "INSERT INTO users (firstName, lastName, email, password) values ?";
-	let userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password]];
-
-	await connection.query(userRecords, [userInputs]);
-
+	if(req.body.password == req.body.password_confirm){
+		let userRecords = "INSERT INTO users (firstName, lastName, email, password) values ?";
+		let userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password]];
+		try {
+			await connection.query(userRecords, [userInputs]);
+			res.redirect("/");
+		} catch (error) {
+			res.send({status: "fail", msg: "Email already exists."});
+		}
+	}else{
+		res.send({status: "fail", msg: "The passwords must match."});
+	}
 	connection.end();
-
-	res.redirect("/");
 });
-
-
-// app.post('/auth', function (req, res) {
-// 	// Capture the input fields
-// 	let email = req.body.email;
-// 	let password = req.body.password;
-// 	// Ensure the input fields exists and are not empty
-
-// 	if (email && password) {
-// 		// Execute SQL query that'll select the account from the database based on the specified username and password
-// 		connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], function (error, results, fields) {
-// 			let role = results.role;
-// 			if (results.length > 0) {
-// 				// Authenticate the user
-// 				req.session.loggedin = true;
-// 				req.session.email = email;
-// 				// Redirect to home page
-// 				if (role == 'admin') {
-// 					res.redirect('/admin');
-// 				} else {
-// 					res.redirect('/main');
-// 				}
-// 			} else {
-// 				res.send('Incorrect Email and/or Password!');
-// 			}
-// 			res.end();
-// 		});
-// 	}
-// 	else {
-// 		res.send('Please enter Email and Password!');
-// 		res.end();
-// 	}
-// });
-
-// app.get('/admin', function (req, res) {
-// 	if (req.session.loggedin) {
-// 		return res.sendFile(path.join(__dirname, '/html/index.html'));
-// 	} else {
-// 		//create error side
-// 		res.send('Please login to view this page!');
-// 	}
-// 	res.end();
-// })
 
 app.get("/logout", function (req, res) {
 
