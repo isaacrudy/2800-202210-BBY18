@@ -6,7 +6,9 @@
 
 @import url('login.css');
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
@@ -63,4 +65,15 @@ form {
 .admin_title {
     display: flex;
     margin-left: 20%;
+}
+
+.create {
+    background-color: purple;
+    padding: 20px 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    margin-right: 20px;
+    font-size: 1.5em;
 }
