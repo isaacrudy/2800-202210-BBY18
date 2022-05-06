@@ -7,3 +7,16 @@ Team Members:
 This assignment is [enter percent]% complete.
 
 [explanation if not complete, what is working/not working]
+
+
+
+Citations:
+
+header.css
+	Source Code
+  	Title: Pure CSS Hamburger Menu & Overlay
+  	Author: Brad Traversy
+  	Date: April 4, 2019
+  	Availability: https://codepen.io/bradtraversy/pen/vMGBjQ?editors=1100
+
+  	Edited and adapted by Dennis Relos on May 5, 2022
