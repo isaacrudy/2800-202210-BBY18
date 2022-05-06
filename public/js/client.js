@@ -47,6 +47,7 @@ ready(function () {
                 callback(this.responseText);
 
             } else {
+                
                 console.log(this.status);
             }
         }

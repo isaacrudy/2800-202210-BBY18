@@ -154,17 +154,18 @@ app.post("/add", async function (req, res) {
 	});
 
 	connection.connect();
+	res.setHeader("Content-Type", "application/json");
 	if(req.body.password == req.body.password_confirm){
 		let userRecords = "INSERT INTO users (firstName, lastName, email, password) values ?";
 		let userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password]];
 		try {
 			await connection.query(userRecords, [userInputs]);
-			res.redirect("/");
+			res.status(200).send();
 		} catch (error) {
-			res.send({status: "fail", msg: "Email already exists."});
+			res.status(302).send({status: "fail", msg: "Email already exists."});
 		}
 	}else{
-		res.send({status: "fail", msg: "The passwords must match."});
+		res.status(400).send({status: "fail", msg: "The passwords must match."});
 	}
 	connection.end();
 });
