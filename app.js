@@ -2,10 +2,10 @@
 ************************************************************************
 	Source Code
 	Title: Code Examples from COMP 1537 Web Development1
-		Author: Arron Ferguon
+	Author: Arron Ferguon
 	Availability: BCIT Learning Hub
 	
-		Edited and adapted by Amadeus Min on May 5, 2022
+	Edited and adapted by Amadeus Min on May 5, 2022
 ************************************************************************
 */
 "use strict";
