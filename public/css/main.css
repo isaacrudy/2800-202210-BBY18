@@ -33,6 +33,7 @@ body
 :root
 {
     --fc_teal: #3ab3b0;
+    --fc_purple: #55367d;
     --overlay-color: #e1e1e1e0;
     --menu-speed: 0.75s;
 }
