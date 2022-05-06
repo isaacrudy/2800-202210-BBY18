@@ -1,3 +1,14 @@
+/* 
+************************************************************************
+	Source Code
+	Title: Code Examples from COMP 1537 Web Development1
+  	Author: Arron Ferguon
+    Availability: BCIT Learning Hub
+	
+  	Edited and adapted by Amadeus Min on May 5, 2022
+************************************************************************
+*/
+
 const express = require('express');
 const session = require('express-session');
 const { JSDOM } = require('jsdom');
