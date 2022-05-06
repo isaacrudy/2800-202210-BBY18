@@ -1,0 +1,53 @@
+.searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.user {
+    border-top: 10px;
+    border-top-color: black;
+}
+
+#search {
+    width: 75%;
+    align-content: stretch;
+}
+
+form {
+    width: 30%;
+    align-items: center;
+}
+
+#submit {
+    background-color: lightskyblue;
+    color: black;
+    transition-duration: 00.5s;
+}
+
+#submit:hover {
+    background-color: navy;
+    color: white;
+}
+
+.create {
+    display: flex;
+    background-color: greenyellow;
+    color: black;
+    transition-duration: 00.5s;
+}
+
+.create:hover {
+    background-color:darkgreen;
+    color: white;
+}
+
+.newUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

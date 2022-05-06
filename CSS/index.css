@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+
+html, body {
+    font-family: 'Cabin', sans-serif;
+    margin: 0%;
+    border: 0ch;
+}
+
+.nav {
+    grid-area: header;
+}
+
+.image {
+    grid-area: hero;
+}
+
+.timeline {
+    grid-area: timeline;
+}
+
+.bottom {
+    grid-area: footer;
+}
+
+.pageGrid {
+    display: grid;
+    grid-template-areas: 
+    'header'
+    'hero'
+    'timeline'
+    'footer';
+}
+
+.item1 {
+    grid-area: post1;
+}
+
+.item2 {
+    grid-area: post2;
+}
+
+.item3 {
+    grid-area: post3;
+}
+
+.timelineGrid {
+    display: grid;
+    grid-template-areas: 
+    'post1'
+    'post2'
+    'post3';
+    box-shadow: 15px;
+    border-color: black;
+    border: 10%;
+    border-top: 10%;
+}
+
+.postimg {
+    grid-area: postimg;
+}
+
+.posttxt {
+    grid-area: posttxt;
+}
+
+.post {
+    display: grid;
+    grid-template-areas:
+    'postimg'
+    'posttxt';
+}
+
+@media (min-width: 801px) {
+    .timelineGrid {
+        grid-template-columns: 33% 34% 33%;
+        grid-template-areas: 
+        'post1 post2 post3';
+    }
+}
