@@ -1,8 +1,13 @@
 /* 
-  Original code written by Brad Traversy
-  https://codepen.io/bradtraversy/pen/vMGBjQ?editors=1100
+************************************************************************
+  Source Code
+  Title: Pure CSS Hamburger Menu & Overlay
+  Author: Brad Traversy
+  Date: April 4, 2019
+  Availability: https://codepen.io/bradtraversy/pen/vMGBjQ?editors=1100
 
-  Edited and adapted by Dennis Relos
+  Edited and adapted by Dennis Relos on May 5, 2022
+************************************************************************
 */
 
 header {
@@ -248,7 +253,7 @@ i {
 }
 
 
-#sign_out {
+#sign_out, #create_user_button {
   background-color: var(--fc_purple);
   padding: 20px 20px;
   color: white;
