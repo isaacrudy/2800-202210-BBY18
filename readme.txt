@@ -20,3 +20,11 @@ header.css
   	Availability: https://codepen.io/bradtraversy/pen/vMGBjQ?editors=1100
 
   	Edited and adapted by Dennis Relos on May 5, 2022
+
+client.js, app.js
+	Source Code
+	Title: Code Examples from COMP 1537 Web Development1
+  	Author: Arron Ferguon
+    Availability: BCIT Learning Hub
+	
+  	Edited and adapted by Amadeus Min on May 5, 2022

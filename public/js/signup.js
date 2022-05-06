@@ -11,11 +11,12 @@ ready(function () {
 
         const xhr = new XMLHttpRequest();
         xhr.onload = function () {
-            if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+            if (this.readyState == XMLHttpRequest.DONE) {
                 //console.log('responseText:' + xhr.responseText);
-                callback(this.responseText);
+                callback(this.responseText, this.status);
 
             } else {
+                
                 console.log(this.status);
             }
         }
@@ -34,17 +35,15 @@ ready(function () {
         let lastName = document.getElementById("lastName").value;
         let queryString = "email=" + email + "password=" + password + "firstName=" + firstName + "lastName=" + lastName;
         const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName };
-        ajaxPOST("/add", function (data) {
-            if (data) {
+        
+        ajaxPOST("/add", function (data, status) {
+            if(status == 200){
+                window.location.replace("/");
+            }else{
                 let dataParsed = JSON.parse(data);
-                console.log(dataParsed);
-                if (dataParsed.status == "fail") {
-                    document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
-                } else {
-                    window.location.replace("/");
-                }
+                document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
             }
-        }, vars)
+        }, vars) 
     });
 });
 
