@@ -26,7 +26,6 @@ input[type=submit]:hover
 .login
 {
     margin-top: 50px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +45,14 @@ input[type=submit]:hover
     margin-bottom: 50px;
 }
 
-#signIn_container, #signIn_form
+#signup_form_inner
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#signIn_container, #signIn_form, #signup_form
 {
     display: flex;
     flex-direction: column;
@@ -54,6 +60,7 @@ input[type=submit]:hover
     align-items: center;
     width: 80vw;
     margin-top: 40px;
+    margin-bottom: 50px;
 }
 
 #signIn_container h1
@@ -64,7 +71,6 @@ input[type=submit]:hover
 
 #signIn_container div
 {
-    margin-top: 30px;
     display: flex;
     justify-content: space-between;
     width: 80%;
@@ -95,7 +101,7 @@ input[type=submit]:hover
 }
 
 
-#signIn_form input 
+#signIn_form input , #signup_form input
 {
     font-size: 2em;
     width: 80%;
@@ -105,12 +111,23 @@ input[type=submit]:hover
     border: 1px solid rgba(162, 162, 162, 0.881);
 }
 
+#signup_form_inner input
+{
+    width: 100%;
+    font-size: 1em;
+}
+
+/* #signup_cancel
+{
+    flex-direction: column;
+    justify-content: end;
+} */
 
 @media screen and (min-width: 1150px)
 {
     input[type=submit]
     {
-        max-width: 200px;
+        max-width: 300px;
     }
 
     #login_logo
@@ -126,7 +143,7 @@ input[type=submit]:hover
         padding: 20px 0px 20px 0px;
     }
 
-    #signIn_container, #signIn_form
+    #signIn_container, #signIn_form, #signup_form
     {
         max-width: 600px;
     }
@@ -141,10 +158,21 @@ input[type=submit]:hover
         font-size: 1.2em;
     }
 
-    #signIn_form input 
+    #signIn_form input, #signup_form input
     {
         font-size: 1em;
         height: 50px;
+    }
+
+    #signup_form_inner input[type=text]
+    {
+        font-size: .8em;
+    }
+
+    #signup_form_inner
+    {
+        flex-direction: row;
+        gap: 20px;
     }
 
 }
