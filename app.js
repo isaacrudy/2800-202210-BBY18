@@ -8,7 +8,7 @@
 	Edited and adapted by Amadeus Min on May 5, 2022
 ************************************************************************
 */
-"use strict";
+"use strict"
 const express = require('express');
 const session = require('express-session');
 const { JSDOM } = require('jsdom');
@@ -116,6 +116,12 @@ app.post("/login", async function (req, res) {
 	});
 
 	let loginSuccess = false;
+	let user_id;
+	let email;
+	let userFirstName;
+	let userLastName;
+	let userType;
+	
 	connection.connect();
 
 	res.setHeader("Content-Type", "application/json");
@@ -124,6 +130,7 @@ app.post("/login", async function (req, res) {
 	// check to see if the user name matches
 	for (let i = 0; i < rows.length; i++) {
 		if (req.body.email == rows[i].email && req.body.password == rows[i].password) {
+			console.log(rows[i].id);
 			loginSuccess = true;
 			user_id = rows[i].id;
 			email = rows[i].email;
@@ -167,7 +174,10 @@ app.post("/add", async function (req, res) {
 
 	connection.connect();
 	res.setHeader("Content-Type", "application/json");
-	if (req.body.password == req.body.password_confirm) {
+
+	if (req.body.firstName == "" || req.body.lastName == "" || req.body.email == "" || req.body.password == "") {
+		res.status(300).send({ status: "fail", msg: "All the fileds are required." });
+	} else if (req.body.password == req.body.password_confirm) {
 		let userRecords = "INSERT INTO users (firstName, lastName, email, password) values ?";
 		let userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password]];
 		try {
