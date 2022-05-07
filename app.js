@@ -25,7 +25,7 @@ app.use("/js", express.static("./public/js"));
 app.use("/css", express.static("./public/css"));
 app.use("/img", express.static("./public/images"));
 app.use("/fonts", express.static("./public/fonts"));
-app.use("/html", express.static("./public/html"));
+app.use("/html", express.static("./app/html"));
 app.use("/media", express.static("./public/media"));
 
 app.use(express.json());
@@ -36,6 +36,8 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
+
+
 
 app.get('/', function (req, res) {
 
@@ -77,7 +79,7 @@ app.get('/home', async function (req, res) {
 			table += "<tr><td style='text-align:center'>" + rows[i].id + "</td><td style='text-align:center'>"
 				+ rows[i].firstName + "</td><td style='text-align:center'>" + rows[i].lastName + "</td><td style='text-align:center'>"
 				+ rows[i].email + "</td><td style='text-align:center'>" + rows[i].profilePhoto + "</td><td style='text-align:center'>"
-				+ rows[i].role + "</td></tr>";
+				+ rows[i].role + "</td><td><input></td></tr>";
 		}
 		table += "</table>";
 
@@ -121,7 +123,7 @@ app.post("/login", async function (req, res) {
 	let userFirstName;
 	let userLastName;
 	let userType;
-	
+
 	connection.connect();
 
 	res.setHeader("Content-Type", "application/json");
@@ -174,19 +176,47 @@ app.post("/add", async function (req, res) {
 	connection.connect();
 	res.setHeader("Content-Type", "application/json");
 
-	if (req.body.firstName == "" || req.body.lastName == "" || req.body.email == "" || req.body.password == "") {
-		res.status(300).send({ status: "fail", msg: "All the fileds are required." });
-	} else if (req.body.password == req.body.password_confirm) {
-		let userRecords = "INSERT INTO users (firstName, lastName, email, password) values ?";
-		let userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password]];
-		try {
-			await connection.query(userRecords, [userInputs]);
-			res.status(200).send();
-		} catch (error) {
-			res.status(302).send({ status: "fail", msg: "Email already exists." });
+	let isFieldEmpty = false;
+	let userRecordsQuery;
+	let userInputs;
+
+	if (req.session.loggedIn = true && req.session.role == "admin") {
+
+		if (req.body.firstName == "" || req.body.lastName == "" || req.body.email == "" || req.body.password == "" || req.body.userType == "default_message") {
+			isFieldEmpty = true;
 		}
+
+		userRecordsQuery = "INSERT INTO users (firstName, lastName, email, password, profilePhoto, role) values ?";
+		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "some.filePath/default.png", req.body.userType]];
+
+		signUpValidation(isFieldEmpty, userRecordsQuery, userInputs);
+
 	} else {
-		res.status(400).send({ status: "fail", msg: "The passwords must match." });
+
+		if (req.body.firstName == "" || req.body.lastName == "" || req.body.email == "" || req.body.password == "") {
+			isFieldEmpty = true;
+		}
+
+		userRecordsQuery = "INSERT INTO users (firstName, lastName, email, password) values ?";
+		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password]];
+
+		signUpValidation(isFieldEmpty, userRecordsQuery, userInputs);
+	}
+
+	async function signUpValidation(isFieldEmpty, userRecordsQuery, userInputs) {
+
+		if (isFieldEmpty == true) {
+			res.status(300).send({ status: "fail", msg: "All the fileds are required." });
+		} else if (req.body.password == req.body.password_confirm) {
+			try {
+				await connection.query(userRecordsQuery, [userInputs]);
+				res.status(200).send();
+			} catch (error) {
+				res.status(302).send({ status: "fail", msg: "Email already exists." });
+			}
+		} else {
+			res.status(400).send({ status: "fail", msg: "The passwords must match." });
+		}
 	}
 	connection.end();
 });
@@ -206,11 +236,20 @@ app.get("/logout", function (req, res) {
 });
 
 app.get("/signup", function (req, res) {
-	let doc = fs.readFileSync("./app/html/signup.html", "utf8");
+	if (req.session.loggedIn = true && req.session.role == "admin") {
+		let doc = fs.readFileSync("./app/html/admin_signup.html", "utf8");
 
-	res.set("Server", "Wazubi Engine");
-	res.set("X-Powered-By", "Wazubi");
-	res.send(doc);
+		res.set("Server", "Wazubi Engine");
+		res.set("X-Powered-By", "Wazubi");
+		res.send(doc);
+	} else {
+
+		let doc = fs.readFileSync("./app/html/signup.html", "utf8");
+
+		res.set("Server", "Wazubi Engine");
+		res.set("X-Powered-By", "Wazubi");
+		res.send(doc);
+	}
 })
 
 async function init() {
@@ -232,6 +271,10 @@ async function init() {
 	}
 	connection.end();
 }
+
+app.use(function (req, res, next) {
+	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Nothing here.</p></body></html>");
+});
 
 let port = 8000;
 app.listen(port, init);
