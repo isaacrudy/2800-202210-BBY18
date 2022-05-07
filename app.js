@@ -130,7 +130,6 @@ app.post("/login", async function (req, res) {
 	// check to see if the user name matches
 	for (let i = 0; i < rows.length; i++) {
 		if (req.body.email == rows[i].email && req.body.password == rows[i].password) {
-			console.log(rows[i].id);
 			loginSuccess = true;
 			user_id = rows[i].id;
 			email = rows[i].email;
