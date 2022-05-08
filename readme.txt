@@ -4,7 +4,7 @@ Team Members:
 [Dennis Relos], [A00928787], [Set C], [May 6]
 [Isaac Rudy],   [A01261260], [Set B], [May 6]
 
-This assignment is 100% complete.
+This assignment is 80% complete.
 
 Citations:
 
