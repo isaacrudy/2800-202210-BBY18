@@ -74,12 +74,12 @@ app.get('/home', async function (req, res) {
 		connection.connect();
 
 		const [rows, fields] = await connection.execute("SELECT * FROM users");
-		let table = "<table style='width:100%' border=1 frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th></tr>";
+		let table = "<table frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th>Delete</th></tr>";
 		for (let i = 0; i < rows.length; i++) {
-			table += "<tr><td style='text-align:center'>" + rows[i].id + "</td><td style='text-align:center'>"
-				+ rows[i].firstName + "</td><td style='text-align:center'>" + rows[i].lastName + "</td><td style='text-align:center'>"
-				+ rows[i].email + "</td><td style='text-align:center'>" + rows[i].profilePhoto + "</td><td style='text-align:center'>"
-				+ rows[i].role + "</td><td><input></td></tr>";
+			table += "<tr><td>" + rows[i].id + "</td><td>"
+				+ rows[i].firstName + "</td><td>" + rows[i].lastName + "</td><td>"
+				+ rows[i].email + "</td><td>" + rows[i].profilePhoto + "</td><td>"
+				+ rows[i].role + "</td><td><input type=\"button\" class=\"deleteBtn\" id=\"" + rows[i].id + "\" value=\"X\" >" + "</td></tr>";
 		}
 		table += "</table>";
 
@@ -221,6 +221,36 @@ app.post("/add", async function (req, res) {
 	connection.end();
 });
 
+app.post("/delete", async function (req, res) {
+
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	connection.connect();
+	res.setHeader("Content-Type", "application/json");
+
+	const [user_rows, user_fields] = await connection.query("SELECT COUNT(*) AS rolesCount FROM users WHERE role = \"admin\"");
+	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + req.body.id);
+
+	if ((user_rows[0].rolesCount > 1 && req.session.user_id != req.body.id) || user_role[0].role == "regular") {
+		let deleteQuery = "DELETE FROM users where ID = " + req.body.id;
+		await connection.query(deleteQuery);
+		connection.end();
+		//res.redirect(req.get('referer'));
+		res.send({ status: "success", msg: "Deleted" })
+	} else {
+		res.send({ status: "fail", msg: "You cannot delete this admin user." });
+	}
+
+});
+
 app.get("/logout", function (req, res) {
 
 	if (req.session) {
@@ -228,7 +258,6 @@ app.get("/logout", function (req, res) {
 			if (error) {
 				res.status(400).send("Unable to log out")
 			} else {
-				// session deleted, redirect to home
 				res.redirect("/");
 			}
 		});
