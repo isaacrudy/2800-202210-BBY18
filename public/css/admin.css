@@ -6,7 +6,7 @@
 
 @import url('login.css');
 
-*,
+/* *,
 *:before,
 *:after {
     box-sizing: inherit;
@@ -76,4 +76,17 @@ form {
     border-radius: 8px;
     margin-right: 20px;
     font-size: 1.5em;
+} */
+
+#user_list_container table {
+    width: 100%;
+}
+
+#user_list_container td {
+    text-align: center;
+}
+
+#adminErrorMsg {
+    text-align: center;
+    color: red;
 }

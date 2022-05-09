@@ -44,26 +44,25 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
+    var buttons = document.getElementsByClassName("deleteBtn");
 
-    // POST TO THE SERVER
-    document.querySelector("#loginBtn").addEventListener("click", function (e) {
-        e.preventDefault();
-        let email = document.getElementById("email");
-        let password = document.getElementById("password");
-        let queryString = "email=" + email.value + "&password=" + password.value;
-        const vars = { "email": email, "&password": password }
-        ajaxPOST("/login", function (data) {
-
-            if (data) {
-                let dataParsed = JSON.parse(data);
-                if (dataParsed.status == "fail") {
-                    document.getElementById("errorMsg").innerHTML = dataParsed.msg;
-                } else {
-                    window.location.replace("/home");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function (e) {
+            e.preventDefault();
+            const vars = { "id": e.target.id };
+            ajaxPOST("/delete", function (data) {
+                if (data) {
+                    let dataParsed = JSON.parse(data);
+                    if (dataParsed.status == "fail") {
+                        document.getElementById("adminErrorMsg").innerHTML = dataParsed.msg;
+                    } else {
+                        window.location.reload();
+                    }
                 }
-            }
-        }, queryString);
-    });
+            }, vars);
+        });
+    }
+
 });
 
 function ready(callback) {
