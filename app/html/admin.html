@@ -2,54 +2,19 @@
 <html lang="en">
 
 <head>
+    <title>Admin Dashboard Page</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
-    <title>Admin Dashboard Page</title>
+    <script type="module" src="../../public/js/loads_header_footer.js"></script>
+    
 </head>
 
 <body>
-    <div class="menu_wrapper">
-        <input type="checkbox" class="toggler">
-        <div class="hamburger">
-            <div></div>
-        </div>
+    <global-header></global-header>
 
-        <div class="menu">
-            <div>
-                <div>
-                    <nav>
-                        <ul id="nav_ul">
-                            <li><a class="current_page">Home</a></li>
-                            <li><a href="#"><span>Charities</span></a></li>
-                            <li><a href="#"><span>About Us</span></a></li>
-                            <li><a href="#"><span>FAQ</span></a></li>
-                            <li><a href="#"><span>Shop</span></a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <header class="header_bar">
-        <div id="filler">
-        </div>
-
-        <div>
-            <img id="fundcart_logo" src="img/logos/cart_logo_vertical.png" alt="FundCart Logo">
-            <img id="fundcart_logo_alt" src="img/logos/fundcart_full_logo.png" alt="FundCart Logo">
-        </div>
-
-        <div>
-            <a href="/logout" class="general_button">
-                Sign Out
-            </a>
-        </div>
-    </header>
     <div id="wrapper">
         <h1 id="admin_name" style="text-align: center;"></h1>
 
@@ -74,49 +39,7 @@
         <div id="user_list_container"></div>
     </div>
 
-    <div id="globalFooter">
-        <footer>
-            <section>
-                <div>
-                    <ul id="sitemap">
-                        <li><a href="#"><span>Home</span></a></li>
-                        <li><a class="current_page">Admin Dashboard</a></li>
-                        <li><a href="#"><span>Charities</span></a></li>
-                        <li><a href="#"><span>About Us</span></a></li>
-                        <li><a href="#"><span>FAQ</span></a></li>
-                        <li><a href="#"><span>Contact</span></a></li>
-                        <li><a href="#"><span>Shop</span></a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3>Follow Us!</h3>
-
-                    <ul id="footer_socials">
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-facebook-square"></i>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <p>
-                        <i class="far fa-copyright"></i>
-                        2022 - FundCart
-                    </p>
-                </div>
-
-            </section>
-        </footer>
-    </div>
+    <global-footer></global-footer>
 
     <script src="js/admin_dashboard.js"></script>
 </body>
