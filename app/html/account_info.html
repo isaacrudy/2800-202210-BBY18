@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>FundCart | My Account</title>
+    <title>FundCart | Signup</title>
     <meta charset="UTF-8">
     <link rel="icon" href="img/Logos/fundcart_favicon.ico">
     <link rel="stylesheet" href="css/main.css">
@@ -10,61 +10,29 @@
 </head>
 
 <body>
-    <div class="menu_wrapper">
-        <input type="checkbox" class="toggler">
-        <div class="hamburger">
-            <div></div>
-        </div>
-
-        <div class="menu">
+    <div class="wrapper">
+        <div class="login">
             <div>
-                <div>
-                    <nav>
-                        <ul id="nav_ul">
-                            <li><a href="#"><span>Home</span></a></li>
-                            <li><a href="#"><span>Charities</span></a></li>
-                            <li><a href="#"><span>About Us</span></a></li>
-                            <li><a href="#"><span>FAQ</span></a></li>
-                            <li><a href="#"><span>Shop</span></a></li>
-                        </ul>
-                    </nav>
+                <img id="login_logo" src="img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
+            </div>
+
+            <div id="update_container">
+                <h1>Account Information</h1>
+
+                <form id="update_form">
+
+                </form>
+                <h3 id="updateErrorMsg"></h3>
+                <div id="update_cancel">
+                    <form action="/" method="get">
+                        <p>
+                            <input type="submit" value="Cancel">
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <header class="header_bar">
-        <div id="filler">
-        </div>
-
-        <div>
-            <img id="fundcart_logo" src="img/logos/cart_logo_vertical.png" alt="FundCart Logo">
-            <img id="fundcart_logo_alt" src="img/logos/fundcart_full_logo.png" alt="FundCart Logo">
-        </div>
-
-        <div>
-            <a href="/logout" id="sign_out">
-                Sign Out
-            </a>
-        </div>
-    </header>
-
-    <div id="wrapper">
-        <div id="welcome_user">
-            <h1>Welcome</h1>
-            <h1 id="userName"></h1>
-        </div>
-        <form>
-            <input type="button" value="Account Info" id="account_info_btn">
-        </form>
-        <div id="timeline">
-            <div>
-                <h2>Your Timeline:</h2>
-                <p>You curently have no timeline posts.</p>
-            </div>
-        </div>
-    </div>
-
 
     <div id="globalFooter">
         <footer>
@@ -72,7 +40,7 @@
                 <div>
                     <ul id="sitemap">
                         <li><a href="#"><span>Home</span></a></li>
-                        <li><a class="current_page">My Account</a></li>
+                        <li><a class="current_page">Sign in / Register</a></li>
                         <li><a href="#"><span>Charities</span></a></li>
                         <li><a href="#"><span>About Us</span></a></li>
                         <li><a href="#"><span>FAQ</span></a></li>
@@ -109,7 +77,7 @@
             </section>
         </footer>
     </div>
-    <script src="js/home.js"></script>
+    <script src="js/account_info.js"></script>
 </body>
 
 </html>
