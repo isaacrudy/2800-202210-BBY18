@@ -11,9 +11,16 @@ page specific style sheets
 
 @import url('header_footer/footer.css');
 @import url('header_footer/header.css');
+<<<<<<< HEAD
 @import url('pages/user_timeline.css');
 @import url('pages/login.css');
 @import url('pages/admin.css');
+=======
+@import url('media_breakpoints.css');
+@import url('user_account.css');
+@import url('login.css');
+@import url('account_info.css');
+>>>>>>> amadeus_currentUSerAccountManagement
 
 
 

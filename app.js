@@ -251,6 +251,69 @@ app.post("/delete", async function (req, res) {
 
 });
 
+app.post("/update", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	let isFieldEmpty = false;
+
+	connection.connect();
+	res.setHeader("Content-Type", "application/json");
+
+	if (req.body.firstName == "" || req.body.lastName == "" || req.body.email == "" || req.body.password == "") {
+		isFieldEmpty = true;
+	}
+	if (isFieldEmpty == true) {
+		res.send({ status: "fail", msg: "The all the fields are required." })
+	} else if (req.body.password != req.body.password_confirm) {
+		res.send({ status: "fail", msg: "The password does not match." });
+		connection.end();
+	} else {
+		await connection.query('UPDATE users SET password="' + req.body.password + '", password="' + req.body.password + '", firstName="' + req.body.firstName + '", lastName="' + req.body.lastName + '", email="' + req.body.email + '" WHERE ID = ' + req.session.user_id);
+		res.send({ status: "success", msg: "User information has been updated." });
+		connection.end();
+	}
+});
+
+app.get("/currentAccountInfo", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	const [user_rows, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + req.session.user_id);
+
+	let updateInputHTML = '<div id = "update_form_inner"><lable for="firstName">First Name: </label><input type="text" class="form_input" id="firstName" value="' + user_rows[0].firstName
+		+ '" required /><lable for="lastName">Last Name: </label><input type="text" class="form_input" id="lastName" value="' + user_rows[0].lastName
+		+ '" required /><lable for="email">Email: </label><input type="text" id="email" class="form_input" value="'
+		+ user_rows[0].email + '" required /><lable for="password">Password: </label><input type="password" name="password" id="password" class="form_input" value="'
+		+ user_rows[0].password + '" required /><lable for="password_confirm">Confirm password: </label><input type="password" name="password_confirm" id="password_confirm" class="form_input" value="'
+		+ user_rows[0].password + '" required /><h3 id="invalidPassword" class="invalidPassword"></h3><input id="updateBtn" type="button" class="form_input_submit" value="Update Account" /></div >'
+
+	connection.end;
+
+	let updateProfile = fs.readFileSync("./app/html/account_info.html", "utf8");
+	let profileDOM = new JSDOM(updateProfile);
+
+	profileDOM.window.document.getElementById("update_form").innerHTML = updateInputHTML;
+
+	res.set("Server", "Wazubi Engine");
+	res.set("X-Powered-By", "Wazubi");
+	res.send(profileDOM.serialize());
+});
+
 app.get("/logout", function (req, res) {
 
 	if (req.session) {
