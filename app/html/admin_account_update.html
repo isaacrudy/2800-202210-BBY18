@@ -17,17 +17,19 @@
             </div>
 
             <div id="signIn_container">
-                <h1>Create Account</h1>
+                <h1>Update Account</h1>
 
                 <form id="signup_form">
-
-                    <div id="signup_form_inner">
-                        <input type="text" class="form_input" id="firstName" placeholder="first name" required />
-                        <input type="text" class="form_input" id="lastName" placeholder="last name" required />
-                    </div>
+                    <label for="firstName">First Name: </label>
+                    <input type="text" class="form_input" id="firstName" placeholder="first name" required />
+                    <label for="lastName">Last Name: </label>
+                    <input type="text" class="form_input" id="lastName" placeholder="last name" required />
+                    <label for="email">Email: </label>
                     <input type="text" id="email" class="form_input" placeholder="email@email.com" required />
+                    <label for="password">Password: </label>
                     <input type="password" name="password" id="password" class="form_input" placeholder="password"
                         required />
+                    <label for="password_confirm">Confirm Password: </label>
                     <input type="password" name="password_confirm" id="password_confirm" class="form_input"
                         placeholder="confirm password" required />
                     <label for="userRole">Role: </label>
@@ -38,7 +40,7 @@
                     </select>
 
                     <h3 id="invalidPassword" class="invalidPassword"></h3>
-                    <input id="signupBtn" type="button" class="form_input_submit" value="Create Account" />
+                    <input id="updateBtn" type="button" class="form_input_submit" value="Update Account" />
                 </form>
 
                 <div id="signup_cancel">
@@ -66,17 +68,17 @@
                         <li><a href="#"><span>Shop</span></a></li>
                     </ul>
                 </div>
-
+    
                 <div>
                     <h3>Follow Us!</h3>
-
+    
                     <ul id="footer_socials">
                         <li>
                             <a href="#">
                                 <i class="fab fa-facebook-square"></i>
                             </a>
                         </li>
-
+    
                         <li>
                             <a href="#">
                                 <i class="fab fa-instagram"></i>
@@ -84,18 +86,17 @@
                         </li>
                     </ul>
                 </div>
-
+    
                 <div>
                     <p>
                         <i class="far fa-copyright"></i>
                         2022 - FundCart
                     </p>
                 </div>
-
+    
             </section>
         </footer>
     </div>
-    <script src="js/admin_signup.js"></script>
 </body>
 
 </html>
