@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>FundCart</title>
     <meta charset="UTF-8">
-    <link rel="icon" href="img/Logos/fundcart_favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
+    <title>Admin Dashboard Page</title>
 </head>
 
 <body>
@@ -44,13 +45,31 @@
         </div>
 
         <div>
-            <a href="#" class="general_button">
-                Sign Out
-            </a>
+            <button id="sign_out">Sign out</button>
         </div>
     </header>
-
     <div id="wrapper">
+        <h1 id="admin_name" style="text-align: center;"></h1>
+
+        <div class="admin_title">
+            <h2>Admin Dashboard</h2>
+            <div class="searchBar">
+                <form>
+                    <input type="text" id="search">
+                    <input type="submit" id="submit" value="Search">
+                </form>
+            </div>
+            <br>
+            <br>
+            <form action="/signup" method="get">
+                <input id="sign_out" type="submit" value="Create New User"></input>
+            </form>
+            <h3 id="adminErrorMsg"></h3>
+        </div>
+
+        <br>
+
+        <div id="user_list_container"></div>
     </div>
 
     <div id="globalFooter">
@@ -58,8 +77,8 @@
             <section>
                 <div>
                     <ul id="sitemap">
-                        <li><a class="current_page">Home</a></li>
-                        <li><a href="#"><span>Sign in / Register</span></a></li>
+                        <li><a href="#"><span>Home</span></a></li>
+                        <li><a class="current_page">Admin Dashboard</a></li>
                         <li><a href="#"><span>Charities</span></a></li>
                         <li><a href="#"><span>About Us</span></a></li>
                         <li><a href="#"><span>FAQ</span></a></li>
@@ -96,6 +115,8 @@
             </section>
         </footer>
     </div>
+    <script src="js/admin_dashboard.js"></script>
+    <script src="js/signout.js"></script>
 </body>
 
 </html>

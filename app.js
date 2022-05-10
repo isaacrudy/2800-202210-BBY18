@@ -18,16 +18,14 @@ const { UTF8 } = require('mysql/lib/protocol/constants/charsets');
 const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
-
-app.use("/public", express.static('./public'));
+const cors = require('cors');
+var corsOptions = {
+  origin: '*',
+}
+app.use(cors(corsOptions))
 
 // static path mappings
-app.use("/js", express.static("./public/js"));
-app.use("/css", express.static("./public/css"));
-app.use("/img", express.static("./public/images"));
-app.use("/fonts", express.static("./public/fonts"));
-app.use("/html", express.static("./app/html"));
-app.use("/media", express.static("./public/media"));
+app.use("/", express.static('./public'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,18 +37,9 @@ app.use(session({
 }));
 
 
-
-app.get('/', function (req, res) {
-
-	let doc = fs.readFileSync("./app/html/login.html", "utf8");
-	res.set("Server", "Wazubi Engine");
-	res.set("X-Powered-By", "Wazubi");
-	res.send(doc);
-});
-
 app.get('/home', async function (req, res) {
 	if (req.session.loggedIn && req.session.role == "regular") {
-		let doc = fs.readFileSync("./app/html/home.html", "utf8")
+		let doc = fs.readFileSync("./public/home.html", "utf8")
 		let userDOM = new JSDOM(doc);
 
 		userDOM.window.document.getElementsByTagName("title")[0].innerHTML
@@ -84,14 +73,14 @@ app.get('/home', async function (req, res) {
 				+ rows[i].firstName + "</td><td>" + rows[i].lastName 		+ "</td><td>"
 				+ rows[i].email 	+ "</td><td>" + rows[i].profilePhoto 	+ "</td><td>"
 				+ rows[i].role 		+ "</td><td>" 
-				+ editButton		+ "</td><td>" + rows[i].id 				+ "\" value=\"O\" >" + "</td><td>" 
-				+ deleteButton		+ "</td><td>" + rows[i].id 				+ "\" value=\"X\" >" + "</td></tr>";
+				+ editButton		+ rows[i].id  + "\" value=\"O\" >" 		+ "</td><td>" 
+				+ deleteButton		+ rows[i].id  + "\" value=\"X\" >" 		+ "</td></tr>";
 		}
 		table += "</table>";
 
 		await connection.end();
 
-		let profile = fs.readFileSync("./app/html/admin.html", "utf8");
+		let profile = fs.readFileSync("./public/admin.html", "utf8");
 		let profileDOM = new JSDOM(profile);
 
 		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML	
@@ -109,10 +98,6 @@ app.get('/home', async function (req, res) {
 		// not logged in - no session and no access, redirect to home!
 		res.redirect("/");
 	}
-
-});
-
-app.get("/edit", async function (req,res){
 
 });
 
@@ -261,18 +246,19 @@ app.post("/delete", async function (req, res) {
 
 });
 
-app.get(['/edit', '/:id'], function(req,res){
-	
+app.post('/edit', function(req,res){
+	console.log(req.body);
+	res.send();
+	// do stuff
 });
 
-app.get("/logout", function (req, res) {
-
+app.post("/logout", function (req, res) {
 	if (req.session) {
 		req.session.destroy(function (error) {
 			if (error) {
 				res.status(400).send("Unable to log out")
-			} else {
-				res.redirect("/");
+			}else{
+				res.status(200).send();
 			}
 		});
 	}
@@ -280,14 +266,14 @@ app.get("/logout", function (req, res) {
 
 app.get("/signup", function (req, res) {
 	if (req.session.loggedIn = true && req.session.role == "admin") {
-		let doc = fs.readFileSync("./app/html/admin_signup.html", "utf8");
+		let doc = fs.readFileSync("./public/admin_signup.html", "utf8");
 
 		res.set("Server", "Wazubi Engine");
 		res.set("X-Powered-By", "Wazubi");
 		res.send(doc);
 	} else {
 
-		let doc = fs.readFileSync("./app/html/signup.html", "utf8");
+		let doc = fs.readFileSync("./public/signup.html", "utf8");
 
 		res.set("Server", "Wazubi Engine");
 		res.set("X-Powered-By", "Wazubi");

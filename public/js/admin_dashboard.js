@@ -77,7 +77,8 @@ ready(function () {
     for (let i = 0; i < editbtn.length; i++) {
         editbtn[i].addEventListener("click", function (e) {
             e.preventDefault();
-            window.location.replace("/public/admin_account_update.html");
+            var id = e.target.getAttribute("id");
+            window.location.href = `/admin_account_update.html?id=${id}`;
         });
     }
 
