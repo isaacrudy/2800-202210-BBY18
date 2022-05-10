@@ -7,7 +7,7 @@ class GlobalFooter extends HTMLElement
                     <div>
                         <ul id="sitemap">
                             <li><a href="#"><span>Home</span></a></li>
-                            <li><a class="current_page">Sign in / Register</a></li>
+                            <li><a href="#"><span>Sign in / Register</span></a></li>
                             <li><a href="#"><span>Charities</span></a></li>
                             <li><a href="#"><span>About Us</span></a></li>
                             <li><a href="#"><span>FAQ</span></a></li>
