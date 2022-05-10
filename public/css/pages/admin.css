@@ -40,15 +40,21 @@ form {
     font-size: 1.5em;
 } */
 
+@import url(../media_queries/admin_media_queries.css);
+
+#adminErrorMsg {
+    text-align: center;
+    color: red;
+}
+
+tr:nth-of-type(odd){
+    background:lightgray;
+}
+
 #user_list_container table {
     width: 80vw;
 }
 
 #user_list_container td {
     text-align: center;
-}
-
-#adminErrorMsg {
-    text-align: center;
-    color: red;
 }
