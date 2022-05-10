@@ -262,17 +262,24 @@ app.post("/update", async function (req, res) {
 		multipleStatements: true
 	});
 
+	let isFieldEmpty = false;
+
 	connection.connect();
 	res.setHeader("Content-Type", "application/json");
 
-	await connection.query('UPDATE users SET password="' + req.body.password + '", password="' + req.body.password + '", firstName="' + req.body.firstName + '", lastName="' + req.body.lastName + '", email="' + req.body.email + '" WHERE ID = ' + req.session.user_id);
-	connection.end();
-	if (req.body.password == req.body.password_confirm) {
-		res.send({ status: "success", msg: "User information has been updated." });
-	} else {
-		res.send({ status: "fail", msg: "The password does not match." });
+	if (req.body.firstName == "" || req.body.lastName == "" || req.body.email == "" || req.body.password == "") {
+		isFieldEmpty = true;
 	}
-	// res.redirect(req.get('referer'));
+	if (isFieldEmpty == true) {
+		res.send({ status: "fail", msg: "The all the fields are required." })
+	} else if (req.body.password != req.body.password_confirm) {
+		res.send({ status: "fail", msg: "The password does not match." });
+		connection.end();
+	} else {
+		await connection.query('UPDATE users SET password="' + req.body.password + '", password="' + req.body.password + '", firstName="' + req.body.firstName + '", lastName="' + req.body.lastName + '", email="' + req.body.email + '" WHERE ID = ' + req.session.user_id);
+		res.send({ status: "success", msg: "User information has been updated." });
+		connection.end();
+	}
 });
 
 app.get("/currentAccountInfo", async function (req, res) {

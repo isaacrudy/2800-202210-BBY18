@@ -61,7 +61,6 @@ ready(function () {
                     document.getElementById("updateErrorMsg").innerHTML = dataParsed.msg;
                 } else {
                     document.getElementById("updateErrorMsg").innerHTML = dataParsed.msg;
-                    //window.location.reload();
                 }
             }
         }, vars);
