@@ -50,16 +50,18 @@ ready(function () {
         buttons[i].addEventListener("click", function (e) {
             e.preventDefault();
             const vars = { "id": e.target.id };
-            ajaxPOST("/delete", function (data) {
-                if (data) {
-                    let dataParsed = JSON.parse(data);
-                    if (dataParsed.status == "fail") {
-                        document.getElementById("adminErrorMsg").innerHTML = dataParsed.msg;
-                    } else {
-                        window.location.reload();
+            if (confirm("Are you sure you want to delete this account?")) {
+                ajaxPOST("/delete", function (data) {
+                    if (data) {
+                        let dataParsed = JSON.parse(data);
+                        if (dataParsed.status == "fail") {
+                            document.getElementById("adminErrorMsg").innerHTML = dataParsed.msg;
+                        } else {
+                            window.location.reload();
+                        }
                     }
-                }
-            }, vars);
+                }, vars);
+            }
         });
     }
 
