@@ -44,9 +44,14 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
-    document.querySelector("#account_info_btn").addEventListener("click", function (e) {
+    document.querySelector("#accocunt_management").addEventListener("click", function (e) {
         e.preventDefault();
         window.location.replace("/currentAccountInfo");
+    })
+
+    document.querySelector("#logout_btn").addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.replace("/logout");
     })
 
 });

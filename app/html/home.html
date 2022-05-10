@@ -6,8 +6,26 @@
     <meta charset="UTF-8">
     <link rel="icon" href="img/Logos/fundcart_favicon.ico">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+        #profile_dropdown {
+            font-size: 1em;
+        }
+
+        #profile_dropbtn {
+            font-size: 5em;
+        }
+
+        #profile_dropdown:hover #profile_dropdown_content {
+            display: contents;
+        }
+
+        #profile_dropdown_content {
+            display: none;
+        }
+    </style>
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
 </head>
+
 
 <body>
     <div class="menu_wrapper">
@@ -42,21 +60,23 @@
             <img id="fundcart_logo_alt" src="img/logos/fundcart_full_logo.png" alt="FundCart Logo">
         </div>
 
-        <div>
-            <a href="/logout" id="sign_out">
-                Sign Out
-            </a>
+        <div id="profile_dropdown">
+            <button id="profile_dropbtn">🤵🏻</button>
+            <div id="profile_dropdown_content">
+                <input type="button" value="My timeline" id="my_timeline_btn">
+                <input type="button" value="Account Management" id="accocunt_management">
+                <input type="button" value="Donation History" id="donation_history_btn">
+                <input type="button" value="Logout" id="logout_btn">
+            </div>
         </div>
     </header>
 
-    <div id="wrapper">
+    <div id=" wrapper">
         <div id="welcome_user">
             <h1>Welcome</h1>
             <h1 id="userName"></h1>
         </div>
-        <form>
-            <input type="button" value="Account Info" id="account_info_btn">
-        </form>
+
         <div id="timeline">
             <div>
                 <h2>Your Timeline:</h2>
