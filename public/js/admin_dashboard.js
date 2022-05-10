@@ -44,10 +44,21 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
-    var buttons = document.getElementsByClassName("deleteBtn");
 
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function (e) {
+    function ajaxGET(url, callback) {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                callback(this.responseText);
+            }
+        }
+        xhr.open("GET", url);
+        xhr.send();
+    }
+
+    var deletebtn = document.getElementsByClassName("deleteBtn");
+    for (let i = 0; i < deletebtn.length; i++) {
+        deletebtn[i].addEventListener("click", function (e) {
             e.preventDefault();
             const vars = { "id": e.target.id };
             ajaxPOST("/delete", function (data) {
@@ -60,6 +71,13 @@ ready(function () {
                     }
                 }
             }, vars);
+        });
+    }
+    var editbtn   = document.getElementsByClassName("editBtn");
+    for (let i = 0; i < editbtn.length; i++) {
+        editbtn[i].addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.replace("/public/admin_account_update.html");
         });
     }
 

@@ -14,6 +14,7 @@ const session = require('express-session');
 const { JSDOM } = require('jsdom');
 const fs = require("fs");
 const { query } = require('express');
+const { UTF8 } = require('mysql/lib/protocol/constants/charsets');
 const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
@@ -74,12 +75,17 @@ app.get('/home', async function (req, res) {
 		connection.connect();
 
 		const [rows, fields] = await connection.execute("SELECT * FROM users");
-		let table = "<table frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th>Delete</th></tr>";
+		let table = "<table frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th>Edit</th><th>Delete</th></tr>";
+		let editButton = "<input type=\"button\" class=\"editBtn\" id=\"";
+		let deleteButton = "<input type=\"button\" class=\"deleteBtn\" id=\"";
 		for (let i = 0; i < rows.length; i++) {
-			table += "<tr><td>" + rows[i].id + "</td><td>"
-				+ rows[i].firstName + "</td><td>" + rows[i].lastName + "</td><td>"
-				+ rows[i].email + "</td><td>" + rows[i].profilePhoto + "</td><td>"
-				+ rows[i].role + "</td><td><input type=\"button\" class=\"deleteBtn\" id=\"" + rows[i].id + "\" value=\"X\" >" + "</td></tr>";
+			table += "<tr><td>" 
+				+ rows[i].id 		+ "</td><td>"
+				+ rows[i].firstName + "</td><td>" + rows[i].lastName 		+ "</td><td>"
+				+ rows[i].email 	+ "</td><td>" + rows[i].profilePhoto 	+ "</td><td>"
+				+ rows[i].role 		+ "</td><td>" 
+				+ editButton		+ "</td><td>" + rows[i].id 				+ "\" value=\"O\" >" + "</td><td>" 
+				+ deleteButton		+ "</td><td>" + rows[i].id 				+ "\" value=\"X\" >" + "</td></tr>";
 		}
 		table += "</table>";
 
@@ -88,7 +94,7 @@ app.get('/home', async function (req, res) {
 		let profile = fs.readFileSync("./app/html/admin.html", "utf8");
 		let profileDOM = new JSDOM(profile);
 
-		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML
+		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML	
 			= req.session.name + "'s Profile";
 		profileDOM.window.document.getElementById("admin_name").innerHTML
 			= "Welcome! " + req.session.name;
@@ -103,6 +109,10 @@ app.get('/home', async function (req, res) {
 		// not logged in - no session and no access, redirect to home!
 		res.redirect("/");
 	}
+
+});
+
+app.get("/edit", async function (req,res){
 
 });
 
@@ -249,6 +259,10 @@ app.post("/delete", async function (req, res) {
 		res.send({ status: "fail", msg: "You cannot delete this admin user." });
 	}
 
+});
+
+app.get(['/edit', '/:id'], function(req,res){
+	
 });
 
 app.get("/logout", function (req, res) {
