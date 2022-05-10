@@ -37,19 +37,14 @@ i {
 */
 
 .header_bar {
-  background: white;
-  color: white;
-  height: 150px;
-  position: relative;
-}
-
-.header_bar {
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  height: 100%;
+  height: 200px;
+  background: white;
+  color: white;
+
 }
 
 /* MENU STYLES */
@@ -72,7 +67,7 @@ i {
 }
 
 .toggler {
-  margin: 45px;
+  margin: 75px 0px 75px 30px;
 }
 
 .menu_wrapper .hamburger {
@@ -90,7 +85,7 @@ i {
 }
 
 .hamburger {
-  margin: 40px;
+  margin: 70px 0px 70px 25px;
   align-items: center;
 }
 
@@ -211,7 +206,7 @@ i {
 }
 
 #fundcart_logo {
-  height: 65px;
+  height: 150px;
   cursor: pointer;
   margin: 20px 0 20px 0px;
 }
@@ -252,23 +247,6 @@ i {
   transition: .4s ease;
 }
 
-
-#sign_out, #create_user_button {
-  background-color: var(--fc_purple);
-  padding: 20px 20px;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 8px;
-  margin-right: 20px;
-  font-size: 1.5em;
-}
-
-#sign_out:hover {
-  filter: brightness(80%);
-  transition: 0.4s ease;
-}
-
 #filler {
-  min-width: 149.23px;
+  min-width: 117.59px;
 }

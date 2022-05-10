@@ -1,0 +1,39 @@
+input[type=button], #create_user_button {
+    background-color: var(--fc_teal);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=button]:hover, .general_button:hover{
+    filter: brightness(80%);
+    transition: 0.4s ease;
+
+}
+
+#sign_out, .general_button
+{
+    background-color: var(--fc_purple);
+    padding: 10px 25px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    margin-right: 20px;
+    font-size: 0.8em;
+    border: none;
+}
+
+#signIn_container span {
+    color: rgb(162, 162, 162);
+    text-decoration: none;
+    padding: 20px 0px 20px 0px;
+}
+
+#signIn_container a:hover {
+    transition: 0.4s ease;
+}
+
+#signIn_container span:hover {
+    color: var(--fc_teal);
+}

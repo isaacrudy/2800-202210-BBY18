@@ -1,0 +1,57 @@
+@media screen and (min-width: 1150px) {
+    input[type=button] {
+        max-width: 300px;
+    }
+
+
+    /*
+    ---------------------------------------------
+    #id 
+    ---------------------------------------------
+    */
+
+    #login_logo
+    {
+        height: 80px;
+        margin-bottom: 50px;
+    }
+
+    #signIn_container 
+    {
+        border: 2px solid var(--overlay-color);
+        border-radius: 10px;
+        padding: 20px 0px 20px 0px;
+    }
+
+    #signIn_container, #signIn_form, #signup_form 
+    {
+        max-width: 600px;
+    }
+
+    #signIn_container h1 
+    {
+        font-size: 2em;
+    }
+
+    #signIn_container div 
+    {
+        font-size: 1.2em;
+    }
+
+    #signIn_form input, #signup_form input 
+    {
+        font-size: 1em;
+        height: 50px;
+    }
+
+    #signup_form_inner input[type=text] 
+    {
+        font-size: .8em;
+    }
+
+    #signup_form_inner 
+    {
+        flex-direction: row;
+        gap: 20px;
+    }
+}
