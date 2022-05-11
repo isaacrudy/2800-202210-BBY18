@@ -1,6 +1,10 @@
 "use strict";
-document.querySelector("#sign_out").addEventListener("click", ()=>{
-    fetch('/logout',{
-        redirect:"follow"
-    }).then(response => window.location.assign("/"));
-});
+const signoutBtn = document.querySelector("#sign_out");
+if (signoutBtn){
+    signoutBtn.addEventListener("click", ()=>{
+
+        fetch('/logout',{
+            method: "POST"
+        }).then(response => window.location.assign("/"));
+    });
+}
