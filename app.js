@@ -352,7 +352,7 @@ app.get("/currentAccountInfo", async function (req, res) {
 	res.send(profileDOM.serialize());
 });
 
-app.get("/logout", function (req, res) {
+app.get("/logout", async function (req, res) {
 
 	connection.connect();
 	let userID = req.body.id;
