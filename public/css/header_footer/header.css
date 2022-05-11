@@ -37,6 +37,7 @@ i {
 */
 
 .header_bar {
+  /* position: fixed; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,12 +45,13 @@ i {
   height: 200px;
   background: white;
   color: white;
+  width: 100%;
 
 }
 
 /* MENU STYLES */
 .menu_wrapper {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   z-index: 1;
