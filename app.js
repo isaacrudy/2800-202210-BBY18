@@ -285,6 +285,7 @@ app.post('/edit', async function(req,res){
 				+ "', `role`= '" 				+ req.body.userRole
 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
 	await connection.query(query);
+	//remember to send a msg back 
 	res.status(200).send();
 });
 
