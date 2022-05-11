@@ -276,9 +276,6 @@ app.post('/edit', async function(req,res){
 	});
 
 	connection.connect();
-	// let query = "UPDATE users SET (firstName, lastName, email, password, profilePhoto, role) WHERE users.id = " + req.body.id + " values ?";
-	// let userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "some.filePath/default.png", req.body.userType]];
-	// await connection.query(query, userInputs);
 	let query = "UPDATE `users` SET "
 				+ "`password`= '" 				+ req.body.password 
 				+ "', `firstName`= '" 			+ req.body.firstName
