@@ -33,9 +33,9 @@ ready(function () {
         let queryString = "email=" + email + "password=" + password + "firstName=" + firstName + "lastName=" + lastName + "userType=" + userType;
         const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName, "userType": userType };
 
-        ajaxPOST("/add", function (data, status) {
+        ajaxPOST("/add", async function (data, status) {
             if (status == 200) {
-                window.location.replace("/");
+                window.location.replace("/html/admin.html");
             } else {
                 let dataParsed = JSON.parse(data);
                 document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
