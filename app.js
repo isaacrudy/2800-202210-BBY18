@@ -246,10 +246,49 @@ app.post("/delete", async function (req, res) {
 
 });
 
-app.post('/edit', function(req,res){
-	console.log(req.body);
-	res.send();
-	// do stuff
+app.post('/getUser', async function(req,res){
+	const mysql = require('mysql2/promise');
+	
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	connection.connect();
+	let userID = req.body.id;
+	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = "+ userID);
+
+	res.send(JSON.stringify(user_role[0]));
+});
+
+app.post('/edit', async function(req,res){
+	const mysql = require('mysql2/promise');
+	
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	connection.connect();
+	// let query = "UPDATE users SET (firstName, lastName, email, password, profilePhoto, role) WHERE users.id = " + req.body.id + " values ?";
+	// let userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "some.filePath/default.png", req.body.userType]];
+	// await connection.query(query, userInputs);
+	let query = "UPDATE `users` SET "
+				+ "`password`= '" 				+ req.body.password 
+				+ "', `firstName`= '" 			+ req.body.firstName
+				+ "', `lastName`= '" 			+ req.body.lastName
+				+ "', `email`= '" 				+ req.body.email
+				+ "', `profilePhoto`= '" 		+ "some.filePath/default.png"
+				+ "', `role`= '" 				+ req.body.userRole
+				+ "' WHERE users.id = '" 		+ req.body.id + "'"
+	await connection.query(query);
+	res.status(200).send();
 });
 
 app.post("/logout", function (req, res) {
