@@ -1,0 +1,27 @@
+#profile_dropbtn{
+    border: none;
+    background-color: white;
+}
+
+#profile_dropdown {
+    font-size: 1em;
+}
+
+#profile_dropbtn {
+    font-size: 5em;
+}
+
+#profile_dropdown:hover #profile_dropdown_content {
+    display: contents;
+}
+
+#profile_dropdown_content {
+    display: none;
+}
+
+#profile_image {
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    border: 5px solid black;
+}

@@ -44,6 +44,7 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
+
     document.querySelector("#updateBtn").addEventListener("click", function (e) {
         e.preventDefault();
         let email = document.getElementById("email").value;
@@ -51,9 +52,8 @@ ready(function () {
         let check_password = document.getElementById("password_confirm").value;
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
-        let queryString = "email=" + email + "password=" + password + "firstName=" + firstName + "lastName=" + lastName;
-        const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName };
 
+        const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName};
         ajaxPOST("/update", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
@@ -65,7 +65,6 @@ ready(function () {
             }
         }, vars);
     });
-
 });
 
 function ready(callback) {

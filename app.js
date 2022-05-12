@@ -6,12 +6,22 @@
 	Availability: BCIT Learning Hub
 	
 	Edited and adapted by Amadeus Min on May 5, 2022
+
+	Source Code
+	Title: Upload and Store Images in MySQL using Node.Js, Express, Express-FileUpload & Express-Handlebars
+  	Author: Raddy
+    Availability: https://raddy.dev/blog/upload-and-store-images-in-mysql-using-node-js-express-express-fileupload-express-handlebars/
+	
+  	Edited and adapted by Amadeus Min on May 11, 2022
+
 ************************************************************************
 */
+
 "use strict"
 const express = require('express');
 const session = require('express-session');
 const { JSDOM } = require('jsdom');
+const fileUpload = require('express-fileupload');
 const fs = require("fs");
 const { query } = require('express');
 const { UTF8 } = require('mysql/lib/protocol/constants/charsets');
@@ -29,6 +39,7 @@ app.use("/", express.static('./public'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload());
 
 app.use(session({
 	secret: 'secret',
@@ -39,12 +50,28 @@ app.use(session({
 app.get('/home', async function (req, res) {
 	if (req.session.loggedIn && req.session.role == "regular") {
 		let doc = fs.readFileSync("./public/home.html", "utf8")
+
+		const mysql = require('mysql2/promise');
+		const connection = await mysql.createConnection({
+			host: "localhost",
+			user: "root",
+			password: "",
+			database: "mydb",
+			multipleStatements: true
+		});
+
+		connection.connect();
+
+		const [rows, fields] = await connection.execute("SELECT * FROM users WHERE id = " + req.session.user_id);
+
 		let userDOM = new JSDOM(doc);
+		let imagePath;
 
 		userDOM.window.document.getElementsByTagName("title")[0].innerHTML
 			= req.session.name + "'s Profile";
 		userDOM.window.document.getElementById("userName").innerHTML
 			= req.session.name;
+		userDOM.window.document.getElementById("profile_image").src = 'img/upload/' + rows[0].profilePhoto;
 
 		res.set("Server", "Wazubi Engine");
 		res.set("X-Powered-By", "Wazubi");
@@ -94,7 +121,6 @@ app.get('/home', async function (req, res) {
 		res.send(profileDOM.serialize());
 
 	} else {
-		// not logged in - no session and no access, redirect to home!
 		res.redirect("/");
 	}
 
@@ -117,13 +143,13 @@ app.post("/login", async function (req, res) {
 	let userFirstName;
 	let userLastName;
 	let userType;
+	let profileImage;
 
 	connection.connect();
 
 	res.setHeader("Content-Type", "application/json");
 	const [rows, fields] = await connection.execute("SELECT * from users");
 
-	// check to see if the user name matches
 	for (let i = 0; i < rows.length; i++) {
 		if (req.body.email == rows[i].email && req.body.password == rows[i].password) {
 			loginSuccess = true;
@@ -132,6 +158,7 @@ app.post("/login", async function (req, res) {
 			userFirstName = rows[i].firstName;
 			userLastName = rows[i].lastName;
 			userType = rows[i].role;
+			profileImage = rows[i].profilePhoto;
 			break;
 		} else {
 			loginSuccess = false;
@@ -139,14 +166,13 @@ app.post("/login", async function (req, res) {
 	}
 
 	if (loginSuccess == true) {
-		// user authenticated, create a session
 		req.session.loggedIn = true;
 		req.session.name = userFirstName + " " + userLastName;
 		req.session.user_id = user_id;
 		req.session.email = email;
 		req.session.role = userType;
+		req.session.profileImage = profileImage;
 		req.session.save(function (err) {
-			// session saved
 		});
 		res.send({ status: "success", msg: "Logged in." });
 	} else if (req.body.email == "" || req.body.password == "") {
@@ -237,7 +263,6 @@ app.post("/delete", async function (req, res) {
 		let deleteQuery = "DELETE FROM users where ID = " + req.body.id;
 		await connection.query(deleteQuery);
 		connection.end();
-		//res.redirect(req.get('referer'));
 		res.send({ status: "success", msg: "Deleted" })
 	} else {
 		res.send({ status: "fail", msg: "You cannot delete this admin user." });
@@ -313,10 +338,46 @@ app.post("/update", async function (req, res) {
 		res.send({ status: "fail", msg: "The password does not match." });
 		connection.end();
 	} else {
+		req.session.name = req.body.firstName + " " + req.body.lastName;
 		await connection.query('UPDATE users SET password="' + req.body.password + '", password="' + req.body.password + '", firstName="' + req.body.firstName + '", lastName="' + req.body.lastName + '", email="' + req.body.email + '" WHERE ID = ' + req.session.user_id);
 		res.send({ status: "success", msg: "User information has been updated." });
 		connection.end();
 	}
+});
+
+app.post("/uploadProfileImage", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+	});
+
+	let profileImage;
+	let uploadPath;
+
+	if (!req.files || Object.keys(req.files).length === 0) {
+		return res.status(400).send("No files were uploaded.");
+	}
+
+	let doc = fs.readFileSync("./app/html/account_info.html", "utf8")
+	let userDOM = new JSDOM(doc);
+
+	profileImage = req.files.profile_image;
+	uploadPath = __dirname + '/public/images/upload/' + profileImage.name;
+
+	profileImage.mv(uploadPath, async function (err) {
+		if (err) return res.status(500).send(err);
+		connection.connect();
+		await connection.query('UPDATE users SET profilePhoto = ? WHERE id = ' + req.session.user_id, [profileImage.name], (err, rows) => {
+			userDOM.window.document.getElementById("updateErrorMsg").innerHTML = "Profile Image Uploaded";
+		});
+		req.session.profileImage = profileImage;
+		connection.end();
+	});
+	res.redirect("/home");
 });
 
 app.get("/currentAccountInfo", async function (req, res) {
@@ -332,12 +393,12 @@ app.get("/currentAccountInfo", async function (req, res) {
 
 	const [user_rows, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + req.session.user_id);
 
-	let updateInputHTML = '<div id = "update_form_inner"><lable for="firstName">First Name: </label><input type="text" class="form_input" id="firstName" value="' + user_rows[0].firstName
-		+ '" required /><lable for="lastName">Last Name: </label><input type="text" class="form_input" id="lastName" value="' + user_rows[0].lastName
-		+ '" required /><lable for="email">Email: </label><input type="text" id="email" class="form_input" value="'
-		+ user_rows[0].email + '" required /><lable for="password">Password: </label><input type="password" name="password" id="password" class="form_input" value="'
-		+ user_rows[0].password + '" required /><lable for="password_confirm">Confirm password: </label><input type="password" name="password_confirm" id="password_confirm" class="form_input" value="'
-		+ user_rows[0].password + '" required /><h3 id="invalidPassword" class="invalidPassword"></h3><input id="updateBtn" type="button" class="form_input_submit" value="Update Account" /></div >'
+	let updateInputHTML = '<label for="firstName">First Name: </label><input type="text" class="form_input" id="firstName" value="' + user_rows[0].firstName
+		+ '" required /><label for="lastName">Last Name: </label><input type="text" class="form_input" id="lastName" value="' + user_rows[0].lastName
+		+ '" required /><label for="email">Email: </label><input type="text" id="email" class="form_input" value="'
+		+ user_rows[0].email + '" required /><label for="password">Password: </label><input type="password" name="password" id="password" class="form_input" value="'
+		+ user_rows[0].password + '" required /><label for="password_confirm">Confirm password: </label><input type="password" name="password_confirm" id="password_confirm" class="form_input" value="'
+		+ user_rows[0].password + '" required /><h3 id="invalidPassword" class="invalidPassword"></h3><input id="updateBtn" type="button" class="form_input_submit" value="Update Account" />'
 
 	connection.end;
 
