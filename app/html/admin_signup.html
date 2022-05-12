@@ -7,7 +7,7 @@
         <link rel="icon" href="img/Logos/fundcart_favicon.ico">
         <link rel="stylesheet" href="css/main.css">
         <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
-        <script type="module" src="js/loads_header_footer.js"></script>
+        <script src="js/loads_header_footer.js"></script>
     </head>
 
     <body>
@@ -30,13 +30,15 @@
                             required />
                         <input type="password" name="password_confirm" id="password_confirm" class="form_input"
                             placeholder="confirm password" required />
-                        <label for="userRole">Role: </label>
+                        <!-- <label for="userRole">Role: </label> -->
                         
-                        <select id="userRole">
-                            <option value="default_message" selected="selected">Please select user type</option>
-                            <option value="regular">regular</option>
-                            <option value="admin">admin</option>
-                        </select>
+                        <div class="custom-select">
+                            <select>
+                                <option value="default_message" selected="selected">Please select user type</option>
+                                <option value="regular">regular</option>
+                                <option value="admin">admin</option>
+                            </select>
+                        </div>
 
                         <h3 id="invalidPassword" class="invalidPassword"></h3>
                         <input id="signupBtn" type="button" class="form_input_submit" value="Create Account" />
@@ -51,7 +53,8 @@
 
         <global-footer></global-footer>
 
-        <script src="js/admin_signup.js"></script>
+        <script src="js/custom_select.js"></script>
+
     </body>
 
 </html>

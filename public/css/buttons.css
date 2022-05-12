@@ -24,16 +24,19 @@ input[type=button]:hover, .general_button:hover{
     border: none;
 }
 
-#signIn_container span {
+#signIn_container span 
+{
     color: rgb(162, 162, 162);
     text-decoration: none;
     padding: 20px 0px 20px 0px;
 }
 
-#signIn_container a:hover {
+#signIn_container a:hover 
+{
     transition: 0.4s ease;
 }
 
-#signIn_container span:hover {
+#signIn_container span:hover 
+{
     color: var(--fc_teal);
 }
