@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "2800_2022_bby18",
   "description": "Project 2 repository for team BBY 18",
   "version": "1.0.0",
@@ -29,3 +30,15 @@
     "nodemon": "^2.0.16"
   }
 }
+=======
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.1",
+        "express-session": "^1.17.2",
+        "express-static": "^1.2.6",
+        "jsdom": "^19.0.0",
+        "mysql": "^2.18.1",
+        "mysql2": "^2.3.3"
+    }
+}
+>>>>>>> a1f703410c5e0b23821cdc241a9ddab207bc2569

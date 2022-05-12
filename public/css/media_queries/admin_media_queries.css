@@ -15,6 +15,10 @@
         width: 100px;
     }
 
+    .editBtn {
+        width: 100px;
+    }
+
     #user_list_container td {
         text-align: left !important;
     }
@@ -63,22 +67,30 @@
     }
 
     td:nth-of-type(2):before {
-        content: "Name";
+        content: "First Name";
     }
 
     td:nth-of-type(3):before {
-        content: "Email";
+        content: "Last Name";
     }
 
     td:nth-of-type(4):before {
-        content: "Profile Photo";
+        content: "Email";
     }
 
     td:nth-of-type(5):before {
-        content: "Role";
+        content: "Profile Photo";
     }
 
     td:nth-of-type(6):before {
-        content: "";
+        content: "Role";
+    }
+
+    td:nth-of-type(7):before {
+        content: "Edit";
+    }
+
+    td:nth-of-type(8):before {
+        content: "Delete";
     }
 }
