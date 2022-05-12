@@ -327,14 +327,12 @@ app.post("/uploadProfileImage", async function (req, res) {
 		if (err) return res.status(500).send(err);
 		connection.connect();
 		await connection.query('UPDATE users SET profilePhoto = ? WHERE id = ' + req.session.user_id, [profileImage.name], (err, rows) => {
-		
+
 		});
 		req.session.profileImage = profileImage;
 		connection.end();
 
 	});
-
-
 
 	res.redirect("/home");
 
@@ -353,12 +351,12 @@ app.get("/currentAccountInfo", async function (req, res) {
 
 	const [user_rows, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + req.session.user_id);
 
-	let updateInputHTML = '<div id = "update_form_inner"><lable for="firstName">First Name: </label><input type="text" class="form_input" id="firstName" value="' + user_rows[0].firstName
-		+ '" required /><lable for="lastName">Last Name: </label><input type="text" class="form_input" id="lastName" value="' + user_rows[0].lastName
-		+ '" required /><lable for="email">Email: </label><input type="text" id="email" class="form_input" value="'
-		+ user_rows[0].email + '" required /><lable for="password">Password: </label><input type="password" name="password" id="password" class="form_input" value="'
-		+ user_rows[0].password + '" required /><lable for="password_confirm">Confirm password: </label><input type="password" name="password_confirm" id="password_confirm" class="form_input" value="'
-		+ user_rows[0].password + '" required /><h3 id="invalidPassword" class="invalidPassword"></h3><input id="updateBtn" type="button" class="form_input_submit" value="Update Account" /></div >'
+	let updateInputHTML = '<label for="firstName">First Name: </label><input type="text" class="form_input" id="firstName" value="' + user_rows[0].firstName
+		+ '" required /><label for="lastName">Last Name: </label><input type="text" class="form_input" id="lastName" value="' + user_rows[0].lastName
+		+ '" required /><label for="email">Email: </label><input type="text" id="email" class="form_input" value="'
+		+ user_rows[0].email + '" required /><label for="password">Password: </label><input type="password" name="password" id="password" class="form_input" value="'
+		+ user_rows[0].password + '" required /><label for="password_confirm">Confirm password: </label><input type="password" name="password_confirm" id="password_confirm" class="form_input" value="'
+		+ user_rows[0].password + '" required /><h3 id="invalidPassword" class="invalidPassword"></h3><input id="updateBtn" type="button" class="form_input_submit" value="Update Account" />'
 
 	connection.end;
 

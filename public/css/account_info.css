@@ -1,18 +1,3 @@
-
-.submit_btn {
-    border: none;
-    color: rgb(162, 162, 162);
-    text-decoration: none;
-    /* padding: 20px 0px 20px 0px; */
-    background: none;
-}
-
-.submit_btn:hover {
-    color: var(--fc_teal);
-    border-bottom: 2px solid var(--fc_teal);
-}
-
-
 /*
 ---------------------------------------------
 .class 
@@ -27,11 +12,32 @@
     align-items: center;
 }
 
+.profile_image_label {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
 /*
 ---------------------------------------------
 #id 
 ---r------------------------------------------
 */
+#profile_image_uploader {
+    display: none;
+}
+
+#profile_image_form_container{
+}
+
+#profil_image_upload_btn {
+    background-color: var(--fc_teal);
+    color: white;
+    border: none;
+    cursor: pointer;
+    max-width: 300px;
+}
 
 #login_logo {
     height: 100px;
@@ -44,7 +50,7 @@
     width: 100%;
 }
 
-#update_container, #profile_image_form, #update_form {
+#update_container, #update_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,6 +68,7 @@
 
 #update_container div {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 80%;
     font-size: 2em;
@@ -116,7 +123,7 @@
         padding: 20px 0px 20px 0px;
     }
 
-    #update_container, #profile_image_form, #update_form, #update_form {
+    #update_container, #update_form, #update_form {
         max-width: 600px;
     }
 

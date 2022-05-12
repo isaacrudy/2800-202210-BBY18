@@ -21,9 +21,11 @@
                 <div id="profile_image_form_container">
                     <form id="profile_image_form" action="/uploadProfileImage" method="POST"
                         enctype="multipart/form-data">
-                        <lable for="profile_image">Upload Profile Photo:</label>
-                            <input name="profile_image" type="file" accept="image/" />
-                            <input type="submit">
+                        <label class="profile_image_label" for="profile_image_uploader">
+                            <i class="fa-solid fa-file-arrow-up"></i>Select your file
+                        </label>
+                        <input id="profile_image_uploader" name="profile_image" type="file" accept="image/" />
+                        <input id="profil_image_upload_btn" type="submit" value="Upload Image">
                     </form>
                 </div>
                 <form id="update_form">
