@@ -24,7 +24,7 @@ const { JSDOM } = require('jsdom');
 const fileUpload = require('express-fileupload');
 const fs = require("fs");
 const { query } = require('express');
-const { UTF8 } = require('mysql/lib/protocol/constants/charsets');
+//const { UTF8 } = require('mysql/lib/protocol/constants/charsets');
 const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
@@ -363,11 +363,11 @@ app.post("/uploadProfileImage", async function (req, res) {
 		return res.status(400).send("No files were uploaded.");
 	}
 
-	let doc = fs.readFileSync("./app/html/account_info.html", "utf8")
+	let doc = fs.readFileSync("./public/account_info.html", "utf8")
 	let userDOM = new JSDOM(doc);
 
 	profileImage = req.files.profile_image;
-	uploadPath = __dirname + '/public/images/upload/' + profileImage.name;
+	uploadPath = __dirname + '/public/img/upload/' + profileImage.name;
 
 	profileImage.mv(uploadPath, async function (err) {
 		if (err) return res.status(500).send(err);
@@ -403,7 +403,7 @@ app.get("/currentAccountInfo", async function (req, res) {
 
 	connection.end;
 
-	let updateProfile = fs.readFileSync("./app/html/account_info.html", "utf8");
+	let updateProfile = fs.readFileSync("./public/account_info.html", "utf8");
 	let profileDOM = new JSDOM(updateProfile);
 
 	profileDOM.window.document.getElementById("update_form").innerHTML = updateInputHTML;
@@ -497,7 +497,7 @@ async function init() {
 }
 
 app.use(function (req, res, next) {
-	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Nothing here.</p></body></html>");
+	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Please check your url.</p></body></html>");
 });
 
 let port = 8000;
