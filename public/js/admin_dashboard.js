@@ -9,6 +9,7 @@
 ************************************************************************
 */
 "use strict";
+
 ready(function () {
 
     function ajaxPOST(url, callback, data) {
@@ -44,6 +45,11 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
+    
+    fetch("/admin_table", {
+        method: "get"
+    });
+
     var buttons = document.getElementsByClassName("deleteBtn");
 
     for (let i = 0; i < buttons.length; i++) {
@@ -64,8 +70,9 @@ ready(function () {
             }
         });
     }
-
 });
+
+
 
 function ready(callback) {
     if (document.readyState != "loading") {

@@ -62,42 +62,8 @@ app.get('/home', async function (req, res) {
 		res.send(userDOM.serialize());
 
 	} else if (req.session.loggedIn && req.session.role == "admin") {
-		const mysql = require('mysql2/promise');
-		const connection = await mysql.createConnection({
-			host: "localhost",
-			user: "root",
-			password: "",
-			database: "mydb",
-			multipleStatements: true
-		});
+		res.redirect("/admin_table");
 
-		connection.connect();
-
-		const [rows, fields] = await connection.execute("SELECT * FROM users");
-		let table = "<table id='userList' frame=void rules=rows><tr><th>ID</th><th>Name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th></th></tr>";
-		for (let i = 0; i < rows.length; i++) {
-			table += "<tr><td>" + rows[i].id + "</td><td>"
-				+ rows[i].firstName + " " + rows[i].lastName + "</td><td>"
-				+ rows[i].email + "</td><td>" + rows[i].profilePhoto + "</td><td>"
-				+ rows[i].role + "</td><td><input type=\"button\" class=\"deleteBtn\" id=\"" + rows[i].id + "\" value=\"Delete\" >" + "</td></tr>";
-		}
-		table += "</table>";
-
-		await connection.end();
-
-		let profile = fs.readFileSync("./app/html/admin.html", "utf8");
-		let profileDOM = new JSDOM(profile);
-
-		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML
-			= req.session.name + "'s Profile";
-		profileDOM.window.document.getElementById("admin_name").innerHTML
-			= "Welcome! " + req.session.name;
-
-		profileDOM.window.document.getElementById("user_list_container").innerHTML = table;
-
-		res.set("Server", "Wazubi Engine");
-		res.set("X-Powered-By", "Wazubi");
-		res.send(profileDOM.serialize());
 
 	} else {
 		// not logged in - no session and no access, redirect to home!
@@ -105,6 +71,51 @@ app.get('/home', async function (req, res) {
 	}
 
 });
+
+app.get("/admin_table", async function (req, res) {
+	// CONSOLE LOG 
+	console.log("anything");
+
+	const mysql = require('mysql2/promise');
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	connection.connect();
+
+	const [rows, fields] = await connection.execute("SELECT * FROM users");
+	let table = "<table id='userList' frame=void rules=rows><tr><th>ID</th><th>Name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th></th></tr>";
+	for (let i = 0; i < rows.length; i++) {
+		table += "<tr><td>" + rows[i].id + "</td><td>"
+			+ rows[i].firstName + " " + rows[i].lastName + "</td><td>"
+			+ rows[i].email + "</td><td>" + rows[i].profilePhoto + "</td><td>"
+			+ rows[i].role + "</td><td><input type=\"button\" class=\"deleteBtn\" id=\"" + rows[i].id + "\" value=\"Delete\" >" + "</td></tr>";
+	}
+	table += "</table>";
+
+	await connection.end();
+
+	let profile = fs.readFileSync("./app/html/admin.html", "utf8");
+	let profileDOM = new JSDOM(profile);
+
+	profileDOM.window.document.getElementsByTagName("title")[0].innerHTML
+		= req.session.name + "'s Profile";
+	profileDOM.window.document.getElementById("admin_name").innerHTML
+		= "Welcome! " + req.session.name;
+
+	profileDOM.window.document.getElementById("user_list_container").innerHTML = table;
+
+	res.set("Server", "Wazubi Engine");
+	res.set("X-Powered-By", "Wazubi");
+	res.send(profileDOM.serialize());
+
+});
+
+
 
 app.post("/login", async function (req, res) {
 
