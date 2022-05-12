@@ -35,7 +35,10 @@ ready(async function(){
           headers: {
             "Content-Type": "application/json"
           }
-        })
+        }).then(response => response.json()).then((response)=>{
+          document.getElementById("invalidPassword").innerHTML = response.msg;
+        });
+        
       });
 });
 

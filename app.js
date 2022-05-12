@@ -286,7 +286,7 @@ app.post('/edit', async function(req,res){
 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
 	await connection.query(query);
 	//remember to send a msg back 
-	res.status(200).send();
+	res.status(200).send({msg: "User Updated"});
 });
 
 app.post("/update", async function (req, res) {
