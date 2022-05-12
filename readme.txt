@@ -24,3 +24,9 @@ client.js, app.js
     Availability: BCIT Learning Hub
 	
   	Edited and adapted by Amadeus Min on May 5, 2022
+
+admin_media_queries.css, admin.css
+	Source Code
+	Title: Responsive Data Tables
+	Author: Chris Coyier
+	Availability: https://css-tricks.com/responsive-data-tables/

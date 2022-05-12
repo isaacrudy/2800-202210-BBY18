@@ -66,7 +66,7 @@ class GlobalHeader extends HTMLElement
                                     <li><a href="#"><span>Home</span></a></li>
                                     <li><a href="#"><span>Charities</span></a></li>
                                     <li><a href="#"><span>About Us</span></a></li>
-                                    <li><a href="#"><span>FAQ</span></a></li>
+                                    <li><a href="/html/faq.html"><span>FAQ</span></a></li>
                                     <li><a href="#"><span>Shop</span></a></li>
                                 </ul>
                             </nav>
