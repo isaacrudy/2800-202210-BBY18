@@ -36,7 +36,6 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-
 app.get('/home', async function (req, res) {
 	if (req.session.loggedIn && req.session.role == "regular") {
 		let doc = fs.readFileSync("./public/home.html", "utf8")
@@ -350,15 +349,6 @@ app.get("/currentAccountInfo", async function (req, res) {
 	res.set("Server", "Wazubi Engine");
 	res.set("X-Powered-By", "Wazubi");
 	res.send(profileDOM.serialize());
-});
-
-app.get("/logout", async function (req, res) {
-
-	connection.connect();
-	let userID = req.body.id;
-	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = "+ userID);
-
-	res.send(JSON.stringify(user_role[0]));
 });
 
 app.post('/edit', async function(req,res){

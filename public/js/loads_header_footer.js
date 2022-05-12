@@ -70,7 +70,7 @@ class GlobalHeader extends HTMLElement
                                     <li><a href="#"><span>Shop</span></a></li>
                                 </ul>
                             </nav>
-                        </div>
+                        </div>_
                     </div>
                 </div>
             </div>
@@ -85,9 +85,6 @@ class GlobalHeader extends HTMLElement
                 </div>
 
                 <div>
-                    <a href="/logout" id="sign_out">
-                        Sign Out
-                    </a>
                 </div>
             </header>
         `
