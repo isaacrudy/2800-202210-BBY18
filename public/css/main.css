@@ -15,7 +15,8 @@ page specific style sheets
 @import url('pages/login.css');
 @import url('pages/admin.css');
 @import url('media_breakpoints.css');
-@import url('account_info.css');
+@import url('pages/account_info.css');
+@import url('pages/home.css');
 
 
 

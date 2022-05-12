@@ -6,8 +6,17 @@
 	Availability: BCIT Learning Hub
 	
 	Edited and adapted by Amadeus Min on May 5, 2022
+
+	Source Code
+	Title: Upload and Store Images in MySQL using Node.Js, Express, Express-FileUpload & Express-Handlebars
+  	Author: Raddy
+    Availability: https://raddy.dev/blog/upload-and-store-images-in-mysql-using-node-js-express-express-fileupload-express-handlebars/
+	
+  	Edited and adapted by Amadeus Min on May 11, 2022
+
 ************************************************************************
 */
+
 "use strict"
 const express = require('express');
 const session = require('express-session');
@@ -21,14 +30,13 @@ const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
 
 app.use("/public", express.static('./public'));
 
-// static path mappings
+// static path maps
 app.use("/js", express.static("./public/js"));
 app.use("/css", express.static("./public/css"));
 app.use("/img", express.static("./public/images"));
 app.use("/fonts", express.static("./public/fonts"));
 app.use("/html", express.static("./app/html"));
 app.use("/media", express.static("./public/media"));
-app.use(express.static('upload'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -73,7 +81,7 @@ app.get('/home', async function (req, res) {
 			= req.session.name + "'s Profile";
 		userDOM.window.document.getElementById("userName").innerHTML
 			= req.session.name;
-		userDOM.window.document.getElementById("profile_image").src = rows[0].profilePhoto;
+		userDOM.window.document.getElementById("profile_image").src = 'img/upload/' + rows[0].profilePhoto;
 
 		res.set("Server", "Wazubi Engine");
 		res.set("X-Powered-By", "Wazubi");
@@ -118,7 +126,6 @@ app.get('/home', async function (req, res) {
 		res.send(profileDOM.serialize());
 
 	} else {
-		// not logged in - no session and no access, redirect to home!
 		res.redirect("/");
 	}
 
@@ -148,7 +155,6 @@ app.post("/login", async function (req, res) {
 	res.setHeader("Content-Type", "application/json");
 	const [rows, fields] = await connection.execute("SELECT * from users");
 
-	// check to see if the user name matches
 	for (let i = 0; i < rows.length; i++) {
 		if (req.body.email == rows[i].email && req.body.password == rows[i].password) {
 			loginSuccess = true;
@@ -165,7 +171,6 @@ app.post("/login", async function (req, res) {
 	}
 
 	if (loginSuccess == true) {
-		// user authenticated, create a session
 		req.session.loggedIn = true;
 		req.session.name = userFirstName + " " + userLastName;
 		req.session.user_id = user_id;
@@ -173,7 +178,6 @@ app.post("/login", async function (req, res) {
 		req.session.role = userType;
 		req.session.profileImage = profileImage;
 		req.session.save(function (err) {
-			// session saved
 		});
 		res.send({ status: "success", msg: "Logged in." });
 	} else if (req.body.email == "" || req.body.password == "") {
@@ -264,7 +268,6 @@ app.post("/delete", async function (req, res) {
 		let deleteQuery = "DELETE FROM users where ID = " + req.body.id;
 		await connection.query(deleteQuery);
 		connection.end();
-		//res.redirect(req.get('referer'));
 		res.send({ status: "success", msg: "Deleted" })
 	} else {
 		res.send({ status: "fail", msg: "You cannot delete this admin user." });
@@ -317,25 +320,26 @@ app.post("/uploadProfileImage", async function (req, res) {
 	let profileImage;
 	let uploadPath;
 
+	if (!req.files || Object.keys(req.files).length === 0) {
+		return res.status(400).send("No files were uploaded.");
+	}
+
 	let doc = fs.readFileSync("./app/html/account_info.html", "utf8")
 	let userDOM = new JSDOM(doc);
 
 	profileImage = req.files.profile_image;
-	uploadPath = __dirname + '/upload/' + profileImage.name;
+	uploadPath = __dirname + '/public/images/upload/' + profileImage.name;
 
 	profileImage.mv(uploadPath, async function (err) {
 		if (err) return res.status(500).send(err);
 		connection.connect();
 		await connection.query('UPDATE users SET profilePhoto = ? WHERE id = ' + req.session.user_id, [profileImage.name], (err, rows) => {
-
+			userDOM.window.document.getElementById("updateErrorMsg").innerHTML = "Profile Image Uploaded";
 		});
 		req.session.profileImage = profileImage;
 		connection.end();
-
 	});
-
 	res.redirect("/home");
-
 });
 
 app.get("/currentAccountInfo", async function (req, res) {
