@@ -18,15 +18,22 @@
 
             <div id="update_container">
                 <h1>Account Information</h1>
-
+                <div id="profile_image_form_container">
+                    <form id="profile_image_form" action="/uploadProfileImage" method="POST"
+                        enctype="multipart/form-data">
+                        <lable for="profile_image">Upload Profile Photo:</label>
+                            <input name="profile_image" type="file" accept="image/" />
+                            <input type="submit">
+                    </form>
+                </div>
                 <form id="update_form">
 
                 </form>
-                <h3 id="updateErrorMsg"></h3>
+                <p id="updateErrorMsg"></p>
                 <div id="update_cancel">
                     <form action="/home" method="get">
                         <p>
-                            <input type="submit" value="Cancel">
+                            <input class="submit_btn" type="submit" value="Cancel">
                         </p>
                     </form>
                 </div>

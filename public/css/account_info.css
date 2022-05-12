@@ -1,19 +1,5 @@
-input[type=text], input[type=password] {
-    text-indent: 30px;
-}
 
-input[type=button] {
-    background-color: var(--fc_teal);
-    color: white;
-    border: none;
-}
-
-input[type=button]:hover {
-    filter: brightness(80%);
-    transition: 0.4s ease;
-}
-
-input[type=submit] {
+.submit_btn {
     border: none;
     color: rgb(162, 162, 162);
     text-decoration: none;
@@ -21,7 +7,7 @@ input[type=submit] {
     background: none;
 }
 
-input[type=submit]:hover {
+.submit_btn:hover {
     color: var(--fc_teal);
     border-bottom: 2px solid var(--fc_teal);
 }
@@ -41,11 +27,10 @@ input[type=submit]:hover {
     align-items: center;
 }
 
-
 /*
 ---------------------------------------------
 #id 
----------------------------------------------
+---r------------------------------------------
 */
 
 #login_logo {
@@ -59,7 +44,7 @@ input[type=submit]:hover {
     width: 100%;
 }
 
-#update_container, #update_form, #update_form {
+#update_container, #profile_image_form, #update_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,6 +52,7 @@ input[type=submit]:hover {
     width: 80vw;
     margin-top: 40px;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 #update_container h1 {
@@ -100,8 +86,7 @@ input[type=submit]:hover {
     color: var(--fc_teal);
 }
 
-
-#update_form input, #update_form input {
+#profile_image_form input, #update_form input, #update_form input {
     font-size: 2em;
     width: 80%;
     margin-bottom: 30px;
@@ -110,7 +95,7 @@ input[type=submit]:hover {
     border: 1px solid rgba(162, 162, 162, 0.881);
 }
 
-#update_form_inner input {
+#profile_image_form input, #update_form_inner input {
     width: 100%;
     font-size: 1em;
 }
@@ -131,7 +116,7 @@ input[type=submit]:hover {
         padding: 20px 0px 20px 0px;
     }
 
-    #update_container, #update_form, #update_form {
+    #update_container, #profile_image_form, #update_form, #update_form {
         max-width: 600px;
     }
 
@@ -143,7 +128,7 @@ input[type=submit]:hover {
         font-size: 1.2em;
     }
 
-    #update_form input, #update_form input {
+    #profile_image_form input, #update_form input, #update_form input {
         font-size: 1em;
         height: 50px;
     }

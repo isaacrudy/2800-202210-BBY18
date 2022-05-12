@@ -12,6 +12,7 @@
 const express = require('express');
 const session = require('express-session');
 const { JSDOM } = require('jsdom');
+const fileUpload = require('express-fileupload');
 const fs = require("fs");
 const { query } = require('express');
 const app = express();
@@ -27,17 +28,17 @@ app.use("/img", express.static("./public/images"));
 app.use("/fonts", express.static("./public/fonts"));
 app.use("/html", express.static("./app/html"));
 app.use("/media", express.static("./public/media"));
+app.use(express.static('upload'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload());
 
 app.use(session({
 	secret: 'secret',
 	resave: true,
 	saveUninitialized: true
 }));
-
-
 
 app.get('/', function (req, res) {
 
@@ -49,13 +50,30 @@ app.get('/', function (req, res) {
 
 app.get('/home', async function (req, res) {
 	if (req.session.loggedIn && req.session.role == "regular") {
+
+		const mysql = require('mysql2/promise');
+		const connection = await mysql.createConnection({
+			host: "localhost",
+			user: "root",
+			password: "",
+			database: "mydb",
+			multipleStatements: true
+		});
+
+		connection.connect();
+
+		const [rows, fields] = await connection.execute("SELECT * FROM users WHERE id = " + req.session.user_id);
+
+
 		let doc = fs.readFileSync("./app/html/home.html", "utf8")
 		let userDOM = new JSDOM(doc);
+		let imagePath;
 
 		userDOM.window.document.getElementsByTagName("title")[0].innerHTML
 			= req.session.name + "'s Profile";
 		userDOM.window.document.getElementById("userName").innerHTML
 			= req.session.name;
+		userDOM.window.document.getElementById("profile_image").src = rows[0].profilePhoto;
 
 		res.set("Server", "Wazubi Engine");
 		res.set("X-Powered-By", "Wazubi");
@@ -123,6 +141,7 @@ app.post("/login", async function (req, res) {
 	let userFirstName;
 	let userLastName;
 	let userType;
+	let profileImage;
 
 	connection.connect();
 
@@ -138,6 +157,7 @@ app.post("/login", async function (req, res) {
 			userFirstName = rows[i].firstName;
 			userLastName = rows[i].lastName;
 			userType = rows[i].role;
+			profileImage = rows[i].profilePhoto;
 			break;
 		} else {
 			loginSuccess = false;
@@ -151,6 +171,7 @@ app.post("/login", async function (req, res) {
 		req.session.user_id = user_id;
 		req.session.email = email;
 		req.session.role = userType;
+		req.session.profileImage = profileImage;
 		req.session.save(function (err) {
 			// session saved
 		});
@@ -276,10 +297,47 @@ app.post("/update", async function (req, res) {
 		res.send({ status: "fail", msg: "The password does not match." });
 		connection.end();
 	} else {
+		req.session.name = req.body.firstName + " " + req.body.lastName;
 		await connection.query('UPDATE users SET password="' + req.body.password + '", password="' + req.body.password + '", firstName="' + req.body.firstName + '", lastName="' + req.body.lastName + '", email="' + req.body.email + '" WHERE ID = ' + req.session.user_id);
 		res.send({ status: "success", msg: "User information has been updated." });
 		connection.end();
 	}
+});
+
+app.post("/uploadProfileImage", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+	});
+
+	let profileImage;
+	let uploadPath;
+
+	let doc = fs.readFileSync("./app/html/account_info.html", "utf8")
+	let userDOM = new JSDOM(doc);
+
+	profileImage = req.files.profile_image;
+	uploadPath = __dirname + '/upload/' + profileImage.name;
+
+	profileImage.mv(uploadPath, async function (err) {
+		if (err) return res.status(500).send(err);
+		connection.connect();
+		await connection.query('UPDATE users SET profilePhoto = ? WHERE id = ' + req.session.user_id, [profileImage.name], (err, rows) => {
+		
+		});
+		req.session.profileImage = profileImage;
+		connection.end();
+
+	});
+
+
+
+	res.redirect("/home");
+
 });
 
 app.get("/currentAccountInfo", async function (req, res) {
