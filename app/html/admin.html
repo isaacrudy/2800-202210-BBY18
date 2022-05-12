@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="/public/css/main.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
     <script type="module" src="/public/js/loads_header_footer.js"></script>
-    
 </head>
 
-<body>
+<!-- remove onload later -->
+<body onload="loadOnce()">
     <global-header></global-header>
 
     <div id="wrapper">
@@ -42,6 +42,7 @@
 
     <global-footer></global-footer>
     <script src="/public/js/admin_dashboard.js"></script>
+    <!-- <script src="/public/js/reload.js"></script> -->
 </body>
 
 </html>
