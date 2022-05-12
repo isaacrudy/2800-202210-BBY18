@@ -24,3 +24,11 @@ client.js, app.js
     Availability: BCIT Learning Hub
 	
   	Edited and adapted by Amadeus Min on May 5, 2022
+
+app.js
+	Source Code
+	Title: Upload and Store Images in MySQL using Node.Js, Express, Express-FileUpload & Express-Handlebars
+  	Author: Raddy
+    Availability: https://raddy.dev/blog/upload-and-store-images-in-mysql-using-node-js-express-express-fileupload-express-handlebars/
+	
+  	Edited and adapted by Amadeus Min on May 11, 2022

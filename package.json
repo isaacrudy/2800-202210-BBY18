@@ -1,11 +1,31 @@
 {
+  "name": "2800_2022_bby18",
+  "description": "Project 2 repository for team BBY 18",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaacrudy/2800_2022_BBY18.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isaacrudy/2800_2022_BBY18/issues"
+  },
+  "homepage": "https://github.com/isaacrudy/2800_2022_BBY18#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "express-fileupload": "^1.3.1",
     "express-session": "^1.17.2",
     "express-static": "^1.2.6",
     "jsdom": "^19.0.0",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.16"
   }
 }

@@ -1,0 +1,152 @@
+/*
+---------------------------------------------
+.class 
+---------------------------------------------
+*/
+
+.login {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_image_label {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+/*
+---------------------------------------------
+#id 
+---r------------------------------------------
+*/
+#profile_image_uploader {
+    display: none;
+}
+
+#profile_image_form_container{
+}
+
+#profil_image_upload_btn {
+    background-color: var(--fc_teal);
+    color: white;
+    border: none;
+    cursor: pointer;
+    max-width: 300px;
+}
+
+#login_logo {
+    height: 100px;
+    margin-bottom: 50px;
+}
+
+#update_form_inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#update_container, #update_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+#update_container h1 {
+    font-weight: normal;
+    font-size: 3em;
+}
+
+#update_container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    font-size: 2em;
+}
+
+#update_container a {
+    text-decoration: none;
+}
+
+#update_container span {
+    color: rgb(162, 162, 162);
+    text-decoration: none;
+    padding: 20px 0px 20px 0px;
+}
+
+#update_container a:hover {
+    border-bottom: 2px solid var(--fc_teal);
+    transition: 0.4s ease;
+}
+
+#update_container span:hover {
+    color: var(--fc_teal);
+}
+
+#profile_image_form input, #update_form input, #update_form input {
+    font-size: 2em;
+    width: 80%;
+    margin-bottom: 30px;
+    height: 80px;
+    border-radius: 8px;
+    border: 1px solid rgba(162, 162, 162, 0.881);
+}
+
+#profile_image_form input, #update_form_inner input {
+    width: 100%;
+    font-size: 1em;
+}
+
+@media screen and (min-width: 1150px) {
+    input[type=button] {
+        max-width: 300px;
+    }
+
+    #login_logo {
+        height: 80px;
+        margin-bottom: 50px;
+    }
+
+    #update_container {
+        border: 2px solid var(--overlay-color);
+        border-radius: 10px;
+        padding: 20px 0px 20px 0px;
+    }
+
+    #update_container, #update_form, #update_form {
+        max-width: 600px;
+    }
+
+    #update_container h1 {
+        font-size: 2em;
+    }
+
+    #update_container div {
+        font-size: 1.2em;
+    }
+
+    #profile_image_form input, #update_form input, #update_form input {
+        font-size: 1em;
+        height: 50px;
+    }
+
+    #update_form_inner input[type=text] {
+        font-size: .8em;
+    }
+
+    #update_form_inner {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+}
