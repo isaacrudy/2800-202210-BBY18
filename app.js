@@ -24,7 +24,6 @@ const { JSDOM } = require('jsdom');
 const fileUpload = require('express-fileupload');
 const fs = require("fs");
 const { query } = require('express');
-//const { UTF8 } = require('mysql/lib/protocol/constants/charsets');
 const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
@@ -120,10 +119,7 @@ app.get('/home', async function (req, res) {
 		res.set("X-Powered-By", "Wazubi");
 		res.send(profileDOM.serialize());
 
-	} else {
-		res.redirect("/");
 	}
-
 });
 
 app.post("/login", async function (req, res) {
@@ -230,7 +226,7 @@ app.post("/add", async function (req, res) {
 		} else if (req.body.password == req.body.password_confirm) {
 			try {
 				await connection.query(userRecordsQuery, [userInputs]);
-				res.status(200).send();
+				res.status(200).send({ status: "success", msg: "User added" });
 			} catch (error) {
 				res.status(302).send({ status: "fail", msg: "Email already exists." });
 			}
