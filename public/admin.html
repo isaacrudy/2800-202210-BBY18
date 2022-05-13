@@ -8,16 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
-    <script type="module" src="../../public/js/loads_header_footer.js"></script>
+    <script src="/js/loads_header_footer.js"></script>
     
 </head>
 
 <body>
     <global-header></global-header>
-
+    <button id="sign_out">Signout</button>
     <div id="wrapper">
         <h1 id="admin_name" style="text-align: center;"></h1>
-
         <div class="admin_title">
             <h2>Admin Dashboard</h2>
             <div class="searchBar">
@@ -29,20 +28,18 @@
             <br>
             <br>
             <form action="/signup" method="get">
-                <input id="sign_out" type="submit" value="Create New User"></input>
+                <input class="general_button" type="submit" value="Create New User" id="new_user"></input>
             </form>
             <h3 id="adminErrorMsg"></h3>
         </div>
-
         <br>
 
         <div id="user_list_container"></div>
     </div>
 
     <global-footer></global-footer>
-
-    <script src="js/admin_dashboard.js"></script>
     <script src="js/signout.js"></script>
+    <script src="js/admin_dashboard.js"></script>
 </body>
 
 </html>

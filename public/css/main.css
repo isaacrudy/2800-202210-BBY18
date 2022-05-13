@@ -14,9 +14,6 @@ page specific style sheets
 @import url('pages/user_timeline.css');
 @import url('pages/login.css');
 @import url('pages/admin.css');
-@import url('media_breakpoints.css');
-@import url('pages/account_info.css');
-@import url('pages/home.css');
 
 
 
