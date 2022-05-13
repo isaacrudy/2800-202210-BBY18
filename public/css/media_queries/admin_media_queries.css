@@ -11,6 +11,11 @@
 ************************************************************************
 */
 
+    #user_list_container {
+        display: flex;
+        z-index: -1;
+    }
+
     .deleteBtn {
         width: 100px;
     }
@@ -92,5 +97,13 @@
 
     td:nth-of-type(8):before {
         content: "Delete";
+    }
+}
+
+
+@media screen and (min-width:1150px){
+    #user_list_container {
+        overflow: visible;
+        border: none;
     }
 }
