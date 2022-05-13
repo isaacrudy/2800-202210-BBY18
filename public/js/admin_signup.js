@@ -28,20 +28,17 @@ ready(function () {
         let check_password = document.getElementById("password_confirm").value;
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
-        let userType = document.getElementById("userRole").value;
+        let userType = document.getElementById("user-type").value;
 
-        //CONSOLE LOG
-        console.log(userType);
         let queryString = "email=" + email + "password=" + password + "firstName=" + firstName + "lastName=" + lastName + "userType=" + userType;
         const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName, "userType": userType };
 
         ajaxPOST("/add", async function (data, status) {
             if (status == 200) {
-                window.location.replace("/html/admin.html");
-                // window.location.replace("javascript:history.back()");
+                window.location.replace("/home");
             } else {
                 let dataParsed = JSON.parse(data);
-                document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
+                document.getElementById("error-message").innerHTML = dataParsed.msg;
             }
         }, vars)
     });
