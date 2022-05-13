@@ -17,6 +17,7 @@ Date: May 9, 2022
     align-items: center;
 }
 
+
 /*
 ---------------------------------------------
 #id 
@@ -24,7 +25,7 @@ Date: May 9, 2022
 */
 
 #login_logo {
-    height: 100px;
+    width: 300px;
     margin-bottom: 50px;
 }
 
@@ -45,15 +46,14 @@ Date: May 9, 2022
 }
 
 #signIn_container h1 {
-    font-weight: normal;
-    font-size: 3em;
+    font-weight: bold;
+    font-size: 2em;
 }
 
 #signIn_container div {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    font-size: 2em;
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
 }
 
 #signIn_container a {
@@ -61,12 +61,12 @@ Date: May 9, 2022
 }
 
 #signIn_form input, #signup_form input {
-    font-size: 2em;
-    width: 80%;
-    margin-bottom: 30px;
-    height: 80px;
+    font-size: 1.3em;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 50px;
     border-radius: 8px;
-    border: 1px solid rgba(162, 162, 162, 0.881);
+    border: 1px solid var(--border_color);
 }
 
 #signup_form_inner input {
