@@ -28,6 +28,7 @@ input[type=button]:hover, .general_button:hover{
 {
     background-color: var(--fc_purple);
     color: white;
+    text-decoration: none;
 }
 
 #signIn_container span {
