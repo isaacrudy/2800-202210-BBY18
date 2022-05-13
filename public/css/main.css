@@ -27,6 +27,7 @@ media query style sheets
 
 @import url('media_queries/header_footer.css');
 @import url('media_queries/login_signup.css');
+@import url('media_queries/admin_media_queries.css');
 
 
 :root {
