@@ -43,6 +43,10 @@
     {
         max-width: 600px;
     }
+    #signup_form 
+    {
+        margin-bottom: 0%;
+    }
 
     #signIn_container h1 
     {
