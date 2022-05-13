@@ -43,13 +43,6 @@
         display: block;
     }
 
-    thead,
-    tbody,
-    td,
-    tr {
-        align-self: left;
-    }
-
     td {
         border: none;
         border-bottom: 1px solid #eee;
