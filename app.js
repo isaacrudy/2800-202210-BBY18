@@ -412,38 +412,14 @@ app.get("/currentAccountInfo", async function (req, res) {
 	res.send(profileDOM.serialize());
 });
 
-app.get("/logout", async function (req, res) {
+app.get("/faq", function (req, res) {
+	let doc = fs.readFileSync("./app/html/faq.html", "utf8")
+	let userDOM = new JSDOM(doc);
 
-	connection.connect();
-	let userID = req.body.id;
-	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = "+ userID);
-
-	res.send(JSON.stringify(user_role[0]));
+	res.set("Server", "Wazubi Engine");
+	res.set("X-Powered-By", "Wazubi");
+	res.send(userDOM.serialize());
 });
-
-// app.post('/edit', async function(req,res){
-// 	const mysql = require('mysql2/promise');
-	
-// 	const connection = await mysql.createConnection({
-// 		host: "localhost",
-// 		user: "root",
-// 		password: "",
-// 		database: "mydb",
-// 		multipleStatements: true
-// 	});
-
-// 	connection.connect();
-// 	let query = "UPDATE `users` SET "
-// 				+ "`password`= '" 				+ req.body.password 
-// 				+ "', `firstName`= '" 			+ req.body.firstName
-// 				+ "', `lastName`= '" 			+ req.body.lastName
-// 				+ "', `email`= '" 				+ req.body.email
-// 				+ "', `profilePhoto`= '" 		+ "default_photo.png"
-// 				+ "', `role`= '" 				+ req.body.userRole
-// 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
-// 	await connection.query(query);
-// 	res.status(200).send();
-// });
 
 app.post("/logout", function (req, res) {
 	if (req.session) {

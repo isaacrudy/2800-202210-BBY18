@@ -1,0 +1,44 @@
+body {
+    text-align: center;
+}
+
+.question {
+    background-color: lightskyblue;
+    border: 5px;
+    border-color: black;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    transition: 0.5s;
+}
+
+.question:hover {
+    background-color:cornflowerblue;
+}
+
+.answer {
+    text-align: left;
+}
+
+.answer > p {
+    text-align: left;
+}
+
+.center {
+    grid-area: questions;
+}
+
+.leftMargin {
+    grid-area: leftMargin;
+}
+
+.rightMargin {
+    grid-area: rightMargin;
+}
+
+.pageGrid {
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-areas: 
+    'leftMargin questions rightMargin';
+}

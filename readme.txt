@@ -32,3 +32,11 @@ app.js
     Availability: https://raddy.dev/blog/upload-and-store-images-in-mysql-using-node-js-express-express-fileupload-express-handlebars/
 	
   	Edited and adapted by Amadeus Min on May 11, 2022
+
+admin_media_queries.css, admin.css
+	Source Code
+	Title: Responsive Data Tables
+	Author: Chris Coyier
+	Availability: https://css-tricks.com/responsive-data-tables/
+
+	Edited and adapted by Isaac Rudy on May 10th
