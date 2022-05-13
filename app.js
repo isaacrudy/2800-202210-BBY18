@@ -24,7 +24,6 @@ const { JSDOM } = require('jsdom');
 const fileUpload = require('express-fileupload');
 const fs = require("fs");
 const { query } = require('express');
-//const { UTF8 } = require('mysql/lib/protocol/constants/charsets');
 const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
