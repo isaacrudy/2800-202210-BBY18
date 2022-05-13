@@ -307,6 +307,21 @@ app.post('/edit', async function(req,res){
 		multipleStatements: true
 	});
 
+	const [user_rows, user_info] = await connection.query("SELECT * FROM users WHERE ID = "+ req.body.id);
+
+	if(req.body.profileImage == "default_image"){
+		connection.connect();
+		let query = "UPDATE `users` SET "
+					+ "`password`= '" 				+ req.body.password 
+					+ "', `firstName`= '" 			+ req.body.firstName
+					+ "', `lastName`= '" 			+ req.body.lastName
+					+ "', `email`= '" 				+ req.body.email
+					+ "', `profilePhoto`= '" 		+ user_rows[0].profilePhoto
+					+ "', `role`= '" 				+ req.body.userRole
+					+ "' WHERE users.id = '" 		+ req.body.id + "'"
+		await connection.query(query);
+		res.status(200).send({msg: "User Updated"});
+	}else{
 	connection.connect();
 	let query = "UPDATE `users` SET "
 				+ "`password`= '" 				+ req.body.password 
@@ -318,6 +333,7 @@ app.post('/edit', async function(req,res){
 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
 	await connection.query(query);
 	res.status(200).send({msg: "User Updated"});
+	}
 });
 
 app.post("/update", async function (req, res) {
