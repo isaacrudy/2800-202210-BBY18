@@ -19,10 +19,11 @@ input[type=button]:hover, .general_button:hover{
     text-decoration: none;
     text-align: center;
     border-radius: 8px;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     font-size: 0.8em;
     border: none;
 }
+
 #new_user
 {
     background-color: var(--fc_purple);

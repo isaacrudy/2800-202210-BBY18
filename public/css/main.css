@@ -34,6 +34,7 @@ media query style sheets
     --fc_teal: #3ab3b0;
     --fc_purple: #55367d;
     --overlay-color: #e1e1e1e0;
+    --border_color: rgb(162, 162, 162);
     --menu-speed: 0.75s;
 }
 
@@ -62,7 +63,7 @@ Inputs
 */
 
 input[type=text], input[type=password] {
-    text-indent: 30px;
+    text-indent: 10px;
 }
 
 input[type=submit] {
