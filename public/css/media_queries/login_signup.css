@@ -3,6 +3,22 @@
         max-width: 300px;
     }
 
+    /*
+    ---------------------------------------------
+    .class 
+    ---------------------------------------------
+    */
+
+    .custom-select
+    {
+        justify-content: center !important;
+    }
+
+    .custom-select select
+    {
+        height: 50px;
+        width: 50%;
+    }
 
     /*
     ---------------------------------------------

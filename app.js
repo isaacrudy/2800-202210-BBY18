@@ -79,51 +79,51 @@ app.get('/home', async function (req, res) {
 		res.send(userDOM.serialize());
 
 	} else if (req.session.loggedIn && req.session.role == "admin") {
-		const mysql = require('mysql2/promise');
-		const connection = await mysql.createConnection({
-			host: "localhost",
-			user: "root",
-			password: "",
-			database: "mydb",
-			multipleStatements: true
-		});
+        const mysql = require('mysql2/promise');
+        const connection = await mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "",
+            database: "mydb",
+            multipleStatements: true
+        });
 
-		connection.connect();
+        connection.connect();
 
 		const [rows, fields] = await connection.execute("SELECT * FROM users");
-		let table = "<table frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th>Edit</th><th>Delete</th></tr>";
-		let editButton = "<input type=\"button\" class=\"editBtn\" id=\"";
-		let deleteButton = "<input type=\"button\" class=\"deleteBtn\" id=\"";
-		for (let i = 0; i < rows.length; i++) {
-			table += "<tr><td>" 
-				+ rows[i].id 		+ "</td><td>"
-				+ rows[i].firstName + "</td><td>" + rows[i].lastName 		+ "</td><td>"
-				+ rows[i].email 	+ "</td><td>" + rows[i].profilePhoto 	+ "</td><td>"
-				+ rows[i].role 		+ "</td><td>" 
-				+ editButton		+ rows[i].id  + "\" value=\"O\" >" 		+ "</td><td>" 
-				+ deleteButton		+ rows[i].id  + "\" value=\"X\" >" 		+ "</td></tr>";
-		}
-		table += "</table>";
+        let table = "<table frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th>Edit</th><th>Delete</th></tr>";
+        let editButton = "<input type=\"button\" class=\"editBtn\" id=\"";
+        let deleteButton = "<input type=\"button\" class=\"deleteBtn\" id=\"";
+        for (let i = 0; i < rows.length; i++) {
+            table += "<tr><td>" 
+                + rows[i].id         + "</td><td>"
+                + rows[i].firstName + "</td><td>" + rows[i].lastName         + "</td><td>"
+                + rows[i].email     + "</td><td>" + rows[i].profilePhoto     + "</td><td>"
+                + rows[i].role         + "</td><td>" 
+                + editButton        + rows[i].id  + "\" value=\"O\" >"         + "</td><td>" 
+                + deleteButton        + rows[i].id  + "\" value=\"X\" >"         + "</td></tr>";
+        }
+        table += "</table>";
 
-		await connection.end();
+        await connection.end();
 
-		let profile = fs.readFileSync("./public/admin.html", "utf8");
-		let profileDOM = new JSDOM(profile);
+        let profile = fs.readFileSync("public/admin.html", "utf8");
+        let profileDOM = new JSDOM(profile);
 
-		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML	
-			= "Admin Dashboard | " + req.session.name;
-		profileDOM.window.document.getElementById("admin_name").innerHTML
-			= "Welcome " + req.session.name + "!";
+        profileDOM.window.document.getElementsByTagName("title")[0].innerHTML    
+            = "Admin Dashboard | " + req.session.name;
+        profileDOM.window.document.getElementById("admin_name").innerHTML
+            = "Welcome " + req.session.name + "!";
 
-		profileDOM.window.document.getElementById("user_list_container").innerHTML = table;
+        profileDOM.window.document.getElementById("user_list_container").innerHTML = table;
 
-		res.set("Server", "Wazubi Engine");
-		res.set("X-Powered-By", "Wazubi");
-		res.send(profileDOM.serialize());
+        res.set("Server", "Wazubi Engine");
+        res.set("X-Powered-By", "Wazubi");
+        res.send(profileDOM.serialize());
 
-	} else {
-		res.redirect("/");
-	}
+    } else {
+        res.redirect("/");
+    }
 
 });
 
@@ -227,7 +227,7 @@ app.post("/add", async function (req, res) {
 	async function signUpValidation(isFieldEmpty, userRecordsQuery, userInputs) {
 
 		if (isFieldEmpty == true) {
-			res.status(300).send({ status: "fail", msg: "All the fileds are required." });
+			res.status(300).send({ status: "fail", msg: "All fields are required." });
 		} else if (req.body.password == req.body.password_confirm) {
 			try {
 				await connection.query(userRecordsQuery, [userInputs]);
@@ -412,38 +412,9 @@ app.get("/currentAccountInfo", async function (req, res) {
 	res.send(profileDOM.serialize());
 });
 
-app.get("/logout", async function (req, res) {
 
-	connection.connect();
-	let userID = req.body.id;
-	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = "+ userID);
+//
 
-	res.send(JSON.stringify(user_role[0]));
-});
-
-// app.post('/edit', async function(req,res){
-// 	const mysql = require('mysql2/promise');
-	
-// 	const connection = await mysql.createConnection({
-// 		host: "localhost",
-// 		user: "root",
-// 		password: "",
-// 		database: "mydb",
-// 		multipleStatements: true
-// 	});
-
-// 	connection.connect();
-// 	let query = "UPDATE `users` SET "
-// 				+ "`password`= '" 				+ req.body.password 
-// 				+ "', `firstName`= '" 			+ req.body.firstName
-// 				+ "', `lastName`= '" 			+ req.body.lastName
-// 				+ "', `email`= '" 				+ req.body.email
-// 				+ "', `profilePhoto`= '" 		+ "default_photo.png"
-// 				+ "', `role`= '" 				+ req.body.userRole
-// 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
-// 	await connection.query(query);
-// 	res.status(200).send();
-// });
 
 app.post("/logout", function (req, res) {
 	if (req.session) {

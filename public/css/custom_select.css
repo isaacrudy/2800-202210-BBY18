@@ -1,0 +1,22 @@
+.custom-select
+{
+  /* flex-direction: column; */
+  justify-content: space-between !important;
+  align-items: center;
+  gap: 20px;
+}
+
+.custom-select select
+{
+  width: 60%;
+  height: 80px;
+  padding: 5px 5px 5px 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid rgba(162, 162, 162, 0.882);
+}
+
+.custom-select label
+{
+  font-size: 1.1em;
+}

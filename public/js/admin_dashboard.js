@@ -9,6 +9,7 @@
 ************************************************************************
 */
 "use strict";
+
 ready(function () {
 
     function ajaxPOST(url, callback, data) {
@@ -85,6 +86,8 @@ ready(function () {
     }
 
 });
+
+
 
 function ready(callback) {
     if (document.readyState != "loading") {
