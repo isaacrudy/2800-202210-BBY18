@@ -24,6 +24,7 @@ const { JSDOM } = require('jsdom');
 const fileUpload = require('express-fileupload');
 const fs = require("fs");
 const { query } = require('express');
+//const { UTF8 } = require('mysql/lib/protocol/constants/charsets');
 const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
@@ -45,6 +46,7 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
+
 
 app.get('/home', async function (req, res) {
 	if (req.session.loggedIn && req.session.role == "regular") {
@@ -119,7 +121,10 @@ app.get('/home', async function (req, res) {
 		res.set("X-Powered-By", "Wazubi");
 		res.send(profileDOM.serialize());
 
+	} else {
+		res.redirect("/");
 	}
+
 });
 
 app.post("/login", async function (req, res) {
@@ -203,7 +208,7 @@ app.post("/add", async function (req, res) {
 		}
 
 		userRecordsQuery = "INSERT INTO users (firstName, lastName, email, password, profilePhoto, role) values ?";
-		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "Logo_2.jpg", req.body.userType]];
+		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "some.filePath/default.png", req.body.userType]];
 
 		signUpValidation(isFieldEmpty, userRecordsQuery, userInputs);
 
@@ -226,7 +231,7 @@ app.post("/add", async function (req, res) {
 		} else if (req.body.password == req.body.password_confirm) {
 			try {
 				await connection.query(userRecordsQuery, [userInputs]);
-				res.status(200).send({ status: "success", msg: "User added" });
+				res.status(200).send();
 			} catch (error) {
 				res.status(302).send({ status: "fail", msg: "Email already exists." });
 			}
@@ -301,7 +306,7 @@ app.post('/edit', async function(req,res){
 				+ "', `firstName`= '" 			+ req.body.firstName
 				+ "', `lastName`= '" 			+ req.body.lastName
 				+ "', `email`= '" 				+ req.body.email
-				+ "', `profilePhoto`= '" 		+ "Logo_2.jpg"
+				+ "', `profilePhoto`= '" 		+ "some.filePath/default.png"
 				+ "', `role`= '" 				+ req.body.userRole
 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
 	await connection.query(query);
@@ -408,6 +413,15 @@ app.get("/currentAccountInfo", async function (req, res) {
 	res.send(profileDOM.serialize());
 });
 
+app.get("/logout", async function (req, res) {
+
+	connection.connect();
+	let userID = req.body.id;
+	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = "+ userID);
+
+	res.send(JSON.stringify(user_role[0]));
+});
+
 app.post('/edit', async function(req,res){
 	const mysql = require('mysql2/promise');
 	
@@ -425,10 +439,11 @@ app.post('/edit', async function(req,res){
 				+ "', `firstName`= '" 			+ req.body.firstName
 				+ "', `lastName`= '" 			+ req.body.lastName
 				+ "', `email`= '" 				+ req.body.email
-				+ "', `profilePhoto`= '" 		+ "Logo_2.jpg"
+				+ "', `profilePhoto`= '" 		+ "some.filePath/default.png"
 				+ "', `role`= '" 				+ req.body.userRole
 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
 	await connection.query(query);
+	//remember to send a msg back 
 	res.status(200).send();
 });
 

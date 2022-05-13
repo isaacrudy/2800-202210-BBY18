@@ -29,14 +29,15 @@ ready(function () {
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
         let userType = document.getElementById("userRole").value;
+        console.log(userType);
         let queryString = "email=" + email + "password=" + password + "firstName=" + firstName + "lastName=" + lastName + "userType=" + userType;
         const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName, "userType": userType };
 
         ajaxPOST("/add", function (data, status) {
-                let dataParsed = JSON.parse(data);
             if (status == 200) {
-                document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
+                window.location.replace("/");
             } else {
+                let dataParsed = JSON.parse(data);
                 document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
             }
         }, vars)

@@ -7,7 +7,7 @@
     <link rel="icon" href="img/Logos/fundcart_favicon.ico">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
-    <script type="module" src="/js/loads_header_footer.js"></script>
+    <script type="module" src="../../public/js/loads_header_footer.js"></script>
 </head>
 
 <body>
@@ -19,27 +19,6 @@
 
         <div class="menu">
             <div>
-                <img id="fundcart_logo" src="img/logos/cart_logo_vertical.png" alt="FundCart Logo">
-                <img id="fundcart_logo_alt" src="img/logos/fundcart_full_logo.png" alt="FundCart Logo">
-            </div>
-
-            <div id="profile_dropdown">
-                <button id="profile_dropbtn">🤵🏻</button>
-                <div id="profile_dropdown_content">
-                    <input type="button" value="My timeline" id="my_timeline_btn">
-                    <input type="button" value="Account Management" id="accocunt_management">
-                    <input type="button" value="Donation History" id="donation_history_btn">
-                </div>
-            </div>
-        </header>
-
-        <div id="wrapper">
-            <div id="welcome_user">
-                <h1>Welcome</h1>
-                <h1 id="userName"></h1>
-            </div>
-
-            <div id="timeline">
                 <div>
                     <nav>
                         <ul id="nav_ul">
@@ -70,17 +49,17 @@
                 <input type="button" value="My timeline" id="my_timeline_btn">
                 <input type="button" value="Account Management" id="accocunt_management">
                 <input type="button" value="Donation History" id="donation_history_btn">
-                <input type="button" value="Signout" id="sign_out">
+                <input type="button" value="Logout" id="logout_btn">
             </div>
         </div>
-    </header>   
+    </header>
 
     <div id="wrapper">
         <div id="welcome_user">
             <h1>Welcome</h1>
             <h1 id="userName"></h1>
         </div>
-        <img id="profile_image" src="public/images/Fundcart_smaller.jpg"></img>
+        <img id="profile_image" src="../../public/images/Fundcart_smaller.jpg"></img>
 
         <div id="timeline">
             <div>
@@ -90,11 +69,9 @@
         </div>
     </div>
 
+    <global-footer></global-footer>
 
-        <global-footer></global-footer>
-        
-        <script src="js/home.js"></script>
-        <script src="js/signout.js"></script>
-    </body>
+    <script src="js/home.js"></script>
+</body>
 
 </html>

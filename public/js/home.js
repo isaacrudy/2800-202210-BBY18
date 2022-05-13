@@ -48,6 +48,12 @@ ready(function () {
         e.preventDefault();
         window.location.replace("/currentAccountInfo");
     })
+
+    document.querySelector("#logout_btn").addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.replace("/logout");
+    })
+
 });
 
 function ready(callback) {
