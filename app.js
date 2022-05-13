@@ -111,9 +111,9 @@ app.get('/home', async function (req, res) {
 		let profileDOM = new JSDOM(profile);
 
 		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML	
-			= req.session.name + "'s Profile";
+			= "Admin Dashboard | " + req.session.name;
 		profileDOM.window.document.getElementById("admin_name").innerHTML
-			= "Welcome! " + req.session.name;
+			= "Welcome " + req.session.name + "!";
 
 		profileDOM.window.document.getElementById("user_list_container").innerHTML = table;
 
@@ -208,7 +208,7 @@ app.post("/add", async function (req, res) {
 		}
 
 		userRecordsQuery = "INSERT INTO users (firstName, lastName, email, password, profilePhoto, role) values ?";
-		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "Logo_2.jpg", req.body.userType]];
+		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "default_photo.png", req.body.userType]];
 
 		signUpValidation(isFieldEmpty, userRecordsQuery, userInputs);
 
@@ -231,7 +231,7 @@ app.post("/add", async function (req, res) {
 		} else if (req.body.password == req.body.password_confirm) {
 			try {
 				await connection.query(userRecordsQuery, [userInputs]);
-				res.status(200).send({ status: "fail", msg: "User Updated" });
+				res.status(200).send({ status: "fail", msg: "User Created" });
 			} catch (error) {
 				res.status(302).send({ status: "fail", msg: "Email already exists." });
 			}
@@ -306,7 +306,7 @@ app.post('/edit', async function(req,res){
 				+ "', `firstName`= '" 			+ req.body.firstName
 				+ "', `lastName`= '" 			+ req.body.lastName
 				+ "', `email`= '" 				+ req.body.email
-				+ "', `profilePhoto`= '" 		+ "Logo_2.jpg"
+				+ "', `profilePhoto`= '" 		+ "default_photo.png"
 				+ "', `role`= '" 				+ req.body.userRole
 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
 	await connection.query(query);
@@ -421,30 +421,29 @@ app.get("/logout", async function (req, res) {
 	res.send(JSON.stringify(user_role[0]));
 });
 
-app.post('/edit', async function(req,res){
-	const mysql = require('mysql2/promise');
+// app.post('/edit', async function(req,res){
+// 	const mysql = require('mysql2/promise');
 	
-	const connection = await mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "",
-		database: "mydb",
-		multipleStatements: true
-	});
+// 	const connection = await mysql.createConnection({
+// 		host: "localhost",
+// 		user: "root",
+// 		password: "",
+// 		database: "mydb",
+// 		multipleStatements: true
+// 	});
 
-	connection.connect();
-	let query = "UPDATE `users` SET "
-				+ "`password`= '" 				+ req.body.password 
-				+ "', `firstName`= '" 			+ req.body.firstName
-				+ "', `lastName`= '" 			+ req.body.lastName
-				+ "', `email`= '" 				+ req.body.email
-				+ "', `profilePhoto`= '" 		+ "Logo_2.jpg"
-				+ "', `role`= '" 				+ req.body.userRole
-				+ "' WHERE users.id = '" 		+ req.body.id + "'"
-	await connection.query(query);
-	//remember to send a msg back 
-	res.status(200).send();
-});
+// 	connection.connect();
+// 	let query = "UPDATE `users` SET "
+// 				+ "`password`= '" 				+ req.body.password 
+// 				+ "', `firstName`= '" 			+ req.body.firstName
+// 				+ "', `lastName`= '" 			+ req.body.lastName
+// 				+ "', `email`= '" 				+ req.body.email
+// 				+ "', `profilePhoto`= '" 		+ "default_photo.png"
+// 				+ "', `role`= '" 				+ req.body.userRole
+// 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
+// 	await connection.query(query);
+// 	res.status(200).send();
+// });
 
 app.post("/logout", function (req, res) {
 	if (req.session) {
