@@ -35,6 +35,9 @@ i {
 .class 
 ---------------------------------------------
 */
+.disable_scroll {
+  position: fixed;
+}
 
 .header_bar {
   /* position: fixed; */
@@ -46,6 +49,7 @@ i {
   background: white;
   color: white;
   width: 100%;
+  padding: 0px 20px;
 
 }
 
@@ -54,7 +58,7 @@ i {
   /* position: fixed; */
   top: 0;
   left: 0;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .menu_wrapper .toggler {
