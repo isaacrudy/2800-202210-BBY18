@@ -7,7 +7,7 @@ input[type=button], #create_user_button {
 
 input[type=button]:hover, .general_button:hover{
     filter: brightness(80%);
-    transition: 0.4s ease;
+    transition: var(--hover-speed) ease;
 
 }
 
@@ -37,7 +37,7 @@ input[type=button]:hover, .general_button:hover{
 }
 
 #signIn_container a:hover {
-    transition: 0.4s ease;
+    transition: var(--hover-speed) ease;
 }
 
 #signIn_container span:hover {

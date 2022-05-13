@@ -86,7 +86,7 @@
 
 #update_container a:hover {
     border-bottom: 2px solid var(--fc_teal);
-    transition: 0.4s ease;
+    transition: var(--hover-speed) ease;
 }
 
 #update_container span:hover {

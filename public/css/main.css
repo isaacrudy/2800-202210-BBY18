@@ -36,6 +36,7 @@ media query style sheets
     --overlay-color: #e1e1e1e0;
     --border_color: rgb(162, 162, 162);
     --menu-speed: 0.75s;
+    --hover-speed: 0.4s;
 }
 
 *, *:before, *:after {
@@ -76,7 +77,7 @@ input[type=submit] {
 input[type=submit]:hover {
     color: var(--fc_teal);
     filter: brightness(80%);
-    transition: 0.4s ease;
+    transition: var(--hover-speed) ease;
     cursor: pointer;
 }
 
