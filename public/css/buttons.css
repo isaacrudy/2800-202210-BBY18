@@ -14,7 +14,7 @@ input[type=button]:hover, .general_button:hover{
 #sign_out, .general_button
 {
     background-color: var(--fc_purple);
-    padding: 10px 25px;
+    padding: 10px 15px;
     color: white;
     text-decoration: none;
     text-align: center;

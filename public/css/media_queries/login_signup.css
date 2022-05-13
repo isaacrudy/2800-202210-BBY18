@@ -3,6 +3,10 @@
         max-width: 300px;
     }
 
+    #signIn_form input, #signup_form input {
+        width: 80%;
+    }
+
     /*
     ---------------------------------------------
     .class 
@@ -28,18 +32,19 @@
 
     #login_logo
     {
-        height: 80px;
+        /* height: 80px; */
         margin-bottom: 50px;
     }
 
-    #signIn_container 
+    #signIn_container, #update_container
     {
         border: 2px solid var(--border_color);
         border-radius: 10px;
         padding: 20px 0px 20px 0px;
     }
 
-    #signIn_container, #signIn_form, #signup_form 
+    #signIn_container, #signIn_form, #signup_form,
+    #update_container, #update_form, #update_form
     {
         max-width: 600px;
     }
@@ -51,10 +56,12 @@
 
     #signIn_container div 
     {
-        font-size: 1.2em;
+        width: 80%;
+        display: flex;
+        justify-content: center;
     }
 
-    #signIn_form input, #signup_form input 
+    #signIn_form input, #signup_form input,#profile_image_form input, #update_form input, #update_form input
     {
         font-size: 1em;
         height: 50px;
@@ -65,9 +72,21 @@
         font-size: .8em;
     }
 
-    #signup_form_inner 
+    #signup_form_inner, #update_container div
     {
         flex-direction: row;
         gap: 20px;
+    }
+
+    #update_container div
+    {
+        display: flex;
+        margin: auto;
+        width: 80%;
+    }
+
+    #profil_image_upload_btn {
+        max-width: 200px;
+        max-height: 40px;
     }
 }

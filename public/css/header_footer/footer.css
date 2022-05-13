@@ -32,22 +32,22 @@ footer div {
 */
 
 #globalFooter h3 {
-    font-size: 2em;
+    font-size: 1.3em;
 }
 
 #globalFooter p {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 #sitemap, #footer_socials {
     list-style: none;
     padding: 0 0 12px 0;
     margin: 0;
-    font-size: 2em;
+    font-size: 1em;
 }
 
 #footer_socials {
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 #sitemap a, #footer_socials a {
