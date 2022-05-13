@@ -475,4 +475,4 @@ app.use(function (req, res, next) {
 });
 
 let port = 8000;
-app.listen(port, init);
+app.listen(process.env.PORT || 8000);
