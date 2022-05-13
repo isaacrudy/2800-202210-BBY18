@@ -19,10 +19,6 @@ body {
     text-align: left;
 }
 
-.answer > p {
-    text-align: left;
-}
-
 .center {
     grid-area: questions;
 }
