@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users (
     firstName 		VARCHAR(50) NOT NULL,
     lastName    	VARCHAR(50) NOT NULL,
     email       	VARCHAR(50) UNIQUE NOT NULL,
-    profilePhoto    VARCHAR(50) NOT NULL DEFAULT "Logo_2.jpg",
+    profilePhoto    VARCHAR(50) NOT NULL DEFAULT "default_photo.png",
     role        	VARCHAR(7) NOT NULL DEFAULT "regular",
     PRIMARY KEY(id)
 );
