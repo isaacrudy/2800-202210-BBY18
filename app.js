@@ -24,6 +24,8 @@ const { JSDOM } = require('jsdom');
 const fileUpload = require('express-fileupload');
 const fs = require("fs");
 const { query } = require('express');
+let http = require('http');
+let url = require('url');
 //const { UTF8 } = require('mysql/lib/protocol/constants/charsets');
 const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
@@ -47,6 +49,11 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+http.createServer(app).listen(8000);
+
+app.get('/', function(req, res) {
+	console.log("loaded");
+});
 
 app.get('/home', async function (req, res) {
 	if (req.session.loggedIn && req.session.role == "regular") {
@@ -474,5 +481,3 @@ app.use(function (req, res, next) {
 	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Please check your url.</p></body></html>");
 });
 
-let port = 8000;
-app.listen(process.env.PORT || 8000);
