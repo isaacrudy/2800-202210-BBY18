@@ -314,6 +314,15 @@ app.get("/currentAccountInfo", async function (req, res) {
 	res.send(profileDOM.serialize());
 });
 
+app.get("/faq", function (req, res) {
+	let doc = fs.readFileSync("./app/html/faq.html", "utf8")
+	let userDOM = new JSDOM(doc);
+
+	res.set("Server", "Wazubi Engine");
+	res.set("X-Powered-By", "Wazubi");
+	res.send(userDOM.serialize());
+});
+
 app.get("/logout", function (req, res) {
 
 	if (req.session) {
