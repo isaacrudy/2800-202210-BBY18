@@ -85,9 +85,7 @@ class GlobalHeader extends HTMLElement
                 </div>
 
                 <div>
-                    <a href="/logout" id="sign_out">
-                        Sign Out
-                    </a>
+                    <button onclick="signout()" id="sign_out">Signout</button>
                 </div>
             </header>
         `

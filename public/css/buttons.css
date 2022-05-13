@@ -23,6 +23,11 @@ input[type=button]:hover, .general_button:hover{
     font-size: 0.8em;
     border: none;
 }
+#new_user
+{
+    background-color: var(--fc_purple);
+    color: white;
+}
 
 #signIn_container span {
     color: rgb(162, 162, 162);

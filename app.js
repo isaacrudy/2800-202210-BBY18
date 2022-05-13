@@ -208,7 +208,7 @@ app.post("/add", async function (req, res) {
 		}
 
 		userRecordsQuery = "INSERT INTO users (firstName, lastName, email, password, profilePhoto, role) values ?";
-		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "some.filePath/default.png", req.body.userType]];
+		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "Logo_2.jpg", req.body.userType]];
 
 		signUpValidation(isFieldEmpty, userRecordsQuery, userInputs);
 
@@ -231,7 +231,7 @@ app.post("/add", async function (req, res) {
 		} else if (req.body.password == req.body.password_confirm) {
 			try {
 				await connection.query(userRecordsQuery, [userInputs]);
-				res.status(200).send();
+				res.status(200).send({ status: "fail", msg: "User Updated" });
 			} catch (error) {
 				res.status(302).send({ status: "fail", msg: "Email already exists." });
 			}
@@ -306,11 +306,10 @@ app.post('/edit', async function(req,res){
 				+ "', `firstName`= '" 			+ req.body.firstName
 				+ "', `lastName`= '" 			+ req.body.lastName
 				+ "', `email`= '" 				+ req.body.email
-				+ "', `profilePhoto`= '" 		+ "some.filePath/default.png"
+				+ "', `profilePhoto`= '" 		+ "Logo_2.jpg"
 				+ "', `role`= '" 				+ req.body.userRole
 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
 	await connection.query(query);
-	//remember to send a msg back 
 	res.status(200).send({msg: "User Updated"});
 });
 
@@ -439,7 +438,7 @@ app.post('/edit', async function(req,res){
 				+ "', `firstName`= '" 			+ req.body.firstName
 				+ "', `lastName`= '" 			+ req.body.lastName
 				+ "', `email`= '" 				+ req.body.email
-				+ "', `profilePhoto`= '" 		+ "some.filePath/default.png"
+				+ "', `profilePhoto`= '" 		+ "Logo_2.jpg"
 				+ "', `role`= '" 				+ req.body.userRole
 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
 	await connection.query(query);

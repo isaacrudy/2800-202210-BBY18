@@ -34,10 +34,10 @@ ready(function () {
         const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName, "userType": userType };
 
         ajaxPOST("/add", function (data, status) {
+            let dataParsed = JSON.parse(data);
             if (status == 200) {
-                window.location.replace("/");
+                document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
             } else {
-                let dataParsed = JSON.parse(data);
                 document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
             }
         }, vars)

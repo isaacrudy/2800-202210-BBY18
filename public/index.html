@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <title>Admin Dashboard Page</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
+    <script type="module" src="/js/loads_header_footer.js"></script>
+    
 </head>
+
 <body>
-    <h1>temp</h1>
-    <button id="logout">Logout</button>
-    <button id="login"><a href="/login.html">login</a></button>
+    <global-header></global-header>
+
+    <div id="wrapper">
+        <h1>HOME</h1>
+        <button id="login"><a href="/login.html">login</a></button>
+    </div>
+
+    <global-footer></global-footer>
+
+    <script src="js/admin_dashboard.js"></script>
     <script src="js/signout.js"></script>
 </body>
+
 </html>
