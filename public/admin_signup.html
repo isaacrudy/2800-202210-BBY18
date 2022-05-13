@@ -7,11 +7,11 @@
     <link rel="icon" href="img/Logos/fundcart_favicon.ico">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
-    <script type="module" src="/js/loads_header_footer.js"></script>
+    <script type="module" src="js/loads_header_footer.js"></script>
 </head>
 
 <body>
-    <div class="wrapper">
+    <div id="wrapper">
         <div class="login_signup">
             <div>
                 <img id="login_logo" src="img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
@@ -31,8 +31,8 @@
                         required />
                     <input type="password" name="password_confirm" id="password_confirm" class="form_input"
                         placeholder="confirm password" required />
-                    <label for="userRole">Role: </label>
-                    <select id="userRole">
+                    <label for="user-type">Role: </label>
+                    <select id="user-type">
                         <option value="default_message" selected="selected">Please select user type</option>
                         <option value="regular">regular</option>
                         <option value="admin">admin</option>

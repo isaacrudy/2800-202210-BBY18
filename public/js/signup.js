@@ -36,7 +36,7 @@ ready(function () {
                 window.location.replace("/");
             } else {
                 let dataParsed = JSON.parse(data);
-                document.getElementById("invalidPassword").innerHTML = dataParsed.msg;
+                document.getElementById("error-message").innerHTML = dataParsed.msg;
             }
         }, vars)
     });

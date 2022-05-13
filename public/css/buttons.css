@@ -40,6 +40,7 @@ input[type=button]:hover, .general_button:hover{
     transition: var(--hover-speed) ease;
 }
 
-#signIn_container span:hover {
+#signIn_container span:hover 
+{
     color: var(--fc_teal);
 }
