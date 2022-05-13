@@ -13,7 +13,6 @@
 
     #user_list_container {
         display: flex;
-        z-index: -1;
     }
 
     .deleteBtn {
