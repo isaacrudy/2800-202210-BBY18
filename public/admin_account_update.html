@@ -22,27 +22,27 @@
             <div id="signIn_container">
                 <h1>Update Account</h1>
                 <div id="profile_image_form_container">
-                    <form id="profile_image_form" action="/uploadProfileImage" method="POST"
+                    <!-- <form id="profile_image_form" action="/uploadProfileImage" method="POST"
                         enctype="multipart/form-data">
                         <label class="profile_image_label" for="profile_image_uploader">
                             <i class="fa fa-file-upload"></i>Select your file
                         </label>
                         <input id="profile_image_uploader" name="profile_image" type="file" accept="image/*" />
                         <input id="profil_image_upload_btn" type="submit" value="Upload Image">
-                    </form>
+                    </form> -->
                 </div>
 
                 <form id="signup_form">
                     <div id="signup_form_inner">
                         <label for="firstName">First Name: </label>
-                        <input type="text" class="form_input" id="firstName" placeholder="first name"  required />
+                        <input type="text" class="form_input" id="firstName" placeholder="first name" required />
                         <label for="lastName">Last Name: </label>
-                        <input type="text" class="form_input" id="lastName" placeholder="last name"  required />
+                        <input type="text" class="form_input" id="lastName" placeholder="last name" required />
                     </div>
                     <label for="email">Email: </label>
-                    <input type="text" id="email" class="form_input" placeholder="email@email.com"  required />
+                    <input type="text" id="email" class="form_input" placeholder="email@email.com" required />
                     <label for="password">Password: </label>
-                    <input type="text" name="password" id="password" class="form_input"  placeholder="password"
+                    <input type="text" name="password" id="password" class="form_input" placeholder="password"
                         required />
 
 
@@ -53,9 +53,15 @@
                             <option value="regular">regular</option>
                             <option value="admin">admin</option>
                         </select>
+                        <label for="userRole">Profile Image: </label>
+                        <select id="profileImage">
+                            <option value="default_message" selected="selected">Please select users' profile image
+                            </option>
+                            <option value="default_photo.png">default_photo</option>
+                        </select>
                     </div>
 
-                        <h3 id="error-message" class="invalidPassword"></h3>
+                    <h3 id="error-message" class="invalidPassword"></h3>
                     <input id="updateBtn" type="button" class="form_input_submit" value="Update Account" />
                 </form>
 
@@ -70,9 +76,9 @@
         </div>
     </div>
 
-        <global-footer></global-footer>
+    <global-footer></global-footer>
 
-        <script src="js/admin_edit.js"></script>
-    </body>
+    <script src="js/admin_edit.js"></script>
+</body>
 
 </html>

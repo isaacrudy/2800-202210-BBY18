@@ -313,7 +313,7 @@ app.post('/edit', async function(req,res){
 				+ "', `firstName`= '" 			+ req.body.firstName
 				+ "', `lastName`= '" 			+ req.body.lastName
 				+ "', `email`= '" 				+ req.body.email
-				+ "', `profilePhoto`= '" 		+ "default_photo.png"
+				+ "', `profilePhoto`= '" 		+ req.body.profileImage
 				+ "', `role`= '" 				+ req.body.userRole
 				+ "' WHERE users.id = '" 		+ req.body.id + "'"
 	await connection.query(query);
