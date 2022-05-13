@@ -73,8 +73,6 @@ app.get('/home', async function (req, res) {
 });
 
 app.get("/admin_table", async function (req, res) {
-	// CONSOLE LOG 
-	console.log("anything");
 
 	const mysql = require('mysql2/promise');
 	const connection = await mysql.createConnection({
@@ -217,7 +215,7 @@ app.post("/add", async function (req, res) {
 	async function signUpValidation(isFieldEmpty, userRecordsQuery, userInputs) {
 
 		if (isFieldEmpty == true) {
-			res.status(300).send({ status: "fail", msg: "All the fileds are required." });
+			res.status(300).send({ status: "fail", msg: "All fields are required." });
 		} else if (req.body.password == req.body.password_confirm) {
 			try {
 				await connection.query(userRecordsQuery, [userInputs]);
@@ -254,7 +252,6 @@ app.post("/delete", async function (req, res) {
 		let deleteQuery = "DELETE FROM users where ID = " + req.body.id;
 		await connection.query(deleteQuery);
 		connection.end();
-		//res.redirect(req.get('referer'));
 		res.send({ status: "success", msg: "Deleted" })
 	} else {
 		res.send({ status: "fail", msg: "You cannot delete this admin user." });
