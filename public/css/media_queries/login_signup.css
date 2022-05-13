@@ -18,7 +18,7 @@
 
     #signIn_container 
     {
-        border: 2px solid var(--overlay-color);
+        border: 2px solid var(--border_color);
         border-radius: 10px;
         padding: 20px 0px 20px 0px;
     }
