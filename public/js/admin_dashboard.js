@@ -87,8 +87,6 @@ ready(function () {
 
 });
 
-
-
 function ready(callback) {
     if (document.readyState != "loading") {
         callback();

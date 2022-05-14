@@ -6,4 +6,7 @@ Installation
 express
 express-session
 jsdom
+express-fileupload
 mysql2
+fs
+cors

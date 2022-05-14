@@ -45,7 +45,6 @@ ready(function () {
         xhr.send(params);
     }
 
-    // POST TO THE SERVER
     document.querySelector("#loginBtn").addEventListener("click", function (e) {
         e.preventDefault();
         let email = document.getElementById("email");
