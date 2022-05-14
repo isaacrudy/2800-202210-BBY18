@@ -1,6 +1,6 @@
 "use strict";
-document.querySelector("#sign_out").addEventListener("click", ()=>{
+function signout(){
     fetch('/logout',{
-        redirect:"follow"
-    }).then(response => window.location.assign("/"));
-});
+        method: "POST"
+    }).then(response => window.location.assign("/index.html"));
+}

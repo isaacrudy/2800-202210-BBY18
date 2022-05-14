@@ -1,10 +1,10 @@
 Team Members:
-[Amadeus Min],  [A01303313], [Set D], [May 6]
-[Calvin Yu],    [A00882445], [Set C], [May 6]
-[Dennis Relos], [A00928787], [Set C], [May 6]
-[Isaac Rudy],   [A01261260], [Set B], [May 6]
+[Amadeus Min],  [A01303313], [Set D], [May 13]
+[Calvin Yu],    [A00882445], [Set C], [May 13]
+[Dennis Relos], [A00928787], [Set C], [May 13]
+[Isaac Rudy],   [A01261260], [Set B], [May 13]
 
-This assignment is 100% complete.
+This assignment is 95% complete.
 
 Citations:
 
@@ -24,3 +24,19 @@ client.js, app.js
     Availability: BCIT Learning Hub
 	
   	Edited and adapted by Amadeus Min on May 5, 2022
+
+app.js
+	Source Code
+	Title: Upload and Store Images in MySQL using Node.Js, Express, Express-FileUpload & Express-Handlebars
+  	Author: Raddy
+    Availability: https://raddy.dev/blog/upload-and-store-images-in-mysql-using-node-js-express-express-fileupload-express-handlebars/
+	
+  	Edited and adapted by Amadeus Min on May 11, 2022
+
+admin_media_queries.css, admin.css
+	Source Code
+	Title: Responsive Data Tables
+	Author: Chris Coyier
+	Availability: https://css-tricks.com/responsive-data-tables/
+
+	Edited and adapted by Isaac Rudy on May 10th

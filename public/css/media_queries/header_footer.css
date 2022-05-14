@@ -1,0 +1,132 @@
+@media screen and (min-width:1150px){
+    footer section
+    {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    footer div
+    {
+        width: 300px;
+        border-bottom: none;
+        margin: auto;
+    }
+
+    input[type=button] {
+        max-width: 300px;
+    }
+
+    /*
+    ---------------------------------------------
+    .class 
+    ---------------------------------------------
+    */
+    .header_bar
+    {
+        height: 100%;
+    }
+
+    .hamburger
+    {
+        margin: 15px;
+    }
+
+
+    /* .toggler {
+        margin: 20px 0px 20px 5px;
+      } */
+    .menu_wrapper .toggler
+    {
+        height: 50px;
+        width: 50px;
+        margin: 15px;
+    }
+
+    .menu_wrapper .hamburger
+    {
+        width: 50px;
+        height: 50px;
+    }
+
+    .menu_wrapper .hamburger > div
+    {
+        height: 2px;
+    }
+
+    .menu_wrapper .hamburger > div::before,
+    .menu_wrapper .hamburger > div::after
+    {
+        height: 2px;
+    }
+
+    /* Hamburger Line */
+    .menu_wrapper .hamburger>div {
+        width: 150%;
+        height: 3px;
+    }
+    
+    /* Hamburger Lines - Top & Bottom */
+    .menu_wrapper .hamburger>div::before,
+    .menu_wrapper .hamburger>div::after {
+        top: -10px;
+        width: 100%;
+        height: 3px;
+    }
+
+    /* Moves Line Down */
+    .menu_wrapper .hamburger>div::after {
+        top: 10px;
+    }
+
+
+
+
+    /*
+    ---------------------------------------------
+    #id
+    ---------------------------------------------
+    */
+
+
+    #globalFooter h3, #globalFooter p, #sitemap, #footer_socials
+    {
+        font-size: .8em;
+    }
+
+
+    #sitemap a
+    {
+        margin-bottom: 10px;
+    }
+
+    #footer_socials
+    {
+        font-size: 1.5em;
+    }
+
+    #footer_socials a
+    {
+        padding: 0;
+        margin: 10px;
+        font-size: 1em;
+    }
+
+    #fundcart_logo
+    {
+        display: none;
+    }
+
+    #fundcart_logo_alt
+    {
+        height: 50px;
+        display: block;
+        cursor: pointer;
+        margin: 15px 0 15px 0px;
+    }
+
+    #nav_ul a
+    {
+        font-size: 1.4em;
+        padding: 10px;
+    }
+}

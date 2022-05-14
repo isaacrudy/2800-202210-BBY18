@@ -1,0 +1,47 @@
+.admin_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#adminErrorMsg {
+    text-align: center;
+    color: red;
+}
+
+tr:nth-of-type(odd){
+    background:lightgray;
+}
+
+#user_list_container {
+    padding: 20px;
+    margin-bottom: 100px;
+    overflow: scroll;
+    height: 50vh;
+    border: 2px solid var(--border_color);
+    border-radius: 8px;
+}
+
+#user_list_container table {
+    width: 80vw;
+}
+
+#user_list_container td {
+    text-align: center;
+}
+
+#search {
+    border-radius: 4px 0px 0px 4px;
+    border: 2px solid var(--border_color);
+    border-right: none;
+}
+
+#search_button {
+    border-radius: 0px 4px 4px 0px;
+    border: 2px solid var(--border_color);
+}
+
+#search_button:hover {
+    filter: brightness(80%);
+    transition: var(--hover-speed) ease;
+}

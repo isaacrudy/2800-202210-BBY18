@@ -35,29 +35,30 @@ i {
 .class 
 ---------------------------------------------
 */
-
-.header_bar {
-  background: white;
-  color: white;
-  height: 150px;
-  position: relative;
+.disable_scroll {
+  position: fixed;
 }
 
 .header_bar {
+  /* position: fixed; */
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  height: 100%;
+  height: 100px;
+  background: white;
+  color: white;
+  width: 100%;
+  padding: 0px 20px 0px 70px;
+
 }
 
 /* MENU STYLES */
 .menu_wrapper {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .menu_wrapper .toggler {
@@ -66,13 +67,13 @@ i {
   left: 0;
   z-index: 2;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   opacity: 0;
 }
 
 .toggler {
-  margin: 45px;
+  margin: 20px 0px 20px 5px;
 }
 
 .menu_wrapper .hamburger {
@@ -90,7 +91,7 @@ i {
 }
 
 .hamburger {
-  margin: 40px;
+  margin: 20px 0px 20px 5px;
   align-items: center;
 }
 
@@ -98,7 +99,7 @@ i {
 .menu_wrapper .hamburger>div {
   position: relative;
   flex: none;
-  width: 150%;
+  width: 100%;
   height: 3px;
   background: black;
   display: flex;
@@ -211,7 +212,7 @@ i {
 }
 
 #fundcart_logo {
-  height: 65px;
+  width: 140px;
   cursor: pointer;
   margin: 20px 0 20px 0px;
 }
@@ -235,10 +236,10 @@ i {
   display: block;
   text-align: center;
   font-weight: bold;
-  font-size: 2.5em;
+  font-size: 1.5em;
   color: black;
   text-decoration: none;
-  padding: 20px;
+  padding: 15px;
   filter: none;
   margin-bottom: 20px;
 }
@@ -250,25 +251,4 @@ i {
 #nav_ul span:hover {
   color: var(--fc_teal);
   transition: .4s ease;
-}
-
-
-#sign_out, #create_user_button {
-  background-color: var(--fc_purple);
-  padding: 20px 20px;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 8px;
-  margin-right: 20px;
-  font-size: 1.5em;
-}
-
-#sign_out:hover {
-  filter: brightness(80%);
-  transition: 0.4s ease;
-}
-
-#filler {
-  min-width: 149.23px;
 }

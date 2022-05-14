@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FundCart | Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="img/Logos/fundcart_favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
+    <script type="module" src="/js/loads_header_footer.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="login_signup">
+            <div>
+                <img id="login_logo" src="img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
+            </div>
+
+            <div id="signIn_container">
+                <h1>Sign In</h1>
+
+                <form id="signIn_form">
+                    <input id="email" type="text" name="email" placeholder="email" value="amin@gmail.com"
+                        required>
+                    <input id="password" type="password" name="password" placeholder="Password" value="zx12" required>
+                    <input type="button" value="Login" id="loginBtn">
+                </form>
+
+                <p id="errorMsg">&nbsp;</p>
+
+                <div class="block_div">
+                    <div>
+                        <form action="/signup" method="get">
+                            <p>
+                                <input type="submit" value="Create account">
+                            </p>
+                        </form>
+                    </div>
+
+                    <div>
+                        <p>
+                            <a href="#" id="forgotP"><span>Forgot password</span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <global-footer></global-footer>
+
+        <script src="js/login.js"></script>
+    </body>
+
+</html>
