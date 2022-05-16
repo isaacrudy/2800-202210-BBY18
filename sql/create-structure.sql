@@ -13,3 +13,10 @@ CREATE TABLE IF NOT EXISTS users (
     role        	VARCHAR(7) NOT NULL DEFAULT "regular",
     PRIMARY KEY(id)
 );
+
+USE `mydb`;
+CREATE TABLE IF NOT EXISTS charities (
+    id 				int AUTO_INCREMENT,
+    name    	    VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
+);

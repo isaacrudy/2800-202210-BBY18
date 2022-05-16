@@ -9,10 +9,10 @@
 
 	Source Code
 	Title: Upload and Store Images in MySQL using Node.Js, Express, Express-FileUpload & Express-Handlebars
-  	Author: Raddy
-    Availability: https://raddy.dev/blog/upload-and-store-images-in-mysql-using-node-js-express-express-fileupload-express-handlebars/
+		Author: Raddy
+	Availability: https://raddy.dev/blog/upload-and-store-images-in-mysql-using-node-js-express-express-fileupload-express-handlebars/
 	
-  	Edited and adapted by Amadeus Min on May 11, 2022
+		Edited and adapted by Amadeus Min on May 11, 2022
 
 ************************************************************************
 */
@@ -32,7 +32,7 @@ const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
 const cors = require('cors');
 var corsOptions = {
-  origin: '*',
+	origin: '*',
 }
 app.use(cors(corsOptions))
 
@@ -49,9 +49,9 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-http.createServer(app).listen(8000);
+//http.createServer(app).listen(8000);
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
 	console.log("loaded");
 });
 
@@ -86,51 +86,51 @@ app.get('/home', async function (req, res) {
 		res.send(userDOM.serialize());
 
 	} else if (req.session.loggedIn && req.session.role == "admin") {
-        const mysql = require('mysql2/promise');
-        const connection = await mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "",
-            database: "mydb",
-            multipleStatements: true
-        });
+		const mysql = require('mysql2/promise');
+		const connection = await mysql.createConnection({
+			host: "localhost",
+			user: "root",
+			password: "",
+			database: "mydb",
+			multipleStatements: true
+		});
 
-        connection.connect();
+		connection.connect();
 
 		const [rows, fields] = await connection.execute("SELECT * FROM users");
-        let table = "<table frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th>Edit</th><th>Delete</th></tr>";
-        let editButton = "<input type=\"button\" class=\"editBtn\" id=\"";
-        let deleteButton = "<input type=\"button\" class=\"deleteBtn\" id=\"";
-        for (let i = 0; i < rows.length; i++) {
-            table += "<tr><td>" 
-                + rows[i].id         + "</td><td>"
-                + rows[i].firstName + "</td><td>" + rows[i].lastName         + "</td><td>"
-                + rows[i].email     + "</td><td>" + rows[i].profilePhoto     + "</td><td>"
-                + rows[i].role         + "</td><td>" 
-                + editButton        + rows[i].id  + "\" value=\"O\" >"         + "</td><td>" 
-                + deleteButton        + rows[i].id  + "\" value=\"X\" >"         + "</td></tr>";
-        }
-        table += "</table>";
+		let table = "<table frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th>Edit</th><th>Delete</th></tr>";
+		let editButton = "<input type=\"button\" class=\"editBtn\" id=\"";
+		let deleteButton = "<input type=\"button\" class=\"deleteBtn\" id=\"";
+		for (let i = 0; i < rows.length; i++) {
+			table += "<tr><td>"
+				+ rows[i].id + "</td><td>"
+				+ rows[i].firstName + "</td><td>" + rows[i].lastName + "</td><td>"
+				+ rows[i].email + "</td><td>" + rows[i].profilePhoto + "</td><td>"
+				+ rows[i].role + "</td><td>"
+				+ editButton + rows[i].id + "\" value=\"O\" >" + "</td><td>"
+				+ deleteButton + rows[i].id + "\" value=\"X\" >" + "</td></tr>";
+		}
+		table += "</table>";
 
-        await connection.end();
+		await connection.end();
 
-        let profile = fs.readFileSync("public/admin.html", "utf8");
-        let profileDOM = new JSDOM(profile);
+		let profile = fs.readFileSync("public/admin.html", "utf8");
+		let profileDOM = new JSDOM(profile);
 
-        profileDOM.window.document.getElementsByTagName("title")[0].innerHTML    
-            = "Admin Dashboard | " + req.session.name;
-        profileDOM.window.document.getElementById("admin_name").innerHTML
-            = "Welcome " + req.session.name + "!";
+		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML
+			= "Admin Dashboard | " + req.session.name;
+		profileDOM.window.document.getElementById("admin_name").innerHTML
+			= "Welcome " + req.session.name + "!";
 
-        profileDOM.window.document.getElementById("user_list_container").innerHTML = table;
+		profileDOM.window.document.getElementById("user_list_container").innerHTML = table;
 
-        res.set("Server", "Wazubi Engine");
-        res.set("X-Powered-By", "Wazubi");
-        res.send(profileDOM.serialize());
+		res.set("Server", "Wazubi Engine");
+		res.set("X-Powered-By", "Wazubi");
+		res.send(profileDOM.serialize());
 
-    } else {
-        res.redirect("/");
-    }
+	} else {
+		res.redirect("/");
+	}
 
 });
 
@@ -278,9 +278,9 @@ app.post("/delete", async function (req, res) {
 
 });
 
-app.post('/getUser', async function(req,res){
+app.post('/getUser', async function (req, res) {
 	const mysql = require('mysql2/promise');
-	
+
 	const connection = await mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -291,14 +291,14 @@ app.post('/getUser', async function(req,res){
 
 	connection.connect();
 	let userID = req.body.id;
-	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = "+ userID);
+	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + userID);
 
 	res.send(JSON.stringify(user_role[0]));
 });
 
-app.post('/edit', async function(req,res){
+app.post('/edit', async function (req, res) {
 	const mysql = require('mysql2/promise');
-	
+
 	const connection = await mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -307,32 +307,32 @@ app.post('/edit', async function(req,res){
 		multipleStatements: true
 	});
 
-	const [user_rows, user_info] = await connection.query("SELECT * FROM users WHERE ID = "+ req.body.id);
+	const [user_rows, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + req.body.id);
 
-	if(req.body.profileImage == "default_image"){
+	if (req.body.profileImage == "default_image") {
 		connection.connect();
 		let query = "UPDATE `users` SET "
-					+ "`password`= '" 				+ req.body.password 
-					+ "', `firstName`= '" 			+ req.body.firstName
-					+ "', `lastName`= '" 			+ req.body.lastName
-					+ "', `email`= '" 				+ req.body.email
-					+ "', `profilePhoto`= '" 		+ user_rows[0].profilePhoto
-					+ "', `role`= '" 				+ req.body.userRole
-					+ "' WHERE users.id = '" 		+ req.body.id + "'"
+			+ "`password`= '" + req.body.password
+			+ "', `firstName`= '" + req.body.firstName
+			+ "', `lastName`= '" + req.body.lastName
+			+ "', `email`= '" + req.body.email
+			+ "', `profilePhoto`= '" + user_rows[0].profilePhoto
+			+ "', `role`= '" + req.body.userRole
+			+ "' WHERE users.id = '" + req.body.id + "'"
 		await connection.query(query);
-		res.status(200).send({msg: "User Updated"});
-	}else{
-	connection.connect();
-	let query = "UPDATE `users` SET "
-				+ "`password`= '" 				+ req.body.password 
-				+ "', `firstName`= '" 			+ req.body.firstName
-				+ "', `lastName`= '" 			+ req.body.lastName
-				+ "', `email`= '" 				+ req.body.email
-				+ "', `profilePhoto`= '" 		+ req.body.profileImage
-				+ "', `role`= '" 				+ req.body.userRole
-				+ "' WHERE users.id = '" 		+ req.body.id + "'"
-	await connection.query(query);
-	res.status(200).send({msg: "User Updated"});
+		res.status(200).send({ msg: "User Updated" });
+	} else {
+		connection.connect();
+		let query = "UPDATE `users` SET "
+			+ "`password`= '" + req.body.password
+			+ "', `firstName`= '" + req.body.firstName
+			+ "', `lastName`= '" + req.body.lastName
+			+ "', `email`= '" + req.body.email
+			+ "', `profilePhoto`= '" + req.body.profileImage
+			+ "', `role`= '" + req.body.userRole
+			+ "' WHERE users.id = '" + req.body.id + "'"
+		await connection.query(query);
+		res.status(200).send({ msg: "User Updated" });
 	}
 });
 
@@ -449,7 +449,7 @@ app.post("/logout", function (req, res) {
 		req.session.destroy(function (error) {
 			if (error) {
 				res.status(400).send("Unable to log out")
-			}else{
+			} else {
 				res.status(200).send();
 			}
 		});
@@ -496,4 +496,7 @@ async function init() {
 app.use(function (req, res, next) {
 	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Please check your url.</p></body></html>");
 });
+
+let port = 8000;
+app.listen(process.env.PORT || port, init);
 
