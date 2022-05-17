@@ -71,8 +71,10 @@ app.get('/home', async function (req, res) {
 		connection.connect();
 
 		const [rows, fields] = await connection.execute("SELECT * FROM users WHERE id = " + req.session.user_id);
+		const [timeline_rows, timeline_fields] = await connection.execute("SELECT * FROM timelines WHERE user_id = " + req.session.user_id);
 
 		let userDOM = new JSDOM(doc);
+		let timelineErrorMsg;
 		let imagePath;
 
 		userDOM.window.document.getElementsByTagName("title")[0].innerHTML
@@ -80,6 +82,34 @@ app.get('/home', async function (req, res) {
 		userDOM.window.document.getElementById("userName").innerHTML
 			= req.session.name;
 		userDOM.window.document.getElementById("profile_image").src = 'img/upload/' + rows[0].profilePhoto;
+		if (timeline_rows.length == 0) {
+			timelineErrorMsg = "You curently have no timeline posts.";
+		} else {
+			timelineErrorMsg = "";
+			let timeline_card = "";
+			for (let i = 0; i < timeline_rows.length; i++) {
+				timeline_card += '<div class="timeline_card">'
+					+ '<img src="img/upload/console.png" alt="timeline photo" style="width:30px; height: 30px">'
+					+ '<h1>' + timeline_rows[i].id + '</h1>'
+					+ '<p>Text: ' + timeline_rows[i].timeline_text + '</p>'
+					+ '<p>Post date&time: ' + timeline_rows[i].post_date_time + '</p>'
+					+ '</div>'
+			}
+			// let timeline_table = "<table frame=void rules=rows><tr><th>ID</th><th>text</th><th>post date&time</th><th>Edit</th><th>Delete</th></tr>";
+			// let editButton = "<input type=\"button\" class=\"editBtn\" id=\"";
+			// let deleteButton = "<input type=\"button\" class=\"deleteBtn\" id=\"";
+			// for (let i = 0; i < timeline_rows.length; i++) {
+			// 	timeline_table += "<tr><td>"
+			// 		+ timeline_rows[i].id + "</td><td>"
+			// 		+ timeline_rows[i].timeline_text + "</td><td>"
+			// 		+ timeline_rows[i].post_date_time + "</td><td>"
+			// 		+ editButton + timeline_rows[i].id + "\" value=\"O\" >" + "</td><td>"
+			// 		+ deleteButton + timeline_rows[i].id + "\" value=\"X\" >" + "</td></tr>";
+			// }
+			// timeline_table += "</table>";
+			userDOM.window.document.getElementById("timeline_container").innerHTML = timeline_card;
+		}
+		userDOM.window.document.getElementById("timeline_errorMsg").innerHTML = timelineErrorMsg;
 
 		res.set("Server", "Wazubi Engine");
 		res.set("X-Powered-By", "Wazubi");
@@ -471,6 +501,42 @@ app.get("/signup", function (req, res) {
 		res.set("X-Powered-By", "Wazubi");
 		res.send(doc);
 	}
+})
+
+app.get("/timelineForm", function (req, res) {
+	res.setHeader("Content-Type", "text/html");
+	res.send(fs.readFileSync("./public/data/timeline-form-html.js", "utf8"));
+});
+
+app.post("/createTimeline", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	connection.connect();
+
+	let today = new Date();
+	let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	let dateTime = date + ' ' + time;
+
+	let addTimelineQuery;
+	let timelineInputs;
+
+	addTimelineQuery = "INSERT INTO timelines (user_id, timeline_text, post_date_time) values ?";
+	timelineInputs = [[req.session.user_id, req.body.content, dateTime]];
+
+	await connection.query(addTimelineQuery, [timelineInputs]);
+	connection.end();
+
+	res.redirect("/home");
+	//res.send({ status: "success", msg: "timeline added" });
 })
 
 async function init() {

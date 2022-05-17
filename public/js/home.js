@@ -11,6 +11,22 @@
 "use strict";
 ready(function () {
 
+    function ajaxGET(url, callback) {
+
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                //console.log('responseText:' + xhr.responseText);
+                callback(this.responseText);
+
+            } else {
+                console.log(this.status);
+            }
+        }
+        xhr.open("GET", url);
+        xhr.send();
+    }
+
     function ajaxPOST(url, callback, data) {
 
         /*
@@ -49,6 +65,12 @@ ready(function () {
         window.location.replace("/currentAccountInfo");
     })
 
+    document.querySelector("#open_timeline_form_btn").addEventListener("click", function (e) {
+        ajaxGET("/timelineForm", function (data) {
+            document.getElementById("timeline_form_container").innerHTML = data;
+        })
+    });
+
 });
 
 function ready(callback) {
@@ -58,3 +80,4 @@ function ready(callback) {
         document.addEventListener("DOMContentLoaded", callback);
     }
 }
+

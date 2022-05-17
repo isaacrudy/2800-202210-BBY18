@@ -20,3 +20,20 @@ CREATE TABLE IF NOT EXISTS charities (
     name    	    VARCHAR(20) NOT NULL,
     PRIMARY KEY(id)
 );
+
+USE `mydb`;
+CREATE TABLE IF NOT EXISTS charities (
+    id 				int AUTO_INCREMENT,
+    name    	    VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+USE `mydb`;
+CREATE TABLE IF NOT EXISTS timelines (
+    id 				int AUTO_INCREMENT,
+    user_id         int NOT NULL,
+    timeline_text    	    VARCHAR(200) NOT NULL,
+    post_date_time            varchar(30) NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
