@@ -73,6 +73,7 @@ app.get('/home', async function (req, res) {
 		const [rows, fields] = await connection.execute("SELECT * FROM users WHERE id = " + req.session.user_id);
 		const [timeline_rows, timeline_fields] = await connection.execute("SELECT * FROM timelines WHERE user_id = " + req.session.user_id);
 
+
 		let userDOM = new JSDOM(doc);
 		let timelineErrorMsg;
 		let imagePath;
@@ -87,26 +88,17 @@ app.get('/home', async function (req, res) {
 		} else {
 			timelineErrorMsg = "";
 			let timeline_card = "";
+			let timlineImg_rows;
 			for (let i = 0; i < timeline_rows.length; i++) {
+				timlineImg_rows = await connection.execute("SELECT * FROM timeline_image WHERE id = " + timeline_rows[i].timeline_image_id);
 				timeline_card += '<div class="timeline_card">'
-					+ '<img src="img/upload/console.png" alt="timeline photo" style="width:30px; height: 30px">'
-					+ '<h1>' + timeline_rows[i].id + '</h1>'
-					+ '<p>Text: ' + timeline_rows[i].timeline_text + '</p>'
-					+ '<p>Post date&time: ' + timeline_rows[i].post_date_time + '</p>'
+					+ '<img class="timeline_img" src="img/upload/' + timlineImg_rows[0][0].timeline_photo + '" alt="timeline photo"/>'
+					+ '<p class="timeline_text">' + timeline_rows[i].timeline_text + '</p>'
+					+ '<p class="timeline_date_time">Posted: ' + timeline_rows[i].post_date_time + '</p>'
+					+ '<input type="button" class="timeline_delete_btn" value="Delete" id="' + timeline_rows[i].id + '">'
+					+ '<input type="button" value="Update" id="' + timeline_rows[i].id + '">'
 					+ '</div>'
 			}
-			// let timeline_table = "<table frame=void rules=rows><tr><th>ID</th><th>text</th><th>post date&time</th><th>Edit</th><th>Delete</th></tr>";
-			// let editButton = "<input type=\"button\" class=\"editBtn\" id=\"";
-			// let deleteButton = "<input type=\"button\" class=\"deleteBtn\" id=\"";
-			// for (let i = 0; i < timeline_rows.length; i++) {
-			// 	timeline_table += "<tr><td>"
-			// 		+ timeline_rows[i].id + "</td><td>"
-			// 		+ timeline_rows[i].timeline_text + "</td><td>"
-			// 		+ timeline_rows[i].post_date_time + "</td><td>"
-			// 		+ editButton + timeline_rows[i].id + "\" value=\"O\" >" + "</td><td>"
-			// 		+ deleteButton + timeline_rows[i].id + "\" value=\"X\" >" + "</td></tr>";
-			// }
-			// timeline_table += "</table>";
 			userDOM.window.document.getElementById("timeline_container").innerHTML = timeline_card;
 		}
 		userDOM.window.document.getElementById("timeline_errorMsg").innerHTML = timelineErrorMsg;
@@ -519,8 +511,6 @@ app.post("/createTimeline", async function (req, res) {
 		multipleStatements: true
 	});
 
-	connection.connect();
-
 	let today = new Date();
 	let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 	let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -529,14 +519,29 @@ app.post("/createTimeline", async function (req, res) {
 	let addTimelineQuery;
 	let timelineInputs;
 
-	addTimelineQuery = "INSERT INTO timelines (user_id, timeline_text, post_date_time) values ?";
-	timelineInputs = [[req.session.user_id, req.body.content, dateTime]];
+	let timelineImage;
+	let uploadPath;
 
-	await connection.query(addTimelineQuery, [timelineInputs]);
-	connection.end();
+	if (!req.files || Object.keys(req.files).length === 0) {
+		return res.status(400).send("No files were uploaded.");
+	}
 
+	timelineImage = req.files.timeline_image;
+	uploadPath = __dirname + '/public/img/upload/' + timelineImage.name;
+
+	timelineImage.mv(uploadPath, async function (err) {
+		if (err) return res.status(500).send(err);
+		connection.connect();
+		await connection.query('INSERT INTO timeline_image (timeline_photo) VALUES ("' + timelineImage.name + '")');
+		const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from timeline_image");
+
+		addTimelineQuery = "INSERT INTO timelines (user_id, timeline_image_id, timeline_text, post_date_time) values ?";
+		timelineInputs = [[req.session.user_id, uploaded_row_id[0].uploadedID, req.body.content, dateTime]];
+		await connection.query(addTimelineQuery, [timelineInputs]);
+
+		connection.end();
+	});
 	res.redirect("/home");
-	//res.send({ status: "success", msg: "timeline added" });
 })
 
 async function init() {
@@ -558,6 +563,27 @@ async function init() {
 	}
 	connection.end();
 }
+
+app.post("/deleteTimeline", async function (req, res) {
+
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	connection.connect();
+	res.setHeader("Content-Type", "application/json");
+
+	await connection.query("DELETE FROM timelines where id = " + req.body.id);
+	connection.end();
+	res.send({ status: "success", msg: "Deleted" })
+
+});
 
 app.use(function (req, res, next) {
 	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Please check your url.</p></body></html>");

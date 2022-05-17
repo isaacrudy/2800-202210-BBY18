@@ -60,17 +60,45 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
+
     document.querySelector("#accocunt_management").addEventListener("click", function (e) {
         e.preventDefault();
         window.location.replace("/currentAccountInfo");
     })
 
+    var timeline_form_container = document.getElementById("timeline_form_container");
+    timeline_form_container.style.display = "none";
+
     document.querySelector("#open_timeline_form_btn").addEventListener("click", function (e) {
-        ajaxGET("/timelineForm", function (data) {
-            document.getElementById("timeline_form_container").innerHTML = data;
-        })
+        if (timeline_form_container.style.display == "none") {
+            ajaxGET("/timelineForm", function (data) {
+                document.getElementById("timeline_form_container").innerHTML = data;
+                timeline_form_container.style.display = "block";
+            })
+        } else {
+            timeline_form_container.style.display = "none";
+        }
     });
 
+    var timeline_delete_btn = document.getElementsByClassName("timeline_delete_btn");
+    for (let i = 0; i < timeline_delete_btn.length; i++) {
+        timeline_delete_btn[i].addEventListener("click", function (e) {
+            e.preventDefault();
+            const vars = { "id": e.target.id };
+            if (confirm("Are you sure you want to delete this timeline?")) {
+                ajaxPOST("/deleteTimeline", function (data) {
+                    if (data) {
+                        let dataParsed = JSON.parse(data);
+                        if (dataParsed.status == "fail") {
+                            document.getElementById("timeline_errorMsg").innerHTML = dataParsed.msg;
+                        } else {
+                            window.location.reload();
+                        }
+                    }
+                }, vars);
+            }
+        });
+    }
 });
 
 function ready(callback) {
@@ -81,3 +109,27 @@ function ready(callback) {
     }
 }
 
+var numberOfClicks = 0;
+document.getElementById("userName").addEventListener("click", function (e) {
+    numberOfClicks++;
+    if (numberOfClicks == 7) {
+        document.getElementById("easterEgg_btn").style.display = "block";
+        numberOfClicks = 0;
+    } else {
+        document.getElementById("easterEgg_btn").style.display = "none";
+    }
+    console.log(numberOfClicks);
+});
+
+var easterEgg = document.getElementById("easterEgg_container");
+easterEgg.style.display = "none";
+
+document.getElementById("easterEgg_btn").addEventListener("click", function (e) {
+    if (easterEgg.style.display == "none") {
+        easterEgg.style.display = "block";
+        document.getElementById("easterEgg_game").src = "https://cdn.htmlgames.com/FishingTrip/";
+    } else {
+        easterEgg.style.display = "none";
+        document.getElementById("easterEgg_game").src = "";
+    }
+});
