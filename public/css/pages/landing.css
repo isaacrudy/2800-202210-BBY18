@@ -1,0 +1,25 @@
+.container{
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: rgb(217, 212, 205);
+    margin: 6px 4px;
+}
+.content{
+    margin: 4px 8px;
+}
+.date{
+    margin: 0px 6px 2px;
+    text-align: right;
+}
+h4{
+    margin: 8px 4px 0px;
+    padding-left: 4px;
+    border-style: solid;
+    border-width: 0rem 0rem 0.1rem 0rem;
+    border-color: rgba(60, 60, 61, 0.301);
+}
+h2{
+    padding-left: 10px;
+    margin: 5px 0px;
+}
