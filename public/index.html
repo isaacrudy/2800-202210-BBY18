@@ -8,8 +8,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
-
-    
 </head>
 
 <body>
@@ -25,7 +23,7 @@
                     <nav>
                         <ul id="nav_ul">
                             <li><a href="#"><span>Home</span></a></li>
-                            <li><a href="#"><span>Charities</span></a></li>
+                            <li><a href="charities.html"><span>Charities</span></a></li>
                             <li><a href="#"><span>About Us</span></a></li>
                             <li><a href="/faq"><span>FAQ</span></a></li>
                             <li><a href="#"><span>Shop</span></a></li>
@@ -53,24 +51,31 @@
     <div id="wrapper">
         <h1>Welcome to FundCart</h1>
         <div>
-            <h2>News</h2>
+            <h2 id="landing-titles">News</h2>
 
             <div id="news" class="container">
                 <div class="banner" id="teamseas">
-                    <h4>We Teamed up! #Teamseas</h4>
+                    <h4 class="container-titles" id="textbox-title">We Teamed up! #Teamseas</h4>
                 </div>
                 <div class="inner-container">
-                    <p class="content">
+                    <p class="content" id="textbox">
                         Introducing a new partner to the FundCart team, #Teamseas! We are proud to be partnering with Mr.Beast and Mark Rober again for this amazing charity. Go read about it <a href="">here!</a>
                     </p>
                     <br>
+                    <div id="continue-container">
+                        <button id="continue" onclick="continueGame(0)">Continue</button>
+                    </div>
+                    <div id="option-container">
+                        <button id="optionOne" onclick="continueGame(0)">One</button>
+                        <button id="optionTwo" onclick="continueGame(1)">Two</button>
+                    </div>
                     <h5 class="date" id="currentDate">May 16th 2022</h5>
                 </div>
             </div>
 
             <div id="news" class="container">
                 <div class="banner" id="teamtrees">
-                    <h4>We'll be planting some seeds with #Teamtrees</h4>
+                    <h4 class="container-titles">We'll be planting some seeds with #Teamtrees</h4>
                 </div>
                 <div class="inner-container">
                     <p class="content">
@@ -83,10 +88,10 @@
 
             <br>
 
-            <h2>Promotions</h2>
+            <h2 id="landing-titles">Promotions</h2>
             <div id="promo" class="container">
                 <div class="banner" id="default-banner">
-                    <h4>New Partnership!</h4>
+                    <h4 class="container-titles">New Partnership!</h4>
                 </div>
                 <div class="inner-container">
                     <p class="content">
@@ -99,7 +104,7 @@
 
             <div id="promo" class="container">
                 <div class="banner"  id="default-banner">
-                    <h4>New Partnership!</h4>
+                    <h4 class="container-titles">New Partnership!</h4>
                 </div>
                 <div class="inner-container">
                     <p class="content">
@@ -119,7 +124,7 @@
                 <ul id="sitemap">
                     <li><a href="#"><span>Home</span></a></li>
                     <li><a href="#"><span>Sign in / Register</span></a></li>
-                    <li><a href="#"><span>Charities</span></a></li>
+                    <li><a href="charities.html"><span>Charities</span></a></li>
                     <li><a href="#"><span>About Us</span></a></li>
                     <li><a href="/faq"><span>FAQ</span></a></li>
                     <li><a href="#"><span>Contact</span></a></li>
@@ -145,7 +150,7 @@
                 </ul>
             </div>
 
-            <div>
+            <div onclick="launchGame()">
                 <p>
                     <i class="far fa-copyright"></i>
                     2022 - FundCart
@@ -155,6 +160,7 @@
         </section>
     </footer>
     <script src="js/signout.js"></script>
+    <script src="js/landing.js"></script>
 </body>
 
 </html>

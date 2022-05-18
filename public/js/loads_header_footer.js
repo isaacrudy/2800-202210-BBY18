@@ -8,7 +8,7 @@ class GlobalFooter extends HTMLElement
                         <ul id="sitemap">
                             <li><a href="#"><span>Home</span></a></li>
                             <li><a href="#"><span>Sign in / Register</span></a></li>
-                            <li><a href="#"><span>Charities</span></a></li>
+                            <li><a href="charities.html"><span>Charities</span></a></li>
                             <li><a href="#"><span>About Us</span></a></li>
                             <li><a href="/faq"><span>FAQ</span></a></li>
                             <li><a href="#"><span>Contact</span></a></li>
@@ -64,7 +64,7 @@ class GlobalHeader extends HTMLElement
                     <nav>
                         <ul id="nav_ul">
                             <li><a href="#"><span>Home</span></a></li>
-                            <li><a href="#"><span>Charities</span></a></li>
+                            <li><a href="charities.html"><span>Charities</span></a></li>
                             <li><a href="#"><span>About Us</span></a></li>
                             <li><a href="#"><span>FAQ</span></a></li>
                             <li><a href="#"><span>Shop</span></a></li>
