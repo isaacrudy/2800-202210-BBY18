@@ -14,12 +14,12 @@ input[type=text]
 
 #hitbox
 {
-    position: absolute;
+    position: relative;
     /* background-color: black; */
     width: 10px;
     height: 10px;
-    top: 281px;
-    left: 105px;
+    top: 15px;
+    left: 63px;
 }
 
 
@@ -165,6 +165,7 @@ input[type=text]
 .demo-container > .space-between span
 {
     margin: 10px 15px;
+
 }
 
 .bold-subheader
@@ -177,7 +178,7 @@ input[type=text]
 {
     width: 100px;
     height: 100px;
-    background: url(../../img/demo_page/orange_juice_small.png);
+    background: url(../../img/demo_page/eggs.png);
 }
 
 .width-90
