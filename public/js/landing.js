@@ -13,7 +13,7 @@ let storyindex = 0;
 let shouldExit = false;
 let isWizard = false;
 
-let story =
+const story =
     [
         [
             {
@@ -26,6 +26,9 @@ let story =
             },
             {
                 txt: "Goodbye.",
+                action: ()=>{
+                    document.getElementById('continue').innerText = "Goodbye";
+                },
                 exit: true
             }
         ],
@@ -35,6 +38,9 @@ let story =
             },
             {
                 txt: "You fool. What kind of witch hunter gives up? Your family has been cursed for generations. Good luck!",
+                action: ()=>{
+                    document.getElementById('continue').innerText = "The End";
+                },
                 exit: true
             }
         ],
@@ -46,6 +52,9 @@ let story =
         [
             {
                 txt: "A snake slivers up your pants, up your shirt, to your neck and takes a big bite. <br><br>Your muscles slowly tense up before your heart stops beating. <br><br>You've Died",
+                action: ()=>{
+                    document.getElementById('continue').innerText = "The End";
+                },
                 exit: true
             },
             {
@@ -55,6 +64,9 @@ let story =
         [
             {
                 txt: "One of the flies lands and you take a closer look. Upon investigation you realize that the flies are actually little green witches flying on broomsticks cackling. <br><br> They begin chanting and cast a curse on you. <br><br> You see that you have become a tiny green witch.",
+                action: ()=>{
+                    document.getElementById('continue').innerText = "The End";
+                },
                 exit: true
 
             },
@@ -88,8 +100,9 @@ let story =
                 txt: "",
                 action: () => {
                     if (isWizard) {
-                        text.innerHTML = "You cast a spell, annihilating the rancid being from existance. You exit the cave and resurrect the villagers with the wand as undead servants. Years pass and you become an evil lich, ruling over the kingdom for eternity.<br><br> The end."
+                        text.innerHTML = "You cast a spell, annihilating the rancid being from existence. You exit the cave and resurrect the villagers with the wand as undead servants. Years pass and you become an evil lich, ruling over the kingdom for eternity.<br><br> The end."
                         shouldExit = true;
+                        document.getElementById('continue').innerText = "The End";
                     } else {
                         text.innerHTML = "Exhausted, You start the battle. <br><br>The fight rages on. <br><br>Hours go by. <br><br>Nearly avoiding death with every spell that is cast towards you. But you're determined. You see an opening! <br><br>You take the chance and close the distance and with one fell swoop. <br><br>You've won. <br><br>Completely exhausted from the fight you collapse; unable to move. You feel your life slowly fade away."
                     }
@@ -99,6 +112,9 @@ let story =
         [
             {
                 txt: "Was it worth it?",
+                action: ()=>{
+                    document.getElementById('continue').innerText = "The End";
+                },
                 exit: true
             }
         ]
@@ -122,17 +138,23 @@ document.addEventListener('keydown', konamiCode);
 
 function displayGameButtons() {
     let requiresOptions = story[storyindex + 1] && story[storyindex + 1].length == 2;
-    if (requiresOptions) {
-        cont.style.display = "none";
-        options.style.display = "block";
-    } else {
+    if (shouldExit) {
         cont.style.display = "block";
         options.style.display = "none";
+    } else {
+        if (requiresOptions) {
+            cont.style.display = "none";
+            options.style.display = "block";
+        } else {
+            cont.style.display = "block";
+            options.style.display = "none";
+        }
     }
 }
 
 function launchGame() {
     title.innerHTML = "Welcome to the Game";
+    document.getElementById('continue').innerText = "Continue";
     invoked = true;
     shouldExit = false;
     storyindex = 0;
@@ -144,16 +166,16 @@ function continueGame(option) {
     if (shouldExit) {
         exitGame();
     } else {
-        storyindex++;
+        storyindex += 1;
         text.innerHTML = story[storyindex][option].txt;
         shouldExit = story[storyindex][option].exit;
         if (story[storyindex][option].action) {
             story[storyindex][option].action();
         }
-        displayGameButtons();
         if (!story[storyindex + 1]) {
             shouldExit = true;
         }
+        displayGameButtons();
     }
 }
 function exitGame() {
