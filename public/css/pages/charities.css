@@ -18,17 +18,24 @@
     bottom:0;
 }
 .charities-inner-container{
-
+    padding: 10px 8px 8px;
 }
 .charities-content{
-
+    margin: 4px 8px;
 }
-
-
-
-
-
-
+.animate {
+    animation: fadeIn 500ms ease-out backwards;
+}
+@keyframes fadeIn {
+    from {
+      transform: translateX(250px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
 
 
 #charities-teamseas{
