@@ -98,6 +98,7 @@ app.get('/home', async function (req, res) {
 					+ '<p class="timeline_date_time">Posted: ' + timeline_rows[i].post_date_time + '</p>'
 					+ '<input type="button" class="timeline_delete_btn" value="Delete" id="' + timeline_rows[i].id + '">'
 					+ '<input type="button" class="timeline_update_btn" value="Update" id="' + timeline_rows[i].id + '">'
+					+ '<div class="timeline_update_container" id="update_form_container' + timeline_rows[i].id + '">'
 					+ '</div>'
 			}
 			userDOM.window.document.getElementById("timeline_container").innerHTML = timeline_card;
@@ -660,8 +661,6 @@ async function init() {
 	}
 	connection.end();
 }
-
-
 
 app.use(function (req, res, next) {
 	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Please check your url.</p></body></html>");
