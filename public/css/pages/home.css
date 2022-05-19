@@ -216,7 +216,7 @@
         margin-bottom: 2%;
     }
 
-    #open_timeline_form_btn {
+    #open_timeline_form_btn, #easterEgg_btn {
         height: 50px;
         width: 150px;
         border-radius: 8px;
