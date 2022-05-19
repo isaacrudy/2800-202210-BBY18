@@ -67,18 +67,44 @@ ready(function () {
     })
 
     var timeline_form_container = document.getElementById("timeline_form_container");
+    var timeline_open_form = document.querySelector("#open_timeline_form_btn");
     timeline_form_container.style.display = "none";
 
-    document.querySelector("#open_timeline_form_btn").addEventListener("click", function (e) {
+    timeline_open_form.addEventListener("click", function (e) {
         if (timeline_form_container.style.display == "none") {
             ajaxGET("/timelineForm", function (data) {
+                timeline_open_form.value = "Close";
                 document.getElementById("timeline_form_container").innerHTML = data;
                 timeline_form_container.style.display = "block";
             })
         } else {
+            timeline_open_form.value = "Add Timeline";
             timeline_form_container.style.display = "none";
         }
     });
+
+    var timeline_update_btn = document.getElementsByClassName("timeline_update_btn");
+    var timeline_update_container = document.getElementById("timeline_update_container");
+    timeline_update_container.style.display = "none";
+
+    for (let i = 0; i < timeline_update_btn.length; i++) {
+        timeline_update_btn[i].addEventListener("click", function (e) {
+            e.preventDefault();
+            const vars = { "id": e.target.id };
+            ajaxPOST("/updateTimelineForm", function (data) {
+                if (data) {
+                    if (timeline_update_container.style.display == "none") {
+                        timeline_update_btn[i].value = "Close";
+                        timeline_update_container.innerHTML = data;
+                        timeline_update_container.style.display = "block";
+                    } else {
+                        timeline_update_container.style.display = "none";
+                        timeline_update_btn[i].value = "Update";
+                    }
+                }
+            }, vars);
+        });
+    }
 
     var timeline_delete_btn = document.getElementsByClassName("timeline_delete_btn");
     for (let i = 0; i < timeline_delete_btn.length; i++) {
@@ -132,4 +158,19 @@ document.getElementById("easterEgg_btn").addEventListener("click", function (e) 
         easterEgg.style.display = "none";
         document.getElementById("easterEgg_game").src = "";
     }
+});
+
+var profile_menu_content = document.getElementById("profile_dropdown_content");
+profile_menu_content.style.display = "none";
+document.getElementById("profile_dropbtn").addEventListener("click", function (e) {
+    if (profile_menu_content.style.display == "none") {
+        if (window.innerWidth >= 1150) {
+            profile_menu_content.style.display = "flex";
+        } else {
+            profile_menu_content.style.display = "block";
+        }
+    } else {
+        profile_menu_content.style.display = "none";
+    }
+
 });

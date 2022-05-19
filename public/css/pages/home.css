@@ -11,35 +11,19 @@
     font-size: 5em;
 }
 
-#profile_dropdown:hover #profile_dropdown_content {
-    display: contents;
-}
-
-#profile_dropdown_content {
-    display: none;
+#profile_dropbtn:hover {
+    filter: brightness(80%);
+    transition: var(--hover-speed) ease;
 }
 
 #profile_image {
     width: 10%;
     height: 10%;
     border-radius: 50%;
-    border: 5px solid black;
+    border: 3px solid black;
 }
 
-.timeline_card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 500px;
-    margin: auto;
-    text-align: center;
-    font-family: arial;
-}
-
-.timeline_img {
-    width: 100%;
-    height: 250px;
-}
-
-#timeline_image_uploader {
+#timeline_image_uploader, #timeline_image_update {
     display: none;
 }
 
@@ -58,4 +42,268 @@
 
 #timeline_form_container {
     display: none;
+}
+
+.timeline_card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.timeline_img {
+    width: 100%;
+    height: 250px;
+}
+
+@media screen and (max-width:1150px) {
+
+    #timeline {
+        width: 90%;
+    }
+
+    #profile_image {
+        width: 50%;
+        height: 170px;
+    }
+
+    #open_timeline_form_btn, #easterEgg_btn {
+        width: 100%;
+        height: 50px;
+        border-radius: 8px;
+    }
+
+    #timeline_form_container, #timeline_update_container {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+        width: 90%;
+        margin-top: 5%;
+    }
+
+    #timeline_content, #timeline_content_update {
+        width: 100%;
+        margin-top: 5%;
+    }
+
+    #timeline div {
+        margin: 0px 0px 20px 0px;
+        width: 100%;
+    }
+
+    #timeline_title {
+        text-align: center;
+    }
+
+    .timeline_image_label {
+        color: white;
+        background-color: #3ab3b0;
+        font-size: 2em;
+        padding-left: 3%;
+        padding-right: 3%;
+        border-radius: 8px;
+    }
+
+    .timeline_card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+        width: 100%;
+        margin: auto;
+        text-align: left;
+        margin-bottom: 40%;
+    }
+
+    .timeline_text {
+        padding-left: 3%;
+    }
+
+    .timeline_date_time {
+        padding-left: 3%;
+        font-size: x-small;
+    }
+
+    .timeline_img {
+        width: 100%;
+        height: 100px;
+    }
+
+    #profile_image_container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .image_uploader_container {
+        text-align: center;
+    }
+
+    #timeline_add_btn, #timeline_update_btn {
+        background-color: var(--fc_teal);
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        height: 50px;
+        font-size: large;
+        border-radius: 8px;
+    }
+
+    #profile_dropdown_content {
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #my_timeline_btn, #accocunt_management, #donation_history_btn, #logout_btn {
+        width: 90%;
+        border-radius: 8px;
+    }
+
+    input[type=button] {
+        width: 50%;
+        height: 50px;
+        border: solid 5px white;
+    }
+
+    .timeline_delete_btn {
+        width: 50%;
+        height: 50px;
+        border: solid 1px white;
+        border-radius: 8px;
+    }
+
+    .timeline_update_btn {
+        width: 50%;
+        height: 50px;
+        border-radius: 8px;
+    }
+
+    #timeline_create_form, #timeline_update_form {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width:1150px) {
+
+    header {
+        margin-bottom: 0;
+    }
+
+    #timeline div {
+        margin: 0;
+        width: 100%;
+    }
+
+    #profile_dropdown_content {
+        height: 100px;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    #my_timeline_btn, #accocunt_management, #donation_history_btn, #logout_btn {
+        width: 20%;
+        height: 80px;
+        margin-bottom: 0.1%;
+    }
+
+    #profile_image_container {
+        text-align: center;
+        width: 100%;
+    }
+
+    #profile_image {
+        width: 15%;
+        height: 150px;
+        margin-bottom: 2%;
+    }
+
+    #open_timeline_form_btn {
+        height: 50px;
+        width: 150px;
+        border-radius: 8px;
+    }
+
+    #timeline_form_container {
+        text-align: center;
+        margin-top: 3% !important;
+    }
+
+    #timeline_content, #timeline_content_update {
+        margin-top: 3%;
+        width: 100%;
+    }
+
+    #timeline_create_form, #timeline_update_form {
+        text-align: center;
+    }
+
+    .image_uploader_container {
+        text-align: left;
+    }
+
+    .timeline_image_label {
+        margin-right: 100px;
+        margin-bottom: 100px;
+        color: white;
+        background-color: #3ab3b0;
+        font-size: 2em;
+        padding-left: 3%;
+        padding-right: 3%;
+        border-radius: 8px;
+    }
+
+    .timeline_image_label:hover {
+        filter: brightness(80%);
+        transition: var(--hover-speed) ease;
+    }
+
+    #timeline_form_container, #timeline_update_container {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+        width: 100%;
+        border-radius: 8px;
+        padding: 5px;
+    }
+
+    #timeline_add_btn, #timeline_update_btn {
+        background-color: var(--fc_teal);
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        height: 50px;
+        font-size: large;
+        border-radius: 8px;
+    }
+
+    .timeline_card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+        width: 100%;
+        margin: auto;
+        text-align: left;
+        margin-bottom: 10px !important;
+    }
+
+    .timeline_text {
+        padding-left: 3%;
+    }
+
+    .timeline_date_time {
+        padding-left: 3%;
+        font-size: small;
+    }
+
+    input[type=button] {
+        border-radius: 8px;
+        border: solid 5px white;
+    }
+
+    .timeline_delete_btn {
+        width: 50%;
+        height: 50px;
+ 
+    }
+
+    .timeline_update_btn {
+        width: 50%;
+        height: 50px;
+    }
 }

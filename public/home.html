@@ -46,34 +46,34 @@
 
         <div id="profile_dropdown">
             <button id="profile_dropbtn">🤵🏻</button>
-            <div id="profile_dropdown_content">
-                <input type="button" value="My timeline" id="my_timeline_btn">
-                <input type="button" value="Account Management" id="accocunt_management">
-                <input type="button" value="Donation History" id="donation_history_btn">
-                <input type="button" value="Logout" id="logout_btn" onclick="signout()">
-            </div>
         </div>
     </header>
-
+    <div id="profile_dropdown_content">
+        <input type="button" value="My timeline" id="my_timeline_btn">
+        <input type="button" value="Account Management" id="accocunt_management">
+        <input type="button" value="Donation History" id="donation_history_btn">
+        <input type="button" value="Logout" id="logout_btn" onclick="signout()">
+    </div>
     <div id="wrapper">
         <div id="welcome_user">
-            <h1>Welcome</h1>
+            <h1>Welcome, </h1>
             <h1 id="userName"></h1>
         </div>
-        <img id="profile_image" src="../../public/images/Fundcart_smaller.jpg" alt="User's Profile Photo">
-        <input id="open_timeline_form_btn" type="button" value="Add timeline" />
+        <div id="profile_image_container">
+            <img id="profile_image" src="../../public/images/Fundcart_smaller.jpg" alt="User's Profile Photo">
+        </div>
+
         <input id="easterEgg_btn" type="button" value="Easter Egg" />
         <div id="easterEgg_container">
             <iframe id="easterEgg_game"></iframe>
         </div>
-        <div id="timeline_form_container">
-        </div>
         <div id="timeline">
-            <div>
-                <h2>Your Timeline:</h2>
-                <p id="timeline_errorMsg"></p>
-                <div id="timeline_container"></div>
-            </div>
+            <p id="timeline_errorMsg"></p>
+            <input id="open_timeline_form_btn" type="button" value="Add Timeline" />
+            <div id="timeline_form_container"></div>
+            <div id="timeline_update_container"></div>
+            <h2 id="timeline_title">Your Timeline:</h2>
+            <div id="timeline_container"></div>
         </div>
     </div>
 
