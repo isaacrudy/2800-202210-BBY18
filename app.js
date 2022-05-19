@@ -473,6 +473,53 @@ app.get("/signup", function (req, res) {
 	}
 })
 
+// app.get("/timeline", async function (req, res) {
+// 	const mysql = require('mysql2/promise');
+// 	const connection = await mysql.createConnection({
+// 		host: "localhost",
+// 		user: "root",
+// 		password: "",
+// 		database: "mydb",
+// 		multipleStatements: true
+// 	});
+
+// 	connection.connect();
+
+// 	const [rows, fields] = await connection.execute("SELECT * FROM timeline WHERE user_ID = " + req.session.user_id);
+// 	posts = "";
+
+
+// 	for (let i = 0; i < rows.length; i++) {
+// 		posts += "<div class='w3-card-4 w3-margin'><div class='w3-display-container' id='postImage'></div><div class='w3-row'> " +
+// 		 rows[i].post_Content + rows[i].time +"</div><button class='w3-button w3-green'>Edit</button><button class='w3-button w3-red'>Edit</button></div>"
+
+// 		switch (rows[i].image_ID) {
+// 			case 1:
+
+// 		}
+// 	}
+
+// 	await connection.end();
+
+// 	if (posts == "") {
+// 		posts = "<h2>No Timeline Posts at This Time!</h2>"
+// 	}
+
+// 	let profile = fs.readFileSync("public/timeline.html", "utf8");
+// 	let profileDOM = new JSDOM(profile);
+
+// 	profileDOM.window.document.getElementsByTagName("title")[0].innerHTML
+// 		= "Donation Timeline | " + req.session.name;
+// 	profileDOM.window.document.getElementById("user_name").innerHTML
+// 		= "Welcome " + req.session.name + "!";
+
+// 	profileDOM.window.document.getElementById("timelineContainer").innerHTML = posts;
+
+// 	res.set("Server", "Wazubi Engine");
+// 	res.set("X-Powered-By", "Wazubi");
+// 	res.send(profileDOM.serialize());
+// })
+
 async function init() {
 
 	const mysql = require("mysql2/promise");

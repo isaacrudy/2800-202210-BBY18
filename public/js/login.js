@@ -65,6 +65,15 @@ ready(function () {
     });
 });
 
+document.getElementById("login_title").addEventListener("click", function() {
+    document.getElementById('S').classList.add('fadeInOut');
+    document.getElementById('i').classList.add('fadeInOut2');
+    document.getElementById('g').classList.add('fadeInOut3');
+    document.getElementById('n').classList.add('fadeInOut4');
+    document.getElementById('I').classList.add('fadeInOut5');
+    document.getElementById('N').classList.add('fadeInOut6');
+});
+
 function ready(callback) {
     if (document.readyState != "loading") {
         callback();

@@ -29,6 +29,49 @@ Date: May 9, 2022
     margin-bottom: 50px;
 }
 
+/* .login_title:active{
+    animation: fade 2s linear;
+} */
+
+@keyframes fade {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0;}
+}
+
+.fadeInOut {
+    animation: fade 2s linear;
+}
+
+.fadeInOut2 {
+    animation: fade 2.5s linear;
+}
+
+.fadeInOut3 {
+    animation: fade 3s linear;
+}
+
+.fadeInOut4 {
+    animation: fade 3.5s linear;
+}
+
+.fadeInOut5 {
+    animation: fade 4s linear;
+}
+
+.fadeInOut6 {
+    animation: fade 4.5s linear;
+}
+
+
+/* .login_title > span:not(:active):before{
+    animation:  goDown .4s ease-in-out;
+}
+
+@keyframes goDown {
+    from {opacity: 1;}
+    to {opacity: 0;}
+} */
+
 #signup_form_inner {
     display: flex;
     flex-direction: column;
