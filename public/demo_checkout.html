@@ -8,13 +8,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/demo_checkout.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
     <script src="js/loads_header_footer.js"></script>
     
 </head>
 
 <body>
-    <global-header></global-header>
+    <div class="menu_wrapper">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger">
+            <div></div>
+        </div>
+
+    <header class="header_bar">
+        <div>
+            <img id="fundcart_logo" src="img/demo_page/fundmart_vertical_mobile.png" alt="FundCart Logo">
+            <img id="fundcart_logo_alt" src="img/demo_page/fundmart_full.png" alt="FundCart Logo">
+        </div>
+
+        <div>
+            <button class="demo-button"><i class="fa fa-solid fa-cart-shopping"></i></button>
+        </div>
+    </header>
 
     <div id="wrapper">
     
@@ -48,7 +64,7 @@
 
                 <div class="remove-and-update">
                     <div>
-                        <span class="remove"><i class="fa fa-solid fa-trash"></i>Remove</span>
+                        <span class="remove"><i class="fa fa-solid fa-trash"></i> Remove</span>
                     </div>
     
                     <div>
@@ -58,7 +74,7 @@
 
 
                 <div>
-                    <div class="oj"></div>
+                    <div class="eggs"></div>
 
                     <div>
                         <h3>Large Eggs</h3>
@@ -75,7 +91,7 @@
 
                 <div class="remove-and-update">
                     <div>
-                        <span class="remove"><i class="fa fa-solid fa-trash"></i>Remove</span>
+                        <span class="remove"><i class="fa fa-solid fa-trash"></i> Remove</span>
                     </div>
     
                     <div>
@@ -130,8 +146,29 @@
             </div>
         </div>
 
+        <div class="demo-container">
+            <div class="demo-container-header">
+                <h2>DONATIONS</h2>
+            </div>
+
+            <div class="donate-grid">
+                <div><span>Round up to <br> nearest dollar</span></div>
+                <div><span>5%</span></div>
+                <div><span>10%</span></div>
+                <div><span>20%</span></div>
+            </div>
+
+            <div>
+                <span>or</span>
+            </div>
+
+            <div>
+                <input type="text" placeholder="Custom Amount">
+            </div>
+        </div>
+
         <div class="width-90">
-            <button type="button" class="general_button"><span>PROCEED TO CHECKOUT</span></button>
+            <button type="button" class="demo-button"><span>PROCEED TO CHECKOUT</span></button>
         </div>
 
     </div>
