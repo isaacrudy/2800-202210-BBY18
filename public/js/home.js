@@ -16,11 +16,7 @@ ready(function () {
         const xhr = new XMLHttpRequest();
         xhr.onload = function () {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-                //console.log('responseText:' + xhr.responseText);
                 callback(this.responseText);
-
-            } else {
-                console.log(this.status);
             }
         }
         xhr.open("GET", url);
@@ -84,21 +80,21 @@ ready(function () {
     });
 
     var timeline_update_btn = document.getElementsByClassName("timeline_update_btn");
-    var timeline_update_container = document.getElementById("timeline_update_container");
-    timeline_update_container.style.display = "none";
-
+    var timeline_update_container = [];
     for (let i = 0; i < timeline_update_btn.length; i++) {
+        timeline_update_container[i] = document.getElementById("update_form_container" + timeline_update_btn[i].id);
+        timeline_update_container[i].style.display = "none";
         timeline_update_btn[i].addEventListener("click", function (e) {
             e.preventDefault();
             const vars = { "id": e.target.id };
             ajaxPOST("/updateTimelineForm", function (data) {
                 if (data) {
-                    if (timeline_update_container.style.display == "none") {
+                    if (timeline_update_container[i].style.display == "none") {
                         timeline_update_btn[i].value = "Close";
-                        timeline_update_container.innerHTML = data;
-                        timeline_update_container.style.display = "block";
+                        timeline_update_container[i].innerHTML = data;
+                        timeline_update_container[i].style.display = "block";
                     } else {
-                        timeline_update_container.style.display = "none";
+                        timeline_update_container[i].style.display = "none";
                         timeline_update_btn[i].value = "Update";
                     }
                 }
@@ -144,7 +140,6 @@ document.getElementById("userName").addEventListener("click", function (e) {
     } else {
         document.getElementById("easterEgg_btn").style.display = "none";
     }
-    console.log(numberOfClicks);
 });
 
 var easterEgg = document.getElementById("easterEgg_container");

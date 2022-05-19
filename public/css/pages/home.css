@@ -73,7 +73,7 @@
         border-radius: 8px;
     }
 
-    #timeline_form_container, #timeline_update_container {
+    #timeline_form_container, .timeline_update_container {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
         width: 90%;
         margin-top: 5%;
@@ -256,7 +256,7 @@
         transition: var(--hover-speed) ease;
     }
 
-    #timeline_form_container, #timeline_update_container {
+    #timeline_form_container, .timeline_update_container {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
         width: 100%;
         border-radius: 8px;
