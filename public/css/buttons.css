@@ -11,6 +11,25 @@ input[type=button]:hover, .general_button:hover{
 
 }
 
+.demo-button
+{
+    background-color: rgb(235, 55, 55);
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 0.8em;
+    border: none;
+    cursor: pointer;
+}
+
+.demo-button:hover
+{
+    filter: brightness(80%);
+    transition: var(--hover-speed) ease;
+}
+
 #sign_out, .general_button
 {
     background-color: var(--fc_purple);

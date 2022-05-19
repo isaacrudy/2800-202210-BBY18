@@ -21,6 +21,7 @@
     border: 1px solid var(--border_color);
     border-radius: 10px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .shop-grid-item > div
@@ -30,10 +31,18 @@
     align-items: center;
 }
 
+.shop-header
+{
+    background-color: white;
+    justify-content: center;
+}
+
 .shop-header h2
 {
     font-size: 1.2em;
-    margin-bottom: 2px;
+    margin: 5px 0px 2px 0px;
+    padding-left: 0px;
+    text-align: center;
 }
 
 .shop-header p
@@ -42,11 +51,61 @@
     margin: 0px 0px 5px 0px;
 }
 
-.shop-photo
+.shop-hover
 {
-    background-color: bisque;
+    position: relative;
+    top: 100px;
+    background-color: transparent;
+}
+
+.logo
+{
+    max-height: 150px;
+    justify-content: center;
+}
+
+.logo > span
+{
+    display: none;
+    font-weight: bold;
+}
+
+.banana-logo
+{
     height: 100%;
     width: 100%;
+    background: url(../../img/demo_page/banana.png);
+    background-size: contain;
+}
+
+.shop-grid-item:hover
+{
+    filter: brightness(60%);
+    transition: var(--hover-speed) ease;
+}
+
+.calvin-logo
+{
+    height: 100%;
+    width: 100%;
+    background: url(../../img/demo_page/calvin_yu.png);
+    background-size: contain;
+}
+
+.sinden-logo
+{
+    height: 100%;
+    width: 100%;
+    background: url(../../img/demo_page/sinden.png);
+    background-size: contain;
+}
+
+.fundmart-logo
+{
+    height: 100%;
+    width: 100%;
+    background: url(../../img/demo_page/fundmart.png);
+    background-size: contain;
 }
 
 #banner

@@ -15,13 +15,24 @@ input[type=text]
 #hitbox
 {
     position: relative;
-    /* background-color: black; */
+    background-color: black;
     width: 10px;
     height: 10px;
     top: 15px;
     left: 63px;
 }
 
+
+.header_bar i
+{
+    margin: 0px 20px;
+    font-size: 1.5em;
+}
+
+.toggler
+{
+    display: none;
+}
 
 
 .demo-container
@@ -47,7 +58,7 @@ input[type=text]
     padding: 0px;
     border-bottom: 1px solid rgba(211, 211, 211, 0.491);
     width: 100%;
-    background-color: rgba(230, 216, 241, 0.498);
+    background-color: rgb(237, 235, 235);
 
 }
 
@@ -174,7 +185,7 @@ input[type=text]
     font-weight: bold;
 }
 
-.oj
+.eggs
 {
     width: 100px;
     height: 100px;
@@ -186,13 +197,40 @@ input[type=text]
     width: 90%;
 }
 
-.general_button
+.demo-button
 {
     width: 100%;
     padding: 20px;
 }
 
-.general_button > span
+.demo-button > span
 {
     font-size: 1.5em;
+}
+
+.donate-grid
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-rows: 60px 60px;
+    grid-template-columns: 40% 40%;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+.donate-grid > div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    background-color: var(--fc_teal);
+    border-radius: 10px;
+    cursor: pointer;
 }
