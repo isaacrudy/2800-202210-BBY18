@@ -17,10 +17,12 @@
 
     .deleteBtn {
         width: 100px;
+        height: 30px !important;
     }
 
     .editBtn {
         width: 100px;
+        height: 30px !important;
     }
 
     #user_list_container td {
@@ -90,6 +92,10 @@
 
     td:nth-of-type(8):before {
         content: "Delete";
+    }
+
+    td:nth-of-type(9):before {
+        content: ""
     }
 }
 

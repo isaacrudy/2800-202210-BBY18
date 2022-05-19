@@ -1,0 +1,62 @@
+.charities-container{
+    border-radius: 10px 10px 0px 0px;
+    margin: 25px 20px;
+    background-color: white;
+    box-shadow: 4px 6px rgb(155, 155, 155);
+}
+.charities-banner{
+    margin: 0;
+    min-height: 95px;
+    min-width: 350px;
+    border-radius: 10px 10px 0px 0px;
+    background-size: cover;
+}
+.charities-container-titles{
+    margin: 5px 5px;
+    position:absolute;
+    bottom:0;
+}
+.charities-inner-container{
+    padding: 10px 8px 8px;
+}
+.charities-content{
+    margin: 4px 8px;
+}
+.animate {
+    animation: fadeIn 500ms ease-out backwards;
+}
+@keyframes fadeIn {
+    from {
+      transform: translateX(250px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+
+
+#charities-teamseas{
+    background-image: url(../../img/banners/teamseas.PNG);
+    background-position: 0 -15px;
+    color: rgb(255, 255, 255);
+}
+#charities-teamtrees{
+    background-image: url(../../img/banners/teamtrees.PNG);
+    background-position: 0 -50px;
+    color: rgb(255, 255, 255);
+}
+#charities-bcspca{
+    background-image: url(../../img/banners/bcspca.PNG);
+    background-position: 0 -34px;
+    color: rgb(255, 255, 255);
+}
+#charities-c-house{
+    background-image: url(../../img/banners/covenanthouse.PNG);
+    background-position: 0 -11.5px;
+}
+#charities-nkh{
+    background-image: url(../../img/banners/nokidhungry2.PNG);
+    background-position: 0 -25px;
+}

@@ -1,0 +1,56 @@
+/*
+Images from teamtrees.org, teamseas.org
+*/
+.container{
+    border-radius: 10px;
+    margin: 25px 20px;
+    background-color: white;
+    box-shadow: 4px 6px rgb(155, 155, 155);
+}
+.content{
+    margin: 4px 8px;
+}
+.date{
+    margin: 0;
+    padding: 0px 10px 10px;
+    text-align: right;
+}
+.inner-container{
+    padding: 10px 8px 8px;
+}
+.header_bar{
+    margin-bottom: 0;
+}
+.banner{
+    margin: 0;
+    padding: 60px 15px 15px;
+    border-radius: 10px 10px 0px 0px;
+    background-size: cover;
+}
+.container-titles{
+    border-style: solid;
+    border-width: 0rem 0rem 0.1rem 0rem;
+    border-color: rgba(60, 60, 61, 0.301);
+    margin: 0px;
+}
+#landing-titles{
+    padding-left: 10px;
+    margin: 5px 14px;
+}
+#wrapper{
+    background-color: rgb(240, 240, 240);
+    padding-bottom: 3.5rem;
+}
+#default-banner{
+    background-image: url(../../img/Fundcart_smaller.jpg);
+    background-position: 0px -15px;
+}
+#teamseas{
+    background-image: url(../../img/banners/teamseas.PNG);
+    background-position: 0 -15px;
+}
+#teamtrees{
+    background-image: url(../../img/banners/teamtrees.PNG);
+    background-position: 0 -50px;
+    color: rgb(255, 255, 255);
+}
