@@ -79,8 +79,8 @@ class GlobalHeader extends HTMLElement
         </div>
 
         <div>
-            <img id="fundcart_logo" src="/img/Logos/cart_logo_vertical_mobile.png" alt="FundCart Logo">
-            <img id="fundcart_logo_alt" src="/img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
+            <img id="fundcart_logo" src="img/Logos/cart_logo_vertical_mobile.png" alt="FundCart Logo">
+            <img id="fundcart_logo_alt" src="img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
         </div>
 
         <div>
