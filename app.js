@@ -31,6 +31,7 @@ const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
 const cors = require('cors');
+const { setTimeout } = require('timers');
 var corsOptions = {
 	origin: '*',
 }
@@ -71,8 +72,11 @@ app.get('/home', async function (req, res) {
 		connection.connect();
 
 		const [rows, fields] = await connection.execute("SELECT * FROM users WHERE id = " + req.session.user_id);
+		const [timeline_rows, timeline_fields] = await connection.execute("SELECT * FROM timelines WHERE user_id = " + req.session.user_id);
+
 
 		let userDOM = new JSDOM(doc);
+		let timelineErrorMsg;
 		let imagePath;
 
 		userDOM.window.document.getElementsByTagName("title")[0].innerHTML
@@ -80,6 +84,25 @@ app.get('/home', async function (req, res) {
 		userDOM.window.document.getElementById("userName").innerHTML
 			= req.session.name;
 		userDOM.window.document.getElementById("profile_image").src = 'img/upload/' + rows[0].profilePhoto;
+		if (timeline_rows.length == 0) {
+			timelineErrorMsg = "You curently have no timeline posts.";
+		} else {
+			timelineErrorMsg = "";
+			let timeline_card = "";
+			let timlineImg_rows;
+			for (let i = 0; i < timeline_rows.length; i++) {
+				timlineImg_rows = await connection.execute("SELECT * FROM timeline_image WHERE id = " + timeline_rows[i].timeline_image_id);
+				timeline_card += '<div class="timeline_card">'
+					+ '<img class="timeline_img" src="img/upload/' + timlineImg_rows[0][0].timeline_photo + '" alt="timeline photo"/>'
+					+ '<p class="timeline_text">' + timeline_rows[i].timeline_text + '</p>'
+					+ '<p class="timeline_date_time">Posted: ' + timeline_rows[i].post_date_time + '</p>'
+					+ '<input type="button" class="timeline_delete_btn" value="Delete" id="' + timeline_rows[i].id + '">'
+					+ '<input type="button" class="timeline_update_btn" value="Update" id="' + timeline_rows[i].id + '">'
+					+ '</div>'
+			}
+			userDOM.window.document.getElementById("timeline_container").innerHTML = timeline_card;
+		}
+		userDOM.window.document.getElementById("timeline_errorMsg").innerHTML = timelineErrorMsg;
 
 		res.set("Server", "Wazubi Engine");
 		res.set("X-Powered-By", "Wazubi");
@@ -473,6 +496,151 @@ app.get("/signup", function (req, res) {
 	}
 })
 
+app.get("/timelineForm", function (req, res) {
+	res.setHeader("Content-Type", "text/html");
+	res.send(fs.readFileSync("./public/data/timeline-form-html.js", "utf8"));
+});
+
+app.post("/createTimeline", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	let today = new Date();
+	let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	let dateTime = date + ' ' + time;
+
+	let addTimelineQuery;
+	let timelineInputs;
+
+	let timelineImage;
+	let uploadPath;
+
+	if (!req.files || Object.keys(req.files).length === 0) {
+		return res.status(400).send("No files were uploaded.");
+	}
+
+	timelineImage = req.files.timeline_image;
+	uploadPath = __dirname + '/public/img/upload/' + timelineImage.name;
+
+	timelineImage.mv(uploadPath, async function (err) {
+		if (err) return res.status(500).send(err);
+		connection.connect();
+		await connection.query('INSERT INTO timeline_image (timeline_photo) VALUES ("' + timelineImage.name + '")');
+		const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from timeline_image");
+
+		addTimelineQuery = "INSERT INTO timelines (user_id, timeline_image_id, timeline_text, post_date_time) values ?";
+		timelineInputs = [[req.session.user_id, uploaded_row_id[0].uploadedID, req.body.content, dateTime]];
+		await connection.query(addTimelineQuery, [timelineInputs]);
+
+		connection.end();
+	});
+	setTimeout(redirectPage, 500);
+
+	function redirectPage() {
+		res.redirect("/home");
+	}
+})
+
+app.post("/updateTimelineForm", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	connection.connect();
+
+	req.session.updateTimelineID = req.body.id;
+
+	const [timeline_rows, timeline_fields] = await connection.execute("SELECT * FROM timelines WHERE id = " + req.body.id);
+
+	let timline_update_form = "";
+	timline_update_form += '<form id="timeline_update_form" action="/updateTimeline" method="POST" enctype="multipart/form-data">'
+		+ '<h2>Edit post</h2>'
+		+ '<div class="image_uploader_container"><label class="timeline_image_label" for="timeline_image_update">'
+		+ '<i class="fa fa-file-upload"></i>Select your file</label>'
+		+ '<input id="timeline_image_update" name="timeline_image" type="file" accept="image/*" /></div>'
+		+ '<textarea id="timeline_content_update" name="content" type="text" rows="4" cols="50">' + timeline_rows[0].timeline_text + '</textarea>'
+		+ '<input id="timeline_update_btn" type="submit" value="Update"></input>'
+		+ '</form>';
+	res.setHeader("Content-Type", "text/html");
+	res.send(timline_update_form);
+	connection.end();
+})
+
+app.post("/updateTimeline", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	let timelineImage;
+	let uploadPath;
+
+	connection.connect();
+	if (!req.files || Object.keys(req.files).length === 0) {
+		await connection.query('UPDATE timelines SET timeline_text="' + req.body.content + '" WHERE ID = ' + req.session.updateTimelineID);
+		connection.end();
+	} else {
+		timelineImage = req.files.timeline_image;
+		uploadPath = __dirname + '/public/img/upload/' + timelineImage.name;
+
+		timelineImage.mv(uploadPath, async function (err) {
+			if (err) return res.status(500).send(err);
+
+			await connection.query('INSERT INTO timeline_image (timeline_photo) VALUES ("' + timelineImage.name + '")');
+			const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from timeline_image");
+
+			await connection.query('UPDATE timelines SET timeline_image_id="' + uploaded_row_id[0].uploadedID + '", timeline_text="' + req.body.content + '" WHERE ID = ' + req.session.updateTimelineID);
+			connection.end();
+		});
+	}
+	setTimeout(redirectPage, 500);
+
+	function redirectPage() {
+		res.redirect("/home");
+	}
+
+});
+
+app.post("/deleteTimeline", async function (req, res) {
+
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "mydb",
+		multipleStatements: true
+	});
+
+	connection.connect();
+	res.setHeader("Content-Type", "application/json");
+
+	await connection.query("DELETE FROM timelines where id = " + req.body.id);
+	connection.end();
+	res.send({ status: "success", msg: "Deleted" })
+
+});
+
 async function init() {
 
 	const mysql = require("mysql2/promise");
@@ -492,6 +660,8 @@ async function init() {
 	}
 	connection.end();
 }
+
+
 
 app.use(function (req, res, next) {
 	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Please check your url.</p></body></html>");
