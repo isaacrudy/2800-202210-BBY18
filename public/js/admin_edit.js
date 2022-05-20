@@ -18,9 +18,6 @@ ready(async function () {
   document.getElementById("password").value = res.password;
   document.getElementById("userRole").value = res.role;
 
-
-  //remember to put something for profile photo
-
   document.querySelector("#updateBtn").addEventListener("click", function (e) {
     e.preventDefault();
     let userID = params.id;
