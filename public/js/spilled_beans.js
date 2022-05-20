@@ -1,10 +1,4 @@
-// const bean = document.getElementsByClassName('beans');
-
-// bean.addEventListener('mouseenter', function(){
-//     text.innerHTML =   `hello`
-// });
-
-const text = document.getElementById('bean-header');
+let text = document.getElementById('bean-header');
 const beans = document.getElementById('beans');
 
 
