@@ -513,6 +513,17 @@ app.get("/signup", function (req, res) {
 		res.set("X-Powered-By", "Wazubi");
 		res.send(doc);
 	}
+});
+
+app.get("/login_check", function (req, res){
+	if (req.session.loggedIn = true && req.session.role == "regular") {
+		res.status(200).send({msg: "regular"});
+	}else if(req.session.loggedIn = true && req.session.role == "admin"){
+		res.send({msg: "admin"})
+	}else{
+		res.send({msg: "redirect"});
+	}
+
 })
 
 app.get("/timelineForm", function (req, res) {

@@ -21,6 +21,13 @@ Images from teamtrees.org, teamseas.org
 .header_bar{
     margin-bottom: 0;
 }
+<<<<<<< HEAD
+=======
+#wrapper{
+    background-color: rgb(245, 245, 245);
+    padding-bottom: 3.5rem;
+}
+>>>>>>> Dennis_Relos_MainDemo
 .banner{
     margin: 0;
     padding: 60px 15px 15px;

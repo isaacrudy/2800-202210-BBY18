@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FundCart | Shop</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/Logos/fundcart_favicon.ico">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/shop.css">
+    <link rel="stylesheet" href="css/media_queries/shop_queries.css">
+    <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
+    <script src="js/show_shop.js"></script>
+    <script src="js/loads_header_footer.js"></script>
+    
+</head>
+
+<body>
+    <global-header></global-header>
+
+    <div id="wrapper">
+        <div id="banner">
+            <h1>Shop with FundCart's Partners</h1>
+
+            <div id="banner-boxes">
+                <div class="search-bar fixed-width">
+                    <input type="text" placeholder="Search...">
+                </div>
+    
+                <div class="width-100">
+                    <p><span class="lines">or</span></p>
+                </div>
+
+
+                <div class="fixed-width">
+                    <label for="store-categories" id="label-categories">Categories</label>
+                    <select name="store-categories" id="store-categories">
+                        <option value="all" selected>All</option>
+                        <option value="automotive">Automotive</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="food">Food and Groceries</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="shop-grid">
+            <div class="shop-grid-item">
+                <div class="shop-header">
+                    <h2>Sinden Tuning</h2>
+                    <p>Automotive</p>
+                </div>
+
+                <div class="sinden-logo logo">
+                </div>
+            </div>
+
+
+            <div class="shop-grid-item">
+                <div class="shop-header">
+                    <h2>Banana</h2>
+                    <p>Electronics</p>
+                </div>
+
+                <div class="banana-logo logo">
+                </div>
+            </div>
+
+
+            <div class="shop-grid-item">
+                <div class="shop-header">
+                    <h2>Calvin Yu</h2>
+                    <p>Fashion</p>
+                </div>
+
+                <div class="calvin-logo logo">
+                    <span>Shop here</span>
+                </div>
+            </div>
+
+
+            <div class="shop-grid-item" onclick="window.open('demo_checkout.html', '_blank')">
+                <div class="shop-header">
+                    <h2>fundmart</h2>
+                    <p>Food and Groceries</p>
+                </div>
+
+                <div class="fundmart-logo logo">
+                    <span>Shop here</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="load-more" class="fixed-width">
+            <button type="button" class="general_button">Load more</button>
+        </div>
+
+
+    </div>
+
+
+    <global-footer></global-footer>
+
+    <script src="js/signout.js"></script>
+    <script src="js/disable_scrolling.js"></script>
+</body>
+
+</html>
