@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/demo_checkout.css">
+    <link rel="stylesheet" href="css/media_queries/demo_queries.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
     <script src="js/loads_header_footer.js"></script>
@@ -17,9 +18,8 @@
 <body>
     <div class="menu_wrapper">
         <input type="checkbox" class="toggler">
-        <div class="hamburger">
-            <div></div>
-        </div>
+        <div class="hamburger"><div></div></div>
+    </div>
 
     <header class="header_bar">
         <div>
@@ -33,183 +33,180 @@
     </header>
 
     <div id="wrapper">
-    
         <div class="banner-header">
             <h1>Checkout</h1>
         </div>
-
-        <div class="demo-container">
-            <div class="demo-container-header">
-                <h2>YOUR ORDER</h2>
+    
+        <div id="wrapper-inner">
+            <div class="demo-container" id="your-order">
+                <div class="demo-container-header">
+                    <h2>YOUR ORDER</h2>
+                </div>
+    
+                <div class="demo-container-body">
+                    <div>
+                        <div id="beans">
+                            <div id="hitbox" onmouseover="spill();" onmouseout="revert()"></div>
+                        </div>
+    
+                        <div>
+                            <h3 id="bean-header">Canned Beans</h3>
+                            
+                            <span>$2.19 ea</span><br>
+                            <span><strong>Quantity:</strong></span><br>
+                            <input readonly type="text" value="4">
+                        </div>
+    
+                        <div class="item-total">
+                            <h3>$8.76</h3>
+                        </div>
+                    </div>
+    
+                    <div class="remove-and-update">
+                        <div>
+                            <span class="remove"><i class="fa fa-solid fa-trash"></i> Remove</span>
+                        </div>
+        
+                        <div>
+                            <span class="update">Update</span>
+                        </div>
+                    </div>
+    
+                    <div>
+                        <div class="eggs"></div>
+    
+                        <div>
+                            <h3>Large Eggs</h3>
+    
+                            <span>$2.99 ea</span><br>
+                            <span><strong>Quantity:</strong></span><br>
+                            <input readonly type="text" value="1">
+                        </div>
+    
+                        <div class="item-total">
+                            <h3>$2.99</h3>
+                        </div>
+                    </div>
+    
+                    <div class="remove-and-update">
+                        <div>
+                            <span class="remove"><i class="fa fa-solid fa-trash"></i> Remove</span>
+                        </div>
+        
+                        <div>
+                            <span class="update">Update</span>
+                        </div>
+                    </div>
+    
+    
+                    <div class="space-between">
+                        <div>
+                            <span>Subtotal</span>
+                        </div>
+                        
+                        <div>
+                            <span>$11.75</span>
+                        </div>
+                    </div>
+    
+                </div>
             </div>
-
-            <div class="demo-container-body">
-                <div>
-                    <div id="beans">
-                        <div id="hitbox" onmouseover="spill();" onmouseout="revert()"></div>
-                    </div>
-
-                    <div>
-                        <h3 id="bean-header">Canned Beans</h3>
-                        
-                        <span>$2.19 ea</span><br>
-                        <span><strong>Quantity:</strong></span><br>
-                        <input readonly type="text" value="4">
-                    </div>
-
-                    <div class="item-total">
-                        <h3>$8.76</h3>
-                    </div>
-                </div>
-
-                <div class="remove-and-update">
-                    <div>
-                        <span class="remove"><i class="fa fa-solid fa-trash"></i> Remove</span>
-                    </div>
     
-                    <div>
-                        <span class="update">Update</span>
+            <div class="flex-center" id="summary-donations">
+                <div class="demo-container">
+                    <div class="demo-container-header">
+                        <h2>ORDER SUMMARY</h2>
                     </div>
-                </div>
-
-
-                <div>
-                    <div class="eggs"></div>
-
-                    <div>
-                        <h3>Large Eggs</h3>
-                        
-                        <span>$2.99 ea</span><br>
-                        <span><strong>Quantity:</strong></span><br>
-                        <input readonly type="text" value="1">
-                    </div>
-
-                    <div class="item-total">
-                        <h3>$2.99</h3>
-                    </div>
-                </div>
-
-                <div class="remove-and-update">
-                    <div>
-                        <span class="remove"><i class="fa fa-solid fa-trash"></i> Remove</span>
-                    </div>
-    
-                    <div>
-                        <span class="update">Update</span>
-                    </div>
-                </div>
-
-
-                <div class="space-between">
-                    <div>
-                        <span>Subtotal</span>
-                    </div>
-                    
-                    <div>
+        
+                    <div class="space-between margin-top">
+                        <span>Subtotal<br><small>5 items</small></span>
                         <span>$11.75</span>
                     </div>
+        
+                    <div class="space-between">
+                        <span>Delivery</span>
+                        <span>$5.42</span>
+                    </div>
+        
+                    <div class="space-between">
+                        <span>Additional Fees</span>
+                        <span>$0.20</span>
+                    </div>
+        
+                    <div class="space-between border-bottom">
+                        <span>Taxes</span>
+                        <span>$0.00</span>
+                    </div>
+        
+                    <div class="space-between padding-top">
+                        <span class="bold-big">Total</span>
+                        <span class="bold-big">$17.37</span>
+                    </div>
+                </div>
+        
+                <div class="demo-container donation">
+                    <div class="demo-container-header">
+                        <h2>DONATIONS</h2>
+                    </div>
+        
+                    <div class="donate-grid">
+                        <div><span>Round up to <br> nearest dollar</span></div>
+                        <div><span>5%</span></div>
+                        <div><span>10%</span></div>
+                        <div><span>20%</span></div>
+                    </div>
+        
+                    <div class="text-center">
+                        <p class="no-line-height"><span class="lines">or</span></p>
+                    </div>
+        
+                    <div class="flex-center border-bottom">
+                        <form>
+                            <input type="number" min="0.01" max="500" placeholder="Custom Amount" id="donation-amount">
+                        </form>
+                    </div>
+        
+                    <div class="space-between padding-top" id="donation-total-container">
+                        <span class="bold-big">Total with Donation</span>
+                        <span class="bold-big" id="donation-total">$17.37</span>
+                    </div>
+
+                    
                 </div>
 
-
-            </div>
-
-        </div>
-
-        <div class="demo-container">
-            <div class="demo-container-header">
-                <h2>ORDER SUMMARY</h2>
-            </div>
-
-            <div class="space-between margin-top">
-                <span>Subtotal<br><small>5 items</small></span>
-                <span>$11.75</span>
-            </div>
-
-            <div class="space-between">
-                <span>Delivery</span>
-                <span>$5.42</span>
-            </div>
-
-            <div class="space-between">
-                <span>Additional Fees</span>
-                <span>$0.20</span>
-            </div>
-
-            <div class="space-between border-bottom">
-                <span>Taxes</span>
-                <span>$0.00</span>
-            </div>
-
-            <div class="space-between padding-top">
-                <span class="bold-big">Total</span>
-                <span class="bold-big">$17.37</span>
+                <div class="width-90">
+                    <button type="button" class="demo-button"><span>PROCEED TO PAYMENT</span></button>
+                </div>
             </div>
         </div>
-
-        <div class="demo-container">
-            <div class="demo-container-header">
-                <h2>DONATIONS</h2>
-            </div>
-
-            <div class="donate-grid">
-                <div><span>Round up to <br> nearest dollar</span></div>
-                <div><span>5%</span></div>
-                <div><span>10%</span></div>
-                <div><span>20%</span></div>
-            </div>
-
-            <div>
-                <span>or</span>
-            </div>
-
-            <div>
-                <input type="text" placeholder="Custom Amount">
-            </div>
-        </div>
-
-        <div class="width-90">
-            <button type="button" class="demo-button"><span>PROCEED TO PAYMENT</span></button>
-        </div>
-
     </div>
 
 
     <footer>
         <section>
             <div>
-                <ul id="sitemap">
-                    <li><a href="#"><span>Home</span></a></li>
-                    <li><a href="#"><span>Sign in / Register</span></a></li>
-                    <li><a href="#"><span>Charities</span></a></li>
-                    <li><a href="#"><span>About Us</span></a></li>
-                    <li><a href="/faq"><span>FAQ</span></a></li>
-                    <li><a href="#"><span>Contact</span></a></li>
-                    <li><a href="#"><span>Shop</span></a></li>
-                </ul>
-            </div>
+                <div>
+                    <h2>Need Help?</h2>
+                </div>
 
-            <div>
-                <h3>Follow Us!</h3>
+                <div>
+                    <p><b>Give us a call</b></p>
+                    <p>778-823-1234</p>
+                    <p>Monday - Friday</p>
+                    <p>8:30 AM - 5:30 PM PST</p>
+                </div>
 
-                <ul id="footer_socials">
-                    <li>
-                        <a href="#">
-                            <i class="fab fa-facebook-square"></i>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                </ul>
+                <div>
+                    <p><b>Send us an email</b></p>
+                    <p>support@fundmart.ca</p>
+                    <p>We will reply within 24 hours</p>
+                </div>
             </div>
 
             <div>
                 <p>
                     <i class="far fa-copyright"></i>
-                    2022 - FundCart
+                    2022 - fundmart
                 </p>
             </div>
 
