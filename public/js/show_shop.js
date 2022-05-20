@@ -9,8 +9,7 @@
 ************************************************************************
 */
 "use strict";
-let checkAdmin = "admin";
-let checkUser = "regular";
+const fail = "redirect";
 
 
 ready(function () {
@@ -18,16 +17,8 @@ ready(function () {
         method: "GET",
         headers: {"Content-Type": "application/json"}
     }).then(response => response.json()).then((response) => {
-        // if (response.msg !== checkAdmin || response.msg !== checkUser) {
-        //     window.location.assign("login.html")
-        // }
-
-        if (response.msg === checkUser) {
-            // console.log("Hello");
-        } else if (response.msg === checkAdmin) {
-            // console.log("You're an Administrator!")
-        } else {
-            window.location.assign("login.html");
+        if (response.msg === fail) {
+            window.location.assign("login.html")
         }
     })
 
