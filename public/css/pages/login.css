@@ -29,6 +29,9 @@ Date: May 9, 2022
     margin-bottom: 50px;
 }
 
+/* .login_title:active{
+    animation: fade 2s linear;
+} */
 
 @keyframes fade {
     0%, 100% {opacity: 1;}
@@ -59,6 +62,15 @@ Date: May 9, 2022
     animation: fade 4.5s linear;
 }
 
+
+/* .login_title > span:not(:active):before{
+    animation:  goDown .4s ease-in-out;
+}
+
+@keyframes goDown {
+    from {opacity: 1;}
+    to {opacity: 0;}
+} */
 
 #signup_form_inner {
     display: flex;

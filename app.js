@@ -50,6 +50,7 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+//http.createServer(app).listen(8000);
 
 app.get('/', function (req, res) {
 	console.log("loaded");

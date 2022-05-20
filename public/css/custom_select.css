@@ -1,5 +1,6 @@
 .custom-select
 {
+  /* flex-direction: column; */
   justify-content: space-between !important;
   align-items: center;
   gap: 20px;
