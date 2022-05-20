@@ -17,7 +17,7 @@ class GlobalHeader extends HTMLElement
                             <li><a href="charities.html"><span>Charities</span></a></li>
                             <li><a href="#"><span>About Us</span></a></li>
                             <li><a href="/faq"><span>FAQ</span></a></li>
-                            <li><a href="/shop"><span>Shop</span></a></li>
+                            <li><a href="shop.html"><span>Shop</span></a></li>
                         </ul>
                     </nav>
                 </div>
