@@ -252,6 +252,12 @@ input[type=text]
     text-align: center;
 }
 
+.donate-grid > div:hover
+{
+    filter: brightness(80%);
+    transition: var(--hover-speed) ease;
+}
+
 .donate-grid span
 {
     margin-bottom: 0px;
