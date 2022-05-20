@@ -34,7 +34,7 @@ Images from teamtrees.org, teamseas.org
     border-color: rgba(60, 60, 61, 0.301);
     margin: 0px;
 }
-#landing-titles{
+.landing-titles{
     padding-left: 10px;
     margin: 5px 14px;
 }
@@ -42,7 +42,7 @@ Images from teamtrees.org, teamseas.org
     background-color: rgb(240, 240, 240);
     padding-bottom: 3.5rem;
 }
-#default-banner{
+.default-banner{
     background-image: url(../../img/Fundcart_smaller.jpg);
     background-position: 0px -15px;
 }
