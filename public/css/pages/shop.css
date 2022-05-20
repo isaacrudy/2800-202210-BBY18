@@ -3,7 +3,7 @@
     margin-bottom: 0;
 }
 
-.grid-2x2
+.shop-grid
 {
     width: 80%;
     display: grid;
@@ -175,7 +175,7 @@
     display: block;
     margin-top: 30px;
     border-bottom: 2px solid var(--border_color);
-    width: 90%;
+    width: 100%;
     line-height: 0.1em;
 }
 

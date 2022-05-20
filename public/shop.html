@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/shop.css">
+    <link rel="stylesheet" href="css/media_queries/shop_queries.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
     <script src="js/show_shop.js"></script>
     <script src="js/loads_header_footer.js"></script>
@@ -21,28 +22,31 @@
         <div id="banner">
             <h1>Shop with FundCart's Partners</h1>
 
-            <div class="search-bar fixed-width">
-                <input type="text" placeholder="Search...">
-            </div>
+            <div id="banner-boxes">
+                <div class="search-bar fixed-width">
+                    <input type="text" placeholder="Search...">
+                </div>
+    
+                <div class="width-100">
+                    <p><span class="lines">or</span></p>
+                </div>
 
-            <div class="width-100">
-                <p><span class="lines">or</span></p>
-            </div>
 
-            <div class="fixed-width">
-                <label for="store-categories" id="label-categories">Categories</label>
-                <select name="store-categories" id="store-categories">
-                    <option value="all" selected>All</option>
-                    <option value="automotive">Automotive</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="fashion">Fashion</option>
-                    <option value="food">Food and Groceries</option>
-                </select>
+                <div class="fixed-width">
+                    <label for="store-categories" id="label-categories">Categories</label>
+                    <select name="store-categories" id="store-categories">
+                        <option value="all" selected>All</option>
+                        <option value="automotive">Automotive</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="food">Food and Groceries</option>
+                    </select>
+                </div>
             </div>
         </div>
 
 
-        <div class="grid-2x2">
+        <div class="shop-grid">
             <div class="shop-grid-item">
                 <div class="shop-header">
                     <h2>Sinden Tuning</h2>
