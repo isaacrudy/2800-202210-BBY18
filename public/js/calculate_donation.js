@@ -57,4 +57,8 @@ function twentyPercent() {
 function customAmount() {
     newTotal = (+donateVal.value) + (+stripped)
     donateTotal.innerHTML = '$' + newTotal.toFixed(2);
+    nearDollar.style.background = "var(--fc_teal)";
+    fP.style.background = "var(--fc_teal)";
+    tP.style.background = "var(--fc_teal)";
+    twP.style.background = "var(--fc_teal)";
 }
