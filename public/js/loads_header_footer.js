@@ -17,7 +17,7 @@ class GlobalHeader extends HTMLElement
                             <li><a href="charities.html"><span>Charities</span></a></li>
                             <li><a href="#"><span>About Us</span></a></li>
                             <li><a href="/faq"><span>FAQ</span></a></li>
-                            <li><a href="#"><span>Shop</span></a></li>
+                            <li><a href="shop.html"><span>Shop</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -53,9 +53,9 @@ class GlobalFooter extends HTMLElement
                             <li><a href="#"><span>Sign in / Register</span></a></li>
                             <li><a href="/charities"><span>Charities</span></a></li>
                             <li><a href="#"><span>About Us</span></a></li>
-                            <li><a href="/faq"><span>FAQ</span></a></li>
+                            <li><a href="#"><span>FAQ</span></a></li>
                             <li><a href="#"><span>Contact</span></a></li>
-                            <li><a href="#"><span>Shop</span></a></li>
+                            <li><a href="shop.html"><span>Shop</span></a></li>
                         </ul>
                     </div>
 

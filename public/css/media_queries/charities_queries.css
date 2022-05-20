@@ -1,0 +1,10 @@
+@media screen and (min-width: 1150px) {
+    .charities-container
+    {
+        max-width: 800px;
+    }
+
+    #charities-nkh{
+        background-image: url(../../img/banners/nokidhungry.PNG);
+    }
+}

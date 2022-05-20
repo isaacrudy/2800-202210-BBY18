@@ -1,0 +1,193 @@
+.header_bar
+{
+    margin-bottom: 0;
+}
+
+.shop-grid
+{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 170px 170px;
+    grid-template-rows: repeat(2, 200px);
+    column-gap: 20px;
+    row-gap: 30px;
+    margin-bottom: 30px;
+    justify-content: center;
+
+}
+
+.shop-grid-item
+{
+    border: 1px solid var(--border_color);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.shop-grid-item > div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shop-header
+{
+    background-color: white;
+    justify-content: center;
+}
+
+.shop-header h2
+{
+    font-size: 1.2em;
+    margin: 5px 0px 2px 0px;
+    padding-left: 0px;
+    text-align: center;
+}
+
+.shop-header p
+{
+    font-size: .8em;
+    margin: 0px 0px 5px 0px;
+}
+
+.shop-hover
+{
+    position: relative;
+    top: 100px;
+    background-color: transparent;
+}
+
+.logo
+{
+    max-height: 150px;
+    justify-content: center;
+}
+
+.logo > span
+{
+    display: none;
+    font-weight: bold;
+}
+
+.banana-logo
+{
+    height: 100%;
+    width: 100%;
+    background: url(../../img/demo_page/banana.png);
+    background-size: contain;
+}
+
+.shop-grid-item:hover
+{
+    filter: brightness(60%);
+    transition: var(--hover-speed) ease;
+}
+
+.calvin-logo
+{
+    height: 100%;
+    width: 100%;
+    background: url(../../img/demo_page/calvin_yu.png);
+    background-size: contain;
+}
+
+.sinden-logo
+{
+    height: 100%;
+    width: 100%;
+    background: url(../../img/demo_page/sinden.png);
+    background-size: contain;
+}
+
+.fundmart-logo
+{
+    height: 100%;
+    width: 100%;
+    background: url(../../img/demo_page/fundmart.png);
+    background-size: contain;
+}
+
+.fixed-width
+{
+    width: 360px;
+}
+
+.width-100
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input, #store-categories
+{
+    width: 100%;
+    height: 55px;
+    text-indent: 10px;
+    border: none;
+}
+
+.search-bar input:focus, #store-categories:focus
+{
+    outline: 2px solid var(--fc_teal);
+}
+
+.lines
+{
+    background-color: #e8dff6;
+    color: var(--fc_purple);
+}
+
+
+#label-categories
+{
+    position: relative;
+    top: 9px;
+    left: -135px;
+    color: var(--fc_purple);
+}
+
+
+#banner
+{
+    background-color: #e8dff6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 50px;
+    padding-top: 20px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#banner h1
+{
+    font-size: 1.5em;
+    color: var(--fc_purple);
+}
+
+#banner p
+{
+    display: block;
+    margin-top: 30px;
+    border-bottom: 2px solid var(--border_color);
+    width: 100%;
+    line-height: 0.1em;
+}
+
+
+#load-more
+{
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#load-more > button
+{
+    width: 100%;
+    font-size: 1.2em;
+    padding: 15px 0px;
+}
