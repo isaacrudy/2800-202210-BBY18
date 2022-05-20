@@ -55,6 +55,9 @@ function twentyPercent() {
 }
 
 function customAmount() {
+    if (donateVal.value > 500) {
+        donateVal.value = 500;
+    }
     newTotal = (+donateVal.value) + (+stripped)
     donateTotal.innerHTML = '$' + newTotal.toFixed(2);
     nearDollar.style.background = "var(--fc_teal)";
