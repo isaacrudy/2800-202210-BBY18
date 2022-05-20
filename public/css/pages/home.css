@@ -63,8 +63,8 @@
     }
 
     #profile_image {
-        width: 50%;
-        height: 170px;
+        width: auto;
+        height: 100px;
     }
 
     #open_timeline_form_btn, #easterEgg_btn {
@@ -212,7 +212,7 @@
     }
 
     #profile_image {
-        width: 15%;
+        width: auto;
         height: 150px;
         margin-bottom: 2%;
     }
