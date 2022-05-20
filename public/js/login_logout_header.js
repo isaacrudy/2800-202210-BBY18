@@ -1,16 +1,4 @@
-/* 
-************************************************************************
-    Source Code
-    Title: Code Examples from COMP 1537 Web Development1
-    Author: Arron Ferguon
-    Availability: BCIT Learning Hub
-	
-    Edited and adapted by Amadeus Min on May 5, 2022
-************************************************************************
-*/
-"use strict";
-ready(function () {
-
+header_ready (function(req, res) {
     function ajaxPOST(url, callback, data) {
 
         /*
@@ -45,36 +33,23 @@ ready(function () {
         xhr.send(params);
     }
 
-    document.querySelector("#loginBtn").addEventListener("click", function (e) {
-        e.preventDefault();
-        let email = document.getElementById("email");
-        let password = document.getElementById("password");
-        let queryString = "email=" + email.value + "&password=" + password.value;
-        const vars = { "email": email, "&password": password }
-        ajaxPOST("/login", function (data) {
-
-            if (data) {
-                let dataParsed = JSON.parse(data);
-                if (dataParsed.status == "fail") {
-                    document.getElementById("errorMsg").innerHTML = dataParsed.msg;
-                } else {
-                    window.location.replace("/home");
-                }
-            }
-        }, queryString);
+    ajaxPOST("/isLoggedIn", function(data) {
+        if (data) {
+            document.getElementById("account_buttons").innerHTML =
+			    "<div id='profile_dropdown_content'> " + 
+			    "<input type='button' value='My timeline' id='my_timeline_btn'>" + 
+			    "<input type='button' value='Account Management' id='accocunt_management'>" + 
+			    "<input type='button' value='Donation History' id='donation_history_btn'>" + 
+			    "<input type='button' value='Logout' id='logout_btn' onclick='signout()'> </div>"
+        } else {
+            document.getElementById("account_buttons").innerHTML =
+			    "<button onclick='signout()' id='sign_out'>Logout</button>"
+        }
     });
 });
 
-document.getElementById("login_title").addEventListener("click", function () {
-    document.getElementById('S').classList.add('fadeInOut');
-    document.getElementById('i').classList.add('fadeInOut2');
-    document.getElementById('g').classList.add('fadeInOut3');
-    document.getElementById('n').classList.add('fadeInOut4');
-    document.getElementById('I').classList.add('fadeInOut5');
-    document.getElementById('N').classList.add('fadeInOut6');
-});
 
-function ready(callback) {
+function header_ready(callback) {
     if (document.readyState != "loading") {
         callback();
     } else {

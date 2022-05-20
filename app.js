@@ -463,6 +463,18 @@ app.get("/faq", function (req, res) {
 	let doc = fs.readFileSync("./public/faq.html", "utf8")
 	let userDOM = new JSDOM(doc);
 
+	if (req.session.loggedIn = true) {
+		doc.getElementById("account_buttons").innerHTML =
+			"<div id='profile_dropdown_content'> " + 
+			"<input type='button' value='My timeline' id='my_timeline_btn'>" + 
+			"<input type='button' value='Account Management' id='accocunt_management'>" + 
+			"<input type='button' value='Donation History' id='donation_history_btn'>" + 
+			"<input type='button' value='Logout' id='logout_btn' onclick='signout()'> </div>"
+	} else {
+		doc.getElementById("account_buttons").innerHTML =
+			"<button onclick='signout()' id='sign_out'>Logout</button>"
+	}
+
 	res.set("Server", "Wazubi Engine");
 	res.set("X-Powered-By", "Wazubi");
 	res.send(userDOM.serialize());
@@ -496,6 +508,20 @@ app.post("/logout", function (req, res) {
 			}
 		});
 	}
+});
+
+app.post("/isLoggedIn", function (req, res) {
+	// if (req.session.loggedIn = true) {
+	// 	document.getElementById("account_buttons").innerHTML =
+	// 		"<div id='profile_dropdown_content'> " + 
+	// 		"<input type='button' value='My timeline' id='my_timeline_btn'>" + 
+	// 		"<input type='button' value='Account Management' id='accocunt_management'>" + 
+	// 		"<input type='button' value='Donation History' id='donation_history_btn'>" + 
+	// 		"<input type='button' value='Logout' id='logout_btn' onclick='signout()'> </div>"
+	// } else {
+	// 	document.getElementById("account_buttons").innerHTML =
+	// 		"<button onclick='signout()' id='sign_out'>Logout</button>"
+	// }
 });
 
 app.get("/signup", function (req, res) {

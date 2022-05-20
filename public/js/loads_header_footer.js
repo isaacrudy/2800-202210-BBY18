@@ -33,7 +33,7 @@ class GlobalHeader extends HTMLElement
             <img id="fundcart_logo_alt" src="/img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
         </div>
 
-        <div>
+        <div id='account_buttons'>
             <button onclick="signout()" id="sign_out">Logout</button>
         </div>
     </header>
@@ -92,3 +92,18 @@ class GlobalFooter extends HTMLElement
 
 customElements.define('global-footer', GlobalFooter)
 customElements.define('global-header', GlobalHeader)
+loggedIn();
+
+function loggedIn (req, res, next) {
+    if (req.isAuthenticated()) {
+        document.getElementById("account_buttons").innerHTML =
+            "<div id='profile_dropdown_content'> " + 
+            "<input type='button' value='My timeline' id='my_timeline_btn'>" + 
+            "<input type='button' value='Account Management' id='accocunt_management'>" + 
+            "<input type='button' value='Donation History' id='donation_history_btn'>" + 
+            "<input type='button' value='Logout' id='logout_btn' onclick='signout()'> </div>"
+    } else {
+        document.getElementById("account_buttons").innerHTML =
+            "<button onclick='signout()' id='sign_out'>Logout</button>"
+    }
+}
