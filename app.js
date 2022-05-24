@@ -9,10 +9,16 @@
 
 	Source Code
 	Title: Upload and Store Images in MySQL using Node.Js, Express, Express-FileUpload & Express-Handlebars
-		Author: Raddy
+	Author: Raddy
 	Availability: https://raddy.dev/blog/upload-and-store-images-in-mysql-using-node-js-express-express-fileupload-express-handlebars/
 	
-		Edited and adapted by Amadeus Min on May 11, 2022
+	Edited and adapted by Amadeus Min on May 11, 2022
+
+	Source Code
+	Availability: https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+	Author: C.Lee
+	
+	Edited and adapted by Amadeus Min on May 24, 2022
 
 ************************************************************************
 */
@@ -229,6 +235,7 @@ app.post("/add", async function (req, res) {
 	res.setHeader("Content-Type", "application/json");
 
 	let isFieldEmpty = false;
+	let isEmailValid = false;
 	let userRecordsQuery;
 	let userInputs;
 
@@ -236,6 +243,10 @@ app.post("/add", async function (req, res) {
 
 		if (req.body.firstName == "" || req.body.lastName == "" || req.body.email == "" || req.body.password == "" || req.body.userType == "default_message") {
 			isFieldEmpty = true;
+		}
+
+		if (validateEmail(req.body.email) == true) {
+			isEmailValid = true;
 		}
 
 		userRecordsQuery = "INSERT INTO BBY_18_users (firstName, lastName, email, password, profilePhoto, role) values ?";
@@ -249,6 +260,10 @@ app.post("/add", async function (req, res) {
 			isFieldEmpty = true;
 		}
 
+		if (validateEmail(req.body.email) == true) {
+			isEmailValid = true;
+		}
+
 		userRecordsQuery = "INSERT INTO BBY_18_users (firstName, lastName, email, password) values ?";
 		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password]];
 
@@ -259,15 +274,17 @@ app.post("/add", async function (req, res) {
 
 		if (isFieldEmpty == true) {
 			res.status(300).send({ status: "fail", msg: "All fields are required." });
-		} else if (req.body.password == req.body.password_confirm) {
+		} else if (req.body.password == req.body.password_confirm && isEmailValid == true) {
 			try {
 				await connection.query(userRecordsQuery, [userInputs]);
-				res.status(200).send({ status: "fail", msg: "User Created" });
+				res.status(200).send({ status: "sucess", msg: "User Created" });
 			} catch (error) {
 				res.status(302).send({ status: "fail", msg: "Email already exists." });
 			}
-		} else {
+		} else if (req.body.password != req.body.password_confirm) {
 			res.status(400).send({ status: "fail", msg: "The passwords must match." });
+		} else if (isEmailValid == false) {
+			res.status(400).send({ status: "fail", msg: "The email is not a valid format." });
 		}
 	}
 	connection.end();
@@ -515,13 +532,13 @@ app.get("/signup", function (req, res) {
 	}
 });
 
-app.get("/login_check", function (req, res){
+app.get("/login_check", function (req, res) {
 	if (req.session.loggedIn = true && req.session.role == "regular") {
-		res.status(200).send({msg: "regular"});
-	}else if(req.session.loggedIn = true && req.session.role == "admin"){
-		res.send({msg: "admin"})
-	}else{
-		res.send({msg: "redirect"});
+		res.status(200).send({ msg: "regular" });
+	} else if (req.session.loggedIn = true && req.session.role == "admin") {
+		res.send({ msg: "admin" })
+	} else {
+		res.send({ msg: "redirect" });
 	}
 
 })
@@ -689,6 +706,11 @@ async function init() {
 		await connection.query(insertsql);
 	}
 	connection.end();
+}
+
+function validateEmail(email) {
+	var re = /\S+@\S+\.\S+/;
+	return re.test(email);
 }
 
 app.use(function (req, res, next) {
