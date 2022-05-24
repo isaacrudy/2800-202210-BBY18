@@ -64,7 +64,7 @@ app.get('/', function (req, res) {
 
 app.get('/home', async function (req, res) {
 	if (req.session.loggedIn && req.session.role == "regular") {
-		let doc = fs.readFileSync("./public/home.html", "utf8")
+		let doc = fs.readFileSync("./public/common/home.html", "utf8")
 
 		const mysql = require('mysql2/promise');
 		const connection = await mysql.createConnection({
@@ -144,7 +144,7 @@ app.get('/home', async function (req, res) {
 
 		await connection.end();
 
-		let profile = fs.readFileSync("public/admin.html", "utf8");
+		let profile = fs.readFileSync("public/common/admin_dashboard/admin.html", "utf8");
 		let profileDOM = new JSDOM(profile);
 
 		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML
@@ -426,7 +426,7 @@ app.post("/uploadProfileImage", async function (req, res) {
 		return res.status(400).send("No files were uploaded.");
 	}
 
-	let doc = fs.readFileSync("./public/account_info.html", "utf8")
+	let doc = fs.readFileSync("./public/common/account_info.html", "utf8")
 	let userDOM = new JSDOM(doc);
 
 	profileImage = req.files.profile_image;
@@ -466,7 +466,7 @@ app.get("/currentAccountInfo", async function (req, res) {
 
 	connection.end;
 
-	let updateProfile = fs.readFileSync("./public/account_info.html", "utf8");
+	let updateProfile = fs.readFileSync("./public/common/account_info.html", "utf8");
 	let profileDOM = new JSDOM(updateProfile);
 
 	profileDOM.window.document.getElementById("update_form").innerHTML = updateInputHTML;
@@ -477,7 +477,7 @@ app.get("/currentAccountInfo", async function (req, res) {
 });
 
 app.get("/faq", function (req, res) {
-	let doc = fs.readFileSync("./public/faq.html", "utf8")
+	let doc = fs.readFileSync("./public/common/faq.html", "utf8")
 	let userDOM = new JSDOM(doc);
 
 	res.set("Server", "Wazubi Engine");
@@ -486,7 +486,16 @@ app.get("/faq", function (req, res) {
 });
 
 app.get("/charities", function (req, res) {
-	let doc = fs.readFileSync("./public/charities.html", "utf8")
+	let doc = fs.readFileSync("./public/common/charities.html", "utf8")
+	let userDOM = new JSDOM(doc);
+
+	res.set("Server", "Wazubi Engine");
+	res.set("X-Powered-By", "Wazubi");
+	res.send(userDOM.serialize());
+});
+
+app.get("/shop", function (req, res) {
+	let doc = fs.readFileSync("./public/common/shop.html", "utf8")
 	let userDOM = new JSDOM(doc);
 
 	res.set("Server", "Wazubi Engine");
@@ -495,7 +504,7 @@ app.get("/charities", function (req, res) {
 });
 
 app.get("/signin", function (req, res) {
-	let doc = fs.readFileSync("./public/login.html", "utf8")
+	let doc = fs.readFileSync("./public/common/login.html", "utf8")
 	let userDOM = new JSDOM(doc);
 
 	res.set("Server", "Wazubi Engine");
@@ -517,14 +526,14 @@ app.post("/logout", function (req, res) {
 
 app.get("/signup", function (req, res) {
 	if (req.session.loggedIn = true && req.session.role == "admin") {
-		let doc = fs.readFileSync("./public/admin_signup.html", "utf8");
+		let doc = fs.readFileSync("./public/common/admin_dashboard/admin_signup.html", "utf8");
 
 		res.set("Server", "Wazubi Engine");
 		res.set("X-Powered-By", "Wazubi");
 		res.send(doc);
 	} else {
 
-		let doc = fs.readFileSync("./public/signup.html", "utf8");
+		let doc = fs.readFileSync("./public/common/signup.html", "utf8");
 
 		res.set("Server", "Wazubi Engine");
 		res.set("X-Powered-By", "Wazubi");
