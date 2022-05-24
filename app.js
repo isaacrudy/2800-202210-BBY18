@@ -65,14 +65,14 @@ app.get('/home', async function (req, res) {
 			host: "localhost",
 			user: "root",
 			password: "",
-			database: "mydb",
+			database: "COMP2800",
 			multipleStatements: true
 		});
 
 		connection.connect();
 
-		const [rows, fields] = await connection.execute("SELECT * FROM users WHERE id = " + req.session.user_id);
-		const [timeline_rows, timeline_fields] = await connection.execute("SELECT * FROM timelines WHERE user_id = " + req.session.user_id);
+		const [rows, fields] = await connection.execute("SELECT * FROM BBY_18_users WHERE id = " + req.session.user_id);
+		const [timeline_rows, timeline_fields] = await connection.execute("SELECT * FROM BBY_18_timelines WHERE user_id = " + req.session.user_id);
 
 
 		let userDOM = new JSDOM(doc);
@@ -91,7 +91,7 @@ app.get('/home', async function (req, res) {
 			let timeline_card = "";
 			let timlineImg_rows;
 			for (let i = 0; i < timeline_rows.length; i++) {
-				timlineImg_rows = await connection.execute("SELECT * FROM timeline_image WHERE id = " + timeline_rows[i].timeline_image_id);
+				timlineImg_rows = await connection.execute("SELECT * FROM BBY_18_timeline_image WHERE id = " + timeline_rows[i].timeline_image_id);
 				timeline_card += '<div class="timeline_card">'
 					+ '<img class="timeline_img" src="img/upload/' + timlineImg_rows[0][0].timeline_photo + '" alt="timeline photo"/>'
 					+ '<p class="timeline_text">' + timeline_rows[i].timeline_text + '</p>'
@@ -115,13 +115,13 @@ app.get('/home', async function (req, res) {
 			host: "localhost",
 			user: "root",
 			password: "",
-			database: "mydb",
+			database: "COMP2800",
 			multipleStatements: true
 		});
 
 		connection.connect();
 
-		const [rows, fields] = await connection.execute("SELECT * FROM users");
+		const [rows, fields] = await connection.execute("SELECT * FROM BBY_18_users");
 		let table = "<table frame=void rules=rows><tr><th>ID</th><th>First name</th><th>Last name</th><th>Email</th><th>Profile Photo</th><th>Role</th><th>Edit</th><th>Delete</th></tr>";
 		let editButton = "<input type=\"button\" class=\"editBtn\" id=\"";
 		let deleteButton = "<input type=\"button\" class=\"deleteBtn\" id=\"";
@@ -165,7 +165,7 @@ app.post("/login", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
@@ -180,7 +180,7 @@ app.post("/login", async function (req, res) {
 	connection.connect();
 
 	res.setHeader("Content-Type", "application/json");
-	const [rows, fields] = await connection.execute("SELECT * from users");
+	const [rows, fields] = await connection.execute("SELECT * from BBY_18_users");
 
 	for (let i = 0; i < rows.length; i++) {
 		if (req.body.email == rows[i].email && req.body.password == rows[i].password) {
@@ -221,7 +221,7 @@ app.post("/add", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
@@ -238,7 +238,7 @@ app.post("/add", async function (req, res) {
 			isFieldEmpty = true;
 		}
 
-		userRecordsQuery = "INSERT INTO users (firstName, lastName, email, password, profilePhoto, role) values ?";
+		userRecordsQuery = "INSERT INTO BBY_18_users (firstName, lastName, email, password, profilePhoto, role) values ?";
 		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password, "default_photo.png", req.body.userType]];
 
 		signUpValidation(isFieldEmpty, userRecordsQuery, userInputs);
@@ -249,7 +249,7 @@ app.post("/add", async function (req, res) {
 			isFieldEmpty = true;
 		}
 
-		userRecordsQuery = "INSERT INTO users (firstName, lastName, email, password) values ?";
+		userRecordsQuery = "INSERT INTO BBY_18_users (firstName, lastName, email, password) values ?";
 		userInputs = [[req.body.firstName, req.body.lastName, req.body.email, req.body.password]];
 
 		signUpValidation(isFieldEmpty, userRecordsQuery, userInputs);
@@ -281,18 +281,18 @@ app.post("/delete", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
 	connection.connect();
 	res.setHeader("Content-Type", "application/json");
 
-	const [user_rows, user_fields] = await connection.query("SELECT COUNT(*) AS rolesCount FROM users WHERE role = \"admin\"");
-	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + req.body.id);
+	const [user_rows, user_fields] = await connection.query("SELECT COUNT(*) AS rolesCount FROM BBY_18_users WHERE role = \"admin\"");
+	const [user_role, user_info] = await connection.query("SELECT * FROM BBY_18_users WHERE ID = " + req.body.id);
 
 	if ((user_rows[0].rolesCount > 1 && req.session.user_id != req.body.id) || user_role[0].role == "regular") {
-		let deleteQuery = "DELETE FROM users where ID = " + req.body.id;
+		let deleteQuery = "DELETE FROM BBY_18_users where ID = " + req.body.id;
 		await connection.query(deleteQuery);
 		connection.end();
 		res.send({ status: "success", msg: "Deleted" })
@@ -309,13 +309,13 @@ app.post('/getUser', async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
 	connection.connect();
 	let userID = req.body.id;
-	const [user_role, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + userID);
+	const [user_role, user_info] = await connection.query("SELECT * FROM BBY_18_users WHERE ID = " + userID);
 
 	res.send(JSON.stringify(user_role[0]));
 });
@@ -327,34 +327,34 @@ app.post('/edit', async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
-	const [user_rows, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + req.body.id);
+	const [user_rows, user_info] = await connection.query("SELECT * FROM BBY_18_users WHERE ID = " + req.body.id);
 
 	if (req.body.profileImage == "default_image") {
 		connection.connect();
-		let query = "UPDATE `users` SET "
+		let query = "UPDATE `BBY_18_users` SET "
 			+ "`password`= '" + req.body.password
 			+ "', `firstName`= '" + req.body.firstName
 			+ "', `lastName`= '" + req.body.lastName
 			+ "', `email`= '" + req.body.email
 			+ "', `profilePhoto`= '" + user_rows[0].profilePhoto
 			+ "', `role`= '" + req.body.userRole
-			+ "' WHERE users.id = '" + req.body.id + "'"
+			+ "' WHERE BBY_18_users.id = '" + req.body.id + "'"
 		await connection.query(query);
 		res.status(200).send({ msg: "User Updated" });
 	} else {
 		connection.connect();
-		let query = "UPDATE `users` SET "
+		let query = "UPDATE `BBY_18_users` SET "
 			+ "`password`= '" + req.body.password
 			+ "', `firstName`= '" + req.body.firstName
 			+ "', `lastName`= '" + req.body.lastName
 			+ "', `email`= '" + req.body.email
 			+ "', `profilePhoto`= '" + req.body.profileImage
 			+ "', `role`= '" + req.body.userRole
-			+ "' WHERE users.id = '" + req.body.id + "'"
+			+ "' WHERE BBY_18_users.id = '" + req.body.id + "'"
 		await connection.query(query);
 		res.status(200).send({ msg: "User Updated" });
 	}
@@ -367,7 +367,7 @@ app.post("/update", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
@@ -386,7 +386,7 @@ app.post("/update", async function (req, res) {
 		connection.end();
 	} else {
 		req.session.name = req.body.firstName + " " + req.body.lastName;
-		await connection.query('UPDATE users SET password="' + req.body.password + '", password="' + req.body.password + '", firstName="' + req.body.firstName + '", lastName="' + req.body.lastName + '", email="' + req.body.email + '" WHERE ID = ' + req.session.user_id);
+		await connection.query('UPDATE BBY_18_users SET password="' + req.body.password + '", password="' + req.body.password + '", firstName="' + req.body.firstName + '", lastName="' + req.body.lastName + '", email="' + req.body.email + '" WHERE ID = ' + req.session.user_id);
 		res.send({ status: "success", msg: "User information has been updated." });
 		connection.end();
 	}
@@ -399,7 +399,7 @@ app.post("/uploadProfileImage", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 	});
 
 	let profileImage;
@@ -418,7 +418,7 @@ app.post("/uploadProfileImage", async function (req, res) {
 	profileImage.mv(uploadPath, async function (err) {
 		if (err) return res.status(500).send(err);
 		connection.connect();
-		await connection.query('UPDATE users SET profilePhoto = ? WHERE id = ' + req.session.user_id, [profileImage.name], (err, rows) => {
+		await connection.query('UPDATE BBY_18_users SET profilePhoto = ? WHERE id = ' + req.session.user_id, [profileImage.name], (err, rows) => {
 			userDOM.window.document.getElementById("updateErrorMsg").innerHTML = "Profile Image Uploaded";
 		});
 		req.session.profileImage = profileImage;
@@ -434,11 +434,11 @@ app.get("/currentAccountInfo", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
-	const [user_rows, user_info] = await connection.query("SELECT * FROM users WHERE ID = " + req.session.user_id);
+	const [user_rows, user_info] = await connection.query("SELECT * FROM BBY_18_users WHERE ID = " + req.session.user_id);
 
 	let updateInputHTML = '<div><input type="text" class="form_input" id="firstName" value="' + user_rows[0].firstName
 		+ '" required /><input type="text" class="form_input" id="lastName" value="' + user_rows[0].lastName
@@ -538,7 +538,7 @@ app.post("/createTimeline", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
@@ -563,10 +563,10 @@ app.post("/createTimeline", async function (req, res) {
 	timelineImage.mv(uploadPath, async function (err) {
 		if (err) return res.status(500).send(err);
 		connection.connect();
-		await connection.query('INSERT INTO timeline_image (timeline_photo) VALUES ("' + timelineImage.name + '")');
+		await connection.query('INSERT INTO BBY_18_timeline_image (timeline_photo) VALUES ("' + timelineImage.name + '")');
 		const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from timeline_image");
 
-		addTimelineQuery = "INSERT INTO timelines (user_id, timeline_image_id, timeline_text, post_date_time) values ?";
+		addTimelineQuery = "INSERT INTO BBY_18_timelines (user_id, timeline_image_id, timeline_text, post_date_time) values ?";
 		timelineInputs = [[req.session.user_id, uploaded_row_id[0].uploadedID, req.body.content, dateTime]];
 		await connection.query(addTimelineQuery, [timelineInputs]);
 
@@ -586,7 +586,7 @@ app.post("/updateTimelineForm", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
@@ -594,7 +594,7 @@ app.post("/updateTimelineForm", async function (req, res) {
 
 	req.session.updateTimelineID = req.body.id;
 
-	const [timeline_rows, timeline_fields] = await connection.execute("SELECT * FROM timelines WHERE id = " + req.body.id);
+	const [timeline_rows, timeline_fields] = await connection.execute("SELECT * FROM BBY_18_timelines WHERE id = " + req.body.id);
 
 	let timline_update_form = "";
 	timline_update_form += '<form id="timeline_update_form" action="/updateTimeline" method="POST" enctype="multipart/form-data">'
@@ -617,7 +617,7 @@ app.post("/updateTimeline", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
@@ -626,7 +626,7 @@ app.post("/updateTimeline", async function (req, res) {
 
 	connection.connect();
 	if (!req.files || Object.keys(req.files).length === 0) {
-		await connection.query('UPDATE timelines SET timeline_text="' + req.body.content + '" WHERE ID = ' + req.session.updateTimelineID);
+		await connection.query('UPDATE BBY_18_timelines SET timeline_text="' + req.body.content + '" WHERE ID = ' + req.session.updateTimelineID);
 		connection.end();
 	} else {
 		timelineImage = req.files.timeline_image;
@@ -635,10 +635,10 @@ app.post("/updateTimeline", async function (req, res) {
 		timelineImage.mv(uploadPath, async function (err) {
 			if (err) return res.status(500).send(err);
 
-			await connection.query('INSERT INTO timeline_image (timeline_photo) VALUES ("' + timelineImage.name + '")');
-			const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from timeline_image");
+			await connection.query('INSERT INTO BBY_18_timeline_image (timeline_photo) VALUES ("' + timelineImage.name + '")');
+			const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from BBY_18_timeline_image");
 
-			await connection.query('UPDATE timelines SET timeline_image_id="' + uploaded_row_id[0].uploadedID + '", timeline_text="' + req.body.content + '" WHERE ID = ' + req.session.updateTimelineID);
+			await connection.query('UPDATE BBY_18_timelines SET timeline_image_id="' + uploaded_row_id[0].uploadedID + '", timeline_text="' + req.body.content + '" WHERE ID = ' + req.session.updateTimelineID);
 			connection.end();
 		});
 	}
@@ -658,14 +658,14 @@ app.post("/deleteTimeline", async function (req, res) {
 		host: "localhost",
 		user: "root",
 		password: "",
-		database: "mydb",
+		database: "COMP2800",
 		multipleStatements: true
 	});
 
 	connection.connect();
 	res.setHeader("Content-Type", "application/json");
 
-	await connection.query("DELETE FROM timelines where id = " + req.body.id);
+	await connection.query("DELETE FROM BBY_18_timelines where id = " + req.body.id);
 	connection.end();
 	res.send({ status: "success", msg: "Deleted" })
 
@@ -683,7 +683,7 @@ async function init() {
 
 	await connection.query(structureSql);
 
-	const [user_rows, user_fields] = await connection.query("SELECT * FROM users");
+	const [user_rows, user_fields] = await connection.query("SELECT * FROM BBY_18_users");
 
 	if (user_rows.length == 0) {
 		await connection.query(insertsql);
