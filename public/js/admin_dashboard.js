@@ -81,7 +81,7 @@ ready(function () {
         editbtn[i].addEventListener("click", function (e) {
             e.preventDefault();
             var id = e.target.getAttribute("id");
-            window.location.href = `/admin_account_update.html?id=${id}`;
+            window.location.href = `/common/admin_dashboard/admin_account_update.html?id=${id}`;
         });
     }
 
