@@ -1,5 +1,4 @@
-class GlobalHeader extends HTMLElement
-{
+class GlobalHeader extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
         <div class="menu_wrapper">
@@ -41,8 +40,7 @@ class GlobalHeader extends HTMLElement
     }
 }
 
-class GlobalFooter extends HTMLElement
-{
+class GlobalFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <footer>

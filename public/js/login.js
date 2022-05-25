@@ -65,7 +65,7 @@ ready(function () {
     });
 });
 
-document.getElementById("login_title").addEventListener("click", function() {
+document.getElementById("login_title").addEventListener("click", function () {
     document.getElementById('S').classList.add('fadeInOut');
     document.getElementById('i').classList.add('fadeInOut2');
     document.getElementById('g').classList.add('fadeInOut3');

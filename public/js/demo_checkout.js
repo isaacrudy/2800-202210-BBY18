@@ -1,7 +1,7 @@
 getCharities();
 
 let total = document.getElementById('total-before').firstChild.nodeValue;
-let stripped = total.replace(/\$/g,'');
+let stripped = total.replace(/\$/g, '');
 let donateAmount = 0;
 let newTotal = 0;
 const donateTotal = document.getElementById('donation-total');
@@ -77,7 +77,7 @@ async function getCharities() {
         const charity = document.createElement('option');
         charity.textContent = `${item.charityName}`;
         charity.value = `${item.id}`
-        
+
         option.append(charity);
     }
 }
@@ -85,12 +85,12 @@ async function getCharities() {
 async function donate() {
     const charity = document.getElementById("select-charity").value;
     const amount = document.getElementById("donation-amount").value;
-    const vars = {"charity": charity, "amount": amount};
+    const vars = { "charity": charity, "amount": amount };
     console.log(amount);
 
     await fetch('/donate', {
         method: "POST",
-        body:   JSON.stringify(vars),
+        body: JSON.stringify(vars),
         headers: {
             "Content-Type": "application/json"
         },
