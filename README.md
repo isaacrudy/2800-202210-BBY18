@@ -161,10 +161,32 @@ File Contents
 ```
 Installation
 ------------
-express
-express-session
-jsdom
-express-fileupload
-mysql2
-fs
-cors
+We'll need npm and node.js to run this so first we'll install npm
+1. 
+```
+npm install -g npm
+```
+2. now we'll install node.js by going to:
+https://nodejs.org/en/download/
+
+and choose which installer is best suited for your machine.
+
+
+"cors": "^2.8.5",
+"express": "^4.18.1",
+"express-fileupload": "^1.3.1",
+"express-session": "^1.17.2",
+"express-static": "^1.2.6",
+"mysql2": "^2.3.3",
+"jsdom": "^19.0.0",
+"nodemon": "^2.0.16",
+"object-assign": "^4.1.1"
+
+Using the product
+------------
+
+Credits
+------------
+
+Contact Information
+------------
