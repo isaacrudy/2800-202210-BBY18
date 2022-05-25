@@ -49,7 +49,7 @@ ready(function () {
         e.preventDefault();
         let email = document.getElementById("email");
         let password = document.getElementById("password");
-        let queryString = "email=" + email.value + "&password=" + password.value;
+        let queryString = "email=" + email.value.trim() + "&password=" + password.value.trim();
         const vars = { "email": email, "&password": password }
         ajaxPOST("/login", function (data) {
 

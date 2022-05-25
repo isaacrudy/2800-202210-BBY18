@@ -28,7 +28,7 @@ ready(async function () {
     let lastName = document.getElementById("lastName").value;
     let userRole = document.getElementById("userRole").value;
     let userProfileImage = document.getElementById("profileImage").value;
-    const vars = { "id": userID, "email": email, "password": password, "firstName": firstName, "lastName": lastName, "userRole": userRole, "profileImage": userProfileImage };
+    const vars = { "id": userID, "email": email.trim(), "password": password.trim(), "firstName": firstName.trim(), "lastName": lastName.trim(), "userRole": userRole, "profileImage": userProfileImage };
     fetch("/edit", {
       method: "POST",
       body: JSON.stringify(vars),

@@ -31,7 +31,7 @@ ready(function () {
         let userType = document.getElementById("user-type").value;
 
         let queryString = "email=" + email + "password=" + password + "firstName=" + firstName + "lastName=" + lastName + "userType=" + userType;
-        const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName, "userType": userType };
+        const vars = { "email": email.trim(), "password": password.trim(), "password_confirm": check_password.trim(), "firstName": firstName.trim(), "lastName": lastName.trim(), "userType": userType };
 
         ajaxPOST("/add", async function (data, status) {
             if (status == 200) {
