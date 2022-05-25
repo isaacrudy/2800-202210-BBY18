@@ -1,0 +1,44 @@
+.aboutUs-container{
+    border-radius: 10px 10px 0px 0px;
+    margin: 25px 20px;
+    background-color: white;
+    box-shadow: 4px 6px rgb(155, 155, 155);
+}
+.aboutUs-banner{
+    margin: 0;
+    min-height: 350px;
+    min-width: 350px;
+    border-radius: 10px 10px 0px 0px;
+    background-size: cover;
+}
+.aboutUs-container-titles{
+    top: 10px;
+    left: 10px;
+    position:relative;
+    bottom:0;
+}
+.aboutUs-inner-container{
+    padding: 10px 8px 8px;
+}
+.aboutUs-content{
+    margin: 4px 8px;
+}
+#bby18{
+    background: url(../../img/developer_profile/bby-18.PNG) no-repeat center center;
+    background-size: contain;
+}
+#Amadeus-Min{
+    background-image: url(../../img/developer_profile/Amadeus.jpg);
+}
+#Calvin-Yu{
+    background-image: url(../../img/developer_profile/Calvin.jpg);
+    background-position: 0 -50px;
+}
+#Dennis-Relos{
+    background-image: url(../../img/developer_profile/Dennis.jpeg);
+    background-position: 0 -100px;
+}
+#Isaac-Rudy{
+    background: url(../../img/developer_profile/Isaac.png) no-repeat center center;
+    background-size: contain;
+}
