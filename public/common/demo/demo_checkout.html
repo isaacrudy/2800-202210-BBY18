@@ -148,7 +148,7 @@
                         <h2>DONATIONS</h2>
                     </div>
 
-                    <form action="javascript:void(0);">
+                    <form id="donate-form" action="javascript:void(0);">
                         <div class="flex-center border-bottom">
                             <select name="select-charity" id="select-charity" required>
                                 <option value="" label="Select a charity" selected disabled hidden></option>
@@ -167,7 +167,7 @@
                         </div>
             
                         <div class="flex-center border-bottom">
-                            <input onchange="customAmount();" type="number" min="0.00" step="0.01" max="500" placeholder="Custom Amount" id="donation-amount">
+                            <input onchange="customAmount();" type="number" min="0.00" step="0.01" max="500" placeholder="Custom Amount" id="donation-amount" required>
                         </div>
             
                         <div class="space-between padding-top" id="donation-total-container">
@@ -177,7 +177,7 @@
 
                 
                         <div class="flex-center width-90">
-                            <button type="button" class="demo-button" onclick="console.log(document.getElementById('select-charity').value)"><span>PROCEED TO PAYMENT</span></button>
+                            <button type="submit" class="demo-button" onclick="donate();"><span>PROCEED TO PAYMENT</span></button>
                         </div>
                     </form>
 

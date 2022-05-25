@@ -566,6 +566,30 @@ app.get("/get_charities", async function (req, res) {
 	let charities = await connection.query("SELECT * FROM BBY_18_charities ORDER BY charityName asc");
 
 	res.send(charities[0]);
+	connection.end();
+});
+
+app.post("/donate", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "COMP2800",
+		multipleStatements: true
+	});
+
+	connection.connect();
+
+	await connection.query(`
+		INSERT into BBY_18_charity_donations 
+			(charity_ID, user_ID, total) 
+		VALUES
+			(` + req.body.charity + ', ' + req.session.user_id + ', ' + req.body.amount + ');'
+	);
+
+	connection.end();
 });
 
 app.get("/timelineForm", function (req, res) {

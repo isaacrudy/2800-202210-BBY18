@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS BBY_18_users (
 
 CREATE TABLE IF NOT EXISTS BBY_18_charities (
     id 				int AUTO_INCREMENT,
-    charityName    	    VARCHAR(50) NOT NULL,
+    charityName    	VARCHAR(50) NOT NULL,
     PRIMARY KEY(id)
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS BBY_18_charity_donations (
     id              int AUTO_INCREMENT,
     charity_ID      int NOT NULL,
     user_ID         int NOT NULL,
-    total           int NOT NULL,
+    total           DECIMAL(5,2) NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(user_ID) REFERENCES BBY_18_users(id) ON UPDATE CASCADE,
     FOREIGN KEY(Charity_ID) REFERENCES BBY_18_charities(id) ON UPDATE CASCADE

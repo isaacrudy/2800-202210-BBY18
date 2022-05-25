@@ -77,7 +77,23 @@ async function getCharities() {
         const charity = document.createElement('option');
         charity.textContent = `${item.charityName}`;
         charity.value = `${item.id}`
-
+        
         option.append(charity);
     }
+}
+
+async function donate() {
+    const charity = document.getElementById("select-charity").value;
+    const amount = document.getElementById("donation-amount").value;
+    const vars = {"charity": charity, "amount": amount};
+    console.log(amount);
+
+    await fetch('/donate', {
+        method: "POST",
+        body:   JSON.stringify(vars),
+        headers: {
+            "Content-Type": "application/json"
+        },
+        keepalive: true
+    }).then(window.close());
 }
