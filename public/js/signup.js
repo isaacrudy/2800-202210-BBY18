@@ -29,7 +29,7 @@ ready(function () {
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
         let queryString = "email=" + email + "password=" + password + "firstName=" + firstName + "lastName=" + lastName;
-        const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName };
+        const vars = { "email": email.trim(), "password": password.trim(), "password_confirm": check_password.trim(), "firstName": firstName.trim(), "lastName": lastName.trim() };
 
         ajaxPOST("/add", function (data, status) {
             if (status == 200) {
