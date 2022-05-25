@@ -47,3 +47,10 @@ app.js
 	Author: C.Lee
 	
 	Edited and adapted by Amadeus Min on May 24, 2022
+
+home.html, home.css, admin.html, admin.css
+	Source Code
+	Availability: https://www.w3schools.com/howto/howto_css_modals.asp
+	Author: w3schools
+
+	Edited and adapted by Amadeus Min on May 25, 2022

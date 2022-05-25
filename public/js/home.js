@@ -105,13 +105,25 @@ ready(function () {
     var timeline_delete_btn = document.getElementsByClassName("timeline_delete_btn");
     var modal = document.getElementById("myModal");
     var span = document.getElementsByClassName("close")[0];
+    var isDeleteOk = false;
+
+
+
+    document.getElementById("delete_no_btn").addEventListener("click", function (e) {
+        isDeleteOk = false;
+        modal.style.display = "none";
+    })
 
     for (let i = 0; i < timeline_delete_btn.length; i++) {
         timeline_delete_btn[i].addEventListener("click", function (e) {
             e.preventDefault();
             modal.style.display = "block";
             const vars = { "id": e.target.id };
-            if (confirm("Are you sure you want to delete this timeline?")) {
+
+            document.getElementById("delete_yes_btn").addEventListener("click", function (e) {
+                isDeleteOk = true;
+                modal.style.display = "none";
+
                 ajaxPOST("/deleteTimeline", function (data) {
                     if (data) {
                         let dataParsed = JSON.parse(data);
@@ -122,7 +134,7 @@ ready(function () {
                         }
                     }
                 }, vars);
-            }
+            })
         });
     }
 });
@@ -174,6 +186,8 @@ document.getElementById("profile_dropbtn").addEventListener("click", function (e
 
 });
 
+var span = document.getElementsByClassName("close")[0];
+var modal = document.getElementById("myModal");
 span.onclick = function () {
     modal.style.display = "none";
 }
