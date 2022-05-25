@@ -62,6 +62,11 @@ ready(function () {
         window.location.replace("/currentAccountInfo");
     })
 
+    document.querySelector("#donation_history_btn").addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.replace("/history");
+    })
+
     var timeline_form_container = document.getElementById("timeline_form_container");
     var timeline_open_form = document.querySelector("#open_timeline_form_btn");
     timeline_form_container.style.display = "none";

@@ -93,10 +93,6 @@
     td:nth-of-type(8):before {
         content: "Delete";
     }
-
-    td:nth-of-type(9):before {
-        content: ""
-    }
 }
 
 

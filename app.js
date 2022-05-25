@@ -463,18 +463,6 @@ app.get("/faq", function (req, res) {
 	let doc = fs.readFileSync("./public/faq.html", "utf8")
 	let userDOM = new JSDOM(doc);
 
-	if (req.session.loggedIn = true) {
-		doc.getElementById("account_buttons").innerHTML =
-			"<div id='profile_dropdown_content'> " + 
-			"<input type='button' value='My timeline' id='my_timeline_btn'>" + 
-			"<input type='button' value='Account Management' id='accocunt_management'>" + 
-			"<input type='button' value='Donation History' id='donation_history_btn'>" + 
-			"<input type='button' value='Logout' id='logout_btn' onclick='signout()'> </div>"
-	} else {
-		doc.getElementById("account_buttons").innerHTML =
-			"<button onclick='signout()' id='sign_out'>Logout</button>"
-	}
-
 	res.set("Server", "Wazubi Engine");
 	res.set("X-Powered-By", "Wazubi");
 	res.send(userDOM.serialize());
@@ -489,13 +477,29 @@ app.get("/charities", function (req, res) {
 	res.send(userDOM.serialize());
 });
 
-app.get("/signin", function (req, res) {
-	let doc = fs.readFileSync("./public/login.html", "utf8")
+app.get("/history", function (req, res) {
+	let doc = fs.readFileSync("./public/history.html", "utf8")
 	let userDOM = new JSDOM(doc);
 
 	res.set("Server", "Wazubi Engine");
 	res.set("X-Powered-By", "Wazubi");
 	res.send(userDOM.serialize());
+});
+
+app.get("/signin", function (req, res) {
+	if (req.session.loggedIn) {
+		let doc = fs.readFileSync("./public/index.html", "utf8");
+		let userDOM = new JSDOM(doc);
+		res.set("Server", "Wazubi Engine");
+		res.set("X-Powered-By", "Wazubi");
+		res.send(userDOM.serialize());
+	} else {
+		let doc = fs.readFileSync("./public/login.html", "utf8");
+		let userDOM = new JSDOM(doc);
+		res.set("Server", "Wazubi Engine");
+		res.set("X-Powered-By", "Wazubi");
+		res.send(userDOM.serialize());
+	}
 });
 
 app.post("/logout", function (req, res) {
@@ -555,6 +559,12 @@ app.get("/login_check", function (req, res){
 app.get("/timelineForm", function (req, res) {
 	res.setHeader("Content-Type", "text/html");
 	res.send(fs.readFileSync("./public/data/timeline-form-html.js", "utf8"));
+});
+
+app.get("/loginPage", function (req, res) {
+	if (req.session.loggedIn = true) {
+
+	}
 });
 
 app.post("/createTimeline", async function (req, res) {
