@@ -492,6 +492,15 @@ app.get("/charities", function (req, res) {
 	res.send(userDOM.serialize());
 });
 
+app.get("/about-us", function (req, res) {
+	let doc = fs.readFileSync("./public/common/about_us.html", "utf8")
+	let userDOM = new JSDOM(doc);
+
+	res.set("Server", "Wazubi Engine");
+	res.set("X-Powered-By", "Wazubi");
+	res.send(userDOM.serialize());
+});
+
 app.get("/shop", function (req, res) {
 	let doc = fs.readFileSync("./public/common/shop.html", "utf8")
 	let userDOM = new JSDOM(doc);
@@ -630,7 +639,7 @@ app.post("/createTimeline", async function (req, res) {
 		if (err) return res.status(500).send(err);
 		connection.connect();
 		await connection.query('INSERT INTO BBY_18_timeline_image (timeline_photo) VALUES ("' + timelineImage.name + '")');
-		const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from timeline_image");
+		const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from BBY_18_timeline_image");
 
 		addTimelineQuery = "INSERT INTO BBY_18_timelines (user_id, timeline_image_id, timeline_text, post_date_time) values ?";
 		timelineInputs = [[req.session.user_id, uploaded_row_id[0].uploadedID, req.body.content, dateTime]];
