@@ -19,6 +19,7 @@ These above are the bare minimum to run the app effectively, locally.
 
 File Contents
 ------------
+```
 +---public
 |   |   index.html
 |   |   
@@ -157,7 +158,7 @@ File Contents
 |   |       signout.js
 |   |       signup.js
 |   |       spilled_beans.js
-
+```
 Installation
 ------------
 express
