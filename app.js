@@ -332,7 +332,7 @@ app.post('/getUser', async function (req, res) {
 	let userID = req.body.id;
 	const [user_role, user_info] = await connection.query("SELECT * FROM BBY_18_users WHERE ID = " + userID);
 
-	res.send(JSON.stringify(user_role[0]));
+	res.send(user_role[0]);
 });
 
 app.post('/edit', async function (req, res) {
@@ -548,7 +548,25 @@ app.get("/login_check", function (req, res) {
 		res.send({ msg: "redirect" });
 	}
 
-})
+});
+
+app.get("/get_charities", async function (req, res) {
+	const mysql = require('mysql2/promise');
+
+	const connection = await mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "",
+		database: "COMP2800",
+		multipleStatements: true
+	});
+
+	connection.connect();
+
+	let charities = await connection.query("SELECT * FROM BBY_18_charities ORDER BY charityName asc");
+
+	res.send(charities[0]);
+});
 
 app.get("/timelineForm", function (req, res) {
 	res.setHeader("Content-Type", "text/html");
