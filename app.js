@@ -588,7 +588,7 @@ app.post("/createTimeline", async function (req, res) {
 		if (err) return res.status(500).send(err);
 		connection.connect();
 		await connection.query('INSERT INTO BBY_18_timeline_image (timeline_photo) VALUES ("' + timelineImage.name + '")');
-		const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from timeline_image");
+		const [uploaded_row_id] = await connection.query("SELECT MAX(id) AS uploadedID from BBY_18_timeline_image");
 
 		addTimelineQuery = "INSERT INTO BBY_18_timelines (user_id, timeline_image_id, timeline_text, post_date_time) values ?";
 		timelineInputs = [[req.session.user_id, uploaded_row_id[0].uploadedID, req.body.content, dateTime]];

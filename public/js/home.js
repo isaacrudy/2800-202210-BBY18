@@ -103,9 +103,13 @@ ready(function () {
     }
 
     var timeline_delete_btn = document.getElementsByClassName("timeline_delete_btn");
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+
     for (let i = 0; i < timeline_delete_btn.length; i++) {
         timeline_delete_btn[i].addEventListener("click", function (e) {
             e.preventDefault();
+            modal.style.display = "block";
             const vars = { "id": e.target.id };
             if (confirm("Are you sure you want to delete this timeline?")) {
                 ajaxPOST("/deleteTimeline", function (data) {
@@ -169,3 +173,13 @@ document.getElementById("profile_dropbtn").addEventListener("click", function (e
     }
 
 });
+
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
