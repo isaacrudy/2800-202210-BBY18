@@ -11,3 +11,9 @@ INSERT INTO BBY_18_users
 VALUES
     ("admin", "Omar", "Navarro", "onavarro@fundcart.com", "admin"),
     ("admin1234", "Buzz", "Lightyear", "blightyear@fundcart.com", "admin");
+
+INSERT INTO BBY_18_charities
+	(charityName)
+VALUES
+    ("Team Seas"), ("Team Trees"), ("BC SPCA"), ("Covenant House Vancouver"),
+    ("No Kid Hungry");

@@ -1,8 +1,6 @@
 CREATE DATABASE IF NOT EXISTS `COMP2800` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `COMP2800`;
 
--- DROP TABLE IF EXISTS BBY_18_users;
-
 CREATE TABLE IF NOT EXISTS BBY_18_users (
     id 				int AUTO_INCREMENT,
     password    	VARCHAR(20) NOT NULL,
@@ -16,7 +14,7 @@ CREATE TABLE IF NOT EXISTS BBY_18_users (
 
 CREATE TABLE IF NOT EXISTS BBY_18_charities (
     id 				int AUTO_INCREMENT,
-    name    	    VARCHAR(20) NOT NULL,
+    charityName    	    VARCHAR(50) NOT NULL,
     PRIMARY KEY(id)
 );
 
