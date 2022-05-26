@@ -86,7 +86,6 @@ async function donate() {
     const charity = document.getElementById("select-charity").value;
     const amount = document.getElementById("donation-amount").value;
     const vars = {"charity": charity, "amount": amount};
-    console.log(amount);
 
     await fetch('/donate', {
         method: "POST",
