@@ -36,7 +36,7 @@ class GlobalHeader extends HTMLElement {
             <button onclick="signout()" id="sign_out">Logout</button>
         </div>
     </header>
-        `
+        `;
     }
 }
 
@@ -83,9 +83,9 @@ class GlobalFooter extends HTMLElement {
 
                 </section>
             </footer>
-        `
+        `;
     }
 }
 
-customElements.define('global-footer', GlobalFooter)
-customElements.define('global-header', GlobalHeader)
+customElements.define('global-footer', GlobalFooter);
+customElements.define('global-header', GlobalHeader);

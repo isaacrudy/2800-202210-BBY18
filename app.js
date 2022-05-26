@@ -23,7 +23,7 @@
 ************************************************************************
 */
 
-"use strict"
+"use strict";
 const express = require('express');
 const session = require('express-session');
 const { JSDOM } = require('jsdom');
@@ -37,11 +37,10 @@ const app = express();
 const structureSql = fs.readFileSync("sql/create-structure.sql").toString();
 const insertsql = fs.readFileSync("sql/insert-initialData.sql").toString();
 const cors = require('cors');
-const { setTimeout } = require('timers');
 var corsOptions = {
 	origin: '*',
-}
-app.use(cors(corsOptions))
+};
+app.use(cors(corsOptions));
 
 // static path mappings
 app.use("/", express.static('./public'));
@@ -62,7 +61,7 @@ app.get('/', function (req, res) {
 
 app.get('/home', async function (req, res) {
 	if (req.session.loggedIn && req.session.role == "regular") {
-		let doc = fs.readFileSync("./public/common/home.html", "utf8")
+		let doc = fs.readFileSync("./public/common/home.html", "utf8");
 
 		const mysql = require('mysql2/promise');
 		const connection = await mysql.createConnection({
@@ -83,10 +82,8 @@ app.get('/home', async function (req, res) {
 		let timelineErrorMsg;
 		let imagePath;
 
-		userDOM.window.document.getElementsByTagName("title")[0].innerHTML
-			= req.session.name + "'s Profile";
-		userDOM.window.document.getElementById("userName").innerHTML
-			= req.session.name;
+		userDOM.window.document.getElementsByTagName("title")[0].innerHTML = req.session.name + "'s Profile";
+		userDOM.window.document.getElementById("userName").innerHTML = req.session.name;
 		userDOM.window.document.getElementById("profile_image").src = 'img/upload/' + rows[0].profilePhoto;
 		if (timeline_rows.length == 0) {
 			timelineErrorMsg = "You curently have no timeline posts.";
@@ -96,14 +93,7 @@ app.get('/home', async function (req, res) {
 			let timlineImg_rows;
 			for (let i = 0; i < timeline_rows.length; i++) {
 				timlineImg_rows = await connection.execute("SELECT * FROM BBY_18_timeline_image WHERE id = " + timeline_rows[i].timeline_image_id);
-				timeline_card += '<div class="timeline_card">'
-					+ '<img class="timeline_img" src="img/upload/' + timlineImg_rows[0][0].timeline_photo + '" alt="timeline photo"/>'
-					+ '<p class="timeline_text">' + timeline_rows[i].timeline_text + '</p>'
-					+ '<p class="timeline_date_time">Posted: ' + timeline_rows[i].post_date_time + '</p>'
-					+ '<input type="button" class="timeline_delete_btn" value="Delete" id="' + timeline_rows[i].id + '">'
-					+ '<input type="button" class="timeline_update_btn" value="Update" id="' + timeline_rows[i].id + '">'
-					+ '<div class="timeline_update_container" id="update_form_container' + timeline_rows[i].id + '"></div>'
-					+ '</div>'
+				timeline_card += '<div class="timeline_card">' + '<img class="timeline_img" src="img/upload/' + timlineImg_rows[0][0].timeline_photo + '" alt="timeline photo"/>' + '<p class="timeline_text">' + timeline_rows[i].timeline_text + '</p>' + '<p class="timeline_date_time">Posted: ' + timeline_rows[i].post_date_time + '</p>' + '<input type="button" class="timeline_delete_btn" value="Delete" id="' + timeline_rows[i].id + '">' + '<input type="button" class="timeline_update_btn" value="Update" id="' + timeline_rows[i].id + '">' + '<div class="timeline_update_container" id="update_form_container' + timeline_rows[i].id + '"></div>' + '</div>';
 			}
 			userDOM.window.document.getElementById("timeline_container").innerHTML = timeline_card;
 		}
@@ -130,13 +120,7 @@ app.get('/home', async function (req, res) {
 		let editButton = "<input type=\"button\" class=\"editBtn\" id=\"";
 		let deleteButton = "<input type=\"button\" class=\"deleteBtn\" id=\"";
 		for (let i = 0; i < rows.length; i++) {
-			table += "<tr><td>"
-				+ rows[i].id + "</td><td>"
-				+ rows[i].firstName + "</td><td>" + rows[i].lastName + "</td><td>"
-				+ rows[i].email + "</td><td>" + rows[i].profilePhoto + "</td><td>"
-				+ rows[i].role + "</td><td>"
-				+ editButton + rows[i].id + "\" value=\"O\" >" + "</td><td>"
-				+ deleteButton + rows[i].id + "\" value=\"X\" >" + "<br></td></tr>";
+			table += "<tr><td>" + rows[i].id + "</td><td>" + rows[i].firstName + "</td><td>" + rows[i].lastName + "</td><td>" + rows[i].email + "</td><td>" + rows[i].profilePhoto + "</td><td>" + rows[i].role + "</td><td>" + editButton + rows[i].id + "\" value=\"O\" >" + "</td><td>" + deleteButton + rows[i].id + "\" value=\"X\" >" + "<br></td></tr>";
 		}
 		table += "</table>";
 
@@ -145,11 +129,8 @@ app.get('/home', async function (req, res) {
 		let profile = fs.readFileSync("public/common/admin_dashboard/admin.html", "utf8");
 		let profileDOM = new JSDOM(profile);
 
-		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML
-			= "Admin Dashboard | " + req.session.name;
-		profileDOM.window.document.getElementById("admin_name").innerHTML
-			= "Welcome " + req.session.name + "!";
-
+		profileDOM.window.document.getElementsByTagName("title")[0].innerHTML = "Admin Dashboard | " + req.session.name;
+		profileDOM.window.document.getElementById("admin_name").innerHTML = "Welcome " + req.session.name + "!";
 		profileDOM.window.document.getElementById("user_list_container").innerHTML = table;
 
 		res.set("Server", "Wazubi Engine");
@@ -237,7 +218,7 @@ app.post("/add", async function (req, res) {
 	let userRecordsQuery;
 	let userInputs;
 
-	if (req.session.loggedIn = true && req.session.role == "admin") {
+	if (req.session.loggedIn == true && req.session.role == "admin") {
 
 		if (req.body.firstName == "" || req.body.lastName == "" || req.body.email == "" || req.body.password == "" || req.body.userType == "default_message") {
 			isFieldEmpty = true;
@@ -310,7 +291,7 @@ app.post("/delete", async function (req, res) {
 		let deleteQuery = "DELETE FROM BBY_18_users where ID = " + req.body.id;
 		await connection.query(deleteQuery);
 		connection.end();
-		res.send({ status: "success", msg: "Deleted" })
+		res.send({ status: "success", msg: "Deleted" });
 	} else {
 		res.send({ status: "fail", msg: "You cannot delete this admin user." });
 	}
@@ -350,26 +331,12 @@ app.post('/edit', async function (req, res) {
 
 	if (req.body.profileImage == "default_image") {
 		connection.connect();
-		let query = "UPDATE `BBY_18_users` SET "
-			+ "`password`= '" + req.body.password
-			+ "', `firstName`= '" + req.body.firstName
-			+ "', `lastName`= '" + req.body.lastName
-			+ "', `email`= '" + req.body.email
-			+ "', `profilePhoto`= '" + user_rows[0].profilePhoto
-			+ "', `role`= '" + req.body.userRole
-			+ "' WHERE BBY_18_users.id = '" + req.body.id + "'"
+		let query = "UPDATE `BBY_18_users` SET " + "`password`= '" + req.body.password + "', `firstName`= '" + req.body.firstName + "', `lastName`= '" + req.body.lastName + "', `email`= '" + req.body.email + "', `profilePhoto`= '" + user_rows[0].profilePhoto + "', `role`= '" + req.body.userRole + "' WHERE BBY_18_users.id = '" + req.body.id + "'";
 		await connection.query(query);
 		res.status(200).send({ msg: "User Updated" });
 	} else {
 		connection.connect();
-		let query = "UPDATE `BBY_18_users` SET "
-			+ "`password`= '" + req.body.password
-			+ "', `firstName`= '" + req.body.firstName
-			+ "', `lastName`= '" + req.body.lastName
-			+ "', `email`= '" + req.body.email
-			+ "', `profilePhoto`= '" + req.body.profileImage
-			+ "', `role`= '" + req.body.userRole
-			+ "' WHERE BBY_18_users.id = '" + req.body.id + "'"
+		let query = "UPDATE `BBY_18_users` SET " + "`password`= '" + req.body.password + "', `firstName`= '" + req.body.firstName + "', `lastName`= '" + req.body.lastName + "', `email`= '" + req.body.email + "', `profilePhoto`= '" + req.body.profileImage + "', `role`= '" + req.body.userRole + "' WHERE BBY_18_users.id = '" + req.body.id + "'";
 		await connection.query(query);
 		res.status(200).send({ msg: "User Updated" });
 	}
@@ -395,7 +362,7 @@ app.post("/update", async function (req, res) {
 		isFieldEmpty = true;
 	}
 	if (isFieldEmpty == true) {
-		res.send({ status: "fail", msg: "The all the fields are required." })
+		res.send({ status: "fail", msg: "The all the fields are required." });
 	} else if (req.body.password != req.body.password_confirm) {
 		res.send({ status: "fail", msg: "The password does not match." });
 		connection.end();
@@ -424,7 +391,7 @@ app.post("/uploadProfileImage", async function (req, res) {
 		return res.status(400).send("No files were uploaded.");
 	}
 
-	let doc = fs.readFileSync("./public/common/account_info.html", "utf8")
+	let doc = fs.readFileSync("./public/common/account_info.html", "utf8");
 	let userDOM = new JSDOM(doc);
 
 	profileImage = req.files.profile_image;
@@ -455,14 +422,9 @@ app.get("/currentAccountInfo", async function (req, res) {
 
 	const [user_rows, user_info] = await connection.query("SELECT * FROM BBY_18_users WHERE ID = " + req.session.user_id);
 
-	let updateInputHTML = '<div><input type="text" class="form_input" id="firstName" value="' + user_rows[0].firstName
-		+ '" required /><input type="text" class="form_input" id="lastName" value="' + user_rows[0].lastName
-		+ '" required /></div><input type="text" id="email" class="form_input" value="'
-		+ user_rows[0].email + '" required /><input type="password" name="password" id="password" class="form_input" value="'
-		+ user_rows[0].password + '" required /><input type="password" name="password_confirm" id="password_confirm" class="form_input" value="'
-		+ user_rows[0].password + '" required /><h3 id="invalidPassword" class="invalidPassword"></h3><input id="updateBtn" type="button" class="form_input_submit" value="Update Account" />'
+	let updateInputHTML = '<div><input type="text" class="form_input" id="firstName" value="' + user_rows[0].firstName + '" required /><input type="text" class="form_input" id="lastName" value="' + user_rows[0].lastName + '" required /></div><input type="text" id="email" class="form_input" value="' + user_rows[0].email + '" required /><input type="password" name="password" id="password" class="form_input" value="' + user_rows[0].password + '" required /><input type="password" name="password_confirm" id="password_confirm" class="form_input" value="' + user_rows[0].password + '" required /><h3 id="invalidPassword" class="invalidPassword"></h3><input id="updateBtn" type="button" class="form_input_submit" value="Update Account" />';
 
-	connection.end;
+	connection.end();
 
 	let updateProfile = fs.readFileSync("./public/common/account_info.html", "utf8");
 	let profileDOM = new JSDOM(updateProfile);
@@ -475,7 +437,7 @@ app.get("/currentAccountInfo", async function (req, res) {
 });
 
 app.get("/faq", function (req, res) {
-	let doc = fs.readFileSync("./public/common/faq.html", "utf8")
+	let doc = fs.readFileSync("./public/common/faq.html", "utf8");
 	let userDOM = new JSDOM(doc);
 
 	res.set("Server", "Wazubi Engine");
@@ -484,7 +446,7 @@ app.get("/faq", function (req, res) {
 });
 
 app.get("/charities", function (req, res) {
-	let doc = fs.readFileSync("./public/common/charities.html", "utf8")
+	let doc = fs.readFileSync("./public/common/charities.html", "utf8");
 	let userDOM = new JSDOM(doc);
 
 	res.set("Server", "Wazubi Engine");
@@ -493,7 +455,7 @@ app.get("/charities", function (req, res) {
 });
 
 app.get("/about-us", function (req, res) {
-	let doc = fs.readFileSync("./public/common/about_us.html", "utf8")
+	let doc = fs.readFileSync("./public/common/about_us.html", "utf8");
 	let userDOM = new JSDOM(doc);
 
 	res.set("Server", "Wazubi Engine");
@@ -502,7 +464,7 @@ app.get("/about-us", function (req, res) {
 });
 
 app.get("/shop", function (req, res) {
-	let doc = fs.readFileSync("./public/common/shop.html", "utf8")
+	let doc = fs.readFileSync("./public/common/shop.html", "utf8");
 	let userDOM = new JSDOM(doc);
 
 	res.set("Server", "Wazubi Engine");
@@ -554,13 +516,11 @@ app.get("/history", async function (req, res) {
 		}
 	}
 
-	let updateInputHTML = '<h2>Total Donations: $' + total_donation.toFixed(2) + '</h2><br><h3>Team Seas: $' + seas.toFixed(2) + '</h3>'
-		+ '<br><h3>Team Trees: $' + trees.toFixed(2) + '</h3><br><h3>BC SPCA: $' + SPCA.toFixed(2) + '</h3><br><h3>Covenant House: $' + house.toFixed(2) + '</h3><br>'
-		+ '<h3>No Kid Hungry: $' + hungry.toFixed(2) + '</h3><br>'
+	let updateInputHTML = '<h2>Total Donations: $' + total_donation.toFixed(2) + '</h2><br><h3>Team Seas: $' + seas.toFixed(2) + '</h3>' + '<br><h3>Team Trees: $' + trees.toFixed(2) + '</h3><br><h3>BC SPCA: $' + SPCA.toFixed(2) + '</h3><br><h3>Covenant House: $' + house.toFixed(2) + '</h3><br>' + '<h3>No Kid Hungry: $' + hungry.toFixed(2) + '</h3><br>';
 
-	connection.end;
+	connection.end();
 
-	let doc = fs.readFileSync("./public/common/history.html", "utf8")
+	let doc = fs.readFileSync("./public/common/history.html", "utf8");
 	let userDOM = new JSDOM(doc);
 
 	userDOM.window.document.getElementById("donation_form").innerHTML = updateInputHTML;
@@ -591,7 +551,7 @@ app.post("/logout", function (req, res) {
 	if (req.session) {
 		req.session.destroy(function (error) {
 			if (error) {
-				res.status(400).send("Unable to log out")
+				res.status(400).send("Unable to log out");
 			} else {
 				res.status(200).send();
 			}
@@ -600,7 +560,7 @@ app.post("/logout", function (req, res) {
 });
 
 app.get("/signup", function (req, res) {
-	if (req.session.loggedIn = true && req.session.role == "admin") {
+	if (req.session.loggedIn == true && req.session.role == "admin") {
 		let doc = fs.readFileSync("./public/common/admin_dashboard/admin_signup.html", "utf8");
 
 		res.set("Server", "Wazubi Engine");
@@ -617,10 +577,10 @@ app.get("/signup", function (req, res) {
 });
 
 app.get("/login_check", function (req, res) {
-	if (req.session.loggedIn = true && req.session.role == "regular") {
+	if (req.session.loggedIn == true && req.session.role == "regular") {
 		res.status(200).send({ msg: "regular" });
-	} else if (req.session.loggedIn = true && req.session.role == "admin") {
-		res.send({ msg: "admin" })
+	} else if (req.session.loggedIn == true && req.session.role == "admin") {
+		res.send({ msg: "admin" });
 	} else {
 		res.send({ msg: "redirect" });
 	}
@@ -675,7 +635,7 @@ app.get("/timelineForm", function (req, res) {
 });
 
 app.get("/loginPage", function (req, res) {
-	if (req.session.loggedIn = true) {
+	if (req.session.loggedIn == true) {
 
 	}
 });
@@ -726,7 +686,7 @@ app.post("/createTimeline", async function (req, res) {
 	function redirectPage() {
 		res.redirect("/home");
 	}
-})
+});
 
 app.post("/updateTimelineForm", async function (req, res) {
 	const mysql = require('mysql2/promise');
@@ -746,18 +706,11 @@ app.post("/updateTimelineForm", async function (req, res) {
 	const [timeline_rows, timeline_fields] = await connection.execute("SELECT * FROM BBY_18_timelines WHERE id = " + req.body.id);
 
 	let timline_update_form = "";
-	timline_update_form += '<form id="timeline_update_form" action="/updateTimeline" method="POST" enctype="multipart/form-data">'
-		+ '<h2>Edit post</h2>'
-		+ '<div class="image_uploader_container"><label class="timeline_image_label" for="timeline_image_update">'
-		+ '<i class="fa fa-file-upload"></i>Select your file</label>'
-		+ '<input id="timeline_image_update" name="timeline_image" type="file" accept="image/*" /></div>'
-		+ '<textarea id="timeline_content_update" name="content" type="text" rows="4" cols="50">' + timeline_rows[0].timeline_text + '</textarea>'
-		+ '<input id="timeline_update_btn" type="submit" value="Update"></input>'
-		+ '</form>';
+	timline_update_form += '<form id="timeline_update_form" action="/updateTimeline" method="POST" enctype="multipart/form-data">' + '<h2>Edit post</h2>' + '<div class="image_uploader_container"><label class="timeline_image_label" for="timeline_image_update">' + '<i class="fa fa-file-upload"></i>Select your file</label>' + '<input id="timeline_image_update" name="timeline_image" type="file" accept="image/*" /></div>' + '<textarea id="timeline_content_update" name="content" type="text" rows="4" cols="50">' + timeline_rows[0].timeline_text + '</textarea>' + '<input id="timeline_update_btn" type="submit" value="Update"></input>' + '</form>';
 	res.setHeader("Content-Type", "text/html");
 	res.send(timline_update_form);
 	connection.end();
-})
+});
 
 app.post("/updateTimeline", async function (req, res) {
 	const mysql = require('mysql2/promise');
@@ -816,7 +769,7 @@ app.post("/deleteTimeline", async function (req, res) {
 
 	await connection.query("DELETE FROM BBY_18_timelines where id = " + req.body.id);
 	connection.end();
-	res.send({ status: "success", msg: "Deleted" })
+	res.send({ status: "success", msg: "Deleted" });
 
 });
 

@@ -30,7 +30,7 @@ ready(function () {
          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
          */
         let params = typeof data == 'string' ? data : Object.keys(data).map(
-            function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+            function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]); }
         ).join('&');
 
         const xhr = new XMLHttpRequest();
@@ -39,7 +39,7 @@ ready(function () {
                 callback(this.responseText);
 
             }
-        }
+        };
         xhr.open("POST", url);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -52,7 +52,7 @@ ready(function () {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
                 callback(this.responseText);
             }
-        }
+        };
         xhr.open("GET", url);
         xhr.send();
     }
@@ -65,7 +65,7 @@ ready(function () {
     document.getElementById("delete_no_btn").addEventListener("click", function (e) {
         isDeleteOk = false;
         modal.style.display = "none";
-    })
+    });
 
     for (let i = 0; i < deletebtn.length; i++) {
         deletebtn[i].addEventListener("click", function (e) {
@@ -86,7 +86,7 @@ ready(function () {
                         }
                     }
                 }, vars);
-            })
+            });
         });
     }
     var editbtn = document.getElementsByClassName("editBtn");
@@ -112,10 +112,10 @@ var span = document.getElementsByClassName("close")[0];
 var modal = document.getElementById("myModal");
 span.onclick = function () {
     modal.style.display = "none";
-}
+};
 
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+};

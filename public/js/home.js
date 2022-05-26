@@ -18,7 +18,7 @@ ready(function () {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
                 callback(this.responseText);
             }
-        }
+        };
         xhr.open("GET", url);
         xhr.send();
     }
@@ -41,7 +41,7 @@ ready(function () {
          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
          */
         let params = typeof data == 'string' ? data : Object.keys(data).map(
-            function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+            function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]); }
         ).join('&');
 
         const xhr = new XMLHttpRequest();
@@ -50,7 +50,7 @@ ready(function () {
                 callback(this.responseText);
 
             }
-        }
+        };
         xhr.open("POST", url);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -60,7 +60,7 @@ ready(function () {
     document.querySelector("#accocunt_management").addEventListener("click", function (e) {
         e.preventDefault();
         window.location.replace("/currentAccountInfo");
-    })
+    });
 
     document.querySelector("#donation_history_btn").addEventListener("click", function (e) {
         e.preventDefault();
@@ -77,7 +77,7 @@ ready(function () {
                 timeline_open_form.value = "Close";
                 document.getElementById("timeline_form_container").innerHTML = data;
                 timeline_form_container.style.display = "block";
-            })
+            });
         } else {
             timeline_open_form.value = "Add Timeline";
             timeline_form_container.style.display = "none";
@@ -117,7 +117,7 @@ ready(function () {
     document.getElementById("delete_no_btn").addEventListener("click", function (e) {
         isDeleteOk = false;
         modal.style.display = "none";
-    })
+    });
 
     for (let i = 0; i < timeline_delete_btn.length; i++) {
         timeline_delete_btn[i].addEventListener("click", function (e) {
@@ -139,7 +139,7 @@ ready(function () {
                         }
                     }
                 }, vars);
-            })
+            });
         });
     }
 });
@@ -195,10 +195,10 @@ var span = document.getElementsByClassName("close")[0];
 var modal = document.getElementById("myModal");
 span.onclick = function () {
     modal.style.display = "none";
-}
+};
 
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+};

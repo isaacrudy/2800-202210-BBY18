@@ -4,7 +4,7 @@ ready(function () {
     function ajaxPOST(url, callback, data) {
 
         let params = typeof data == 'string' ? data : Object.keys(data).map(
-            function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+            function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]); }
         ).join('&');
 
         const xhr = new XMLHttpRequest();
@@ -14,7 +14,7 @@ ready(function () {
                 callback(this.responseText, this.status);
 
             }
-        }
+        };
         xhr.open("POST", url);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -38,7 +38,7 @@ ready(function () {
                 let dataParsed = JSON.parse(data);
                 document.getElementById("error-message").innerHTML = dataParsed.msg;
             }
-        }, vars)
+        }, vars);
     });
 });
 
