@@ -74,6 +74,10 @@ ready(function () {
         }
     });
 
+    /*
+    * Timeline update button that open the update form corresponding the button's id and ajaxPOSt pass the id to the server 
+    * and request selected timeline data to display in the update form.
+    */
     var timeline_update_btn = document.getElementsByClassName("timeline_update_btn");
     var timeline_update_container = [];
     for (let i = 0; i < timeline_update_btn.length; i++) {
@@ -102,13 +106,14 @@ ready(function () {
     var span = document.getElementsByClassName("close")[0];
     var isDeleteOk = false;
 
-
-
     document.getElementById("delete_no_btn").addEventListener("click", function (e) {
         isDeleteOk = false;
         modal.style.display = "none";
     });
 
+    /*
+    * This loop add onClick event to the each delete button.
+    */
     for (let i = 0; i < timeline_delete_btn.length; i++) {
         timeline_delete_btn[i].addEventListener("click", function (e) {
             e.preventDefault();
@@ -142,6 +147,9 @@ function ready(callback) {
     }
 }
 
+/*
+* Easter Egg trigger. When a user clicks their name 7 times, it will be triggered.
+*/
 var numberOfClicks = 0;
 document.getElementById("userName").addEventListener("click", function (e) {
     numberOfClicks++;

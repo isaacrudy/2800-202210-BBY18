@@ -45,6 +45,10 @@ ready(function () {
         xhr.send(params);
     }
 
+    /*
+    * It accepts user inputs and post to the server and request if the login went success or not. 
+    * If the status is success it will replace the page to home page, and if not it will display an error message.
+    */
     document.querySelector("#loginBtn").addEventListener("click", function (e) {
         e.preventDefault();
         let email = document.getElementById("email");
