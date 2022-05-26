@@ -248,3 +248,8 @@ span {
   color: var(--fc_teal);
   transition: .4s ease;
 }
+
+#filler
+{
+  width: 20px;
+}

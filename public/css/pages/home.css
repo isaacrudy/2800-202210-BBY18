@@ -44,6 +44,11 @@
     display: none;
 }
 
+#my_timeline_btn, #dashboard_btn
+{
+    display: none;
+}
+
 .timeline_card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 500px;
@@ -190,7 +195,7 @@
         text-align: center;
     }
 
-    #my_timeline_btn, #accocunt_management, #donation_history_btn, #logout_btn {
+    #my_timeline_btn, #dashboard_btn, #accocunt_management, #donation_history_btn, #logout_btn {
         width: 90%;
         border-radius: 8px;
     }
@@ -277,7 +282,7 @@
         margin-bottom: 5%;
     }
 
-    #my_timeline_btn, #accocunt_management, #donation_history_btn, #logout_btn {
+    #my_timeline_btn, #dashboard_btn,#accocunt_management, #donation_history_btn, #logout_btn {
         width: 20%;
         height: 80px;
         margin-bottom: 0.1%;
