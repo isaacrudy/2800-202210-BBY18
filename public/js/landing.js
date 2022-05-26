@@ -100,11 +100,11 @@ const story =
                 txt: "",
                 action: () => {
                     if (isWizard) {
-                        text.innerHTML = "You cast a spell, annihilating the rancid being from existence. You exit the cave and resurrect the villagers with the wand as undead servants. Years pass and you become an evil lich, ruling over the kingdom for eternity.<br><br> The end."
+                        text.innerHTML = "You cast a spell, annihilating the rancid being from existence. You exit the cave and resurrect the villagers with the wand as undead servants. Years pass and you become an evil lich, ruling over the kingdom for eternity.<br><br> The end.";
                         shouldExit = true;
                         document.getElementById('continue').innerText = "The End";
                     } else {
-                        text.innerHTML = "Exhausted, You start the battle. <br><br>The fight rages on. <br><br>Hours go by. <br><br>Nearly avoiding death with every spell that is cast towards you. But you're determined. You see an opening! <br><br>You take the chance and close the distance and with one fell swoop. <br><br>You've won. <br><br>Completely exhausted from the fight you collapse; unable to move. You feel your life slowly fade away."
+                        text.innerHTML = "Exhausted, You start the battle. <br><br>The fight rages on. <br><br>Hours go by. <br><br>Nearly avoiding death with every spell that is cast towards you. But you're determined. You see an opening! <br><br>You take the chance and close the distance and with one fell swoop. <br><br>You've won. <br><br>Completely exhausted from the fight you collapse; unable to move. You feel your life slowly fade away.";
                     }
                 }
             }
@@ -118,7 +118,7 @@ const story =
                 exit: true
             }
         ]
-    ]
+    ];
 
 let konamiCode = function (event) {
     if (!invoked) {
@@ -160,7 +160,7 @@ function launchGame() {
     storyindex = 0;
     text.innerHTML = story[storyindex][0].txt;
     displayGameButtons();
-};
+}
 
 function continueGame(option) {
     if (shouldExit) {
@@ -202,7 +202,7 @@ function knight() {
           | \\     / |
           | |     | |
         <\\\\\\)     (///>
-    </pre>    `
+    </pre>    `;
 }
 
 function wizard() {
@@ -215,5 +215,5 @@ function wizard() {
     (/ /\\_#oo#_/\\ \\)
      \\/\\  ####  /\\/
           \\*##'
-    </pre>`
+    </pre>`;
 }
