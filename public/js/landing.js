@@ -26,7 +26,7 @@ const story =
             },
             {
                 txt: "Goodbye.",
-                action: ()=>{
+                action: () => {
                     document.getElementById('continue').innerText = "Goodbye";
                 },
                 exit: true
@@ -38,7 +38,7 @@ const story =
             },
             {
                 txt: "You fool. What kind of witch hunter gives up? Your family has been cursed for generations. Good luck!",
-                action: ()=>{
+                action: () => {
                     document.getElementById('continue').innerText = "The End";
                 },
                 exit: true
@@ -52,7 +52,7 @@ const story =
         [
             {
                 txt: "A snake slivers up your pants, up your shirt, to your neck and takes a big bite. <br><br>Your muscles slowly tense up before your heart stops beating. <br><br>You've Died",
-                action: ()=>{
+                action: () => {
                     document.getElementById('continue').innerText = "The End";
                 },
                 exit: true
@@ -64,7 +64,7 @@ const story =
         [
             {
                 txt: "One of the flies lands and you take a closer look. Upon investigation you realize that the flies are actually little green witches flying on broomsticks cackling. <br><br> They begin chanting and cast a curse on you. <br><br> You see that you have become a tiny green witch.",
-                action: ()=>{
+                action: () => {
                     document.getElementById('continue').innerText = "The End";
                 },
                 exit: true
@@ -112,7 +112,7 @@ const story =
         [
             {
                 txt: "Was it worth it?",
-                action: ()=>{
+                action: () => {
                     document.getElementById('continue').innerText = "The End";
                 },
                 exit: true
@@ -205,7 +205,7 @@ function knight() {
     </pre>    `
 }
 
-function wizard(){
+function wizard() {
     return `<pre>
     You are a Wizard (harry)
     C

@@ -26,12 +26,17 @@ input[type=text]
     left: 63px;
 }
 
-#donation-amount
+#donation-amount, #select-charity
 {
     height: 55px;
     margin-bottom: 30px;
     width: 100%;
     text-indent: 10px;
+}
+
+#select-charity
+{
+    margin-top: 30px;
 }
 
 #donation-total-container
@@ -233,6 +238,7 @@ input[type=text]
 {
     width: 100%;
     padding: 20px;
+    margin-bottom: 30px;
 }
 
 .demo-button > span
@@ -242,7 +248,7 @@ input[type=text]
 
 .donate-grid
 {
-    margin-top: 30px;
+    margin-top: 40px;
     margin-bottom: 15px;
     display: grid;
     grid-template-rows: 60px 60px;
@@ -289,7 +295,7 @@ input[type=text]
 {
     border-bottom: 2px solid var(--border_color);
     line-height: 0.1em;
-    margin-bottom: 30px;
+    margin: 30px 0px;
 }
 
 .text-center
@@ -307,5 +313,5 @@ input[type=text]
 
 .flex-center form
 {
-    width: 90%;
+    width: 100%;
 }

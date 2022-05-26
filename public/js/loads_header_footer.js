@@ -1,5 +1,4 @@
-class GlobalHeader extends HTMLElement
-{
+class GlobalHeader extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
         <div class="menu_wrapper">
@@ -14,10 +13,10 @@ class GlobalHeader extends HTMLElement
                     <nav>
                         <ul id="nav_ul">
                             <li><a href="/"><span>Home</span></a></li>
-                            <li><a href="charities.html"><span>Charities</span></a></li>
-                            <li><a href="#"><span>About Us</span></a></li>
+                            <li><a href="/charities"><span>Charities</span></a></li>
+                            <li><a href="/about-us"><span>About Us</span></a></li>
                             <li><a href="/faq"><span>FAQ</span></a></li>
-                            <li><a href="shop.html"><span>Shop</span></a></li>
+                            <li><a href="/shop"><span>Shop</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -41,21 +40,19 @@ class GlobalHeader extends HTMLElement
     }
 }
 
-class GlobalFooter extends HTMLElement
-{
+class GlobalFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <footer>
                 <section>
                     <div>
                         <ul id="sitemap">
-                            <li><a href="#"><span>Home</span></a></li>
+                            <li><a href="/"><span>Home</span></a></li>
                             <li><a href="#"><span>Sign in / Register</span></a></li>
                             <li><a href="/charities"><span>Charities</span></a></li>
-                            <li><a href="#"><span>About Us</span></a></li>
-                            <li><a href="#"><span>FAQ</span></a></li>
-                            <li><a href="#"><span>Contact</span></a></li>
-                            <li><a href="shop.html"><span>Shop</span></a></li>
+                            <li><a href="/about-us"><span>About Us</span></a></li>
+                            <li><a href="/faq"><span>FAQ</span></a></li>
+                            <li><a href="/shop"><span>Shop</span></a></li>
                         </ul>
                     </div>
 

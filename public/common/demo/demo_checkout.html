@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="img/Logos/fundcart_favicon.ico">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/pages/demo_checkout.css">
-    <link rel="stylesheet" href="css/media_queries/demo_queries.css">
-    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/pages/demo_checkout.css">
+    <link rel="stylesheet" href="../../css/media_queries/demo_queries.css">
+    <link rel="stylesheet" href="../../css/fontawesome.min.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
     
 </head>
@@ -22,8 +22,8 @@
 
     <header class="header_bar">
         <div>
-            <img id="fundcart_logo" src="img/demo_page/fundmart_vertical_mobile.png" alt="FundCart Logo">
-            <img id="fundcart_logo_alt" src="img/demo_page/fundmart_full.png" alt="FundCart Logo">
+            <img id="fundcart_logo" src="../../img/demo_page/fundmart_vertical_mobile.png" alt="FundCart Logo">
+            <img id="fundcart_logo_alt" src="../../img/demo_page/fundmart_full.png" alt="FundCart Logo">
         </div>
 
         <div>
@@ -147,34 +147,40 @@
                     <div class="demo-container-header">
                         <h2>DONATIONS</h2>
                     </div>
-        
-                    <div class="donate-grid">
-                        <div id="nDollar" onclick="nearestDollar();"><span>Round up to <br> nearest dollar</span></div>
-                        <div id="fiveP" onclick="fivePercent();"><span>5%</span></div>
-                        <div id="tenP" onclick="tenPercent();"><span>10%</span></div>
-                        <div id="twentyP" onclick="twentyPercent();"><span>20%</span></div>
-                    </div>
-        
-                    <div class="text-center">
-                        <p class="no-line-height"><span class="lines">or</span></p>
-                    </div>
-        
-                    <div class="flex-center border-bottom">
-                        <form action="javascript:void(0);">
-                            <input onchange="customAmount();" type="number" min="0.00" step="0.01" max="500" placeholder="Custom Amount" id="donation-amount">
-                        </form>
-                    </div>
-        
-                    <div class="space-between padding-top" id="donation-total-container">
-                        <span class="bold-big">Total with <br> Donation</span>
-                        <span class="bold-big" id="donation-total">$17.37</span>
-                    </div>
 
-                    
-                </div>
+                    <form id="donate-form" action="javascript:void(0);">
+                        <div class="flex-center border-bottom">
+                            <select name="select-charity" id="select-charity" required>
+                                <option value="" label="Select a charity" selected disabled hidden></option>
+                            </select>
+                        </div>
+            
+                        <div class="donate-grid">
+                            <div id="nDollar" onclick="nearestDollar();"><span>Round up to <br> nearest dollar</span></div>
+                            <div id="fiveP" onclick="fivePercent();"><span>5%</span></div>
+                            <div id="tenP" onclick="tenPercent();"><span>10%</span></div>
+                            <div id="twentyP" onclick="twentyPercent();"><span>20%</span></div>
+                        </div>
+            
+                        <div class="text-center">
+                            <p class="no-line-height"><span class="lines">or</span></p>
+                        </div>
+            
+                        <div class="flex-center border-bottom">
+                            <input onchange="customAmount();" type="number" min="0.00" step="0.01" max="500" placeholder="Custom Amount" id="donation-amount" required>
+                        </div>
+            
+                        <div class="space-between padding-top" id="donation-total-container">
+                            <span class="bold-big">Total with <br> Donation</span>
+                            <span class="bold-big" id="donation-total">$17.37</span>
+                        </div>
 
-                <div class="width-90">
-                    <button type="button" class="demo-button" onclick="window.close();"><span>PROCEED TO PAYMENT</span></button>
+                
+                        <div class="flex-center width-90">
+                            <button type="submit" class="demo-button" onclick="donate();"><span>PROCEED TO PAYMENT</span></button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -212,8 +218,8 @@
         </section>
     </footer>
 
-    <script src="js/spilled_beans.js"></script>
-    <script src="js/calculate_donation.js"></script>
+    <script src="../../js/demo_checkout.js"></script>
+    <script src="../../js/spilled_beans.js"></script>
 </body>
 
 </html>

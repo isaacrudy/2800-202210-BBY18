@@ -1,0 +1,16 @@
+@media screen and (min-width: 1150px) {
+    .aboutUs-container{
+        max-width: 500px;
+    }
+    #card-grid{
+        width: 80%;
+        display: grid;
+        grid-template-columns: 400px 400px;
+        grid-template-rows: repeat(2, 750px);
+        column-gap: 20px;
+        row-gap: 30px;
+        margin-bottom: 30px;
+        justify-content: center;
+    }
+    
+}

@@ -4,8 +4,8 @@
 <head>
     <title>FundCart</title>
     <meta charset="UTF-8">
-    <link rel="icon" href="img/Logos/fundcart_favicon.ico">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="img/Logos/fundcart_favicon.ico">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/media_queries/index_queries.css">
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
@@ -23,11 +23,11 @@
                 <div>
                     <nav>
                         <ul id="nav_ul">
-                            <li><a href="#"><span>Home</span></a></li>
+                            <li><a href="/"><span>Home</span></a></li>
                             <li><a href="/charities"><span>Charities</span></a></li>
-                            <li><a href="#"><span>About Us</span></a></li>
+                            <li><a href="/about-us"><span>About Us</span></a></li>
                             <li><a href="/faq"><span>FAQ</span></a></li>
-                            <li><a href="shop.html"><span>Shop</span></a></li>
+                            <li><a href="/shop"><span>Shop</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -52,15 +52,16 @@
     <div id="wrapper">
         <h1>Welcome to FundCart</h1>
         <div>
-            <h2 id="landing-titles">News</h2>
+            <h2 class="landing-titles">News</h2>
 
-            <div id="news" class="container">
+            <div class="container news">
                 <div class="banner" id="teamseas">
                     <h4 class="container-titles" id="textbox-title">We Teamed up! #Teamseas</h4>
                 </div>
                 <div class="inner-container">
                     <p class="content" id="textbox">
-                        Introducing a new partner to the FundCart team, #Teamseas! We are proud to be partnering with Mr.Beast and Mark Rober again for this amazing charity. Go read about it <a href="">here!</a>
+                        Introducing a new partner to the FundCart team, #Teamseas! We are proud to be partnering with
+                        Mr.Beast and Mark Rober again for this amazing charity. Go read about it <a href="">here!</a>
                     </p>
                     <br>
                     <div id="continue-container">
@@ -70,41 +71,44 @@
                         <button id="optionOne" onclick="continueGame(0)">1</button>
                         <button id="optionTwo" onclick="continueGame(1)">2</button>
                     </div>
-                    <h5 class="date" id="currentDate">May 16th 2022</h5>
+                    <h5 class="date currentDate">May 16th 2022</h5>
                 </div>
             </div>
 
-            <div id="news" class="container">
+            <div class="container news">
                 <div class="banner" id="teamtrees">
                     <h4 class="container-titles">We'll be planting some seeds with #Teamtrees</h4>
                 </div>
                 <div class="inner-container">
                     <p class="content">
-                        Now most of the time you shouldn't read the YouTube comments, but there does come a time when you just want to prove them wrong. That's what Mr.Beast and Mark Rober did. Go read about how #Teamtrees was built <a href="">here!</a>
+                        Now most of the time you shouldn't read the YouTube comments, but there does come a time when
+                        you just want to prove them wrong. That's what Mr.Beast and Mark Rober did. Go read about how
+                        #Teamtrees was built <a href="">here!</a>
                     </p>
                     <br>
-                    <h5 class="date" id="currentDate">May 16th 2022</h5>
+                    <h5 class="date currentDate">May 16th 2022</h5>
                 </div>
             </div>
 
             <br>
 
-            <h2 id="landing-titles">Promotions</h2>
-            <div id="promo" class="container">
-                <div class="banner" id="default-banner">
+            <h2 class="landing-titles">Promotions</h2>
+            <div class="container promo">
+                <div class="banner default-banner">
                     <h4 class="container-titles">New Partnership!</h4>
                 </div>
                 <div class="inner-container">
                     <p class="content">
-                        The new partnership with #Teamseas has us excited to support too! We'll be matching dollar for dollar for every $100 minimum spent!
+                        The new partnership with #Teamseas has us excited to support too! We'll be matching dollar for
+                        dollar for every $100 minimum spent!
                     </p>
                     <br>
-                    <h5 class="date" id="currentDate">May 16th 2022</h5>
+                    <h5 class="date currentDate">May 16th 2022</h5>
                 </div>
             </div>
 
-            <div id="promo" class="container">
-                <div class="banner"  id="default-banner">
+            <div class="promo container">
+                <div class="banner default-banner">
                     <h4 class="container-titles">New Partnership!</h4>
                 </div>
                 <div class="inner-container">
@@ -112,7 +116,7 @@
                         We love trees. We love it so much that we'll match $2 for every $1 after spending $100 minimum!
                     </p>
                     <br>
-                    <h5 class="date" id="currentDate">May 16th 2022</h5>
+                    <h5 class="date currentDate">May 16th 2022</h5>
                 </div>
             </div>
 
@@ -125,11 +129,10 @@
                 <ul id="sitemap">
                     <li><a href="/"><span>Home</span></a></li>
                     <li><a href="/signin"><span>Sign in / Register</span></a></li>
-                    <li><a href="charities.html"><span>Charities</span></a></li>
-                    <li><a href="#"><span>About Us</span></a></li>
+                    <li><a href="/charities"><span>Charities</span></a></li>
+                    <li><a href="/about-us"><span>About Us</span></a></li>
                     <li><a href="/faq"><span>FAQ</span></a></li>
-                    <li><a href="#"><span>Contact</span></a></li>
-                    <li><a href="shop.html"><span>Shop</span></a></li>
+                    <li><a href="/shop"><span>Shop</span></a></li>
                 </ul>
             </div>
 

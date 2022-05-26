@@ -15,10 +15,10 @@ const fail = "redirect";
 ready(function () {
     fetch("/login_check", {
         method: "GET",
-        headers: {"Content-Type": "application/json"}
+        headers: { "Content-Type": "application/json" }
     }).then(response => response.json()).then((response) => {
         if (response.msg === fail) {
-            window.location.assign("login.html")
+            window.location.assign("/signin")
         }
     })
 

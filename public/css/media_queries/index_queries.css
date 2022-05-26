@@ -1,5 +1,5 @@
 @media screen and (min-width: 1150px) {
-    #news, #promo
+    .container
     {
         max-width: 800px;
     }

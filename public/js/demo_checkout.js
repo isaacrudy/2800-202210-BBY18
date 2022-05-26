@@ -1,5 +1,7 @@
+getCharities();
+
 let total = document.getElementById('total-before').firstChild.nodeValue;
-let stripped = total.replace(/\$/g,'');
+let stripped = total.replace(/\$/g, '');
 let donateAmount = 0;
 let newTotal = 0;
 const donateTotal = document.getElementById('donation-total');
@@ -15,7 +17,6 @@ function getNewTotal() {
     newTotal = (+donateAmount) + (+stripped);
     donateTotal.innerHTML = '$' + newTotal.toFixed(2);
 }
-
 
 function nearestDollar() {
     let cents = stripped.substring(2);
@@ -64,4 +65,35 @@ function customAmount() {
     fP.style.background = "var(--fc_teal)";
     tP.style.background = "var(--fc_teal)";
     twP.style.background = "var(--fc_teal)";
+}
+
+async function getCharities() {
+    const res = await fetch('/get_charities');
+    const data = await res.json();
+
+    const option = document.getElementById('select-charity');
+
+    for (item of data) {
+        const charity = document.createElement('option');
+        charity.textContent = `${item.charityName}`;
+        charity.value = `${item.id}`
+
+        option.append(charity);
+    }
+}
+
+async function donate() {
+    const charity = document.getElementById("select-charity").value;
+    const amount = document.getElementById("donation-amount").value;
+    const vars = { "charity": charity, "amount": amount };
+    console.log(amount);
+
+    await fetch('/donate', {
+        method: "POST",
+        body: JSON.stringify(vars),
+        headers: {
+            "Content-Type": "application/json"
+        },
+        keepalive: true
+    }).then(window.close());
 }

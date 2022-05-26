@@ -1,6 +1,7 @@
 .custom-select
 {
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   justify-content: space-between !important;
   align-items: center;
   gap: 20px;
@@ -16,7 +17,7 @@
   border: 1px solid rgba(162, 162, 162, 0.882);
 }
 
-.custom-select label
+#signup_form_inner label, .custom-select label
 {
-  font-size: 1.1em;
+  font-size: 0.8em;
 }
