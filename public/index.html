@@ -8,46 +8,12 @@
     <link rel="icon" href="img/Logos/fundcart_favicon.ico">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/media_queries/index_queries.css">
+    <script src="js/loads_header_footer.js"></script>
     <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="menu_wrapper">
-        <input type="checkbox" class="toggler">
-        <div class="hamburger">
-            <div></div>
-        </div>
-
-        <div class="menu">
-            <div>
-                <div>
-                    <nav>
-                        <ul id="nav_ul">
-                            <li><a href="/"><span>Home</span></a></li>
-                            <li><a href="/charities"><span>Charities</span></a></li>
-                            <li><a href="/about-us"><span>About Us</span></a></li>
-                            <li><a href="/faq"><span>FAQ</span></a></li>
-                            <li><a href="/shop"><span>Shop</span></a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <header class="header_bar">
-        <div id="filler">
-        </div>
-
-        <div>
-            <img id="fundcart_logo" src="img/Logos/cart_logo_vertical.png" alt="FundCart Logo">
-            <img id="fundcart_logo_alt" src="img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
-        </div>
-
-        <div>
-            <a class="general_button" href="/signin" id="new_user">Login</a>
-        </div>
-    </header>
+    <global-header></global-header>
 
     <div id="wrapper">
         <h1>Welcome to FundCart</h1>
@@ -159,6 +125,9 @@
 
         </section>
     </footer>
+
+    <script src="js/dynamic_header.js"></script>
+
     <script src="js/signout.js"></script>
     <script src="js/landing.js"></script>
     <script src="js/disable_scrolling.js"></script>

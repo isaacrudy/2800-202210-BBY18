@@ -12,58 +12,8 @@
 </head>
 
 <body>
-    <div class="menu_wrapper">
-        <input type="checkbox" class="toggler">
-        <div class="hamburger">
-            <div></div>
-        </div>
-
-        <div class="menu">
-            <div>
-                <div>
-                    <nav>
-                        <ul id="nav_ul">
-                            <li><a href="/"><span>Home</span></a></li>
-                            <li><a href="/charities"><span>Charities</span></a></li>
-                            <li><a href="#"><span>About Us</span></a></li>
-                            <li><a href="/faq"><span>FAQ</span></a></li>
-                            <li><a href="/shop"><span>Shop</span></a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <header class="header_bar">
-        <div id="filler">
-        </div>
-
-        <div>
-            <img id="fundcart_logo" src="img/Logos/cart_logo_vertical.png" alt="FundCart Logo">
-            <img id="fundcart_logo_alt" src="img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
-        </div>
-
-        <div id="profile_dropdown">
-            <button id="profile_dropbtn">🤵🏻</button>
-        </div>
-    </header>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Are you sure you want to delete the timeline post?</p>
-            <button id="delete_yes_btn" value="yes">Yes</button>
-            <button id="delete_no_btn" value="no">No</button>
-        </div>
-    </div>
-
-    <div id="profile_dropdown_content">
-        <input type="button" value="My timeline" id="my_timeline_btn">
-        <input type="button" value="Account Management" id="accocunt_management">
-        <input type="button" value="Donation History" id="donation_history_btn">
-        <input type="button" value="Logout" id="logout_btn" onclick="signout()">
-    </div>
+    <global-header></global-header>
+    
     <div id="wrapper">
         <div id="welcome_user">
             <h1>Welcome, </h1>
@@ -89,6 +39,8 @@
 
     <global-footer></global-footer>
 
+    <script src="js/dynamic_header.js"></script>
+    <script src="js/dynamic_footer.js"></script>
     <script src="js/home.js"></script>
     <script src="js/signout.js"></script>
     <script src="js/disable_scrolling.js"></script>
