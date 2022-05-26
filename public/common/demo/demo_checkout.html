@@ -147,7 +147,7 @@
                         <h2>DONATIONS</h2>
                     </div>
 
-                    <form id="donate-form" action="javascript:void(0);">
+                    <form id="donate-form" onsubmit="return donate()">
                         <div class="flex-center border-bottom">
                             <select name="select-charity" id="select-charity" required>
                                 <option value="" label="Select a charity" selected disabled hidden></option>
@@ -176,7 +176,7 @@
 
                 
                         <div class="flex-center width-90">
-                            <button type="submit" id="proceed-to-payment" class="demo-button" onclick="donate();"><span>PROCEED TO PAYMENT</span></button>
+                            <button type="submit" id="proceed-to-payment" class="demo-button"><span>PROCEED TO PAYMENT</span></button>
                         </div>
                     </form>
 
