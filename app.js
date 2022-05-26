@@ -24,6 +24,9 @@
 */
 
 "use strict";
+/*
+* Requires dependencies list.
+*/
 const express = require('express');
 const session = require('express-session');
 const { JSDOM } = require('jsdom');

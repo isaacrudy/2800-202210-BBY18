@@ -21,6 +21,10 @@ ready(function () {
         xhr.send(params);
     }
 
+    /*
+    * It accepts all the required field to sign up and post to /add path in the server.
+    * If the signup was success, it will redirect to the landing page, if not it will display an error message.
+    */
     document.querySelector("#signupBtn").addEventListener("click", function (e) {
         e.preventDefault();
         let email = document.getElementById("email").value;
