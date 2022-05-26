@@ -182,6 +182,50 @@ and choose which installer is best suited for your machine.
 "nodemon": "^2.0.16",
 "object-assign": "^4.1.1"
 
+Hosting Service and Instructions
+------------
+We selected Heroku to deploy our app.
+
+Here are minimum requirements and instructions to deploy the app using Heroku:
+
+1. Port setting add -> process.env.PORT
+let port = 8000;
+app.listen(process.env.PORT || port, function () {
+	console.log("Example app listening on port " + port + "!");
+});
+
+2. Must be main or master branch
+
+3. Sets up Package.json file
+
+"scripts": {
+    "start": "nodemon app.js",
+  }
+
+4. If you have a database
+
+add-on => cleardb
+get the url from Heroku
+
+add the connection setting to the app.js:
+
+		const mysql = require('mysql2/promise');
+		const connection = await mysql.createConnection({
+			host: "us-cdbr-east-05.cleardb.net",
+			user: "bbdb6cc530e412",
+			password: "02465a08",
+			database: "heroku_68a9797f1d076fa",
+			multipleStatements: true
+		});
+
+check the connection with the database in locally first
+
+ Deploy your app
+ 1. heroku git:clone -a "NameOfYourProject"
+ 2. git add .
+ 3  git commit -am "something comment"
+ 4. git push heroku main(master)
+
 Using the product
 ------------
 
@@ -190,3 +234,6 @@ Credits
 
 Contact Information
 ------------
+Amadeus Min
+Email:  ama.m.cantabile@gmail.com
+Github: https://github.com/ama-cantabile
