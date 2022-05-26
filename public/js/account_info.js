@@ -53,7 +53,7 @@ ready(function () {
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
 
-        const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName };
+        const vars = { "email": email.trim(), "password": password.trim(), "password_confirm": check_password.trim(), "firstName": firstName.trim(), "lastName": lastName.trim() };
         ajaxPOST("/update", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
