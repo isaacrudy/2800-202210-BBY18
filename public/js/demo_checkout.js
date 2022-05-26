@@ -59,7 +59,7 @@ function customAmount() {
     if (donateVal.value > 500) {
         donateVal.value = 500;
     }
-    newTotal = (+donateVal.value) + (+stripped)
+    newTotal = (+donateVal.value) + (+stripped);
     donateTotal.innerHTML = '$' + newTotal.toFixed(2);
     nearDollar.style.background = "var(--fc_teal)";
     fP.style.background = "var(--fc_teal)";
@@ -73,10 +73,10 @@ async function getCharities() {
 
     const option = document.getElementById('select-charity');
 
-    for (item of data) {
+    for (var item of data) {
         const charity = document.createElement('option');
         charity.textContent = `${item.charityName}`;
-        charity.value = `${item.id}`
+        charity.value = `${item.id}`;
 
         option.append(charity);
     }
