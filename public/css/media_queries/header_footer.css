@@ -129,4 +129,9 @@
         font-size: 1.4em;
         padding: 10px;
     }
+
+    #sign_in
+    {
+        padding: 15px 30px;
+    }
 }

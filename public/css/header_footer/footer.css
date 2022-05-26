@@ -99,3 +99,13 @@ footer i {
     margin: 10px;
     font-size: 2em;
 }
+
+#footer-timeline
+{
+    display: none;
+}
+
+#footer-dashboard
+{
+    display: none;
+}

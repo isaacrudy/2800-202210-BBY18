@@ -57,16 +57,6 @@ ready(function () {
         xhr.send(params);
     }
 
-    document.querySelector("#accocunt_management").addEventListener("click", function (e) {
-        e.preventDefault();
-        window.location.replace("/currentAccountInfo");
-    })
-
-    document.querySelector("#donation_history_btn").addEventListener("click", function (e) {
-        e.preventDefault();
-        window.location.replace("/history");
-    })
-
     var timeline_form_container = document.getElementById("timeline_form_container");
     var timeline_open_form = document.querySelector("#open_timeline_form_btn");
     timeline_form_container.style.display = "none";
@@ -176,20 +166,6 @@ document.getElementById("easterEgg_btn").addEventListener("click", function (e) 
     }
 });
 
-var profile_menu_content = document.getElementById("profile_dropdown_content");
-profile_menu_content.style.display = "none";
-document.getElementById("profile_dropbtn").addEventListener("click", function (e) {
-    if (profile_menu_content.style.display == "none") {
-        if (window.innerWidth >= 1150) {
-            profile_menu_content.style.display = "flex";
-        } else {
-            profile_menu_content.style.display = "block";
-        }
-    } else {
-        profile_menu_content.style.display = "none";
-    }
-
-});
 
 var span = document.getElementsByClassName("close")[0];
 var modal = document.getElementById("myModal");

@@ -32,10 +32,19 @@ class GlobalHeader extends HTMLElement {
             <img id="fundcart_logo_alt" src="/img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
         </div>
 
-        <div id='account_buttons'>
-            <button onclick="signout()" id="sign_out">Logout</button>
+        <div>
+            <a href="/signin" id="sign_in" class="general_button">Login</a>
+            <button id="logged_in" class="general_button"><i class="fa fa-solid fa-circle-user"></i></button>
         </div>
     </header>
+
+    <div id="profile_dropdown_content">
+        <input type="button" value="My Timeline" id="my_timeline_btn">
+        <input type="button" value="Admin Dashboard" id="dashboard_btn">
+        <input type="button" value="Account Management" id="accocunt_management">
+        <input type="button" value="Donation History" id="donation_history_btn">
+        <input type="button" value="Logout" id="logout_btn" onclick="signout()">
+    </div>
         `
     }
 }
@@ -48,7 +57,9 @@ class GlobalFooter extends HTMLElement {
                     <div>
                         <ul id="sitemap">
                             <li><a href="/"><span>Home</span></a></li>
-                            <li><a href="#"><span>Sign in / Register</span></a></li>
+                            <li id="footer-sign-in"><a href="/signin"><span>Sign in / Register</span></a></li>
+                            <li id="footer-timeline"><a href="/home"><span>My Timeline</span></a></li>
+                            <li id="footer-dashboard"><a href="/home"><span>Admin Dashboard</span></a></li>
                             <li><a href="/charities"><span>Charities</span></a></li>
                             <li><a href="/about-us"><span>About Us</span></a></li>
                             <li><a href="/faq"><span>FAQ</span></a></li>

@@ -51,6 +51,10 @@ input[type=text]
     align-items: center;
 }
 
+#proceed-to-payment
+{
+    margin-bottom: 30px;
+}
 
 .header_bar i
 {
@@ -238,7 +242,6 @@ input[type=text]
 {
     width: 100%;
     padding: 20px;
-    margin-bottom: 30px;
 }
 
 .demo-button > span
