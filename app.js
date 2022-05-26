@@ -506,19 +506,19 @@ app.get("/history", async function (req, res) {
 			var donation = parseFloat(user_rows[count].total);
 			total_donation += donation;
 			switch (user_rows[count].charity_ID) {
-				case 1:
+				case (1):
 					seas += donation;
 					break;
-				case 2:
+				case (2):
 					trees += donation;
 					break;
-				case 3:
+				case (3):
 					SPCA += donation;
 					break;
-				case 4:
+				case (4):
 					house += donation;
 					break;
-				case 5:
+				case (5):
 					hungry += donation;
 					break;
 			}
@@ -808,7 +808,11 @@ function validateEmail(email) {
 }
 
 app.use(function (req, res, next) {
-	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Please check your url.</p></body></html>");
+	res.status(404).send("<html><head><title>Page not found!</title></head><body><div><img src='/img/errors/404_error.jpg' width='100%' height='100%'></img><div></body></html>");
+});
+
+app.use(function(req, res, next) {
+	res.status(500).send("<html><head><title>Server Error!</title></head><body><div><img src='/img/errors/500_error.jpg' width='100%' height='100%'></img><div></body></html>");
 });
 
 let port = 8000;
