@@ -316,16 +316,6 @@ home.html, home.css, admin.html, admin.css
 
 Contact Information
 ------------
-<<<<<<< HEAD
-Amadeus Min
-Email:  ama.m.cantabile@gmail.com
-Github: https://github.com/ama-cantabile
-
-Isaac Rudy
-Email: isaac.rudy@gmail.com
-Github: https://github.com/isaacrudy
-
-=======
 Amadeus Min - 
 Email:  ama.m.cantabile@gmail.com ; 
 Github: https://github.com/ama-cantabile
@@ -341,4 +331,3 @@ Github: github.com/drelos00
 Isaac Rudy - 
 Email: isaac.rudy@gmail.com ; 
 Github: github.com/isaacrudy
->>>>>>> fc4e9bb1f382ed97970add109afe49e11201a2b9
