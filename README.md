@@ -159,8 +159,10 @@ File Contents
 |   |       signup.js
 |   |       spilled_beans.js
 ```
-Installation
+Installation Local
 ------------
+
+###### Node.js and npm
 We'll need npm and node.js to run this so first we'll install npm
 1. 
 ```
@@ -168,19 +170,46 @@ npm install -g npm
 ```
 2. now we'll install node.js by going to:
 https://nodejs.org/en/download/
-
 and choose which installer is best suited for your machine.
 
+Now since we have npm and node.js installed, the next few are the REQUIRED (unless labeled otherwise) packages to be installed.
 
-"cors": "^2.8.5",
-"express": "^4.18.1",
-"express-fileupload": "^1.3.1",
-"express-session": "^1.17.2",
-"express-static": "^1.2.6",
-"mysql2": "^2.3.3",
-"jsdom": "^19.0.0",
-"nodemon": "^2.0.16",
-"object-assign": "^4.1.1"
+###### express
+```
+$ npm install express
+```
+###### express-session
+```
+$ npm install express-session
+```
+###### express-static
+```
+$ npm install express-static --save
+```
+###### express-fileupload
+```
+$ npm i express-fileupload
+```
+###### cors
+```
+$ npm install cors
+```
+###### mysql2
+```
+$ npm install --save mysql2
+```
+###### jsdom
+```
+$ npm install jsdom
+```
+###### nodemon (optional)
+```
+npm install -g nodemon
+```
+###### object-assign
+```
+$ npm install --save object-assign
+```
 
 Hosting Service and Instructions
 ------------
@@ -228,12 +257,26 @@ check the connection with the database in locally first
 
 Using the product
 ------------
+The app is fairly easy to use. 
+Once you have it running, you just need to create an account and start shopping. There's only one "store" at the moment but it'll reflect whatever you choose to donate.
 
-Credits
-------------
+If you choose to go through the admin route, you can add/edit/delete any users that decide to create an account.
+That's pretty much it, fairly simple.
 
 Contact Information
 ------------
 Amadeus Min
 Email:  ama.m.cantabile@gmail.com
 Github: https://github.com/ama-cantabile
+
+Calvin Yu
+Email: yucalvin5@gmail.com
+Github: github.com/Calvinyuuu
+
+Dennis Relos
+Email: drelos00@gmail.com
+Github: github.com/drelos00
+
+Isaac Rudy
+Email: isaac.rudy@gmail.com
+Github: github.com/isaacrudy
