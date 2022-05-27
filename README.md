@@ -312,6 +312,16 @@ home.html, home.css, admin.html, admin.css
 	Author: w3schools
 
 	Edited and adapted by Amadeus Min on May 25, 2022
+
+charities.html, charities.css, index.html
+	All pictures relating to the respective charities are from their respective pages.
+	https://teamseas.org/
+	https://teamtrees.org/
+	https://spca.bc.ca/
+	https://www.nokidhungry.org/
+	https://www.covenanthousebc.org/
+
+	Adapted by Calvin Yu
 ```
 
 Contact Information
