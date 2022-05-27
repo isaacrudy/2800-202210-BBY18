@@ -1,5 +1,5 @@
 input[type=button], #create_user_button {
-    background-color: var(--fc_teal);
+    /* background-color: var(--fc_teal); */
     color: white;
     border: none;
     cursor: pointer;
@@ -27,6 +27,21 @@ input[type=button]:hover, .general_button:hover{
 {
     filter: brightness(80%);
     transition: var(--hover-speed) ease;
+}
+
+.editBtn, .deleteBtn
+{
+    border-radius: 4px;
+}
+
+.editBtn
+{
+    background-color: var(--fc_teal);
+}
+
+.deleteBtn
+{
+    background-color: red;
 }
 
 #sign_in, .general_button
@@ -78,4 +93,11 @@ input[type=button]:hover, .general_button:hover{
 #signIn_container span:hover 
 {
     color: var(--fc_teal);
+}
+
+#loginBtn, #signupBtn
+{
+        background-color: var(--fc_teal);
+        color: white;
+        border: none;
 }

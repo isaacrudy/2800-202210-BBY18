@@ -200,12 +200,6 @@
         border-radius: 8px;
     }
 
-    input[type=button] {
-        width: 50%;
-        height: 50px;
-        border: solid 5px white;
-    }
-
     .timeline_delete_btn {
         width: 50%;
         height: 50px;
@@ -386,10 +380,10 @@
         font-size: small;
     }
 
-    input[type=button] {
+    /* input[type=button] {
         border-radius: 8px;
         border: solid 5px white;
-    }
+    } */
 
     .timeline_delete_btn {
         width: 50%;
