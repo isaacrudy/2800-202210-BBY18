@@ -1,3 +1,10 @@
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+# 2800_2022_BBY18
+Project 2 repository for team BBY 18
+=======
+>>>>>>> Stashed changes
 # 2800_2022_BBY18 - FundCart
 
 Overview
@@ -257,11 +264,34 @@ check the connection with the database in locally first
 
 Using the product
 ------------
+<<<<<<< Updated upstream
 The app is fairly easy to use. 
 Once you have it running, you just need to create an account and start shopping. There's only one "store" at the moment but it'll reflect whatever you choose to donate.
 
 If you choose to go through the admin route, you can add/edit/delete any users that decide to create an account.
 That's pretty much it, fairly simple.
+=======
+you'll need a few things before running this locally.
+1. vscode ; most of us has this IDE installed with html/css/js and if you followed the things above you'll have node.js installed
+2. you'll also need xampp installed (mysql and apache comes with this)
+3. make sure you have all the files in a standalone folder
+4. if launching locally: 
+	1. Launch XAMPP, turn on mysql and apache.
+	2. Go to the root folder where the app is and copy the path.
+	3. launch command line and do 
+	```
+	$ cd "paste root folder path here"
+	```
+	4. on the same window do 
+	```
+	$ node app or nodemon app if you have nodemon module installed
+	```
+	5. go to your browser type in 
+	```
+	localhost:8000
+	```
+4. Testing: https://docs.google.com/spreadsheets/d/1sbsXUHDhrLl8hkE6uXNUpqwQL9SzyjBXggBduJmQMq0/edit?usp=sharing
+>>>>>>> Stashed changes
 
 Credits + References
 ------------
@@ -341,3 +371,7 @@ Github: github.com/drelos00
 Isaac Rudy - 
 Email: isaac.rudy@gmail.com ; 
 Github: github.com/isaacrudy
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
