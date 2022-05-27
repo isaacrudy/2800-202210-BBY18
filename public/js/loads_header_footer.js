@@ -45,7 +45,7 @@ class GlobalHeader extends HTMLElement {
         <input type="button" value="Donation History" id="donation_history_btn" class="general_button">
         <input type="button" value="Logout" id="logout_btn" onclick="signout()" class="general_button">
     </div>
-        `
+        `;
     }
 }
 
