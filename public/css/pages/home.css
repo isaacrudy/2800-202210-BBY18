@@ -57,14 +57,14 @@
 
 .timeline_card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 500px;
+    max-width: 300px;
     margin: auto;
     text-align: center;
 }
 
-.timeline_img {
+.timeline_img 
+{
     width: 100%;
-    height: 250px;
 }
 
 .modal {
@@ -166,11 +166,6 @@
         font-size: x-small;
     }
 
-    .timeline_img {
-        width: 100%;
-        height: 100px;
-    }
-
     #profile_image_container {
         width: 100%;
         text-align: center;
@@ -207,15 +202,7 @@
     }
 
 
-    .timeline_delete_btn {
-        width: 50%;
-        height: 50px;
-        border: solid 1px white;
-        border-radius: 8px;
-    }
-
-    .timeline_update_btn {
-        width: 50%;
+    .timeline_delete_btn, .timeline_update_btn {
         height: 50px;
         border-radius: 8px;
     }
@@ -305,6 +292,7 @@
         width: 150px;
         border-radius: 8px;
     }
+    
 
     #timeline_form_container {
         text-align: center;
@@ -376,6 +364,7 @@
         margin: auto;
         text-align: left;
         margin-bottom: 10px !important;
+        max-width: 500px;
     }
 
     .timeline_text {
@@ -391,6 +380,11 @@
         width: 50%;
         height: 50px;
  
+    }
+
+    .timeline_img
+    {
+        max-width: 500px;
     }
 
     .timeline_update_btn {

@@ -1,18 +1,26 @@
-input[type=button]{
+input[type=button]
+{
     color: white;
     border: none;
     cursor: pointer;
 }
 
-input[type=button].general_button{
+input[type=button].general_button
+{
     background-color: var(--fc_teal);
     margin: 10px 0px;
     font-size: 1em;
 }
 
-input[type=button]:hover, .general_button:hover{
+input[type=button]:hover, .general_button:hover
+{
     filter: brightness(80%);
     transition: var(--hover-speed) ease;
+}
+
+input[type=button].timeline_delete_btn, input[type=button].timeline_update_btn
+{
+    border: 5px solid rgb(240, 240, 240);
 }
 
 .demo-button
@@ -47,6 +55,11 @@ input[type=button]:hover, .general_button:hover{
 .deleteBtn
 {
     background-color: red;
+}
+
+.timeline_delete_btn, .timeline_update_btn 
+{
+    width: 50%;
 }
 
 #sign_in, .general_button
@@ -105,4 +118,10 @@ input[type=button]:hover, .general_button:hover{
         background-color: var(--fc_teal);
         color: white;
         border: none;
+}
+
+#open_timeline_form_btn, #easterEgg_btn
+{
+    background-color: var(--fc_teal);
+    margin-bottom: 10px;
 }
