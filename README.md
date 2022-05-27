@@ -204,7 +204,7 @@ $ npm install jsdom
 ```
 ###### nodemon (optional)
 ```
-npm install -g nodemon
+$ npm install -g nodemon
 ```
 ###### object-assign
 ```
@@ -316,18 +316,18 @@ home.html, home.css, admin.html, admin.css
 
 Contact Information
 ------------
-Amadeus Min
-Email:  ama.m.cantabile@gmail.com
+Amadeus Min - 
+Email:  ama.m.cantabile@gmail.com ; 
 Github: https://github.com/ama-cantabile
 
-Calvin Yu
-Email: yucalvin5@gmail.com
+Calvin Yu - 
+Email: yucalvin5@gmail.com ; 
 Github: github.com/Calvinyuuu
 
-Dennis Relos
-Email: drelos00@gmail.com
+Dennis Relos - 
+Email: drelos00@gmail.com ; 
 Github: github.com/drelos00
 
-Isaac Rudy
-Email: isaac.rudy@gmail.com
+Isaac Rudy - 
+Email: isaac.rudy@gmail.com ; 
 Github: github.com/isaacrudy
