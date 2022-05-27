@@ -78,7 +78,7 @@ class GlobalFooter extends HTMLElement {
                             </li>
 
                             <li>
-                                <a href="#">
+                                <a href="https://www.instagram.com/fundcart/">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
