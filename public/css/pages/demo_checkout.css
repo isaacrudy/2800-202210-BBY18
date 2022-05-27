@@ -1,0 +1,320 @@
+input[type=text]
+{
+    width: 100px;
+}
+
+#wrapper-inner
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#beans
+{
+    width: 100px;
+    height: 100px;
+    background: url(../../img/demo_page/tin_can_small.png);
+}
+
+#hitbox
+{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    top: 15px;
+    left: 63px;
+}
+
+#donation-amount, #select-charity
+{
+    height: 55px;
+    margin-bottom: 30px;
+    width: 100%;
+    text-indent: 10px;
+}
+
+#select-charity
+{
+    margin-top: 30px;
+}
+
+#donation-total-container
+{
+    align-items: center;
+}
+
+#summary-donations
+{
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+#proceed-to-payment
+{
+    margin-bottom: 30px;
+}
+
+.header_bar i
+{
+    margin: 0px 20px;
+    font-size: 1.5em;
+}
+
+.toggler
+{
+    display: none;
+}
+
+
+.demo-container
+{
+    background-color: white;
+    border: 1px solid var(--border_color);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 90%;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 4px var(--border_color);
+    min-width: 350px;
+}
+
+.demo-container h2
+{
+    font-size: 1.2em;
+    margin: 0px;
+    padding: 25px 15px;
+}
+
+.demo-container-header
+{
+    padding: 0px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.491);
+    width: 100%;
+    background-color: rgb(237, 235, 235);
+
+}
+
+.demo-container-body
+{
+    padding: 15px;
+}
+
+.demo-container-body h3
+{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.demo-container-body span
+{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.demo-container-body p
+{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.demo-container-body > div
+{
+    display: grid;
+    grid-template-columns: 100px auto 50px;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.item-total
+{
+    font-size: 1em;
+    margin-right: 30px;
+    text-align: right;
+}
+
+.item-total h3
+{
+    font-size: 1em;
+    margin-top: 80px;
+    margin-right: 30px;
+}
+
+.remove-and-update
+{
+    display: flex !important;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border_color);
+    padding-bottom: 20px;
+}
+
+.remove
+{
+    margin-left: 15px;
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.update
+{
+    margin-right: 15px;
+    color: grey;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.space-between
+{
+    display: flex !important;
+    justify-content: space-between;
+    margin-bottom: 0px !important;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.border-bottom
+{
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border_color);
+}
+
+.margin-top
+{
+    margin-top: 20px;
+}
+
+.padding-top
+{
+    padding-top: 20px;
+}
+
+.bold-big
+{
+    font-weight: bold;
+    font-size: 1.5em !important;
+    padding-bottom: 20px;
+}
+
+.space-between span
+{
+    font-size: 1.2em;
+}
+
+.space-between small
+{
+    color: grey;
+}
+
+.demo-container > .space-between span
+{
+    margin: 10px 15px;
+
+}
+
+.bold-subheader
+{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.eggs
+{
+    width: 100px;
+    height: 100px;
+    background: url(../../img/demo_page/eggs.png);
+}
+
+.width-90
+{
+    width: 90%;
+}
+
+.donation
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.demo-button
+{
+    width: 100%;
+    padding: 20px;
+}
+
+.demo-button > span
+{
+    font-size: 1.5em;
+}
+
+.donate-grid
+{
+    margin-top: 40px;
+    margin-bottom: 15px;
+    display: grid;
+    grid-template-rows: 60px 60px;
+    grid-template-columns: 150px 150px;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+.donate-grid > div:hover
+{
+    filter: brightness(80%);
+    transition: var(--hover-speed) ease;
+}
+
+.donate-grid span
+{
+    margin-bottom: 0px;
+}
+
+.donate-grid > div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    background-color: var(--fc_teal);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.lines
+{
+    background-color: white;
+    padding: 0px 10px;
+    font-size: 1.1em;
+    color: var(--fc_purple);
+}
+
+.no-line-height
+{
+    border-bottom: 2px solid var(--border_color);
+    line-height: 0.1em;
+    margin: 30px 0px;
+}
+
+.text-center
+{
+    text-align: center;
+    padding: 0px 15px;
+}
+
+.flex-center
+{
+    display: flex;
+    justify-content: center;
+    margin: 0px 15px;
+}
+
+.flex-center form
+{
+    width: 100%;
+}

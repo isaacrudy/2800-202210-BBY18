@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FundCart | Shop</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/Logos/fundcart_favicon.ico">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/pages/demo_checkout.css">
+    <link rel="stylesheet" href="../../css/media_queries/demo_queries.css">
+    <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <div class="menu_wrapper">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger"><div></div></div>
+    </div>
+
+    <header class="header_bar">
+        <div>
+            <img id="fundcart_logo" src="../../img/demo_page/fundmart_vertical_mobile.png" alt="FundCart Logo">
+            <img id="fundcart_logo_alt" src="../../img/demo_page/fundmart_full.png" alt="FundCart Logo">
+        </div>
+
+        <div>
+            <button class="demo-button"><i class="fa fa-solid fa-cart-shopping"></i></button>
+        </div>
+    </header>
+
+    <div id="wrapper">
+        <div class="banner-header">
+            <h1>Checkout</h1>
+        </div>
+    
+        <div id="wrapper-inner">
+            <div class="demo-container" id="your-order">
+                <div class="demo-container-header">
+                    <h2>YOUR ORDER</h2>
+                </div>
+    
+                <div class="demo-container-body">
+                    <div>
+                        <div id="beans">
+                            <div id="hitbox" onmouseover="spill();" onmouseout="revert()"></div>
+                        </div>
+    
+                        <div>
+                            <h3 id="bean-header">Canned Beans</h3>
+                            
+                            <span>$2.19 ea</span><br>
+                            <span><strong>Quantity:</strong></span><br>
+                            <input readonly type="text" value="4">
+                        </div>
+    
+                        <div class="item-total">
+                            <h3>$8.76</h3>
+                        </div>
+                    </div>
+    
+                    <div class="remove-and-update">
+                        <div>
+                            <span class="remove"><i class="fa fa-solid fa-trash"></i> Remove</span>
+                        </div>
+        
+                        <div>
+                            <span class="update">Update</span>
+                        </div>
+                    </div>
+    
+                    <div>
+                        <div class="eggs"></div>
+    
+                        <div>
+                            <h3>Large Eggs</h3>
+    
+                            <span>$2.99 ea</span><br>
+                            <span><strong>Quantity:</strong></span><br>
+                            <input readonly type="text" value="1">
+                        </div>
+    
+                        <div class="item-total">
+                            <h3>$2.99</h3>
+                        </div>
+                    </div>
+    
+                    <div class="remove-and-update">
+                        <div>
+                            <span class="remove"><i class="fa fa-solid fa-trash"></i> Remove</span>
+                        </div>
+        
+                        <div>
+                            <span class="update">Update</span>
+                        </div>
+                    </div>
+    
+    
+                    <div class="space-between">
+                        <div>
+                            <span>Subtotal</span>
+                        </div>
+                        
+                        <div>
+                            <span>$11.75</span>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+    
+            <div class="flex-center" id="summary-donations">
+                <div class="demo-container">
+                    <div class="demo-container-header">
+                        <h2>ORDER SUMMARY</h2>
+                    </div>
+        
+                    <div class="space-between margin-top">
+                        <span>Subtotal<br><small>5 items</small></span>
+                        <span>$11.75</span>
+                    </div>
+        
+                    <div class="space-between">
+                        <span>Delivery</span>
+                        <span>$5.42</span>
+                    </div>
+        
+                    <div class="space-between">
+                        <span>Additional Fees</span>
+                        <span>$0.20</span>
+                    </div>
+        
+                    <div class="space-between border-bottom">
+                        <span>Taxes</span>
+                        <span>$0.00</span>
+                    </div>
+        
+                    <div class="space-between padding-top">
+                        <span class="bold-big">Total</span>
+                        <span class="bold-big" id="total-before">$17.37</span>
+                    </div>
+                </div>
+        
+                <div class="demo-container donation">
+                    <div class="demo-container-header">
+                        <h2>DONATIONS</h2>
+                    </div>
+
+                    <form id="donate-form" onsubmit="return donate()">
+                        <div class="flex-center border-bottom">
+                            <select name="select-charity" id="select-charity" required>
+                                <option value="" label="Select a charity" selected disabled hidden></option>
+                            </select>
+                        </div>
+            
+                        <div class="donate-grid">
+                            <div id="nDollar" onclick="nearestDollar();"><span>Round up to <br> nearest dollar</span></div>
+                            <div id="fiveP" onclick="fivePercent();"><span>5%</span></div>
+                            <div id="tenP" onclick="tenPercent();"><span>10%</span></div>
+                            <div id="twentyP" onclick="twentyPercent();"><span>20%</span></div>
+                        </div>
+            
+                        <div class="text-center">
+                            <p class="no-line-height"><span class="lines">or</span></p>
+                        </div>
+            
+                        <div class="flex-center border-bottom">
+                            <input onchange="customAmount();" type="number" min="0.01" step="0.01" max="500" placeholder="Custom Amount" id="donation-amount" required onkeydown="return event.keyCode !== 69">
+                        </div>
+            
+                        <div class="space-between padding-top" id="donation-total-container">
+                            <span class="bold-big">Total with <br> Donation</span>
+                            <span class="bold-big" id="donation-total">$17.37</span>
+                        </div>
+
+                
+                        <div class="flex-center width-90">
+                            <button type="submit" id="proceed-to-payment" class="demo-button"><span>PROCEED TO PAYMENT</span></button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <section>
+            <div>
+                <div>
+                    <h2>Need Help?</h2>
+                </div>
+
+                <div>
+                    <p><b>Give us a call</b></p>
+                    <p>778-823-1234</p>
+                    <p>Monday - Friday</p>
+                    <p>8:30 AM - 5:30 PM PST</p>
+                </div>
+            </div>
+
+            <div>
+                <p><b>Send us an email</b></p>
+                <p>support@fundmart.ca</p>
+                <p>We will reply within 24 hours</p>
+            </div>
+
+            <div>
+                <p>
+                    <i class="far fa-copyright"></i>
+                    2022 - fundmart
+                </p>
+            </div>
+
+        </section>
+    </footer>
+
+    <script src="../../js/demo_checkout.js"></script>
+    <script src="../../js/spilled_beans.js"></script>
+</body>
+
+</html>

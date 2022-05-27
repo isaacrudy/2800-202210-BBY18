@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FundCart | My Account</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/Logos/fundcart_favicon.ico">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
+    <script src="js/loads_header_footer.js"></script>
+</head>
+
+<body>
+    <global-header></global-header>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Are you sure you want to delete the timeline post?</p>
+            <button id="delete_yes_btn" value="yes">Yes</button>
+            <button id="delete_no_btn" value="no">No</button>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="welcome_user">
+            <h1>Welcome, </h1>
+            <h1 id="userName"></h1>
+        </div>
+        <div id="profile_image_container">
+            <img id="profile_image" src="../../public/images/Fundcart_smaller.jpg" alt="User's Profile Photo">
+        </div>
+
+
+        <div id="easterEgg_container">
+            <iframe id="easterEgg_game"></iframe>
+        </div>
+        <div id="timeline">
+            <p id="timeline_errorMsg"></p>
+            <input id="easterEgg_btn" type="button" value="Easter Egg" />
+            <input id="open_timeline_form_btn" type="button" value="Add Timeline" />
+            <div id="timeline_form_container"></div>
+            <h2 id="timeline_title">Your Timeline:</h2>
+            <div id="timeline_container"></div>
+        </div>
+    </div>
+
+    <global-footer></global-footer>
+
+
+    <script src="js/dynamic_header.js"></script>
+    <script src="js/dynamic_footer.js"></script>
+    <script src="js/signout.js"></script>
+    <script src="js/disable_scrolling.js"></script>
+    <script src="js/home.js"></script>
+</body>
+
+</html>

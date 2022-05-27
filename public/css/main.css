@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
 @import url('normalize.css');
-
+@import url('fontawesome.min.css');
 @import url('buttons.css');
 @import url('custom_select.css');
 
@@ -17,7 +17,9 @@ page specific style sheets
 @import url('pages/admin.css');
 @import url('pages/account_info.css');
 @import url('pages/home.css');
-
+@import url('pages/landing.css');
+@import url('pages/charities.css');
+@import url('pages/about_us.css');
 
 
 /*
@@ -95,4 +97,16 @@ input[type=submit]:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+
+/*
+---------------------------------------------
+.class 
+---------------------------------------------
+*/
+
+.lines {
+    padding: 0px 10px;
+    font-size: 1.1em;
 }

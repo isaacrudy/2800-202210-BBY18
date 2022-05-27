@@ -1,17 +1,68 @@
-input[type=button], #create_user_button {
-    background-color: var(--fc_teal);
+input[type=button]
+{
     color: white;
     border: none;
     cursor: pointer;
 }
 
-input[type=button]:hover, .general_button:hover{
-    filter: brightness(80%);
-    transition: var(--hover-speed) ease;
-
+input[type=button].general_button
+{
+    background-color: var(--fc_teal);
+    margin: 10px 0px;
+    font-size: 1em;
 }
 
-#sign_out, .general_button
+input[type=button]:hover, .general_button:hover
+{
+    filter: brightness(80%);
+    transition: var(--hover-speed) ease;
+}
+
+input[type=button].timeline_delete_btn, input[type=button].timeline_update_btn
+{
+    border: 5px solid rgb(240, 240, 240);
+}
+
+.demo-button
+{
+    background-color: rgb(235, 55, 55);
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 0.8em;
+    border: none;
+    cursor: pointer;
+}
+
+.demo-button:hover
+{
+    filter: brightness(80%);
+    transition: var(--hover-speed) ease;
+}
+
+.editBtn, .deleteBtn
+{
+    border-radius: 4px;
+}
+
+.editBtn
+{
+    background-color: var(--fc_teal);
+}
+
+.deleteBtn
+{
+    background-color: red;
+}
+
+.timeline_delete_btn, .timeline_update_btn 
+{
+    width: 50%;
+}
+
+#sign_in, .general_button
 {
     background-color: var(--fc_purple);
     padding: 10px 15px;
@@ -19,9 +70,25 @@ input[type=button]:hover, .general_button:hover{
     text-decoration: none;
     text-align: center;
     border-radius: 8px;
-    /* margin-right: 20px; */
     font-size: 0.8em;
     border: none;
+    cursor: pointer;
+}
+
+
+#logged_in
+{
+    width: 70px;
+    height: 50px;
+    font-size: 1.7em;
+    display: none;
+}
+
+#sign_in
+{
+    padding: 15px 20px;
+    font-size: 1em;
+    display: none;
 }
 
 #new_user
@@ -44,4 +111,17 @@ input[type=button]:hover, .general_button:hover{
 #signIn_container span:hover 
 {
     color: var(--fc_teal);
+}
+
+#loginBtn, #signupBtn
+{
+        background-color: var(--fc_teal);
+        color: white;
+        border: none;
+}
+
+#open_timeline_form_btn, #easterEgg_btn
+{
+    background-color: var(--fc_teal);
+    margin-bottom: 10px;
 }

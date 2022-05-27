@@ -3,22 +3,19 @@ Author: Dennis Relos
 Date: May 5, 2022
 */
 
-#welcome_user
-{
+#welcome_user {
     display: flex;
     gap: 10px;
     justify-content: center;
 }
 
-#timeline
-{
+#timeline {
     width: 80vw;
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
 }
 
-#timeline div
-{
+#timeline div {
     margin: 30px 0px 0px 40px;
 }

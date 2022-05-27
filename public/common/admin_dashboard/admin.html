@@ -15,17 +15,20 @@
 <body>
     <global-header></global-header>
 
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Are you sure you want to delete the account?</p>
+            <button id="delete_yes_btn" value="yes">Yes</button>
+            <button id="delete_no_btn" value="no">No</button>
+        </div>
+    </div>
+
     <div id="wrapper">
         <h1 id="admin_name"></h1>
 
         <div class="admin_title">
             <h2>Admin Dashboard</h2>
-            <div class="searchBar">
-                <form>
-                    <input type="text" id="search"><button type="submit" id="search_button">Search</button>
-                </form>
-            </div>
-            <br>
             <br>
             <form action="/signup" method="get">
                 <input id="new_user" type="submit" value="Create New User" class="general_button">
@@ -41,6 +44,8 @@
 
     <global-footer></global-footer>
 
+    <script src="js/dynamic_header.js"></script>
+    <script src="js/dynamic_footer.js"></script>
     <script src="js/admin_dashboard.js"></script>
     <script src="js/signout.js"></script>
     <script src="js/disable_scrolling.js"></script>

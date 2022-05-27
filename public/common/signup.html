@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <title>FundCart | Signup</title>
     <meta charset="UTF-8">
@@ -24,31 +25,22 @@
                 <form id="signup_form">
 
                     <div id="signup_form_inner">
-                        <input type="text" class="form_input" id="firstName" placeholder="first name" required />
-                        <input type="text" class="form_input" id="lastName" placeholder="last name" required />
+                        <input type="text" class="form_input" id="firstName" placeholder="first name*" required />
+                        <input type="text" class="form_input" id="lastName" placeholder="last name*" required />
                     </div>
-                    <input type="text" id="email" class="form_input" placeholder="email@email.com" required />
-                    <input type="password" name="password" id="password" class="form_input" placeholder="password"
+                    <input type="text" id="email" class="form_input" placeholder="email@email.com*" required />
+                    <input type="password" name="password" id="password" class="form_input" placeholder="password*"
                         required />
                     <input type="password" name="password_confirm" id="password_confirm" class="form_input"
-                        placeholder="confirm password" required />
-
-                        <div class="custom-select">
-                            <label for="user-type">Account Type:</label>
-                            <select name="users" id="user-type">
-                                <option selected="selected" value="regular">regular</option>
-                                <option value="admin">admin</option>
-                            </select>
-                        </div>
-
-                    <h3 id="error-message" class="invalidPassword"></h3>
+                        placeholder="confirm password*" required />
+                    <h3 id="error-message" class="error-message"></h3>
                     <input id="signupBtn" type="button" class="form_input_submit" value="Create Account" />
                 </form>
 
-                <div id="signup_cancel">
-                    <form action="/home" method="get">
+                <div class="login_end_div">
+                    <form action="/" method="get">
                         <p>
-                            <input type="submit" value="Back">
+                            <input type="submit" value="Cancel">
                         </p>
                     </form>
                 </div>
@@ -57,7 +49,8 @@
     </div>
 
     <global-footer></global-footer>
-    <script src="js/admin_signup.js"></script>
+
+    <script src="js/signup.js"></script>
 </body>
 
 </html>

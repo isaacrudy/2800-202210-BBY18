@@ -1,4 +1,4 @@
-#profile_dropbtn{
+#profile_dropbtn {
     border: none;
     background-color: white;
 }
@@ -11,17 +11,421 @@
     font-size: 5em;
 }
 
-#profile_dropdown:hover #profile_dropdown_content {
-    display: contents;
+#profile_dropbtn:hover {
+    filter: brightness(80%);
+    transition: var(--hover-speed) ease;
 }
 
-#profile_dropdown_content {
-    display: none;
+#profile_dropdown_content
+{
+    position: fixed;
+    background-color: rgb(240, 240, 240);
 }
 
 #profile_image {
     width: 10%;
     height: 10%;
     border-radius: 50%;
-    border: 5px solid black;
+    border: 3px solid black;
+}
+
+#timeline_image_uploader, #timeline_image_update {
+    display: none;
+}
+
+#easterEgg_btn {
+    display: none;
+}
+
+#easterEgg_container {
+    display: none;
+}
+
+#easterEgg_game {
+    width: 500px;
+    height: 500px;
+}
+
+#timeline_form_container {
+    display: none;
+}
+
+#my_timeline_btn, #dashboard_btn
+{
+    display: none;
+}
+
+.timeline_card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.timeline_img 
+{
+    width: 100%;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+@media screen and (max-width:1150px) {
+
+    #timeline {
+        width: 90%;
+    }
+
+    #profile_image {
+        width: auto;
+        height: 100px;
+    }
+
+    #open_timeline_form_btn, #easterEgg_btn, #delete_yes_btn, #delete_no_btn {
+        width: 100%;
+        height: 50px;
+        border-radius: 8px;
+    }
+
+    #timeline_form_container, .timeline_update_container {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+        width: 90%;
+        margin-top: 5%;
+    }
+
+    #timeline_content, #timeline_content_update {
+        width: 100%;
+        margin-top: 5%;
+    }
+
+    #timeline div {
+        margin: 0px 0px 20px 0px;
+        width: 100%;
+    }
+
+    #timeline_title {
+        text-align: center;
+    }
+
+    .timeline_image_label {
+        color: white;
+        background-color: #3ab3b0;
+        font-size: 2em;
+        padding-left: 3%;
+        padding-right: 3%;
+        border-radius: 8px;
+    }
+
+    .timeline_card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+        width: 100%;
+        margin: auto;
+        text-align: left;
+        margin-bottom: 40%;
+    }
+
+    .timeline_text {
+        padding-left: 3%;
+    }
+
+    .timeline_date_time {
+        padding-left: 3%;
+        font-size: x-small;
+    }
+
+    #profile_image_container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .image_uploader_container {
+        text-align: center;
+    }
+
+    #timeline_add_btn, #timeline_update_btn, #delete_yes_btn, #delete_no_btn  {
+        background-color: var(--fc_teal);
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        height: 50px;
+        font-size: large;
+        border-radius: 8px;
+    }
+
+    #delete_yes_btn, #delete_no_btn {
+        margin-top: 3%;
+    }
+
+    #profile_dropdown_content {
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #my_timeline_btn, #dashboard_btn, #accocunt_management, #donation_history_btn, #logout_btn {
+        width: 90%;
+        border-radius: 8px;
+    }
+
+
+    .timeline_delete_btn, .timeline_update_btn {
+        height: 50px;
+        border-radius: 8px;
+    }
+
+    #timeline_create_form, #timeline_update_form {
+        text-align: center;
+    }
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+}
+
+@media screen and (min-width:1150px) {
+
+    header {
+        margin-bottom: 0;
+    }
+
+    #timeline div {
+        margin: 0;
+        width: 100%;
+    }
+
+    #profile_dropdown_content {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 5%;
+        background-color: white;
+        border: solid 2px var(--border_color);
+        right: 0px;
+    }
+
+    #my_timeline_btn, #dashboard_btn,#accocunt_management, #donation_history_btn, #logout_btn {
+        height: 45px;
+        margin: 10px 10px;
+    }
+
+    #profile_image_container {
+        text-align: center;
+        width: 100%;
+    }
+
+    #profile_image {
+        width: auto;
+        height: 150px;
+        margin-bottom: 2%;
+    }
+
+    #open_timeline_form_btn, #easterEgg_btn{
+        height: 50px;
+        width: 150px;
+        border-radius: 8px;
+    }
+    
+
+    #timeline_form_container {
+        text-align: center;
+        margin-top: 3% !important;
+    }
+
+    #timeline_content, #timeline_content_update {
+        margin-top: 3%;
+        width: 100%;
+    }
+
+    #timeline_create_form, #timeline_update_form {
+        text-align: center;
+    }
+
+    .image_uploader_container {
+        text-align: left;
+    }
+
+    .timeline_image_label {
+        margin-right: 100px;
+        margin-bottom: 100px;
+        color: white;
+        background-color: #3ab3b0;
+        font-size: 2em;
+        padding-left: 3%;
+        padding-right: 3%;
+        border-radius: 8px;
+    }
+
+    .timeline_image_label:hover {
+        filter: brightness(80%);
+        transition: var(--hover-speed) ease;
+    }
+
+    #timeline_form_container, .timeline_update_container {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+        width: 100%;
+        border-radius: 8px;
+        padding: 5px;
+    }
+
+    #timeline_add_btn, #timeline_update_btn{
+        background-color: var(--fc_teal);
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        height: 50px;
+        font-size: large;
+        border-radius: 8px;
+    }
+    
+    #delete_yes_btn, #delete_no_btn {
+        margin-top: 3%;
+        background-color: var(--fc_teal);
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        height: 50px;
+        font-size: large;
+        border-radius: 8px;
+    }
+
+    .timeline_card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+        width: 100%;
+        margin: auto;
+        text-align: left;
+        margin-bottom: 10px !important;
+        max-width: 500px;
+    }
+
+    .timeline_text {
+        padding-left: 3%;
+    }
+
+    .timeline_date_time {
+        padding-left: 3%;
+        font-size: small;
+    }
+
+    .timeline_delete_btn {
+        width: 50%;
+        height: 50px;
+ 
+    }
+
+    .timeline_img
+    {
+        max-width: 500px;
+    }
+
+    .timeline_update_btn {
+        width: 50%;
+        height: 50px;
+    }
+
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
 }

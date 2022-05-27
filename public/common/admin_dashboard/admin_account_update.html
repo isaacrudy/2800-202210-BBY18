@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Admin Dashboard | Edit Account</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="../../img/Logos/fundcart_favicon.ico">
+    <link rel="stylesheet" href="../../css/main.css">
+    <script src="https://kit.fontawesome.com/d5b165cd2d.js" crossorigin="anonymous"></script>
+    <script src="../../js/loads_header_footer.js"></script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <div class="login_signup">
+            <div>
+                <img id="login_logo" src="../../img/Logos/fundcart_full_logo.png" alt="FundCart Logo">
+            </div>
+
+            <div id="signIn_container">
+                <h1>Update Account</h1>
+
+                <form id="signup_form">
+                    <div id="signup_form_inner">
+                        <label for="firstName">First Name: </label>
+                        <input type="text" class="form_input" id="firstName" placeholder="first name" required />
+                        <label for="lastName">Last Name: </label>
+                        <input type="text" class="form_input" id="lastName" placeholder="last name" required />
+                    </div>
+                    <label for="email">Email: </label>
+                    <input type="text" id="email" class="form_input" placeholder="email@email.com" required />
+                    <label for="password">Password: </label>
+                    <input type="text" name="password" id="password" class="form_input" placeholder="password"
+                        required />
+
+
+                    <div class="custom-select">
+                        <label for="userRole">Role: </label>
+                        <select id="userRole">
+                            <option value="default_message" selected="selected">Please select user type</option>
+                            <option value="regular">regular</option>
+                            <option value="admin">admin</option>
+                        </select>
+                        <label for="userRole">Profile Image: </label>
+                        <select id="profileImage">
+                            <option value="default_image" selected="selected">Please select users' profile image
+                            </option>
+                            <option value="default_photo.png">default_photo</option>
+                        </select>
+                    </div>
+
+                    <h3 id="error-message" class="invalidPassword"></h3>
+                    <input id="updateBtn" type="button" class="form_input_submit general_button" value="Update Account" />
+                </form>
+
+                <div id="signup_cancel">
+                    <form action="/home" method="get">
+                        <p>
+                            <input type="submit" value="Back">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <global-footer></global-footer>
+
+    <script src="../../js/dynamic_footer.js"></script>
+    <script src="../../js/admin_edit.js"></script>
+</body>
+
+</html>

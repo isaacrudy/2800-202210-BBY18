@@ -15,12 +15,9 @@
         display: flex;
     }
 
-    .deleteBtn {
-        width: 100px;
-    }
-
-    .editBtn {
-        width: 100px;
+    .editBtn, .deleteBtn {
+        width: 70px;
+        height: 22px !important;
     }
 
     #user_list_container td {

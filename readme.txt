@@ -1,8 +1,8 @@
 Team Members:
-[Amadeus Min],  [A01303313], [Set D], [May 13]
-[Calvin Yu],    [A00882445], [Set C], [May 13]
-[Dennis Relos], [A00928787], [Set C], [May 13]
-[Isaac Rudy],   [A01261260], [Set B], [May 13]
+[Amadeus Min],  [A01303313], [Set D], [May 26]
+[Calvin Yu],    [A00882445], [Set C], [May 26]
+[Dennis Relos], [A00928787], [Set C], [May 26]
+[Isaac Rudy],   [A01261260], [Set B], [May 26]
 
 This assignment is 95% complete.
 
@@ -40,3 +40,17 @@ admin_media_queries.css, admin.css
 	Availability: https://css-tricks.com/responsive-data-tables/
 
 	Edited and adapted by Isaac Rudy on May 10th
+
+app.js
+	Source Code
+	Availability: https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+	Author: C.Lee
+	
+	Edited and adapted by Amadeus Min on May 24, 2022
+
+home.html, home.css, admin.html, admin.css
+	Source Code
+	Availability: https://www.w3schools.com/howto/howto_css_modals.asp
+	Author: w3schools
+
+	Edited and adapted by Amadeus Min on May 25, 2022

@@ -29,7 +29,7 @@ ready(function () {
          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
          */
         let params = typeof data == 'string' ? data : Object.keys(data).map(
-            function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+            function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]); }
         ).join('&');
 
         const xhr = new XMLHttpRequest();
@@ -38,7 +38,7 @@ ready(function () {
                 callback(this.responseText);
 
             }
-        }
+        };
         xhr.open("POST", url);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -53,7 +53,7 @@ ready(function () {
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
 
-        const vars = { "email": email, "password": password, "password_confirm": check_password, "firstName": firstName, "lastName": lastName};
+        const vars = { "email": email.trim(), "password": password.trim(), "password_confirm": check_password.trim(), "firstName": firstName.trim(), "lastName": lastName.trim() };
         ajaxPOST("/update", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);

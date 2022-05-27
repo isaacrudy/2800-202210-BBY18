@@ -3,9 +3,7 @@ Author: Dennis Relos
 Date: May 4, 2022
 */
 
-i {
-    margin-right: 10px;
-}
+
 
 footer {
     max-width: 100%;
@@ -22,6 +20,10 @@ footer div {
     width: 250px;
     border-bottom: 1px solid grey;
     text-align: center;
+}
+
+footer i {
+    margin-right: 10px;
 }
 
 
@@ -96,4 +98,14 @@ footer div {
     padding: 0;
     margin: 10px;
     font-size: 2em;
+}
+
+#footer-timeline
+{
+    display: none;
+}
+
+#footer-dashboard
+{
+    display: none;
 }

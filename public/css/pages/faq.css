@@ -2,9 +2,12 @@ body {
     text-align: center;
 }
 
+.question_text {
+    padding: 10px;
+}
+
 .question {
     background-color: lightskyblue;
-    border: 5px;
     border-color: black;
     border-bottom-left-radius: 50px;
     border-top-right-radius: 50px;
