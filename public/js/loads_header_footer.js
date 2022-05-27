@@ -39,11 +39,11 @@ class GlobalHeader extends HTMLElement {
     </header>
 
     <div id="profile_dropdown_content">
-        <input type="button" value="My Timeline" id="my_timeline_btn">
-        <input type="button" value="Admin Dashboard" id="dashboard_btn">
-        <input type="button" value="Account Management" id="accocunt_management">
-        <input type="button" value="Donation History" id="donation_history_btn">
-        <input type="button" value="Logout" id="logout_btn" onclick="signout()">
+        <input type="button" value="My Timeline" id="my_timeline_btn" class="general_button">
+        <input type="button" value="Admin Dashboard" id="dashboard_btn" class="general_button">
+        <input type="button" value="Account Management" id="accocunt_management" class="general_button">
+        <input type="button" value="Donation History" id="donation_history_btn" class="general_button">
+        <input type="button" value="Logout" id="logout_btn" onclick="signout()" class="general_button">
     </div>
         `
     }

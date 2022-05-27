@@ -16,6 +16,12 @@
     transition: var(--hover-speed) ease;
 }
 
+#profile_dropdown_content
+{
+    position: fixed;
+    background-color: rgb(240, 240, 240);
+}
+
 #profile_image {
     width: 10%;
     height: 10%;
@@ -200,6 +206,7 @@
         border-radius: 8px;
     }
 
+
     .timeline_delete_btn {
         width: 50%;
         height: 50px;
@@ -267,19 +274,19 @@
     }
 
     #profile_dropdown_content {
-        height: 100px;
         text-align: right;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: flex-end;
         margin-bottom: 5%;
+        background-color: white;
+        border: solid 2px var(--border_color);
+        right: 0px;
     }
 
     #my_timeline_btn, #dashboard_btn,#accocunt_management, #donation_history_btn, #logout_btn {
-        width: 20%;
-        height: 80px;
-        margin-bottom: 0.1%;
+        height: 45px;
+        margin: 10px 10px;
     }
 
     #profile_image_container {
@@ -379,11 +386,6 @@
         padding-left: 3%;
         font-size: small;
     }
-
-    /* input[type=button] {
-        border-radius: 8px;
-        border: solid 5px white;
-    } */
 
     .timeline_delete_btn {
         width: 50%;
