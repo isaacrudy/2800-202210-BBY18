@@ -508,14 +508,19 @@ app.get("/history", async function (req, res) {
 		switch (charity_rows[count].charityName){
 			case ("Team Seas"):
 				seas_ID = charity_rows[count].id;
+				break;
 			case ("Team Trees"):
 				trees_ID = charity_rows[count].id;
+				break;
 			case ("BC SPCA"):
 				SPCA_ID = charity_rows[count].id;
+				break;
 			case ("Covenant House Vancouver"):
 				house_ID = charity_rows[count].id;
+				break;
 			case ("No Kid Hungry"):
 				hungry_ID = charity_rows[count].id;
+				break;
 		}
 	}
 
