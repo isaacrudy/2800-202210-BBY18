@@ -94,7 +94,7 @@ app.get('/home', async function (req, res) {
 			timelineErrorMsg = "";
 			let timeline_card = "";
 			let timlineImg_rows;
-			for (let i = 0; i < timeline_rows.length; i++) {
+			for (let i = timeline_rows.length-1; i >=0; i--) {
 				timlineImg_rows = await connection.execute("SELECT * FROM BBY_18_timeline_image WHERE id = " + timeline_rows[i].timeline_image_id);
 				timeline_card += '<div class="timeline_card">' + '<img class="timeline_img" src="img/upload/' + timlineImg_rows[0][0].timeline_photo + '" alt="timeline photo"/>' + '<p class="timeline_text">' + timeline_rows[i].timeline_text + '</p>' + '<p class="timeline_date_time">Posted: ' + timeline_rows[i].post_date_time + '</p>' + '<input type="button" class="timeline_delete_btn" value="Delete" id="' + timeline_rows[i].id + '">' + '<input type="button" class="timeline_update_btn" value="Update" id="' + timeline_rows[i].id + '">' + '<div class="timeline_update_container" id="update_form_container' + timeline_rows[i].id + '"></div>' + '</div>';
 			}
