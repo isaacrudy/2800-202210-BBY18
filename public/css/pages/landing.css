@@ -47,11 +47,11 @@ Images from teamtrees.org, teamseas.org
     background-position: 0px -15px;
 }
 #teamseas{
-    background-image: url(../../img/banners/teamseas.PNG);
+    background-image: url(../../img/banners/teamseas.png);
     background-position: 0 -15px;
 }
 #teamtrees{
-    background-image: url(../../img/banners/teamtrees.PNG);
+    background-image: url(../../img/banners/teamtrees.png);
     background-position: 0 -50px;
     color: rgb(255, 255, 255);
 }

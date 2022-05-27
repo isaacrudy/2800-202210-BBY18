@@ -18,7 +18,7 @@ ready(function () {
             timeline.style.display = "block";
             sign_in.style.display = "none";
         }
-    })
+    });
 
 });
 

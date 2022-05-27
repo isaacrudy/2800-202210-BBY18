@@ -14,13 +14,13 @@ ready(function () {
         if (response.msg === "redirect") {
             logged_out.style.display = "block";
         } else if ( response.msg === "admin") {
-            logged_in.style.display = "block"
-            dasbhoard_button.style.display = "inline-block"
+            logged_in.style.display = "block";
+            dasbhoard_button.style.display = "inline-block";
         } else if (response.msg === "regular") {
-            logged_in.style.display = "block"
-            timeline_button.style.display = "inline-block"
+            logged_in.style.display = "block";
+            timeline_button.style.display = "inline-block";
         }
-    })
+    });
 
 });
 
@@ -65,4 +65,4 @@ document.querySelector("#dashboard_btn").addEventListener("click", function (e) 
 document.querySelector("#donation_history_btn").addEventListener("click", function (e) {
     e.preventDefault();
     window.location.replace("/history");
-})
+});
