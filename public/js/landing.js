@@ -162,6 +162,12 @@ function launchGame() {
     displayGameButtons();
 }
 
+document.getElementById("play-game").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    launchGame();
+});
+
 function continueGame(option) {
     if (shouldExit) {
         exitGame();

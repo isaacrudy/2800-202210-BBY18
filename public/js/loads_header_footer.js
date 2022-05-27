@@ -86,7 +86,7 @@ class GlobalFooter extends HTMLElement {
                     </div>
 
                     <div>
-                        <p>
+                        <p id="play-game">
                             <i class="far fa-copyright"></i>
                             2022 - FundCart
                         </p>
