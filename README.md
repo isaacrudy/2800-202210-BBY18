@@ -237,3 +237,8 @@ Contact Information
 Amadeus Min
 Email:  ama.m.cantabile@gmail.com
 Github: https://github.com/ama-cantabile
+
+Isaac Rudy
+Email: isaac.rudy@gmail.com
+Github: https://github.com/isaacrudy
+

@@ -496,6 +496,29 @@ app.get("/history", async function (req, res) {
 	});
 
 	const [user_rows, user_info] = await connection.query("SELECT * FROM BBY_18_charity_donations WHERE user_ID = " + req.session.user_id);
+	const [charity_rows, charity_info] = await connection.query("SELECT * FROM BBY_18_charities");
+
+	var seas_ID;
+	var trees_ID;
+	var SPCA_ID;
+	var house_ID;
+	var hungry_ID;
+
+	for (let count = 0; count < charity_rows.length; count++) {
+		switch (charity_rows[count].charityName){
+			case ("Team Seas"):
+				seas_ID = charity_rows[count].id;
+			case ("Team Trees"):
+				trees_ID = charity_rows[count].id;
+			case ("BC SPCA"):
+				SPCA_ID = charity_rows[count].id;
+			case ("Covenant House Vancouver"):
+				house_ID = charity_rows[count].id;
+			case ("No Kid Hungry"):
+				hungry_ID = charity_rows[count].id;
+		}
+	}
+
 
 	var total_donation = 0;
 	var seas = 0;
@@ -509,19 +532,19 @@ app.get("/history", async function (req, res) {
 			var donation = parseFloat(user_rows[count].total);
 			total_donation += donation;
 			switch (user_rows[count].charity_ID) {
-				case (1):
+				case (seas_ID):
 					seas += donation;
 					break;
-				case (2):
+				case (trees_ID):
 					trees += donation;
 					break;
-				case (3):
+				case (SPCA_ID):
 					SPCA += donation;
 					break;
-				case (4):
+				case (house_ID):
 					house += donation;
 					break;
-				case (5):
+				case (hungry_ID):
 					hungry += donation;
 					break;
 			}
