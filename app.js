@@ -24,6 +24,9 @@
 */
 
 "use strict";
+/*
+* Requires dependencies list.
+*/
 const express = require('express');
 const session = require('express-session');
 const { JSDOM } = require('jsdom');
@@ -91,7 +94,7 @@ app.get('/home', async function (req, res) {
 			timelineErrorMsg = "";
 			let timeline_card = "";
 			let timlineImg_rows;
-			for (let i = 0; i < timeline_rows.length; i++) {
+			for (let i = timeline_rows.length-1; i >=0; i--) {
 				timlineImg_rows = await connection.execute("SELECT * FROM BBY_18_timeline_image WHERE id = " + timeline_rows[i].timeline_image_id);
 				timeline_card += '<div class="timeline_card">' + '<img class="timeline_img" src="img/upload/' + timlineImg_rows[0][0].timeline_photo + '" alt="timeline photo"/>' + '<p class="timeline_text">' + timeline_rows[i].timeline_text + '</p>' + '<p class="timeline_date_time">Posted: ' + timeline_rows[i].post_date_time + '</p>' + '<input type="button" class="timeline_delete_btn" value="Delete" id="' + timeline_rows[i].id + '">' + '<input type="button" class="timeline_update_btn" value="Update" id="' + timeline_rows[i].id + '">' + '<div class="timeline_update_container" id="update_form_container' + timeline_rows[i].id + '"></div>' + '</div>';
 			}
@@ -493,6 +496,29 @@ app.get("/history", async function (req, res) {
 	});
 
 	const [user_rows, user_info] = await connection.query("SELECT * FROM BBY_18_charity_donations WHERE user_ID = " + req.session.user_id);
+	const [charity_rows, charity_info] = await connection.query("SELECT * FROM BBY_18_charities");
+
+	var seas_ID;
+	var trees_ID;
+	var SPCA_ID;
+	var house_ID;
+	var hungry_ID;
+
+	for (let count = 0; count < charity_rows.length; count++) {
+		switch (charity_rows[count].charityName){
+			case ("Team Seas"):
+				seas_ID = charity_rows[count].id;
+			case ("Team Trees"):
+				trees_ID = charity_rows[count].id;
+			case ("BC SPCA"):
+				SPCA_ID = charity_rows[count].id;
+			case ("Covenant House Vancouver"):
+				house_ID = charity_rows[count].id;
+			case ("No Kid Hungry"):
+				hungry_ID = charity_rows[count].id;
+		}
+	}
+
 
 	var total_donation = 0;
 	var seas = 0;
@@ -506,19 +532,19 @@ app.get("/history", async function (req, res) {
 			var donation = parseFloat(user_rows[count].total);
 			total_donation += donation;
 			switch (user_rows[count].charity_ID) {
-				case 1:
+				case (seas_ID):
 					seas += donation;
 					break;
-				case 2:
+				case (trees_ID):
 					trees += donation;
 					break;
-				case 3:
+				case (SPCA_ID):
 					SPCA += donation;
 					break;
-				case 4:
+				case (house_ID):
 					house += donation;
 					break;
-				case 5:
+				case (hungry_ID):
 					hungry += donation;
 					break;
 			}
@@ -808,7 +834,11 @@ function validateEmail(email) {
 }
 
 app.use(function (req, res, next) {
-	res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Please check your url.</p></body></html>");
+	res.status(404).send("<html><head><title>Page not found!</title></head><body><div><img src='/img/errors/404_error.jpg' width='100%' height='100%'></img><div></body></html>");
+});
+
+app.use(function(req, res, next) {
+	res.status(500).send("<html><head><title>Server Error!</title></head><body><div><img src='/img/errors/500_error.jpg' width='100%' height='100%'></img><div></body></html>");
 });
 
 let port = 8000;

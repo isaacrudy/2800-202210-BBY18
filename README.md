@@ -159,28 +159,57 @@ File Contents
 |   |       signup.js
 |   |       spilled_beans.js
 ```
-Installation
+Installation Local and modules
 ------------
-We'll need npm and node.js to run this so first we'll install npm
+
+###### Node.js and npm
+We'll need npm and node.js to run this so first we'll install npm  
 1. 
 ```
 npm install -g npm
 ```
 2. now we'll install node.js by going to:
 https://nodejs.org/en/download/
-
 and choose which installer is best suited for your machine.
 
+Now since we have npm and node.js installed, the next few are the REQUIRED (unless labeled otherwise) packages to be installed.
 
-"cors": "^2.8.5",
-"express": "^4.18.1",
-"express-fileupload": "^1.3.1",
-"express-session": "^1.17.2",
-"express-static": "^1.2.6",
-"mysql2": "^2.3.3",
-"jsdom": "^19.0.0",
-"nodemon": "^2.0.16",
-"object-assign": "^4.1.1"
+###### express
+```
+$ npm install express
+```
+###### express-session
+```
+$ npm install express-session
+```
+###### express-static
+```
+$ npm install express-static --save
+```
+###### express-fileupload
+```
+$ npm i express-fileupload
+```
+###### cors
+```
+$ npm install cors
+```
+###### mysql2
+```
+$ npm install --save mysql2
+```
+###### jsdom
+```
+$ npm install jsdom
+```
+###### nodemon (optional)
+```
+$ npm install -g nodemon
+```
+###### object-assign
+```
+$ npm install --save object-assign
+```
 
 Hosting Service and Instructions
 ------------
@@ -228,12 +257,88 @@ check the connection with the database in locally first
 
 Using the product
 ------------
+The app is fairly easy to use. 
+Once you have it running, you just need to create an account and start shopping. There's only one "store" at the moment but it'll reflect whatever you choose to donate.
 
-Credits
+If you choose to go through the admin route, you can add/edit/delete any users that decide to create an account.
+That's pretty much it, fairly simple.
+
+Credits + References
 ------------
+```
+header.css
+	Source Code
+  	Title: Pure CSS Hamburger Menu & Overlay
+  	Author: Brad Traversy
+  	Date: April 4, 2019
+  	Availability: https://codepen.io/bradtraversy/pen/vMGBjQ?editors=1100
+
+  	Edited and adapted by Dennis Relos on May 5, 2022
+
+client.js, app.js
+	Source Code
+	Title: Code Examples from COMP 1537 Web Development1
+  	Author: Arron Ferguon
+    Availability: BCIT Learning Hub
+	
+  	Edited and adapted by Amadeus Min on May 5, 2022
+
+app.js
+	Source Code
+	Title: Upload and Store Images in MySQL using Node.Js, Express, Express-FileUpload & Express-Handlebars
+  	Author: Raddy
+    Availability: https://raddy.dev/blog/upload-and-store-images-in-mysql-using-node-js-express-express-fileupload-express-handlebars/
+	
+  	Edited and adapted by Amadeus Min on May 11, 2022
+
+admin_media_queries.css, admin.css
+	Source Code
+	Title: Responsive Data Tables
+	Author: Chris Coyier
+	Availability: https://css-tricks.com/responsive-data-tables/
+
+	Edited and adapted by Isaac Rudy on May 10th
+
+app.js
+	Source Code
+	Availability: https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+	Author: C.Lee
+	
+	Edited and adapted by Amadeus Min on May 24, 2022
+
+home.html, home.css, admin.html, admin.css
+	Source Code
+	Availability: https://www.w3schools.com/howto/howto_css_modals.asp
+	Author: w3schools
+
+	Edited and adapted by Amadeus Min on May 25, 2022
+```
 
 Contact Information
 ------------
+<<<<<<< HEAD
 Amadeus Min
 Email:  ama.m.cantabile@gmail.com
 Github: https://github.com/ama-cantabile
+
+Isaac Rudy
+Email: isaac.rudy@gmail.com
+Github: https://github.com/isaacrudy
+
+=======
+Amadeus Min - 
+Email:  ama.m.cantabile@gmail.com ; 
+Github: https://github.com/ama-cantabile
+
+Calvin Yu - 
+Email: yucalvin5@gmail.com ; 
+Github: github.com/Calvinyuuu
+
+Dennis Relos - 
+Email: drelos00@gmail.com ; 
+Github: github.com/drelos00
+
+Isaac Rudy - 
+Email: isaac.rudy@gmail.com ; 
+Github: github.com/isaacrudy
+>>>>>>> fc4e9bb1f382ed97970add109afe49e11201a2b9
