@@ -159,11 +159,11 @@ File Contents
 |   |       signup.js
 |   |       spilled_beans.js
 ```
-Installation Local
+Installation Local and modules
 ------------
 
 ###### Node.js and npm
-We'll need npm and node.js to run this so first we'll install npm
+We'll need npm and node.js to run this so first we'll install npm  
 1. 
 ```
 npm install -g npm
